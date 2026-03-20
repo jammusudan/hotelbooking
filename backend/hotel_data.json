@@ -1,0 +1,22 @@
+{
+  "_id": "69b788a0b3b2778255979d4d",
+  "managerId": "69b3e296f849e2e170502936",
+  "name": "Taj Coromandel",
+  "description": "Luxury 5-star hotel located in the heart of Chennai offering elegant rooms, fine dining restaurants, spa, swimming pool, and premium conference facilities for business and leisure travelers.\n\n ",
+  "address": "37 Mahatma Gandhi Road, Nungambakkam, Chennai, Tamil Nadu 600034",
+  "city": "chennai",
+  "country": "India",
+  "images": [],
+  "amenities": [
+    "WiFi",
+    "AC",
+    "Pool",
+    "Gym"
+  ],
+  "rating": 5,
+  "numReviews": 0,
+  "isApproved": true,
+  "createdAt": "2026-03-16T04:35:44.582Z",
+  "updatedAt": "2026-03-17T09:27:21.923Z",
+  "__v": 0
+}

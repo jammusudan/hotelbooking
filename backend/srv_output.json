@@ -1,0 +1,1 @@
+[{"name":"ac-s9l1du2-shard-00-00.quuicng.mongodb.net","port":27017,"priority":0,"weight":0,"type":"SRV"},{"name":"ac-s9l1du2-shard-00-01.quuicng.mongodb.net","port":27017,"priority":0,"weight":0,"type":"SRV"},{"name":"ac-s9l1du2-shard-00-02.quuicng.mongodb.net","port":27017,"priority":0,"weight":0,"type":"SRV"}]

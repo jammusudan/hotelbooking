@@ -1,0 +1,57 @@
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
+
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    role: {
+      type: String,
+      enum: ['customer', 'manager', 'admin'],
+      default: 'customer',
+    },
+    isEmailVerified: {
+      type: Boolean,
+      default: false,
+    },
+    verificationToken: String,
+    resetPasswordToken: String,
+    resetPasswordExpire: Date,
+    googleId: String,
+    githubId: String,
+    avatar: String,
+  },
+  {
+    timestamps: true,
+  }
+);
+
+// Method to verify password
+userSchema.methods.matchPassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
+
+// Pre-save middleware to hash password
+userSchema.pre('save', async function () {
+  if (!this.isModified('password')) {
+    return;
+  }
+
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+const User = mongoose.model('User', userSchema);
+
+export default User;

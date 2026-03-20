@@ -1,0 +1,3 @@
+ReferenceError: Hotel is not defined
+    at checkDB (file:///C:/Users/niche/OneDrive/Desktop/Hotel%20booking/backend/src/debug_db.js:32:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)

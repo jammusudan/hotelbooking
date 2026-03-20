@@ -1,0 +1,5 @@
+BookingID: 69b3f450dd4e93a601c88fb9 | HotelID: 69b3e327f849e2e17050293d | Status: Cancelled | Amount: 2500
+BookingID: 69b3f5e4dd4e93a601c8902c | HotelID: 69b3e327f849e2e17050293d | Status: Confirmed | Amount: 55000
+BookingID: 69b3faffdd4e93a601c890ea | HotelID: 69b3e327f849e2e17050293d | Status: Confirmed | Amount: 2500
+BookingID: 69b401a7dd4e93a601c8918c | HotelID: 69b3e327f849e2e17050293d | Status: Confirmed | Amount: 2500
+BookingID: 69b4db42098cf34dd7999827 | HotelID: 69b3d13ce619849f9abecffd | Status: Confirmed | Amount: 1000

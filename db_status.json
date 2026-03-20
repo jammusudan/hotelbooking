@@ -1,0 +1,54 @@
+{
+  "totalHotels": 6,
+  "hotels": [
+    {
+      "name": "Radisson hotel",
+      "isApproved": true,
+      "_id": "69b3d13ce619849f9abecffd",
+      "images": [],
+      "roomCount": 2
+    },
+    {
+      "name": "CJ Pallazzio,Salem",
+      "isApproved": true,
+      "_id": "69b3e327f849e2e17050293d",
+      "images": [
+        "https://cf.bstatic.com/xdata/images/hotel/max1024x768/413495616.jpg?k=cb36efe32fddfa80f744dcea58ff2a5abd331e41b299afe9fb94514f8b2ed296&o="
+      ],
+      "roomCount": 1
+    },
+    {
+      "name": "ITC Grand Chola",
+      "isApproved": true,
+      "_id": "69b77e4db3b2778255979af0",
+      "images": [
+        "https://cf.bstatic.com/xdata/images/hotel/max500/628286043.jpg?hp=1&k=df009bbf3eb28dce3261bea81e43cb9f803608ef0100a62c1e96b3d037a1e353&o="
+      ],
+      "roomCount": 3
+    },
+    {
+      "name": "Taj Coromandel",
+      "isApproved": true,
+      "_id": "69b788a0b3b2778255979d4d",
+      "images": [
+        "https://cf.bstatic.com/xdata/images/hotel/max1024x768/217745182.jpg"
+      ],
+      "roomCount": 1
+    },
+    {
+      "name": "Radisson Grand Salem",
+      "isApproved": true,
+      "_id": "69b7c0477b6d070e3e6170ca",
+      "images": [],
+      "roomCount": 0
+    },
+    {
+      "name": "Residence Inn by Marriott Salem",
+      "isApproved": true,
+      "_id": "69b7d287db6106cda86cdffe",
+      "images": [],
+      "roomCount": 1
+    }
+  ],
+  "totalRooms": 10
+}

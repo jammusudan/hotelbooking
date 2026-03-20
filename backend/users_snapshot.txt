@@ -1,0 +1,8 @@
+Hari3 | harisudan7143@gmail.com | customer
+testlog | testlog@test.com | customer
+Hari | harisudan714@gmail.com | customer
+jamuna | jamunaselvammsc98@gmail.com | customer
+Anu | anu@gmail.com | manager
+Balaji | balaji@gmail.com | admin
+admin | admin@gmail.com | admin
+Hari | manager@gmail.com | manager

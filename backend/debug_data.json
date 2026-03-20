@@ -1,0 +1,96 @@
+{
+  "hotels": [
+    {
+      "name": "Radisson hotel",
+      "id": "69b3d13ce619849f9abecffd",
+      "isApproved": true
+    },
+    {
+      "name": "ITC Grand Chola",
+      "id": "69b3d81bc72267226503ec20",
+      "isApproved": true
+    },
+    {
+      "name": "Radisson Grand Salem",
+      "id": "69b3e327f849e2e17050293d",
+      "isApproved": true
+    },
+    {
+      "name": "Taj Coromandel",
+      "id": "69b3fe43d0954fb43e9cac58",
+      "isApproved": true
+    },
+    {
+      "name": "ITC Grand Chola",
+      "id": "69b77e4db3b2778255979af0",
+      "isApproved": true
+    },
+    {
+      "name": "Taj Coromandel",
+      "id": "69b788a0b3b2778255979d4d",
+      "isApproved": true
+    }
+  ],
+  "rooms": [
+    {
+      "id": "69b3ba8ad994a3b1fddc6a60"
+    },
+    {
+      "id": "69b3baa4d994a3b1fddc6a62"
+    },
+    {
+      "hotelId": "69b3d13ce619849f9abecffd",
+      "type": "Double",
+      "price": 1000,
+      "id": "69b3daeb7a3692507165f846"
+    },
+    {
+      "hotelId": "69b3d13ce619849f9abecffd",
+      "type": "Single",
+      "price": 2500,
+      "id": "69b3e116f849e2e17050291d"
+    },
+    {
+      "hotelId": "69b3e327f849e2e17050293d",
+      "type": "Single",
+      "price": 2500,
+      "id": "69b3eafc7446118317b89547"
+    },
+    {
+      "hotelId": "69b3e327f849e2e17050293d",
+      "type": "Single",
+      "price": 5000,
+      "id": "69b3f7d9dd4e93a601c89083"
+    },
+    {
+      "hotelId": "69b3e327f849e2e17050293d",
+      "type": "Deluxe",
+      "price": 4500,
+      "id": "69b3ffbedd4e93a601c89138"
+    },
+    {
+      "hotelId": "69b3e327f849e2e17050293d",
+      "type": "Double",
+      "price": 3000,
+      "id": "69b4d6cc098cf34dd7999780"
+    },
+    {
+      "hotelId": "69b77e4db3b2778255979af0",
+      "type": "Suite",
+      "price": 1500,
+      "id": "69b77fa4b3b2778255979b8b"
+    },
+    {
+      "hotelId": "69b77e4db3b2778255979af0",
+      "type": "Suite",
+      "price": 1500,
+      "id": "69b7817eb3b2778255979c22"
+    },
+    {
+      "hotelId": "69b788a0b3b2778255979d4d",
+      "type": "Single",
+      "price": 2000,
+      "id": "69b78931b3b2778255979da2"
+    }
+  ]
+}

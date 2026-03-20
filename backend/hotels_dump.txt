@@ -1,0 +1,4 @@
+ID: 69b3d13ce619849f9abecffd | Hotel: Radisson hotel | ManagerID: 69b3bdf3d3e4380eb1a877c5 | Approved: true
+ID: 69b3d81bc72267226503ec20 | Hotel: ITC Grand Chola | ManagerID: 69b3bdf3d3e4380eb1a877c5 | Approved: true
+ID: 69b3e327f849e2e17050293d | Hotel: Radisson Grand Salem | ManagerID: 69b3e296f849e2e170502936 | Approved: true
+ID: 69b3fe43d0954fb43e9cac58 | Hotel: Taj Coromandel | ManagerID: 69b3a8090f76fe0b1957baa9 | Approved: true
