@@ -16,8 +16,12 @@ app.use(helmet());
 
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow any localhost/127.0.0.1 port in dev, or the explicit env URL
-    if (!origin || origin.startsWith('http://localhost:') || origin.startsWith('http://127.0.0.1:') || origin === process.env.FRONTEND_URL) {
+    // Allow any localhost/127.0.0.1 port in dev, explicit env URL, or any Vercel deployment
+    if (!origin || 
+        origin.startsWith('http://localhost:') || 
+        origin.startsWith('http://127.0.0.1:') || 
+        origin === process.env.FRONTEND_URL || 
+        (origin.startsWith('https://') && origin.endsWith('.vercel.app'))) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));

@@ -13,7 +13,17 @@ const server = http.createServer(app);
 // Initialize Socket.io
 const io = new Server(server, {
   cors: {
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    origin: function (origin, callback) {
+      if (!origin || 
+          origin.startsWith('http://localhost:') || 
+          origin.startsWith('http://127.0.0.1:') || 
+          origin === process.env.FRONTEND_URL || 
+          (origin.startsWith('https://') && origin.endsWith('.vercel.app'))) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   },
