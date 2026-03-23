@@ -62,10 +62,13 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
           <p>&copy; {new Date().getFullYear()} Navan. All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
+          <div className="flex space-x-6 mt-4 md:mt-0 flex-wrap justify-center md:justify-end">
             <Link to="/privacy" className="hover:text-white transition">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-white transition">Terms of Service</Link>
             <Link to="/sitemap" className="hover:text-white transition">Sitemap</Link>
+            <span className="text-gray-700">|</span>
+            <Link to="/manager/login" className="hover:text-gold-500 transition">Manager Portal</Link>
+            <Link to="/admin/login" className="hover:text-gold-500 transition">Admin Console</Link>
           </div>
         </div>
       </div>
