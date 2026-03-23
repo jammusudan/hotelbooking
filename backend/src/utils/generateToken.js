@@ -9,8 +9,8 @@ const generateToken = (res, userId, role = '') => {
 
   res.cookie(cookieName, token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV !== 'development', // True in production
-    sameSite: process.env.NODE_ENV !== 'development' ? 'none' : 'strict', // Must be 'none' for cross-site (Vercel->Render)
+    secure: true, // MUST be true for cross-site (Render over HTTPS)
+    sameSite: 'none', // MUST be 'none' for Vercel -> Render cross-site
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
   });
 };
