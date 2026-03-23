@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    { "source": "/manager", "destination": "/#/manager/login", "permanent": true },
+    { "source": "/manager/(.*)", "destination": "/#/manager/$1", "permanent": true },
+    { "source": "/admin", "destination": "/#/admin/login", "permanent": true },
+    { "source": "/admin/(.*)", "destination": "/#/admin/$1", "permanent": true },
+    { "source": "/login", "destination": "/#/login", "permanent": true }
+  ],
   "rewrites": [
     {
       "source": "/((?!assets/|.*\\..*).*)",
