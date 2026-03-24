@@ -200,7 +200,7 @@ const forgotPassword = async (req, res, next) => {
         subject: 'Password Reset Token',
         message,
         html: `<p>Please reset your password by clicking the link below:</p><a href="${resetUrl}">${resetUrl}</a>`,
-      });
+      }, true);
 
       res.status(200).json({ message: 'Email sent' });
     } catch (err) {

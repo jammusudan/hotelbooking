@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 
 import fs from 'fs';
 
-const sendEmail = async (options) => {
+const sendEmail = async (options, throwError = false) => {
   fs.appendFileSync('email_log.txt', `[${new Date().toISOString()}] Attempting to send email to ${options.email}\n`);
   
   // If SMTP is not configured, log to console instead (useful for development)
@@ -19,6 +19,9 @@ const sendEmail = async (options) => {
       if (linkMatch) console.log(`🔗 Link: ${linkMatch[1]}`);
     }
     console.log('--------------------------------------');
+    if (throwError && !process.env.SMTP_HOST) {
+        throw new Error('SMTP credentials are not configured on the server.');
+    }
     return;
   }
 
@@ -57,6 +60,9 @@ const sendEmail = async (options) => {
     console.error('--------------------------------');
     // We intentionally don't throw the error here so that business logic 
     // like payment verification can still complete successfully despite email failures.
+    if (throwError) {
+        throw error;
+    }
   }
 };
 
