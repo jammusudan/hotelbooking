@@ -246,7 +246,7 @@ export const deleteHotel = asyncHandler(async (req, res) => {
 // @route   POST /api/manager/rooms
 // @access  Private/Manager
 export const addRoom = asyncHandler(async (req, res) => {
-  const { hotelId, type, pricePerNight, capacity, count, amenities, images } = req.body;
+  const { hotelId, type, pricePerNight, capacity, adults, children, count, amenities, images } = req.body;
 
   const hotel = await Hotel.findById(hotelId);
 
@@ -265,6 +265,8 @@ export const addRoom = asyncHandler(async (req, res) => {
     type,
     pricePerNight,
     capacity,
+    adults: adults || 1,
+    children: children || 0,
     count,
     amenities: amenities || [],
     images: images || [],
@@ -277,7 +279,7 @@ export const addRoom = asyncHandler(async (req, res) => {
 // @route   PUT /api/manager/rooms/:id
 // @access  Private/Manager
 export const updateRoom = asyncHandler(async (req, res) => {
-  const { type, pricePerNight, capacity, count, amenities, images, isMaintenance } = req.body;
+  const { type, pricePerNight, capacity, adults, children, count, amenities, images, isMaintenance } = req.body;
 
   let room = await Room.findById(req.params.id);
 
@@ -295,6 +297,8 @@ export const updateRoom = asyncHandler(async (req, res) => {
   room.type = type || room.type;
   room.pricePerNight = pricePerNight || room.pricePerNight;
   room.capacity = capacity || room.capacity;
+  if (adults !== undefined) room.adults = adults;
+  if (children !== undefined) room.children = children;
   room.count = count || room.count;
   room.amenities = amenities || room.amenities;
   room.images = images || room.images;

@@ -347,7 +347,7 @@ const HotelDetails = () => {
                         <div className="flex justify-between items-start mb-6">
                           <div>
                              <h3 className={`text-3xl font-serif font-black uppercase tracking-tight italic mb-2 ${selectedRoomId === room._id ? 'text-black' : 'text-white'}`}>{room.type} Suite</h3>
-                             <p className={`text-[10px] font-black uppercase tracking-[0.2em] ${selectedRoomId === room._id ? 'text-black/60' : 'text-gray-500'}`}>Capacity: {room.capacity} Elite Guests</p>
+                             <p className={`text-[10px] font-black uppercase tracking-[0.2em] ${selectedRoomId === room._id ? 'text-black/60' : 'text-gray-500'}`}>Capacity: {room.adults || 1} ADULTS, {room.children || 0} KIDS</p>
                           </div>
                           {!room.isMaintenance && (
                              <div className="text-right">

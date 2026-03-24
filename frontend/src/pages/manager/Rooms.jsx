@@ -28,6 +28,8 @@ const Rooms = () => {
     type: 'Single',
     pricePerNight: '',
     capacity: 1,
+    adults: 1,
+    children: 0,
     count: 1,
     amenities: '',
     images: [''],
@@ -47,6 +49,8 @@ const Rooms = () => {
         type: room.type,
         pricePerNight: room.pricePerNight,
         capacity: room.capacity,
+        adults: room.adults || 1,
+        children: room.children || 0,
         count: room.count,
         amenities: room.amenities.join(', '),
         images: room.images.length > 0 ? room.images : [''],
@@ -59,6 +63,8 @@ const Rooms = () => {
         type: 'Single',
         pricePerNight: '',
         capacity: 1,
+        adults: 1,
+        children: 0,
         count: 1,
         amenities: '',
         images: [''],
@@ -89,6 +95,7 @@ const Rooms = () => {
     try {
       const payload = {
         ...formData,
+        capacity: parseInt(formData.adults) + parseInt(formData.children),
         amenities: formData.amenities.split(',').map(s => s.trim()).filter(s => s !== ''),
         images: formData.images.filter(img => img.trim() !== ''),
       };
@@ -195,9 +202,9 @@ const Rooms = () => {
                 </div>
                 <div className="space-y-2">
                   <p className="text-[9px] font-black text-gray-500 uppercase tracking-widest leading-none">Occupancy</p>
-                  <div className="flex items-center gap-2 text-gray-300 font-black text-base uppercase tracking-tighter">
+                  <div className="flex items-center gap-2 text-gray-300 font-black text-xs uppercase tracking-tighter">
                     <Users className="w-4 h-4 text-gold-500/50" />
-                    <span>{room.capacity} GUESTS</span>
+                    <span>{room.adults || 1} ADULTS, {room.children || 0} KIDS</span>
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -265,11 +272,13 @@ const Rooms = () => {
                     <option value="Double" className="bg-[#111114]">Double</option>
                     <option value="Suite" className="bg-[#111114]">Suite</option>
                     <option value="Deluxe" className="bg-[#111114]">Deluxe</option>
+                    <option value="Family" className="bg-[#111114]">Family</option>
+                    <option value="Penthouse" className="bg-[#111114]">Penthouse</option>
                   </select>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div className="space-y-3">
                   <label className="text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] ml-2">Nightly Rate (₹)</label>
                   <input 
@@ -282,13 +291,25 @@ const Rooms = () => {
                   />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] ml-2">Max Occupancy</label>
+                  <label className="text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] ml-2">Adults</label>
                   <input 
                     type="number"
                     required 
+                    min="1"
                     className="w-full px-6 py-4 bg-gray-900/50 border border-gray-800 rounded-2xl focus:border-gold-500/50 outline-none font-bold text-white transition-all shadow-inner placeholder:text-gray-700"
-                    value={formData.capacity}
-                    onChange={(e) => setFormData({ ...formData, capacity: e.target.value })}
+                    value={formData.adults}
+                    onChange={(e) => setFormData({ ...formData, adults: e.target.value })}
+                  />
+                </div>
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] ml-2">Children</label>
+                  <input 
+                    type="number"
+                    required 
+                    min="0"
+                    className="w-full px-6 py-4 bg-gray-900/50 border border-gray-800 rounded-2xl focus:border-gold-500/50 outline-none font-bold text-white transition-all shadow-inner placeholder:text-gray-700"
+                    value={formData.children}
+                    onChange={(e) => setFormData({ ...formData, children: e.target.value })}
                   />
                 </div>
                 <div className="space-y-3">
