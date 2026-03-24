@@ -141,13 +141,13 @@ const Login = ({ role = "customer" }) => {
 
               <div className="grid grid-cols-2 gap-4 relative z-10">
                 <a
-                 href={`https://your-backend.onrender.com/api/auth/google?role=${role}`}
+                 href={`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001/api'}/auth/google?role=${role}`}
                   className="flex items-center justify-center gap-3 border border-white/5 p-4 rounded-xl hover:bg-white/5 font-black text-[10px] uppercase tracking-widest transition-all text-gray-400 hover:text-white"
                 >
                   Google
                 </a>
                 <a
-                  href={`https://your-backend.onrender.com/api/auth/github?role=${role}`}
+                  href={`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001/api'}/auth/github?role=${role}`}
                   className="flex items-center justify-center gap-3 bg-white/5 p-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all text-white"
                 >
                   GitHub
