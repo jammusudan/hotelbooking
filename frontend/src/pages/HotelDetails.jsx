@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { api, AuthContext } from '../context/AuthContext';
 import socketService from '../utils/socket';
 import { getHotelImage, DEFAULT_PLACEHOLDER } from '../utils/imageHelper';
-import { MapPin, Star, Wifi, Coffee, Wind, Tv, Shield, Users, Calendar, Award, Box, Sparkles, ChevronRight, Zap } from 'lucide-react';
+import { MapPin, Star, Wifi, Coffee, Wind, Tv, Shield, Users, Calendar, Award, Box, Sparkles, ChevronRight, Zap, X } from 'lucide-react';
 
 const HotelDetails = () => {
   const { id } = useParams();
@@ -26,6 +26,31 @@ const HotelDetails = () => {
   const [mainImage, setMainImage] = useState('');
   const [availability, setAvailability] = useState(null); // { available: boolean, remainingCount: number }
   const [checkingAvailability, setCheckingAvailability] = useState(false);
+
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+  const [reviewForm, setReviewForm] = useState({ rating: 5, comment: '' });
+  const [reviewLoading, setReviewLoading] = useState(false);
+
+  const submitReview = async (e) => {
+    e.preventDefault();
+    if (!user) {
+      alert('Please log in to submit a review.');
+      return;
+    }
+    try {
+      setReviewLoading(true);
+      await api.post(`/reviews/hotel/${id}`, reviewForm);
+      alert('Your review has been recorded. Thank you for your feedback.');
+      setIsReviewModalOpen(false);
+      setReviewForm({ rating: 5, comment: '' });
+      const { data } = await api.get(`/reviews/hotel/${id}`);
+      setReviews(data);
+    } catch (error) {
+      alert(error.response?.data?.message || 'Submission failed');
+    } finally {
+      setReviewLoading(false);
+    }
+  };
 
   useEffect(() => {
     const fetchHotelData = async () => {
@@ -390,9 +415,12 @@ const HotelDetails = () => {
                    <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-gold-500 mb-4">Customer Reflections</h2>
                    <p className="text-5xl font-serif font-black italic tracking-tighter">Voices of the Journey</p>
                 </div>
-                <div className="text-right">
-                   <div className="text-7xl font-serif font-black text-gold-500 leading-none mb-2">{hotel.rating?.toFixed(1) || 'NEW'}</div>
-                   <div className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-500">Global Luxury Score</div>
+                <div className="flex items-center gap-10">
+                   <button onClick={() => setIsReviewModalOpen(true)} className="bg-gold-500/10 text-gold-500 border border-gold-500/20 px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[9px] hover:bg-gold-500 hover:text-white transition-all">Script Your Narrative</button>
+                   <div className="text-right">
+                      <div className="text-7xl font-serif font-black text-gold-500 leading-none mb-2">{hotel.rating?.toFixed(1) || 'NEW'}</div>
+                      <div className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-500">Global Luxury Score</div>
+                   </div>
                 </div>
              </div>
 
@@ -580,6 +608,60 @@ const HotelDetails = () => {
         </aside>
 
       </div>
+
+      {isReviewModalOpen && (
+                <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-500">
+                    <div className="bg-[#111113] w-full max-w-xl rounded-[3rem] shadow-2xl relative border border-white/10 overflow-hidden animate-in zoom-in-95 duration-500">
+                        <div className="absolute top-0 left-0 w-full h-2 bg-gold-500"></div>
+                        <button onClick={() => setIsReviewModalOpen(false)} className="absolute top-10 right-10 text-gray-500 hover:text-white transition-colors outline-none z-10">
+                            <X size={24} />
+                        </button>
+                        
+                        <div className="p-16">
+                            <div className="text-center mb-12">
+                                <span className="text-[10px] font-black text-gold-500 uppercase tracking-[0.5em] mb-4 block">Hotel Review</span>
+                                <h3 className="text-4xl font-serif font-black text-white uppercase tracking-tight italic leading-none">Review Your Stay</h3>
+                            </div>
+
+                            <form onSubmit={submitReview} className="space-y-10">
+                                <div className="space-y-4">
+                                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest flex justify-center">Rating</label>
+                                    <div className="flex justify-center gap-6 py-8 bg-black/40 rounded-[2.5rem] border border-white/5">
+                                        {[1, 2, 3, 4, 5].map((star) => (
+                                            <button 
+                                                key={star} type="button" 
+                                                onClick={() => setReviewForm({...reviewForm, rating: star})}
+                                                className={`text-5xl transition-all duration-500 ${reviewForm.rating >= star ? 'text-gold-500 scale-125 drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]' : 'text-gray-800 grayscale opacity-20'}`}
+                                            >
+                                                ★
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="space-y-3">
+                                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-2">Your Comments</label>
+                                    <textarea 
+                                        required rows="4"
+                                        placeholder="Tell us about your stay..."
+                                        value={reviewForm.comment}
+                                        onChange={(e) => setReviewForm({...reviewForm, comment: e.target.value})}
+                                        className="w-full bg-black/40 border border-white/10 rounded-[2rem] p-8 text-white focus:border-gold-500 outline-none text-sm font-medium transition-all resize-none placeholder:text-gray-700 italic"
+                                    />
+                                </div>
+
+                                <button 
+                                    type="submit" 
+                                    disabled={reviewLoading}
+                                    className="w-full bg-gold-500 text-black font-black uppercase tracking-[0.4em] py-6 rounded-2xl hover:bg-white transition-all transform active:scale-95 disabled:opacity-50 shadow-2xl shadow-gold-500/10 text-[10px]"
+                                >
+                                    {reviewLoading ? 'Submitting Review...' : 'Submit Review'}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            )}
     </div>
   );
 };
