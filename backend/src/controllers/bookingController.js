@@ -70,33 +70,14 @@ const createBooking = async (req, res, next) => {
 
     const createdBooking = await booking.save();
 
-    // Trigger Notification
+    // Trigger UI Notification (No email for initiated booking)
     const hotel = await Hotel.findById(hotelId);
-    
-    const emailHtml = getBookingInitiatedTemplate({
-      userName: req.user.name,
-      hotelName: hotel.name,
-      hotelAddress: hotel.address,
-      hotelCity: hotel.city,
-      roomType: room.type,
-      checkIn: checkInDate,
-      checkOut: checkOutDate,
-      totalAmount: totalAmount,
-      guests: guests,
-      nights: nights,
-      pricePerNight: room.pricePerNight
-    });
 
     await createNotification(
       req.app,
       req.user._id,
       'booking',
-      `Your booking at ${hotel.name} (${room.type}) has been initiated. Proceed to payment to secure your stay.`,
-      {
-        email: req.user.email,
-        subject: 'Navan: Booking Initiated',
-        html: emailHtml
-      }
+      `Your booking at ${hotel.name} (${room.type}) has been initiated. Proceed to payment to secure your stay.`
     );
 
     res.status(201).json(createdBooking);
