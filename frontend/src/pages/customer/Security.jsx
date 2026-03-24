@@ -6,7 +6,7 @@ const Security = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-white py-20 px-4 relative overflow-hidden font-sans">
+    <div className="min-h-screen bg-[#7FB77E] py-20 px-4 relative overflow-hidden font-sans">
       <div className="absolute top-[-10%] left-[-5%] w-[40rem] h-[40rem] bg-indigo-900/10 blur-[150px] pointer-events-none"></div>
 
       <div className="max-w-4xl mx-auto relative z-10">
@@ -27,7 +27,7 @@ const Security = () => {
 
         <div className="space-y-8">
           {/* Password Change Module */}
-          <div className="bg-white p-10 rounded-[3rem] border border-white/5 shadow-2xl">
+          <div className="bg-[#7FB77E] p-10 rounded-[3rem] border border-white/5 shadow-2xl">
             <div className="flex items-center gap-6 mb-8 border-b border-gray-800 pb-8">
                <div className="w-16 h-16 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-500/20">
                   <Key className="w-8 h-8" />
@@ -45,7 +45,7 @@ const Security = () => {
                    <input 
                      type="password" 
                      placeholder="••••••••"
-                     className="w-full bg-white/50 border border-gray-800 rounded-2xl p-4 text-gray-900 font-bold outline-none focus:border-indigo-400/50 transition-colors"
+                     className="w-full bg-[#7FB77E]/50 border border-gray-800 rounded-2xl p-4 text-gray-900 font-bold outline-none focus:border-indigo-400/50 transition-colors"
                    />
                  </div>
                  <div className="space-y-3">
@@ -53,12 +53,12 @@ const Security = () => {
                    <input 
                      type="password" 
                      placeholder="••••••••"
-                     className="w-full bg-white/50 border border-gray-800 rounded-2xl p-4 text-gray-900 font-bold outline-none focus:border-indigo-400/50 transition-colors"
+                     className="w-full bg-[#7FB77E]/50 border border-gray-800 rounded-2xl p-4 text-gray-900 font-bold outline-none focus:border-indigo-400/50 transition-colors"
                    />
                  </div>
                </div>
                <div className="pt-4 flex justify-end">
-                  <button className="flex items-center gap-3 bg-white/5 text-gray-900 px-8 py-4 rounded-xl font-black uppercase text-[10px] tracking-[0.3em] hover:bg-indigo-500 transition-all border border-white/10 shadow-xl active:scale-95">
+                  <button className="flex items-center gap-3 bg-[#7FB77E]/5 text-gray-900 px-8 py-4 rounded-xl font-black uppercase text-[10px] tracking-[0.3em] hover:bg-indigo-500 transition-all border border-white/10 shadow-xl active:scale-95">
                     <Lock className="w-4 h-4" /> Enforce New Passphrase
                   </button>
                </div>
@@ -66,7 +66,7 @@ const Security = () => {
           </div>
 
           {/* MFA Module */}
-          <div className="bg-white p-10 rounded-[3rem] border border-white/5 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-10">
+          <div className="bg-[#7FB77E] p-10 rounded-[3rem] border border-white/5 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-10">
               <div className="flex items-center gap-6">
                 <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 border border-emerald-500/20">
                     <Smartphone className="w-8 h-8" />
@@ -80,13 +80,13 @@ const Security = () => {
                     </p>
                 </div>
               </div>
-              <button disabled className="px-6 py-3 bg-white text-gray-900 rounded-xl text-[10px] font-black uppercase tracking-widest cursor-not-allowed border border-gray-800">
+              <button disabled className="px-6 py-3 bg-[#7FB77E] text-gray-900 rounded-xl text-[10px] font-black uppercase tracking-widest cursor-not-allowed border border-gray-800">
                   Active Profile
               </button>
           </div>
 
           {/* Active Sessions */}
-          <div className="bg-white p-10 rounded-[3rem] border border-white/5 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-10">
+          <div className="bg-[#7FB77E] p-10 rounded-[3rem] border border-white/5 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-10">
               <div className="flex items-center gap-6">
                 <div className="w-16 h-16 rounded-2xl bg-rose-500/10 flex items-center justify-center text-rose-500 border border-rose-500/20">
                     <ShieldAlert className="w-8 h-8" />

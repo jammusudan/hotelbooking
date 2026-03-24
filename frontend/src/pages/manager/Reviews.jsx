@@ -64,7 +64,7 @@ const Reviews = () => {
               
               <div className="mb-10 flex justify-between items-start">
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-white border border-gray-800 flex items-center justify-center text-white font-black shadow-inner group-hover:scale-110 transition-transform">
+                  <div className="w-14 h-14 rounded-2xl bg-[#7FB77E] border border-gray-800 flex items-center justify-center text-white font-black shadow-inner group-hover:scale-110 transition-transform">
                     {review.userId?.name?.charAt(0)}
                   </div>
                   <div>
@@ -130,7 +130,7 @@ const Reviews = () => {
                       </button>
                     </div>
                     <textarea 
-                      className="w-full p-6 bg-white/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none text-sm font-bold text-white transition-all shadow-inner placeholder:text-gray-800 resize-none italic"
+                      className="w-full p-6 bg-[#7FB77E]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none text-sm font-bold text-white transition-all shadow-inner placeholder:text-gray-800 resize-none italic"
                       placeholder="Address the patron's narrative..."
                       rows="3"
                       value={replyText}
@@ -140,7 +140,7 @@ const Reviews = () => {
                       <button 
                         onClick={() => handleReply(review._id)}
                         disabled={submitLoading || !replyText.trim()}
-                        className="flex items-center gap-3 bg-[#0B2D72] text-white px-6 py-3 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-white transition-all disabled:opacity-30 shadow-lg shadow-[#0B2D72]/20"
+                        className="flex items-center gap-3 bg-[#0B2D72] text-white px-6 py-3 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-[#7FB77E] transition-all disabled:opacity-30 shadow-lg shadow-[#0B2D72]/20"
                       >
                         {submitLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Send className="w-3.5 h-3.5" />}
                         Transmit Reply

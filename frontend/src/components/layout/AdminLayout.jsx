@@ -96,7 +96,7 @@ const AdminLayout = () => {
         <div className="h-full flex flex-col">
           <div className="p-8 pb-12">
             <h1 className="text-xl font-serif font-black text-white tracking-tighter uppercase italic flex items-center gap-3">
-              <div className="w-8 h-8 overflow-hidden rounded-lg bg-white/5 p-1 border border-white/10">
+              <div className="w-8 h-8 overflow-hidden rounded-lg bg-[#7FB77E]/5 p-1 border border-white/10">
                 <img src="/logo.png" alt="Navan" className="w-full h-full object-contain" />
               </div>
               <span className="tracking-tighter">Navan</span>
@@ -170,7 +170,7 @@ const AdminLayout = () => {
               <input 
                 type="text" 
                 placeholder="Search telemetry..." 
-                className="bg-white/5 border border-gray-800 rounded-xl py-2 pl-10 pr-4 text-xs font-bold text-white focus:border-[#0992C2]/50 outline-none w-48 focus:w-64 transition-all"
+                className="bg-[#7FB77E]/5 border border-gray-800 rounded-xl py-2 pl-10 pr-4 text-xs font-bold text-white focus:border-[#0992C2]/50 outline-none w-48 focus:w-64 transition-all"
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);

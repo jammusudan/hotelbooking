@@ -31,7 +31,7 @@ const HeroSection = () => {
         
         {/* Left Image (Hammock) */}
         <div className="absolute left-4 md:left-24 top-16 md:top-24 transform -rotate-[15deg] transition hover:scale-105 hover:z-30 duration-300 z-10">
-          <div className="bg-white p-2 md:p-3 shadow-2xl rounded-sm">
+          <div className="bg-[#7FB77E] p-2 md:p-3 shadow-2xl rounded-sm">
             <img 
               src="/images/sunset.png" 
               alt="Sunset Hammock" 
@@ -42,7 +42,7 @@ const HeroSection = () => {
 
         {/* Center Image (Breakfast) - overlapping */}
         <div className="absolute z-20 transform -translate-y-8 md:-translate-y-4 hover:scale-105 duration-300">
-          <div className="bg-white p-2 md:p-4 shadow-2xl rounded-sm">
+          <div className="bg-[#7FB77E] p-2 md:p-4 shadow-2xl rounded-sm">
             <img 
               src="/images/breakfast.png" 
               alt="Breakfast on Bed" 
@@ -53,7 +53,7 @@ const HeroSection = () => {
 
         {/* Right Image (Room) */}
         <div className="absolute right-4 md:right-24 top-20 md:top-24 transform rotate-[10deg] transition hover:scale-105 hover:z-30 duration-300 z-10">
-          <div className="bg-white p-2 md:p-3 shadow-2xl rounded-sm">
+          <div className="bg-[#7FB77E] p-2 md:p-3 shadow-2xl rounded-sm">
             <img 
               src="/images/room.png" 
               alt="Luxury Room" 

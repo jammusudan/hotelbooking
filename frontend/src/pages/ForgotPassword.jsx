@@ -27,8 +27,8 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="min-h-[90vh] flex items-center justify-center bg-white pt-32 pb-16 px-4">
-      <div className="max-w-md w-full space-y-8 bg-white shadow-2xl p-10 rounded-xl">
+    <div className="min-h-[90vh] flex items-center justify-center bg-[#7FB77E] pt-32 pb-16 px-4">
+      <div className="max-w-md w-full space-y-8 bg-[#7FB77E] shadow-2xl p-10 rounded-xl">
         <div className="text-center">
           <h2 className="text-4xl font-black text-gray-900 uppercase tracking-tight">Forgot Password</h2>
           <p className="text-gray-900 text-xs mt-2 uppercase tracking-widest font-bold">
@@ -54,7 +54,7 @@ const ForgotPassword = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-white text-gray-900 py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-white transition-all disabled:opacity-50 shadow-lg"
+            className="w-full bg-[#7FB77E] text-gray-900 py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-[#7FB77E] transition-all disabled:opacity-50 shadow-lg"
           >
             {loading ? 'Sending Request...' : 'Send Reset Link'}
           </button>

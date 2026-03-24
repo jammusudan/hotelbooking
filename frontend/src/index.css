@@ -21,7 +21,7 @@
 
 body {
   font-family: var(--font-sans);
-  background-color: white;
+  background-color: #7FB77E;
   color: #111827;
   -webkit-font-smoothing: antialiased;
 }
@@ -37,9 +37,9 @@ body {
     @apply bg-[#0B2D72] text-white font-bold py-2 px-6 rounded hover:bg-[#0B2D72] transition-colors duration-300;
   }
   .input-field {
-    @apply mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#0B2D72] focus:border-[#0B2D72] sm:text-sm;
+    @apply mt-1 block w-full px-4 py-3 bg-[#7FB77E] border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#0B2D72] focus:border-[#0B2D72] sm:text-sm;
   }
   .card {
-    @apply bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300;
+    @apply bg-[#7FB77E] rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300;
   }
 }

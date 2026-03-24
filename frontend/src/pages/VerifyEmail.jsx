@@ -22,8 +22,8 @@ const VerifyEmail = () => {
   }, [token, verifyEmail]);
 
   return (
-    <div className="min-h-[90vh] flex items-center justify-center bg-white pt-32 pb-16 px-4">
-      <div className="max-w-md w-full py-12 px-10 bg-white shadow-2xl rounded-xl text-center space-y-8 transition-all duration-700">
+    <div className="min-h-[90vh] flex items-center justify-center bg-[#7FB77E] pt-32 pb-16 px-4">
+      <div className="max-w-md w-full py-12 px-10 bg-[#7FB77E] shadow-2xl rounded-xl text-center space-y-8 transition-all duration-700">
         {status === 'verifying' && (
           <div className="animate-in fade-in duration-1000 space-y-6">
             <div className="relative mx-auto h-20 w-20">
@@ -44,7 +44,7 @@ const VerifyEmail = () => {
             <p className="text-gray-900 text-sm font-medium leading-relaxed px-4">
               Your identity has been confirmed. You now have full access to our luxury collection.
             </p>
-            <Link to="/login" className="inline-block w-full bg-white text-gray-900 py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-white transition-all shadow-lg mt-4">
+            <Link to="/login" className="inline-block w-full bg-[#7FB77E] text-gray-900 py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-[#7FB77E] transition-all shadow-lg mt-4">
               Step Inside
             </Link>
           </div>
@@ -59,7 +59,7 @@ const VerifyEmail = () => {
             <p className="text-gray-900 text-sm font-medium leading-relaxed px-4">
               {message || 'The verification link has expired or is invalid.'}
             </p>
-            <Link to="/register" className="inline-block w-full border-2 border-black text-black py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-white transition-all mt-4">
+            <Link to="/register" className="inline-block w-full border-2 border-black text-black py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-[#7FB77E] transition-all mt-4">
               Try Registering Again
             </Link>
           </div>

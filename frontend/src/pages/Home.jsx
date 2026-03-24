@@ -20,12 +20,12 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex flex-col bg-white min-h-screen text-gray-900 overflow-x-hidden">
+    <div className="flex flex-col bg-[#7FB77E] min-h-screen text-gray-900 overflow-x-hidden">
       <HeroSection />
 
       {/* Exclusive Offers */}
       {promotions.length > 0 && (
-        <section className="py-24 relative overflow-hidden bg-white">
+        <section className="py-24 relative overflow-hidden bg-[#7FB77E]">
           <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#0B2D72]/20 to-transparent"></div>
           <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
             <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom duration-1000">
@@ -40,7 +40,7 @@ const Home = () => {
                 <Link 
                   key={promo._id} 
                   to={promo.hotelId ? `/hotels/${promo.hotelId._id}` : '/hotels'}
-                  className="block p-8 bg-white border border-[#0B2D72]/20 rounded-[2.5rem] hover:border-[#0B2D72]/50 hover:bg-white/5 hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden shadow-2xl cursor-pointer"
+                  className="block p-8 bg-[#7FB77E] border border-[#0B2D72]/20 rounded-[2.5rem] hover:border-[#0B2D72]/50 hover:bg-[#7FB77E]/5 hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden shadow-2xl cursor-pointer"
                 >
                   <div className="absolute top-0 right-0 w-40 h-40 bg-[#0B2D72]/10 rounded-bl-[100%] transition-all opacity-0 group-hover:opacity-100 duration-500 group-hover:scale-110"></div>
                   <div className="flex justify-between items-start mb-6 relative z-10">
@@ -110,7 +110,7 @@ const Home = () => {
       </section>
 
       {/* The Protocol (Why Choose) */}
-      <section className="py-32 bg-white relative overflow-hidden">
+      <section className="py-32 bg-[#7FB77E] relative overflow-hidden">
          <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
             <div className="text-center mb-24">
                <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-900 mb-6">The Navan Experience</h2>
@@ -123,8 +123,8 @@ const Home = () => {
                  { icon: <Award size={32} />, title: "Elite Concierge", desc: "A dedicated digital curator available round the clock to refine your journey." },
                  { icon: <Zap size={32} />, title: "Rate Supremacy", desc: "Our commitment to the absolute best value across all global collections." }
                ].map((item, i) => (
-                 <div key={i} className="p-12 bg-white/40 border border-white/5 rounded-[3rem] hover:border-[#0B2D72]/20 transition-all text-center">
-                    <div className="w-20 h-20 bg-white/5 rounded-3xl flex items-center justify-center mx-auto mb-8 text-gray-900">
+                 <div key={i} className="p-12 bg-[#7FB77E]/40 border border-white/5 rounded-[3rem] hover:border-[#0B2D72]/20 transition-all text-center">
+                    <div className="w-20 h-20 bg-[#7FB77E]/5 rounded-3xl flex items-center justify-center mx-auto mb-8 text-gray-900">
                        {item.icon}
                     </div>
                     <h4 className="text-2xl font-serif font-black uppercase italic mb-4 tracking-tight">{item.title}</h4>

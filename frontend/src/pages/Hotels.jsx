@@ -108,7 +108,7 @@ const Hotels = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen pt-32 pb-24 relative overflow-hidden">
+    <div className="bg-[#7FB77E] min-h-screen pt-32 pb-24 relative overflow-hidden">
       {/* Ambient Glows */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0B2D72]/5 blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#0B2D72]/5 blur-[120px] pointer-events-none"></div>
@@ -126,7 +126,7 @@ const Hotels = () => {
             </h2>
             <p className="text-white mt-4 font-medium tracking-wide">Curated stays for the discerning traveler.</p>
           </div>
-          <div className="flex items-center gap-4 bg-white/5 border border-white/10 px-6 py-3 rounded-2xl backdrop-blur-md">
+          <div className="flex items-center gap-4 bg-[#7FB77E]/5 border border-white/10 px-6 py-3 rounded-2xl backdrop-blur-md">
             <span className="text-2xl font-serif font-black text-white italic">{hotels.length}</span>
             <span className="text-[10px] font-black text-white uppercase tracking-[0.2em]">Verified Properties</span>
           </div>
@@ -136,7 +136,7 @@ const Hotels = () => {
           
           {/* LEFT: FILTER SIDEBAR */}
           <aside className="lg:w-1/4">
-            <div className="bg-white p-8 rounded-[2.5rem] border border-white/5 shadow-2xl sticky top-32 overflow-hidden group">
+            <div className="bg-[#7FB77E] p-8 rounded-[2.5rem] border border-white/5 shadow-2xl sticky top-32 overflow-hidden group">
               <div className="absolute top-0 right-0 p-6 opacity-5 rotate-12">
                 <SlidersHorizontal size={80} />
               </div>
@@ -154,12 +154,12 @@ const Hotels = () => {
                 <div className="grid grid-cols-2 gap-3">
                   <input 
                     type="number" placeholder="Min" 
-                    className="w-full bg-white/40 border border-white/10 rounded-xl p-3 text-xs text-white focus:border-[#0B2D72]/50 focus:bg-white/60 outline-none transition-all font-bold placeholder:text-gray-700"
+                    className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-xl p-3 text-xs text-white focus:border-[#0B2D72]/50 focus:bg-[#7FB77E]/60 outline-none transition-all font-bold placeholder:text-gray-700"
                     value={minPrice} onChange={(e) => setMinPrice(e.target.value)}
                   />
                   <input 
                     type="number" placeholder="Max" 
-                    className="w-full bg-white/40 border border-white/10 rounded-xl p-3 text-xs text-white focus:border-[#0B2D72]/50 focus:bg-white/60 outline-none transition-all font-bold placeholder:text-gray-700"
+                    className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-xl p-3 text-xs text-white focus:border-[#0B2D72]/50 focus:bg-[#7FB77E]/60 outline-none transition-all font-bold placeholder:text-gray-700"
                     value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)}
                   />
                 </div>
@@ -171,12 +171,12 @@ const Hotels = () => {
                 <div className="space-y-3">
                   <input 
                     type="date" 
-                    className="w-full bg-white/40 border border-white/10 rounded-xl p-3 text-xs text-white focus:border-[#0B2D72]/50 outline-none transition-all font-bold color-scheme-dark"
+                    className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-xl p-3 text-xs text-white focus:border-[#0B2D72]/50 outline-none transition-all font-bold color-scheme-dark"
                     value={checkIn} onChange={(e) => setCheckIn(e.target.value)}
                   />
                   <input 
                     type="date" 
-                    className="w-full bg-white/40 border border-white/10 rounded-xl p-3 text-xs text-white focus:border-[#0B2D72]/50 outline-none transition-all font-bold color-scheme-dark"
+                    className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-xl p-3 text-xs text-white focus:border-[#0B2D72]/50 outline-none transition-all font-bold color-scheme-dark"
                     value={checkOut} onChange={(e) => setCheckOut(e.target.value)}
                   />
                 </div>
@@ -185,7 +185,7 @@ const Hotels = () => {
               {/* Min Rating */}
               <div className="mb-10 relative z-10">
                 <label className="block text-[9px] font-black text-white uppercase tracking-[0.2em] mb-4 pl-1">Rating</label>
-                <div className="flex items-center gap-1 bg-white/40 p-3 rounded-xl border border-white/10">
+                <div className="flex items-center gap-1 bg-[#7FB77E]/40 p-3 rounded-xl border border-white/10">
                   {[1, 2, 3, 4, 5].map(star => (
                     <button 
                       key={star}
@@ -209,7 +209,7 @@ const Hotels = () => {
                         type="checkbox" 
                         checked={selectedAmenities.includes(amenity)}
                         onChange={() => toggleAmenity(amenity)}
-                        className="w-4 h-4 rounded bg-white/40 border-white/10 text-white mr-3 focus:ring-offset-black focus:ring-[#0B2D72] transition-all"
+                        className="w-4 h-4 rounded bg-[#7FB77E]/40 border-white/10 text-white mr-3 focus:ring-offset-black focus:ring-[#0B2D72] transition-all"
                       />
                       <span className="group-hover/item:text-white transition-colors">{amenity}</span>
                     </label>
@@ -219,7 +219,7 @@ const Hotels = () => {
 
               <button 
                 onClick={fetchHotels}
-                className="w-full py-5 bg-[#0B2D72] text-white font-black uppercase tracking-[0.3em] text-[10px] rounded-2xl hover:bg-white hover:text-black transition-all transform active:scale-95 shadow-xl shadow-[#0B2D72]/10 relative z-10"
+                className="w-full py-5 bg-[#0B2D72] text-white font-black uppercase tracking-[0.3em] text-[10px] rounded-2xl hover:bg-[#7FB77E] hover:text-black transition-all transform active:scale-95 shadow-xl shadow-[#0B2D72]/10 relative z-10"
               >
                 Apply Filters
               </button>
@@ -230,7 +230,7 @@ const Hotels = () => {
           <main className="lg:w-3/4 space-y-12">
             
             {/* Search Consol */}
-            <form onSubmit={handleSearch} className="flex w-full bg-white border border-white/10 rounded-[2.5rem] shadow-2xl relative group overflow-hidden">
+            <form onSubmit={handleSearch} className="flex w-full bg-[#7FB77E] border border-white/10 rounded-[2.5rem] shadow-2xl relative group overflow-hidden">
               <div className="absolute inset-0 bg-[#0B2D72]/5 opacity-0 group-focus-within:opacity-100 transition-opacity pointer-events-none"></div>
               
               <div className="flex-grow relative border-r border-white/5">
@@ -284,7 +284,7 @@ const Hotels = () => {
 
               <button 
                 type="submit" 
-                className="bg-[#0B2D72] hover:bg-white text-black px-10 font-black uppercase tracking-[0.3em] text-[10px] transition-all transform active:scale-95"
+                className="bg-[#0B2D72] hover:bg-[#7FB77E] text-black px-10 font-black uppercase tracking-[0.3em] text-[10px] transition-all transform active:scale-95"
               >
                 Search
               </button>
@@ -294,15 +294,15 @@ const Hotels = () => {
             {loading ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 {[1,2,3,4].map(i => (
-                  <div key={i} className="h-[500px] bg-white rounded-[3rem] border border-white/5 animate-pulse"></div>
+                  <div key={i} className="h-[500px] bg-[#7FB77E] rounded-[3rem] border border-white/5 animate-pulse"></div>
                 ))}
               </div>
             ) : hotels.length === 0 ? (
-              <div className="text-center py-24 bg-white rounded-[3rem] border border-dashed border-white/5 border-2">
+              <div className="text-center py-24 bg-[#7FB77E] rounded-[3rem] border border-dashed border-white/5 border-2">
                 <div className="text-6xl mb-8 opacity-20 grayscale">🏨</div>
                 <h3 className="text-3xl font-serif font-black text-white mb-2 italic">No Hotels Found</h3>
                 <p className="text-white mb-10 max-w-md mx-auto font-medium tracking-wide">The criteria provided does not match any hotels in our collection.</p>
-                <button onClick={clearFilters} className="bg-white/5 hover:bg-white/10 text-white px-10 py-4 rounded-2xl border border-white/10 font-black uppercase tracking-widest text-[10px] transition-all">Clear Search Filters</button>
+                <button onClick={clearFilters} className="bg-[#7FB77E]/5 hover:bg-[#7FB77E]/10 text-white px-10 py-4 rounded-2xl border border-white/10 font-black uppercase tracking-widest text-[10px] transition-all">Clear Search Filters</button>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -310,7 +310,7 @@ const Hotels = () => {
                   const hotelPromo = promotions.find(p => !p.hotelId || (p.hotelId && p.hotelId._id === hotel._id));
                   return (
                   <Link key={hotel._id} to={`/hotels/${hotel._id}`} className="group h-full">
-                    <div className="bg-white border border-white/5 rounded-[3rem] overflow-hidden flex flex-col h-full transition-all duration-700 hover:border-[#0B2D72]/30 hover:shadow-[0_40px_80px_-20px_rgba(212,175,55,0.1)] group-hover:-translate-y-3 shadow-2xl">
+                    <div className="bg-[#7FB77E] border border-white/5 rounded-[3rem] overflow-hidden flex flex-col h-full transition-all duration-700 hover:border-[#0B2D72]/30 hover:shadow-[0_40px_80px_-20px_rgba(212,175,55,0.1)] group-hover:-translate-y-3 shadow-2xl">
                       
                       {/* Estate Image */}
                       <div className="relative h-[300px] overflow-hidden">
@@ -326,7 +326,7 @@ const Hotels = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-60"></div>
                         
                         {/* Rating Component */}
-                        <div className="absolute top-6 right-6 bg-white/60 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/10 flex items-center gap-2 shadow-2xl z-20">
+                        <div className="absolute top-6 right-6 bg-[#7FB77E]/60 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/10 flex items-center gap-2 shadow-2xl z-20">
                           <Star size={12} className="text-white fill-[#0B2D72]" />
                           <span className="text-xs font-black text-white">{hotel.rating ? hotel.rating.toFixed(1) : "NEW"}</span>
                         </div>
@@ -367,7 +367,7 @@ const Hotels = () => {
                         {/* Amenities Preview */}
                         <div className="flex flex-wrap gap-2 mt-auto pt-8 border-t border-white/5">
                           {(hotel.amenities || []).slice(0, 3).map(a => (
-                            <span key={a} className="bg-white/5 text-[9px] uppercase font-black tracking-widest text-white px-4 py-2 rounded-full border border-white/5 group-hover:bg-[#0B2D72]/10 group-hover:text-white group-hover:border-[#0B2D72]/20 transition-all duration-500">
+                            <span key={a} className="bg-[#7FB77E]/5 text-[9px] uppercase font-black tracking-widest text-white px-4 py-2 rounded-full border border-white/5 group-hover:bg-[#0B2D72]/10 group-hover:text-white group-hover:border-[#0B2D72]/20 transition-all duration-500">
                               {a}
                             </span>
                           ))}
