@@ -24,7 +24,7 @@ const RefundButton = ({ bookingId, onRefundSuccess }) => {
         <button
             onClick={handleRefund}
             disabled={loading}
-            className="px-4 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest bg-rose-500/10 text-rose-500 border border-rose-500/20 hover:bg-rose-500 hover:text-white transition-all disabled:opacity-50 italic"
+            className="px-4 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest bg-rose-500/10 text-rose-500 border border-rose-500/20 hover:bg-rose-500 hover:text-[#281C59] transition-all disabled:opacity-50 italic"
         >
             {loading ? 'Processing...' : 'Void & Refund'}
         </button>

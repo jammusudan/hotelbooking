@@ -21,8 +21,8 @@
 
 body {
   font-family: var(--font-sans);
-  background-color: #0a0a0b;
-  color: #f3f4f6;
+  background-color: #EDF7BD;
+  color: #281C59;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -34,10 +34,10 @@ body {
     @apply bg-transparent text-gray-700 font-bold py-2 px-6 rounded border border-gray-300 hover:bg-gray-50 transition-colors duration-300;
   }
   .btn-gold {
-    @apply bg-gold-500 text-white font-bold py-2 px-6 rounded hover:bg-gold-600 transition-colors duration-300;
+    @apply bg-[#281C59] text-white font-bold py-2 px-6 rounded hover:bg-[#281C59] transition-colors duration-300;
   }
   .input-field {
-    @apply mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gold-500 focus:border-gold-500 sm:text-sm;
+    @apply mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#281C59] focus:border-[#281C59] sm:text-sm;
   }
   .card {
     @apply bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300;

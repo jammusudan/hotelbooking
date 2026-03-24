@@ -71,7 +71,7 @@ const HeroSection = () => {
         
         <Link 
           to={user ? "/hotels" : "/register"} 
-          className="bg-[#D4AF37] text-white font-bold text-lg md:text-xl px-12 py-4 rounded-full shadow-xl shadow-gold-500/20 hover:bg-[#B5952F] hover:shadow-2xl hover:-translate-y-1 transition duration-300 mb-6"
+          className="bg-[#281C59] text-[#281C59] font-bold text-lg md:text-xl px-12 py-4 rounded-full shadow-xl shadow-[#281C59]/20 hover:bg-[#281C59] hover:shadow-2xl hover:-translate-y-1 transition duration-300 mb-6"
         >
           BOOK NOW
         </Link>
