@@ -7,7 +7,7 @@ const GuestRoute = ({ children }) => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#ACBAC4]">
+      <div className="min-h-screen flex items-center justify-center bg-[#85C79A]">
         <div className="w-12 h-12 border-4 border-[#0B2D72]/20 border-t-[#0B2D72] rounded-full animate-spin"></div>
       </div>
     );

@@ -110,19 +110,19 @@ const Payment = () => {
     };
 
     if (loading) return (
-        <div className="min-h-screen flex items-center justify-center bg-[#ACBAC4]">
+        <div className="min-h-screen flex items-center justify-center bg-[#85C79A]">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0B2D72]"></div>
         </div>
     );
 
     return (
-        <div className="min-h-screen bg-[#ACBAC4] flex items-center justify-center p-6 pt-24 pb-12">
+        <div className="min-h-screen bg-[#85C79A] flex items-center justify-center p-6 pt-24 pb-12">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#0B2D72]/10 via-transparent to-transparent opacity-50 pointer-events-none"></div>
             
             <div className="max-w-2xl w-full relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-[#0B2D72] via-[#0B2D72] to-[#0B2D72] rounded-[3rem] blur opacity-25"></div>
                 
-                <div className="relative bg-[#ACBAC4] border border-white/10 rounded-[3rem] overflow-hidden shadow-2xl">
+                <div className="relative bg-[#85C79A] border border-white/10 rounded-[3rem] overflow-hidden shadow-2xl">
                     <div className="h-2 w-full bg-gradient-to-r from-transparent via-[#0B2D72] to-transparent"></div>
 
                     <div className="p-8 md:p-12">
@@ -190,7 +190,7 @@ const Payment = () => {
                                                         type="text"
                                                         value={billingDetails.name}
                                                         onChange={(e) => setBillingDetails({...billingDetails, name: e.target.value})}
-                                                        className="w-full bg-[#ACBAC4]/40 border border-white/10 rounded-xl p-3 text-sm text-white focus:border-[#0B2D72]/50 outline-none transition-all font-black uppercase"
+                                                        className="w-full bg-[#85C79A]/40 border border-white/10 rounded-xl p-3 text-sm text-white focus:border-[#0B2D72]/50 outline-none transition-all font-black uppercase"
                                                         placeholder="Full Name as on Card"
                                                     />
                                                 </div>
@@ -201,7 +201,7 @@ const Payment = () => {
                                                             type="tel"
                                                             value={billingDetails.phone}
                                                             onChange={(e) => setBillingDetails({...billingDetails, phone: e.target.value})}
-                                                            className="w-full bg-[#ACBAC4]/40 border border-white/10 rounded-xl p-3 text-sm text-white focus:border-[#0B2D72]/50 outline-none transition-all font-black"
+                                                            className="w-full bg-[#85C79A]/40 border border-white/10 rounded-xl p-3 text-sm text-white focus:border-[#0B2D72]/50 outline-none transition-all font-black"
                                                             placeholder="+91..."
                                                         />
                                                     </div>
@@ -211,7 +211,7 @@ const Payment = () => {
                                                             type="email"
                                                             value={billingDetails.email}
                                                             onChange={(e) => setBillingDetails({...billingDetails, email: e.target.value})}
-                                                            className="w-full bg-[#ACBAC4]/40 border border-white/10 rounded-xl p-3 text-sm text-white focus:border-[#0B2D72]/50 outline-none transition-all font-black"
+                                                            className="w-full bg-[#85C79A]/40 border border-white/10 rounded-xl p-3 text-sm text-white focus:border-[#0B2D72]/50 outline-none transition-all font-black"
                                                             placeholder="your@email.com"
                                                         />
                                                     </div>

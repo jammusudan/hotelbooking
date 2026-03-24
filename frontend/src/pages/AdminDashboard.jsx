@@ -201,7 +201,7 @@ const AdminDashboard = () => {
     };
 
     if (loading) return (
-        <div className="min-h-screen flex items-center justify-center bg-[#ACBAC4]">
+        <div className="min-h-screen flex items-center justify-center bg-[#85C79A]">
             <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-[#0B2D72] border-solid"></div>
         </div>
     );
@@ -231,7 +231,7 @@ const AdminDashboard = () => {
             )}
 
             {/* MAIN CONTENT */}
-            <main className="max-w-7xl mx-auto px-8 py-12 bg-[#ACBAC4]">
+            <main className="max-w-7xl mx-auto px-8 py-12 bg-[#85C79A]">
                 <header className="mb-12">
                     <h1 className="text-4xl font-serif font-black text-white tracking-tighter uppercase italic pt-8">{activeTab}</h1>
                     <div className="h-1.5 w-24 bg-[#0B2D72] mt-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
@@ -264,7 +264,7 @@ const AdminDashboard = () => {
                                 <h3 className="text-lg font-serif font-black text-white mb-8 uppercase italic border-b border-gray-800 pb-4">Live Activity</h3>
                                 <div className="space-y-4">
                                     {feed.map(item => (
-                                        <div key={item.id} className="bg-[#ACBAC4]/50 p-6 rounded-3xl border border-gray-800/50 animate-in slide-in-from-top-4">
+                                        <div key={item.id} className="bg-[#85C79A]/50 p-6 rounded-3xl border border-gray-800/50 animate-in slide-in-from-top-4">
                                             <div className="flex justify-between items-center mb-2">
                                                 <span className="text-[9px] font-black text-white uppercase tracking-widest">{item.type === 'booking' ? 'Transaction' : 'New Patron'}</span>
                                                 <span className="text-[9px] font-bold text-gray-600">{item.time}</span>
@@ -290,7 +290,7 @@ const AdminDashboard = () => {
                                                     <span className="text-sm font-black text-white uppercase">{hotel.hotelInfo.name}</span>
                                                     <span className="text-xs font-black text-white">{hotel.count}</span>
                                                 </div>
-                                                <div className="h-1.5 bg-[#ACBAC4] rounded-full overflow-hidden">
+                                                <div className="h-1.5 bg-[#85C79A] rounded-full overflow-hidden">
                                                     <div className="h-full bg-[#0B2D72] shadow-[0_0_10px_rgba(212,175,55,0.5)]" style={{ width: `${(hotel.count / (analytics.totalBookings || 1)) * 100}%` }}></div>
                                                 </div>
                                             </div>
@@ -394,7 +394,7 @@ const AdminDashboard = () => {
                                     {usersList.map(u => (
                                         <tr key={u._id} className="hover:bg-gray-800/20 transition-colors">
                                             <td className="p-8 flex items-center gap-6">
-                                                <div className="w-12 h-12 rounded-2xl bg-[#ACBAC4] border border-gray-800 text-white flex items-center justify-center font-black text-xs shadow-inner uppercase">{u.name.charAt(0)}</div>
+                                                <div className="w-12 h-12 rounded-2xl bg-[#85C79A] border border-gray-800 text-white flex items-center justify-center font-black text-xs shadow-inner uppercase">{u.name.charAt(0)}</div>
                                                 <div>
                                                     <div className="text-sm font-black text-white italic">{u.name}</div>
                                                     <div className="text-[10px] font-medium text-white lowercase">{u.email}</div>
@@ -662,7 +662,7 @@ const AdminDashboard = () => {
 
             {/* PROMOTION MODAL */}
             {showPromoModal && (
-                <div className="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-[#ACBAC4]/90 backdrop-blur-xl animate-in fade-in duration-500">
+                <div className="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-[#85C79A]/90 backdrop-blur-xl animate-in fade-in duration-500">
                     <div className="bg-[#111114] w-full max-w-2xl rounded-[3rem] shadow-2xl relative border border-white/10 overflow-hidden animate-in zoom-in-95 duration-500">
                         <div className="p-16">
                             <header className="text-center mb-16">
@@ -677,7 +677,7 @@ const AdminDashboard = () => {
                                         <label className="text-[9px] font-black text-gray-600 uppercase tracking-widest ml-1">Elite Code</label>
                                         <input 
                                             type="text" required placeholder="EX: LUXURY25"
-                                            className="w-full bg-[#ACBAC4]/40 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#0B2D72] font-black tracking-widest uppercase transition-all"
+                                            className="w-full bg-[#85C79A]/40 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#0B2D72] font-black tracking-widest uppercase transition-all"
                                             value={promoForm.code} onChange={e => setPromoForm({...promoForm, code: e.target.value.toUpperCase()})}
                                         />
                                     </div>
@@ -685,7 +685,7 @@ const AdminDashboard = () => {
                                         <label className="text-[9px] font-black text-gray-600 uppercase tracking-widest ml-1">Benefit Value</label>
                                         <input 
                                             type="number" required
-                                            className="w-full bg-[#ACBAC4]/40 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#0B2D72] font-black transition-all"
+                                            className="w-full bg-[#85C79A]/40 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#0B2D72] font-black transition-all"
                                             value={promoForm.discount} onChange={e => setPromoForm({...promoForm, discount: e.target.value})}
                                         />
                                     </div>
@@ -695,7 +695,7 @@ const AdminDashboard = () => {
                                     <div className="space-y-3">
                                         <label className="text-[9px] font-black text-gray-600 uppercase tracking-widest ml-1">Protocol Type</label>
                                         <select 
-                                            className="w-full bg-[#ACBAC4]/40 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#0B2D72] font-bold transition-all appearance-none"
+                                            className="w-full bg-[#85C79A]/40 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#0B2D72] font-bold transition-all appearance-none"
                                             value={promoForm.type} onChange={e => setPromoForm({...promoForm, type: e.target.value})}
                                         >
                                             <option value="percentage">Percentage (%)</option>
@@ -705,7 +705,7 @@ const AdminDashboard = () => {
                                     <div className="space-y-3">
                                         <label className="text-[9px] font-black text-gray-600 uppercase tracking-widest ml-1">Applicable Property</label>
                                         <select 
-                                            className="w-full bg-[#ACBAC4]/40 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#0B2D72] font-bold transition-all appearance-none"
+                                            className="w-full bg-[#85C79A]/40 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#0B2D72] font-bold transition-all appearance-none"
                                             value={promoForm.hotelId} onChange={e => setPromoForm({...promoForm, hotelId: e.target.value})}
                                         >
                                             <option value="">Global Protocol (All Properties)</option>
@@ -721,7 +721,7 @@ const AdminDashboard = () => {
                                         <label className="text-[9px] font-black text-gray-600 uppercase tracking-widest ml-1">Termination Date</label>
                                         <input 
                                             type="date" required
-                                            className="w-full bg-[#ACBAC4]/40 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#0B2D72] font-bold transition-all color-scheme-dark"
+                                            className="w-full bg-[#85C79A]/40 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#0B2D72] font-bold transition-all color-scheme-dark"
                                             value={promoForm.expiryDate} onChange={e => setPromoForm({...promoForm, expiryDate: e.target.value})}
                                         />
                                     </div>
@@ -731,7 +731,7 @@ const AdminDashboard = () => {
                                     <label className="text-[9px] font-black text-gray-600 uppercase tracking-widest ml-1">Description</label>
                                     <textarea 
                                         required rows="3" placeholder="Define the offer's impact..."
-                                        className="w-full bg-[#ACBAC4]/40 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#0B2D72] font-medium italic transition-all resize-none"
+                                        className="w-full bg-[#85C79A]/40 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#0B2D72] font-medium italic transition-all resize-none"
                                         value={promoForm.description} onChange={e => setPromoForm({...promoForm, description: e.target.value})}
                                     />
                                 </div>

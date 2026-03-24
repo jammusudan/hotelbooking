@@ -11,7 +11,7 @@ const CustomerDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#ACBAC4] py-20 px-4 relative overflow-hidden">
+    <div className="min-h-screen bg-[#85C79A] py-20 px-4 relative overflow-hidden">
       {/* Ambient Background Glow */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0B2D72]/10 blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#0B2D72]/10 blur-[120px] pointer-events-none"></div>
@@ -48,7 +48,7 @@ const CustomerDashboard = () => {
                 <Link 
                   key={item.name} 
                   to={item.path}
-                  className="group flex items-center justify-between p-8 bg-[#ACBAC4] border border-white/5 rounded-[2rem] hover:border-[#0B2D72]/30 hover:bg-[#0B2D72]/5 transition-all duration-500 shadow-2xl"
+                  className="group flex items-center justify-between p-8 bg-[#85C79A] border border-white/5 rounded-[2rem] hover:border-[#0B2D72]/30 hover:bg-[#0B2D72]/5 transition-all duration-500 shadow-2xl"
                 >
                   <div className="flex items-center gap-6">
                     <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-gray-900 group-hover:scale-110 group-hover:bg-[#0B2D72] group-hover:text-white transition-all duration-500">
@@ -67,7 +67,7 @@ const CustomerDashboard = () => {
 
           {/* Guest Stats & Actions */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="bg-gradient-to-br from-[#ACBAC4] to-[#ACBAC4] rounded-[3rem] p-10 border border-white/5 shadow-2xl relative overflow-hidden group">
+            <div className="bg-gradient-to-br from-[#85C79A] to-[#85C79A] rounded-[3rem] p-10 border border-white/5 shadow-2xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                 <Award size={150} />
               </div>
@@ -105,7 +105,7 @@ const CustomerDashboard = () => {
               <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/20 blur-3xl rounded-full"></div>
               <h4 className="text-[10px] font-black uppercase tracking-[0.5em] mb-4 opacity-70">Privilege Update</h4>
               <p className="text-2xl font-serif font-black uppercase leading-tight italic mb-6">Unlock the Royal Penthouse for 20% less</p>
-              <button className="bg-[#ACBAC4] text-gray-900 px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-xl">Secure Access</button>
+              <button className="bg-[#85C79A] text-gray-900 px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-xl">Secure Access</button>
             </div>
           </div>
         </div>
