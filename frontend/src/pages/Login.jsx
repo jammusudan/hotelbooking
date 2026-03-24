@@ -49,7 +49,7 @@ const Login = ({ role = "customer" }) => {
       title: "Manager",
       desc: "Manage your hotel portfolio.",
       icon: <Briefcase size={32} />,
-      registerLink: false
+      registerLink: true
     },
     admin: {
       title: "Admin",
