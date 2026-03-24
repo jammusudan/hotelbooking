@@ -1,8 +1,13 @@
 import nodemailer from 'nodemailer';
 
+import fs from 'fs';
+
 const sendEmail = async (options) => {
+  fs.appendFileSync('email_log.txt', `[${new Date().toISOString()}] Attempting to send email to ${options.email}\n`);
+  
   // If SMTP is not configured, log to console instead (useful for development)
   if (!process.env.SMTP_HOST) {
+    fs.appendFileSync('email_log.txt', '-> SMTP_HOST missing, using development fallback.\n');
     console.log('--- 📧 DEVELOPMENT EMAIL FALLBACK ---');
     console.log(`To: ${options.email}`);
     console.log(`Subject: ${options.subject}`);
@@ -43,7 +48,9 @@ const sendEmail = async (options) => {
   try {
     const info = await transporter.sendMail(message);
     console.log('Message sent: %s', info.messageId);
+    fs.appendFileSync('email_log.txt', `-> Success! Message sent: ${info.messageId}\n`);
   } catch (error) {
+    fs.appendFileSync('email_log.txt', `-> FAILED: ${error.message}\n`);
     console.error('--- 📧 EMAIL SENDING FAILED ---');
     console.error('Error:', error.message);
     console.error('This is likely due to invalid SMTP credentials in .env or network issues.');
