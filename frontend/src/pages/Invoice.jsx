@@ -29,7 +29,7 @@ const Invoice = () => {
     };
 
     if (loading) return (
-        <div className="min-h-screen flex items-center justify-center bg-[#0AC4E0]">
+        <div className="min-h-screen flex items-center justify-center bg-[#ACBAC4]">
             <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#0B2D72]"></div>
         </div>
     );
@@ -37,7 +37,7 @@ const Invoice = () => {
     if (!invoice) return null;
 
     return (
-        <div className="min-h-screen bg-[#0AC4E0] py-24 px-4 relative overflow-hidden">
+        <div className="min-h-screen bg-[#ACBAC4] py-24 px-4 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0B2D72]/5 blur-[150px] pointer-events-none"></div>
             
             {/* Action Bar */}
@@ -62,7 +62,7 @@ const Invoice = () => {
             </div>
 
             {/* Invoice Document */}
-            <div className="max-w-4xl mx-auto bg-[#0AC4E0] text-white p-12 md:p-24 shadow-2xl rounded-[3rem] border border-white/5 relative overflow-hidden print:shadow-none print:p-0 print:bg-white print:text-black">
+            <div className="max-w-4xl mx-auto bg-[#ACBAC4] text-white p-12 md:p-24 shadow-2xl rounded-[3rem] border border-white/5 relative overflow-hidden print:shadow-none print:p-0 print:bg-white print:text-black">
                 <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-[#0B2D72] to-transparent opacity-50"></div>
                 
                 {/* Header */}

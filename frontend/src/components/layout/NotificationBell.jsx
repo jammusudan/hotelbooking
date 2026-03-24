@@ -93,14 +93,14 @@ const NotificationBell = () => {
       >
         <Bell size={20} />
         {unreadCount > 0 && (
-          <span className="absolute top-1 right-1 w-4 h-4 bg-[#0B2D72] text-[10px] font-black text-black rounded-full flex items-center justify-center animate-pulse border border-[#0AC4E0]">
+          <span className="absolute top-1 right-1 w-4 h-4 bg-[#0B2D72] text-[10px] font-black text-black rounded-full flex items-center justify-center animate-pulse border border-[#ACBAC4]">
             {unreadCount > 9 ? '9+' : unreadCount}
           </span>
         )}
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-4 w-80 bg-[#0AC4E0] border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-300">
+        <div className="absolute right-0 mt-4 w-80 bg-[#ACBAC4] border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-300">
           <div className="p-4 border-b border-white/5 flex items-center justify-between">
             <h3 className="text-[10px] uppercase font-black tracking-[0.3em] text-gray-900">Navan Protocol Alerts</h3>
             <button onClick={() => setIsOpen(false)}><X size={14} className="text-gray-600 hover:text-gray-900" /></button>
@@ -145,7 +145,7 @@ const NotificationBell = () => {
             )}
           </div>
 
-          <div className="p-4 bg-[#0AC4E0]/40 text-center">
+          <div className="p-4 bg-[#ACBAC4]/40 text-center">
             <p className="text-[9px] uppercase font-black text-gray-700 tracking-[0.2em]">Secure Notification Node v1.0</p>
           </div>
         </div>

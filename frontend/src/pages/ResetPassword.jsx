@@ -33,7 +33,7 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="min-h-[90vh] flex items-center justify-center bg-[#0AC4E0] pt-32 pb-16 px-4">
+    <div className="min-h-[90vh] flex items-center justify-center bg-[#ACBAC4] pt-32 pb-16 px-4">
       <div className="max-w-md w-full space-y-8 bg-white shadow-2xl p-10 rounded-xl">
         <div className="text-center">
           <h2 className="text-4xl font-black text-gray-900 uppercase tracking-tight">Reset Password</h2>
@@ -75,7 +75,7 @@ const ResetPassword = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#0AC4E0] text-gray-900 py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-[#0AC4E0] transition-all disabled:opacity-50 shadow-lg mt-4"
+            className="w-full bg-[#ACBAC4] text-gray-900 py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-[#ACBAC4] transition-all disabled:opacity-50 shadow-lg mt-4"
           >
             {loading ? 'Updating Access...' : 'Reset Password'}
           </button>

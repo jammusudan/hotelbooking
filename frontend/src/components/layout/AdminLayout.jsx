@@ -234,7 +234,7 @@ const AdminLayout = () => {
 
             <button className="p-2.5 text-white hover:bg-gray-800/50 rounded-xl relative border border-gray-800/50 group">
               <Bell className="w-5 h-5 group-hover:text-white transition-colors" />
-              <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#0992C2] rounded-full border-2 border-[#0AC4E0] shadow-[0_0_8px_rgba(212,175,55,0.4)]"></span>
+              <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#0992C2] rounded-full border-2 border-[#ACBAC4] shadow-[0_0_8px_rgba(212,175,55,0.4)]"></span>
             </button>
 
             {/* Root Admin Profile Dropdown */}

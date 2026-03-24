@@ -62,13 +62,13 @@ const Login = ({ role = "customer" }) => {
   const config = roleConfigs[role];
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0AC4E0] py-24 px-4 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-[#ACBAC4] py-24 px-4 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-[500px] bg-[#0B2D72]/5 blur-[150px] pointer-events-none"></div>
       
       <div className="max-w-md w-full relative group">
         <div className="absolute -inset-1 bg-gradient-to-r from-[#0B2D72] via-[#0B2D72] to-[#0B2D72] rounded-[3rem] blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
         
-        <div className="relative space-y-8 bg-[#0AC4E0] border border-white/5 p-10 md:p-14 rounded-[3rem] shadow-2xl overflow-hidden">
+        <div className="relative space-y-8 bg-[#ACBAC4] border border-white/5 p-10 md:p-14 rounded-[3rem] shadow-2xl overflow-hidden">
           <div className="absolute top-0 right-0 p-8 opacity-10">
              <Globe size={120} className="text-white" />
           </div>
@@ -96,7 +96,7 @@ const Login = ({ role = "customer" }) => {
                 type="email"
                 required
                 placeholder="Email"
-                className="w-full bg-[#0AC4E0]/40 border border-white/10 p-4 rounded-xl text-white focus:border-[#0B2D72]/50 outline-none transition-all font-medium text-sm"
+                className="w-full bg-[#ACBAC4]/40 border border-white/10 p-4 rounded-xl text-white focus:border-[#0B2D72]/50 outline-none transition-all font-medium text-sm"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -108,7 +108,7 @@ const Login = ({ role = "customer" }) => {
                 type="password"
                 required
                 placeholder="Password"
-                className="w-full bg-[#0AC4E0]/40 border border-white/10 p-4 rounded-xl text-white focus:border-[#0B2D72]/50 outline-none transition-all font-medium text-sm"
+                className="w-full bg-[#ACBAC4]/40 border border-white/10 p-4 rounded-xl text-white focus:border-[#0B2D72]/50 outline-none transition-all font-medium text-sm"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -135,7 +135,7 @@ const Login = ({ role = "customer" }) => {
                   <div className="w-full border-t border-white/5"></div>
                 </div>
                 <div className="relative flex justify-center text-[9px] uppercase font-black text-gray-600">
-                  <span className="bg-[#0AC4E0] px-4 tracking-[0.4em]">External Links</span>
+                  <span className="bg-[#ACBAC4] px-4 tracking-[0.4em]">External Links</span>
                 </div>
               </div>
 

@@ -187,7 +187,7 @@ const HotelDetails = () => {
   };
 
   if (loading) return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0AC4E0]">
+    <div className="min-h-screen flex items-center justify-center bg-[#ACBAC4]">
       <div className="flex flex-col items-center">
         <div className="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-[#0B2D72] mb-8"></div>
         <p className="text-white font-black uppercase tracking-[0.4em] animate-pulse text-xs">Awaiting Perfection</p>
@@ -196,7 +196,7 @@ const HotelDetails = () => {
   );
 
   if (!hotel) return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0AC4E0] text-white">
+    <div className="min-h-screen flex items-center justify-center bg-[#ACBAC4] text-white">
       <div className="text-center p-12 border border-white/5 rounded-[3rem]">
         <h2 className="text-4xl font-serif font-black mb-4 italic">Sanctuary Undiscovered</h2>
         <button onClick={() => navigate('/hotels')} className="text-white font-black uppercase tracking-widest text-[10px] hover:text-white transition-colors">Return to Collections</button>
@@ -207,7 +207,7 @@ const HotelDetails = () => {
   const selectedRoom = rooms.find(r => r._id === selectedRoomId);
 
   return (
-    <div className="bg-[#0AC4E0] min-h-screen text-white pt-20 overflow-x-hidden">
+    <div className="bg-[#ACBAC4] min-h-screen text-white pt-20 overflow-x-hidden">
       
       {/* Cinematic Hero */}
       <div className="relative h-[85vh] w-full overflow-hidden">
@@ -234,7 +234,7 @@ const HotelDetails = () => {
                 />
             ))}
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0AC4E0] via-[#0AC4E0]/40 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#ACBAC4] via-[#ACBAC4]/40 to-transparent"></div>
         
         <div className="absolute bottom-12 left-0 w-full p-4 md:p-16 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-end gap-12 z-10">
           <div className="max-w-3xl animate-in fade-in slide-in-from-bottom duration-1000">
@@ -249,7 +249,7 @@ const HotelDetails = () => {
             </div>
           </div>
           
-          <div className="flex flex-wrap md:flex-nowrap gap-4 p-4 bg-[#0AC4E0]/40 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] animate-in fade-in slide-in-from-right duration-1000">
+          <div className="flex flex-wrap md:flex-nowrap gap-4 p-4 bg-[#ACBAC4]/40 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] animate-in fade-in slide-in-from-right duration-1000">
             {(hotel.images?.length > 0 ? hotel.images : [getHotelImage(hotel)]).slice(0, 4).map((img, i) => (
               <button 
                 key={i} 
@@ -327,7 +327,7 @@ const HotelDetails = () => {
              <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-white mb-12">Curated Provisions</h2>
              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                {(hotel.amenities || []).map(amenity => (
-                 <div key={amenity} className="group p-8 bg-[#0AC4E0] border border-white/5 rounded-[2rem] hover:border-[#0B2D72]/30 transition-all flex flex-col items-center text-center gap-5">
+                 <div key={amenity} className="group p-8 bg-[#ACBAC4] border border-white/5 rounded-[2rem] hover:border-[#0B2D72]/30 transition-all flex flex-col items-center text-center gap-5">
                    <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                      {getAmenityIcon(amenity)}
                    </div>
@@ -342,7 +342,7 @@ const HotelDetails = () => {
              <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-white mb-12">Chamber Tiers</h2>
              <div className="space-y-8">
                {rooms.length === 0 ? (
-                 <div className="p-20 bg-[#0AC4E0] rounded-[3rem] border border-white/5 text-center">
+                 <div className="p-20 bg-[#ACBAC4] rounded-[3rem] border border-white/5 text-center">
                    <p className="text-white font-serif italic text-xl">No chambers currently available for reservation.</p>
                  </div>
                ) : (
@@ -355,7 +355,7 @@ const HotelDetails = () => {
                           ? 'opacity-40 cursor-not-allowed border-white/5 bg-transparent' 
                           : selectedRoomId === room._id 
                             ? 'bg-[#0B2D72] border-[#0B2D72] text-black shadow-2xl shadow-[#0B2D72]/20 translate-x-4' 
-                            : 'bg-[#0AC4E0] border-white/5 hover:border-[#0B2D72]/30 cursor-pointer'
+                            : 'bg-[#ACBAC4] border-white/5 hover:border-[#0B2D72]/30 cursor-pointer'
                       }`}
                     >
                       <div className="w-full md:w-80 h-60 rounded-[2rem] overflow-hidden relative group-hover:shadow-2xl transition-all">
@@ -365,7 +365,7 @@ const HotelDetails = () => {
                           alt={room.type}
                         />
                         {room.isMaintenance && (
-                            <div className="absolute inset-0 bg-[#0AC4E0]/80 flex items-center justify-center backdrop-blur-sm">
+                            <div className="absolute inset-0 bg-[#ACBAC4]/80 flex items-center justify-center backdrop-blur-sm">
                                 <span className="text-[8px] font-black uppercase tracking-widest text-white border border-white/20 px-4 py-2 rounded-full italic">Refining</span>
                             </div>
                         )}
@@ -387,7 +387,7 @@ const HotelDetails = () => {
                         
                         <div className="flex flex-wrap gap-4 mt-auto">
                            {selectedRoomId === room._id && !room.isMaintenance && (
-                             <span className="text-[9px] font-black uppercase tracking-widest bg-[#0AC4E0] text-white px-4 py-2 rounded-full border border-black/10">Active Choice</span>
+                             <span className="text-[9px] font-black uppercase tracking-widest bg-[#ACBAC4] text-white px-4 py-2 rounded-full border border-black/10">Active Choice</span>
                            )}
                            <span className={`text-[9px] font-black uppercase tracking-widest px-4 py-2 rounded-full border ${
                              room.isMaintenance 
@@ -407,7 +407,7 @@ const HotelDetails = () => {
           </section>
 
           {/* Testimonials */}
-          <section className="bg-[#0AC4E0] p-16 rounded-[4rem] border border-white/5 relative overflow-hidden">
+          <section className="bg-[#ACBAC4] p-16 rounded-[4rem] border border-white/5 relative overflow-hidden">
              <div className="absolute top-0 right-0 w-96 h-96 bg-[#0B2D72]/5 blur-[120px] pointer-events-none"></div>
              
              <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-10">
@@ -429,7 +429,7 @@ const HotelDetails = () => {
              ) : (
                <div className="space-y-10">
                  {reviews.map(rev => (
-                   <div key={rev._id} className="p-12 bg-[#0AC4E0]/40 rounded-[3rem] border border-white/5 hover:border-[#0B2D72]/20 transition-all group">
+                   <div key={rev._id} className="p-12 bg-[#ACBAC4]/40 rounded-[3rem] border border-white/5 hover:border-[#0B2D72]/20 transition-all group">
                      <div className="flex items-center gap-8 mb-10">
                         <div className="w-16 h-16 rounded-full bg-[#0B2D72] text-white flex items-center justify-center font-black text-2xl shadow-xl shadow-[#0B2D72]/20">
                           {rev.userId?.name?.charAt(0) || 'U'}
@@ -472,7 +472,7 @@ const HotelDetails = () => {
 
         {/* Sidebar Booking */}
         <aside className="lg:col-span-4">
-          <div className="sticky top-32 bg-[#0AC4E0] border border-white/5 rounded-[4rem] p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden">
+          <div className="sticky top-32 bg-[#ACBAC4] border border-white/5 rounded-[4rem] p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden">
              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#0B2D72] to-transparent opacity-50"></div>
              
              <h3 className="text-2xl font-serif font-black text-center uppercase tracking-tight italic mb-2">Reserve Stay</h3>
@@ -486,7 +486,7 @@ const HotelDetails = () => {
                       <input 
                         type="date" required min={new Date().toISOString().split('T')[0]}
                         value={checkIn} onChange={(e) => setCheckIn(e.target.value)}
-                        className="w-full bg-[#0AC4E0]/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black color-scheme-dark outline-none focus:border-[#0B2D72] transition-all"
+                        className="w-full bg-[#ACBAC4]/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black color-scheme-dark outline-none focus:border-[#0B2D72] transition-all"
                       />
                    </div>
                 </div>
@@ -498,7 +498,7 @@ const HotelDetails = () => {
                       <input 
                         type="date" required min={checkIn || new Date().toISOString().split('T')[0]}
                         value={checkOut} onChange={(e) => setCheckOut(e.target.value)}
-                        className="w-full bg-[#0AC4E0]/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black color-scheme-dark outline-none focus:border-[#0B2D72] transition-all"
+                        className="w-full bg-[#ACBAC4]/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black color-scheme-dark outline-none focus:border-[#0B2D72] transition-all"
                       />
                    </div>
                 </div>
@@ -511,7 +511,7 @@ const HotelDetails = () => {
                         <input 
                           type="number" min="1" required 
                           value={adults} onChange={(e) => setAdults(e.target.value)}
-                          className="w-full bg-[#0AC4E0]/40 border border-white/10 rounded-2xl p-4 pl-12 text-sm font-black outline-none focus:border-[#0B2D72] transition-all"
+                          className="w-full bg-[#ACBAC4]/40 border border-white/10 rounded-2xl p-4 pl-12 text-sm font-black outline-none focus:border-[#0B2D72] transition-all"
                         />
                      </div>
                   </div>
@@ -522,7 +522,7 @@ const HotelDetails = () => {
                         <input 
                           type="number" min="0" required 
                           value={children} onChange={(e) => setChildren(e.target.value)}
-                          className="w-full bg-[#0AC4E0]/40 border border-white/10 rounded-2xl p-4 pl-12 text-sm font-black outline-none focus:border-[#0B2D72] transition-all"
+                          className="w-full bg-[#ACBAC4]/40 border border-white/10 rounded-2xl p-4 pl-12 text-sm font-black outline-none focus:border-[#0B2D72] transition-all"
                         />
                      </div>
                   </div>
@@ -535,12 +535,12 @@ const HotelDetails = () => {
                       <select 
                         value={selectedRoomId} 
                         onChange={(e) => setSelectedRoomId(e.target.value)}
-                        className="w-full bg-[#0AC4E0]/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black outline-none focus:border-[#0B2D72] transition-all appearance-none cursor-pointer"
+                        className="w-full bg-[#ACBAC4]/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black outline-none focus:border-[#0B2D72] transition-all appearance-none cursor-pointer"
                         required
                       >
-                        <option value="" disabled className="bg-[#0AC4E0]">Select Tier</option>
+                        <option value="" disabled className="bg-[#ACBAC4]">Select Tier</option>
                         {rooms.map(r => (
-                          <option key={r._id} value={r._id} className="bg-[#0AC4E0] text-white">
+                          <option key={r._id} value={r._id} className="bg-[#ACBAC4] text-white">
                             {r.type} — ₹{r.pricePerNight}
                           </option>
                         ))}
@@ -610,8 +610,8 @@ const HotelDetails = () => {
       </div>
 
       {isReviewModalOpen && (
-                <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-[#0AC4E0]/80 backdrop-blur-md animate-in fade-in duration-500">
-                    <div className="bg-[#0AC4E0] w-full max-w-xl rounded-[3rem] shadow-2xl relative border border-white/10 overflow-hidden animate-in zoom-in-95 duration-500">
+                <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-[#ACBAC4]/80 backdrop-blur-md animate-in fade-in duration-500">
+                    <div className="bg-[#ACBAC4] w-full max-w-xl rounded-[3rem] shadow-2xl relative border border-white/10 overflow-hidden animate-in zoom-in-95 duration-500">
                         <div className="absolute top-0 left-0 w-full h-2 bg-[#0B2D72]"></div>
                         <button onClick={() => setIsReviewModalOpen(false)} className="absolute top-10 right-10 text-white hover:text-white transition-colors outline-none z-10">
                             <X size={24} />
@@ -626,7 +626,7 @@ const HotelDetails = () => {
                             <form onSubmit={submitReview} className="space-y-10">
                                 <div className="space-y-4">
                                     <label className="text-[10px] font-black text-white uppercase tracking-widest flex justify-center">Rating</label>
-                                    <div className="flex justify-center gap-6 py-8 bg-[#0AC4E0]/40 rounded-[2.5rem] border border-white/5">
+                                    <div className="flex justify-center gap-6 py-8 bg-[#ACBAC4]/40 rounded-[2.5rem] border border-white/5">
                                         {[1, 2, 3, 4, 5].map((star) => (
                                             <button 
                                                 key={star} type="button" 
@@ -646,7 +646,7 @@ const HotelDetails = () => {
                                         placeholder="Tell us about your stay..."
                                         value={reviewForm.comment}
                                         onChange={(e) => setReviewForm({...reviewForm, comment: e.target.value})}
-                                        className="w-full bg-[#0AC4E0]/40 border border-white/10 rounded-[2rem] p-8 text-white focus:border-[#0B2D72] outline-none text-sm font-medium transition-all resize-none placeholder:text-gray-700 italic"
+                                        className="w-full bg-[#ACBAC4]/40 border border-white/10 rounded-[2rem] p-8 text-white focus:border-[#0B2D72] outline-none text-sm font-medium transition-all resize-none placeholder:text-gray-700 italic"
                                     />
                                 </div>
 
