@@ -233,7 +233,7 @@ const MyBookings = () => {
                                                 <Receipt size={14} /> Digtal Invoice
                                             </Link>
                                         )}
-                                        {booking.status === 'Confirmed' && new Date(booking.checkOut) < new Date() && (
+                                        {booking.status === 'Confirmed' && (
                                             <button 
                                                 onClick={() => setReviewingBooking(booking)}
                                                 className="bg-gold-500 text-black px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-white transition-all shadow-xl shadow-gold-500/10 flex items-center gap-2"
