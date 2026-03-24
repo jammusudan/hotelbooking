@@ -479,22 +479,22 @@ const HotelDetails = () => {
                   <div className="space-y-4">
                      <label className="text-[9px] font-black uppercase tracking-[0.4em] text-gold-500 pl-4 font-serif italic">Adults</label>
                      <div className="relative group">
-                        <Users className="absolute left-6 top-1/2 -translate-y-1/2 text-gold-500 transition-transform group-focus-within:scale-110" size={16} />
+                        <Users className="absolute left-4 top-1/2 -translate-y-1/2 text-gold-500 transition-transform group-focus-within:scale-110" size={16} />
                         <input 
                           type="number" min="1" required 
                           value={adults} onChange={(e) => setAdults(e.target.value)}
-                          className="w-full bg-black/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black outline-none focus:border-gold-500 transition-all"
+                          className="w-full bg-black/40 border border-white/10 rounded-2xl p-4 pl-12 text-sm font-black outline-none focus:border-gold-500 transition-all"
                         />
                      </div>
                   </div>
                   <div className="space-y-4">
                      <label className="text-[9px] font-black uppercase tracking-[0.4em] text-gold-500 pl-4 font-serif italic">Children</label>
                      <div className="relative group">
-                        <Users className="absolute left-6 top-1/2 -translate-y-1/2 text-gold-500 transition-transform group-focus-within:scale-110" size={16} />
+                        <Users className="absolute left-4 top-1/2 -translate-y-1/2 text-gold-500 transition-transform group-focus-within:scale-110" size={16} />
                         <input 
                           type="number" min="0" required 
                           value={children} onChange={(e) => setChildren(e.target.value)}
-                          className="w-full bg-black/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black outline-none focus:border-gold-500 transition-all"
+                          className="w-full bg-black/40 border border-white/10 rounded-2xl p-4 pl-12 text-sm font-black outline-none focus:border-gold-500 transition-all"
                         />
                      </div>
                   </div>
