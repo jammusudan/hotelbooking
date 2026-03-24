@@ -21,14 +21,6 @@ const roomSchema = new mongoose.Schema(
       required: true,
       default: 1,
     },
-    adults: {
-      type: Number,
-      default: 1,
-    },
-    children: {
-      type: Number,
-      default: 0,
-    },
     amenities: [
       {
         type: String,
