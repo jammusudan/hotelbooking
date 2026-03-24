@@ -40,9 +40,17 @@ const sendEmail = async (options) => {
     html: options.html,
   };
 
-  const info = await transporter.sendMail(message);
-
-  console.log('Message sent: %s', info.messageId);
+  try {
+    const info = await transporter.sendMail(message);
+    console.log('Message sent: %s', info.messageId);
+  } catch (error) {
+    console.error('--- 📧 EMAIL SENDING FAILED ---');
+    console.error('Error:', error.message);
+    console.error('This is likely due to invalid SMTP credentials in .env or network issues.');
+    console.error('--------------------------------');
+    // We intentionally don't throw the error here so that business logic 
+    // like payment verification can still complete successfully despite email failures.
+  }
 };
 
 export default sendEmail;
