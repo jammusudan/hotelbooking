@@ -18,7 +18,7 @@ import { getBookingInitiatedTemplate } from '../utils/emailTemplates.js';
 // @access  Private
 const createBooking = async (req, res, next) => {
   try {
-    const { hotelId, roomId, checkIn, checkOut, guests } = req.body;
+    const { hotelId, roomId, checkIn, checkOut, guests, adults, children } = req.body;
 
     const room = await Room.findById(roomId);
     if (!room) {
@@ -64,6 +64,8 @@ const createBooking = async (req, res, next) => {
       checkIn: checkInDate,
       checkOut: checkOutDate,
       guests,
+      adults: adults || 1,
+      children: children || 0,
       totalAmount,
       status: 'Pending', // Expires in 15 mins if not paid
     });
@@ -183,7 +185,7 @@ const cancelBooking = async (req, res, next) => {
 // @access  Private
 const updateBooking = async (req, res, next) => {
     try {
-        const { checkIn, checkOut, guests } = req.body;
+        const { checkIn, checkOut, guests, adults, children } = req.body;
         const booking = await Booking.findById(req.params.id);
 
         if (!booking) {
@@ -230,6 +232,8 @@ const updateBooking = async (req, res, next) => {
         booking.checkIn = checkInDate;
         booking.checkOut = checkOutDate;
         booking.guests = guests || booking.guests;
+        if (adults !== undefined) booking.adults = adults;
+        if (children !== undefined) booking.children = children;
 
         const updatedBooking = await booking.save();
 

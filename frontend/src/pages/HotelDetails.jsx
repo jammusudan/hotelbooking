@@ -19,7 +19,8 @@ const HotelDetails = () => {
   const [selectedRoomId, setSelectedRoomId] = useState('');
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
-  const [guests, setGuests] = useState(1);
+  const [adults, setAdults] = useState(1);
+  const [children, setChildren] = useState(0);
   const [bookingError, setBookingError] = useState('');
   const [bookingLoading, setBookingLoading] = useState(false);
   const [mainImage, setMainImage] = useState('');
@@ -134,7 +135,9 @@ const HotelDetails = () => {
         roomId: selectedRoomId,
         checkIn,
         checkOut,
-        guests
+        guests: parseInt(adults) + parseInt(children),
+        adults: parseInt(adults),
+        children: parseInt(children)
       });
       navigate(`/payment/${data._id}`);
     } catch (error) {
@@ -453,7 +456,7 @@ const HotelDetails = () => {
                    <div className="relative group">
                       <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 text-gold-500 transition-transform group-focus-within:scale-110" size={16} />
                       <input 
-                        type="date" required 
+                        type="date" required min={new Date().toISOString().split('T')[0]}
                         value={checkIn} onChange={(e) => setCheckIn(e.target.value)}
                         className="w-full bg-black/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black color-scheme-dark outline-none focus:border-gold-500 transition-all"
                       />
@@ -465,23 +468,36 @@ const HotelDetails = () => {
                    <div className="relative group">
                       <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 text-gold-500 transition-transform group-focus-within:scale-110" size={16} />
                       <input 
-                        type="date" required 
+                        type="date" required min={checkIn || new Date().toISOString().split('T')[0]}
                         value={checkOut} onChange={(e) => setCheckOut(e.target.value)}
                         className="w-full bg-black/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black color-scheme-dark outline-none focus:border-gold-500 transition-all"
                       />
                    </div>
                 </div>
 
-                <div className="space-y-4">
-                   <label className="text-[9px] font-black uppercase tracking-[0.4em] text-gold-500 pl-4 font-serif italic">Elite Guests</label>
-                   <div className="relative group">
-                      <Users className="absolute left-6 top-1/2 -translate-y-1/2 text-gold-500 transition-transform group-focus-within:scale-110" size={16} />
-                      <input 
-                        type="number" min="1" required 
-                        value={guests} onChange={(e) => setGuests(e.target.value)}
-                        className="w-full bg-black/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black outline-none focus:border-gold-500 transition-all"
-                      />
-                   </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-4">
+                     <label className="text-[9px] font-black uppercase tracking-[0.4em] text-gold-500 pl-4 font-serif italic">Adults</label>
+                     <div className="relative group">
+                        <Users className="absolute left-6 top-1/2 -translate-y-1/2 text-gold-500 transition-transform group-focus-within:scale-110" size={16} />
+                        <input 
+                          type="number" min="1" required 
+                          value={adults} onChange={(e) => setAdults(e.target.value)}
+                          className="w-full bg-black/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black outline-none focus:border-gold-500 transition-all"
+                        />
+                     </div>
+                  </div>
+                  <div className="space-y-4">
+                     <label className="text-[9px] font-black uppercase tracking-[0.4em] text-gold-500 pl-4 font-serif italic">Children</label>
+                     <div className="relative group">
+                        <Users className="absolute left-6 top-1/2 -translate-y-1/2 text-gold-500 transition-transform group-focus-within:scale-110" size={16} />
+                        <input 
+                          type="number" min="0" required 
+                          value={children} onChange={(e) => setChildren(e.target.value)}
+                          className="w-full bg-black/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black outline-none focus:border-gold-500 transition-all"
+                        />
+                     </div>
+                  </div>
                 </div>
 
                 <div className="space-y-4">
@@ -538,7 +554,9 @@ const HotelDetails = () => {
                    <div className="flex justify-between items-center mb-10">
                       <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest font-serif italic">Est. Journey Value</span>
                       <div className="text-right">
-                         <div className="text-4xl font-serif font-black text-gold-500 italic leading-none">₹{(selectedRoom?.pricePerNight || 0) * guests}</div>
+                         <div className="text-4xl font-serif font-black text-gold-500 italic leading-none">
+                            ₹{(selectedRoom?.pricePerNight || 0) * (checkIn && checkOut ? Math.max(1, Math.ceil((new Date(checkOut) - new Date(checkIn)) / (1000 * 60 * 60 * 24))) : 1)}
+                         </div>
                       </div>
                    </div>
 
