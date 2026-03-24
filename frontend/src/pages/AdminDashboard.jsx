@@ -201,8 +201,8 @@ const AdminDashboard = () => {
     };
 
     if (loading) return (
-        <div className="min-h-screen flex items-center justify-center bg-[#FAACBF]">
-            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-[#FE81D4] border-solid"></div>
+        <div className="min-h-screen flex items-center justify-center bg-[#0AC4E0]">
+            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-[#0B2D72] border-solid"></div>
         </div>
     );
 
@@ -222,20 +222,20 @@ const AdminDashboard = () => {
     const approvedHotels = hotelsList.filter(h => h.isApproved);
 
     return (
-        <div className="font-sans text-gray-900">
+        <div className="font-sans text-white">
             {/* LIVE ALERT */}
             {liveAlert && (
-                <div className="fixed top-24 right-8 z-[100] bg-[#FE81D4] text-gray-900 px-6 py-3 rounded-xl shadow-2xl animate-in slide-in-from-right-10 font-black text-xs flex items-center gap-3">
+                <div className="fixed top-24 right-8 z-[100] bg-[#0B2D72] text-white px-6 py-3 rounded-xl shadow-2xl animate-in slide-in-from-right-10 font-black text-xs flex items-center gap-3">
                     <span className="animate-pulse">📡</span> {liveAlert}
                 </div>
             )}
 
             {/* MAIN CONTENT */}
-            <main className="max-w-7xl mx-auto px-8 py-12 bg-[#FAACBF]">
+            <main className="max-w-7xl mx-auto px-8 py-12 bg-[#0AC4E0]">
                 <header className="mb-12">
-                    <h1 className="text-4xl font-serif font-black text-gray-900 tracking-tighter uppercase italic pt-8">{activeTab}</h1>
-                    <div className="h-1.5 w-24 bg-[#FE81D4] mt-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
-                    <p className="text-[10px] font-black text-gray-900 uppercase tracking-[0.3em] mt-6">
+                    <h1 className="text-4xl font-serif font-black text-white tracking-tighter uppercase italic pt-8">{activeTab}</h1>
+                    <div className="h-1.5 w-24 bg-[#0B2D72] mt-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
+                    <p className="text-[10px] font-black text-white uppercase tracking-[0.3em] mt-6">
                         Protocol established: Global oversight and administrative telemetry active.
                     </p>
                 </header>
@@ -250,10 +250,10 @@ const AdminDashboard = () => {
                                 { label: 'Users', value: analytics.totalUsers, icon: '👤' },
                                 { label: 'Hotels', value: analytics.totalHotels, icon: '🏰' }
                             ].map((s, i) => (
-                                <div key={i} className="bg-[#111114] border border-gray-800/50 p-8 rounded-[2rem] hover:border-[#FE81D4]/30 transition-all group">
+                                <div key={i} className="bg-[#111114] border border-gray-800/50 p-8 rounded-[2rem] hover:border-[#0B2D72]/30 transition-all group">
                                     <div className="text-3xl mb-4 grayscale group-hover:grayscale-0 transition-all">{s.icon}</div>
-                                    <div className="text-3xl font-serif font-black text-gray-900 mb-1">{s.value}</div>
-                                    <div className="text-[10px] font-black uppercase tracking-widest text-gray-900">{s.label}</div>
+                                    <div className="text-3xl font-serif font-black text-white mb-1">{s.value}</div>
+                                    <div className="text-[10px] font-black uppercase tracking-widest text-white">{s.label}</div>
                                 </div>
                             ))}
                         </div>
@@ -261,15 +261,15 @@ const AdminDashboard = () => {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                             {/* RECENT FEED */}
                             <div className="bg-[#111114] p-10 rounded-[2.5rem] border border-gray-800/50">
-                                <h3 className="text-lg font-serif font-black text-gray-900 mb-8 uppercase italic border-b border-gray-800 pb-4">Live Activity</h3>
+                                <h3 className="text-lg font-serif font-black text-white mb-8 uppercase italic border-b border-gray-800 pb-4">Live Activity</h3>
                                 <div className="space-y-4">
                                     {feed.map(item => (
-                                        <div key={item.id} className="bg-[#FAACBF]/50 p-6 rounded-3xl border border-gray-800/50 animate-in slide-in-from-top-4">
+                                        <div key={item.id} className="bg-[#0AC4E0]/50 p-6 rounded-3xl border border-gray-800/50 animate-in slide-in-from-top-4">
                                             <div className="flex justify-between items-center mb-2">
-                                                <span className="text-[9px] font-black text-gray-900 uppercase tracking-widest">{item.type === 'booking' ? 'Transaction' : 'New Patron'}</span>
+                                                <span className="text-[9px] font-black text-white uppercase tracking-widest">{item.type === 'booking' ? 'Transaction' : 'New Patron'}</span>
                                                 <span className="text-[9px] font-bold text-gray-600">{item.time}</span>
                                             </div>
-                                            <p className="text-sm font-bold text-gray-900">
+                                            <p className="text-sm font-bold text-white">
                                                 {item.type === 'booking' ? `₹${item.amount} secured in ${item.location}` : `${item.name} joined as ${item.role}`}
                                             </p>
                                         </div>
@@ -280,18 +280,18 @@ const AdminDashboard = () => {
 
                             {/* HOTELS */}
                             <div className="bg-[#111114] p-10 rounded-[2.5rem] border border-gray-800/50">
-                                <h3 className="text-lg font-serif font-black text-gray-900 mb-8 uppercase italic border-b border-gray-800 pb-4">Popular Sanctuaries</h3>
+                                <h3 className="text-lg font-serif font-black text-white mb-8 uppercase italic border-b border-gray-800 pb-4">Popular Sanctuaries</h3>
                                 <div className="space-y-6">
                                     {analytics.mostBooked.map((hotel, i) => (
                                         <div key={i} className="flex items-center gap-6">
                                             <div className="text-2xl font-serif font-black text-gray-800 italic">0{i+1}</div>
                                             <div className="flex-grow">
                                                 <div className="flex justify-between mb-2">
-                                                    <span className="text-sm font-black text-gray-900 uppercase">{hotel.hotelInfo.name}</span>
-                                                    <span className="text-xs font-black text-gray-900">{hotel.count}</span>
+                                                    <span className="text-sm font-black text-white uppercase">{hotel.hotelInfo.name}</span>
+                                                    <span className="text-xs font-black text-white">{hotel.count}</span>
                                                 </div>
-                                                <div className="h-1.5 bg-[#FAACBF] rounded-full overflow-hidden">
-                                                    <div className="h-full bg-[#FE81D4] shadow-[0_0_10px_rgba(212,175,55,0.5)]" style={{ width: `${(hotel.count / (analytics.totalBookings || 1)) * 100}%` }}></div>
+                                                <div className="h-1.5 bg-[#0AC4E0] rounded-full overflow-hidden">
+                                                    <div className="h-full bg-[#0B2D72] shadow-[0_0_10px_rgba(212,175,55,0.5)]" style={{ width: `${(hotel.count / (analytics.totalBookings || 1)) * 100}%` }}></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -307,7 +307,7 @@ const AdminDashboard = () => {
                         {unapprovedHotels.length === 0 ? (
                             <div className="bg-[#111114] rounded-[3rem] p-24 text-center border border-gray-800/50">
                                 <div className="text-6xl mb-6 grayscale opacity-30">⚖️</div>
-                                <h3 className="text-2xl font-serif font-black text-gray-900 mb-2 italic">Lobby Empty</h3>
+                                <h3 className="text-2xl font-serif font-black text-white mb-2 italic">Lobby Empty</h3>
                                 <p className="text-gray-600 font-bold uppercase tracking-widest text-[10px]">All pending property reviews are complete.</p>
                             </div>
                         ) : (
@@ -315,26 +315,26 @@ const AdminDashboard = () => {
                                 <table className="w-full text-left">
                                     <thead className="bg-[#1a1a1e]">
                                         <tr>
-                                            <th className="p-8 text-[10px] font-black uppercase tracking-widest text-gray-900">Sanctuary</th>
-                                            <th className="p-8 text-[10px] font-black uppercase tracking-widest text-gray-900">Curator</th>
-                                            <th className="p-8 text-right text-[10px] font-black uppercase tracking-widest text-gray-900">Protocol</th>
+                                            <th className="p-8 text-[10px] font-black uppercase tracking-widest text-white">Sanctuary</th>
+                                            <th className="p-8 text-[10px] font-black uppercase tracking-widest text-white">Curator</th>
+                                            <th className="p-8 text-right text-[10px] font-black uppercase tracking-widest text-white">Protocol</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-800/50">
                                         {unapprovedHotels.map(h => (
                                             <tr key={h._id} className="hover:bg-gray-800/20 transition-colors">
                                                 <td className="p-8">
-                                                    <div className="text-lg font-serif font-black text-gray-900 italic">{h.name}</div>
-                                                    <div className="text-[10px] font-bold text-gray-900 uppercase tracking-widest mt-1">📍 {h.city}</div>
+                                                    <div className="text-lg font-serif font-black text-white italic">{h.name}</div>
+                                                    <div className="text-[10px] font-bold text-white uppercase tracking-widest mt-1">📍 {h.city}</div>
                                                 </td>
                                                 <td className="p-8">
-                                                    <div className="text-sm font-bold text-gray-900">{h.managerId?.name || 'External'}</div>
+                                                    <div className="text-sm font-bold text-white">{h.managerId?.name || 'External'}</div>
                                                     <div className="text-[10px] text-gray-600 font-medium">{h.managerId?.email}</div>
                                                 </td>
                                                 <td className="p-8 text-right">
                                                     <div className="flex justify-end gap-4">
-                                                        <button onClick={() => handleApprove(h._id)} className="bg-emerald-500 text-gray-900 px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-emerald-500/20 active:scale-95 transition-all">Approve</button>
-                                                        <button onClick={() => handleDeleteHotel(h._id)} className="border border-red-500/50 text-red-500 px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-red-500 hover:text-gray-900 transition-all active:scale-95">Decline</button>
+                                                        <button onClick={() => handleApprove(h._id)} className="bg-emerald-500 text-white px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-emerald-500/20 active:scale-95 transition-all">Approve</button>
+                                                        <button onClick={() => handleDeleteHotel(h._id)} className="border border-red-500/50 text-red-500 px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-red-500 hover:text-white transition-all active:scale-95">Decline</button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -352,17 +352,17 @@ const AdminDashboard = () => {
                             <table className="w-full text-left">
                                 <thead className="bg-[#1a1a1e]">
                                     <tr>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-gray-900">Verified Hotel</th>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-gray-900">Performance</th>
-                                        <th className="p-8 text-right text-[10px] font-black uppercase tracking-widest text-gray-900">Operation</th>
+                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-white">Verified Hotel</th>
+                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-white">Performance</th>
+                                        <th className="p-8 text-right text-[10px] font-black uppercase tracking-widest text-white">Operation</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-800/50">
                                     {approvedHotels.map(h => (
                                         <tr key={h._id} className="hover:bg-gray-800/20 transition-colors">
                                             <td className="p-8">
-                                                <div className="text-lg font-serif font-black text-gray-900 italic">{h.name}</div>
-                                                <div className="text-[10px] font-bold text-gray-900 uppercase tracking-widest mt-1">📍 {h.city}, {h.country}</div>
+                                                <div className="text-lg font-serif font-black text-white italic">{h.name}</div>
+                                                <div className="text-[10px] font-bold text-white uppercase tracking-widest mt-1">📍 {h.city}, {h.country}</div>
                                             </td>
                                             <td className="p-8">
                                                 <span className="px-5 py-2 bg-emerald-500/10 text-emerald-500 rounded-full text-[10px] font-black uppercase tracking-widest italic border border-emerald-500/20 shadow-inner">Authenticated</span>
@@ -385,23 +385,23 @@ const AdminDashboard = () => {
                             <table className="w-full text-left border-collapse">
                                 <thead className="bg-[#1a1a1e]">
                                     <tr>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-gray-900">Patron Identity</th>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-gray-900">Status Protocol</th>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-gray-900">Induction Date</th>
+                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-white">Patron Identity</th>
+                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-white">Status Protocol</th>
+                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-white">Induction Date</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-800/50">
                                     {usersList.map(u => (
                                         <tr key={u._id} className="hover:bg-gray-800/20 transition-colors">
                                             <td className="p-8 flex items-center gap-6">
-                                                <div className="w-12 h-12 rounded-2xl bg-[#FAACBF] border border-gray-800 text-gray-900 flex items-center justify-center font-black text-xs shadow-inner uppercase">{u.name.charAt(0)}</div>
+                                                <div className="w-12 h-12 rounded-2xl bg-[#0AC4E0] border border-gray-800 text-white flex items-center justify-center font-black text-xs shadow-inner uppercase">{u.name.charAt(0)}</div>
                                                 <div>
-                                                    <div className="text-sm font-black text-gray-900 italic">{u.name}</div>
-                                                    <div className="text-[10px] font-medium text-gray-900 lowercase">{u.email}</div>
+                                                    <div className="text-sm font-black text-white italic">{u.name}</div>
+                                                    <div className="text-[10px] font-medium text-white lowercase">{u.email}</div>
                                                 </div>
                                             </td>
                                             <td className="p-8">
-                                                <span className={`px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest italic border ${u.role === 'admin' ? 'bg-indigo-500/10 text-indigo-500 border-indigo-500/20' : u.role === 'manager' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-gray-800 text-gray-900 border-gray-700'}`}>
+                                                <span className={`px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest italic border ${u.role === 'admin' ? 'bg-indigo-500/10 text-indigo-500 border-indigo-500/20' : u.role === 'manager' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-gray-800 text-white border-gray-700'}`}>
                                                     {u.role}
                                                 </span>
                                             </td>
@@ -422,25 +422,25 @@ const AdminDashboard = () => {
                             <table className="w-full text-left">
                                 <thead className="bg-[#1a1a1e]">
                                     <tr>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-gray-900">Folio ID</th>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-gray-900">Patron & Estate</th>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-gray-900">Value</th>
-                                        <th className="p-8 text-right text-[10px] font-black uppercase tracking-widest text-gray-900">Standing</th>
+                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-white">Folio ID</th>
+                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-white">Patron & Estate</th>
+                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-white">Value</th>
+                                        <th className="p-8 text-right text-[10px] font-black uppercase tracking-widest text-white">Standing</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-800/50">
                                     {bookingsList.map(res => (
                                         <tr key={res._id} className="hover:bg-gray-800/20 transition-colors">
                                             <td className="p-8">
-                                                <div className="text-xs font-mono font-black text-gray-900/70">#{res._id.slice(-8).toUpperCase()}</div>
+                                                <div className="text-xs font-mono font-black text-white/70">#{res._id.slice(-8).toUpperCase()}</div>
                                                 <div className="text-[9px] font-bold text-gray-600 uppercase tracking-tighter mt-1">{new Date(res.createdAt).toLocaleDateString()}</div>
                                             </td>
                                             <td className="p-8">
                                                 <div className="text-sm font-black text-gray-200">{res.userId?.name}</div>
-                                                <div className="text-[10px] font-black text-gray-900 italic uppercase mt-0.5">{res.hotelId?.name} — {res.roomId?.type}</div>
+                                                <div className="text-[10px] font-black text-white italic uppercase mt-0.5">{res.hotelId?.name} — {res.roomId?.type}</div>
                                             </td>
                                             <td className="p-8">
-                                                <div className="text-sm font-black text-gray-900 italic leading-none">₹{res.totalAmount.toLocaleString()}</div>
+                                                <div className="text-sm font-black text-white italic leading-none">₹{res.totalAmount.toLocaleString()}</div>
                                             </td>
                                             <td className="p-8 text-right">
                                                 <span className={`px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest border italic ${res.status === 'Confirmed' ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20 shadow-emerald-500/5 shadow-inner' : res.status === 'Cancelled' ? 'bg-rose-500/10 text-rose-500 border-rose-500/20 shadow-rose-500/5 shadow-inner' : 'bg-amber-500/10 text-amber-500 border-amber-500/20 shadow-amber-500/5 shadow-inner'}`}>
@@ -462,27 +462,27 @@ const AdminDashboard = () => {
                             <table className="w-full text-left">
                                 <thead className="bg-[#1a1a1e]">
                                     <tr>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-gray-900">Transaction ID</th>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-gray-900">Patron</th>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-gray-900">Hotel</th>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-gray-900">Value</th>
-                                        <th className="p-8 text-right text-[10px] font-black uppercase tracking-widest text-gray-900">Status</th>
+                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-white">Transaction ID</th>
+                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-white">Patron</th>
+                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-white">Hotel</th>
+                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-white">Value</th>
+                                        <th className="p-8 text-right text-[10px] font-black uppercase tracking-widest text-white">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-800/50">
                                     {paymentsList.map(pay => (
                                         <tr key={pay._id} className="hover:bg-gray-800/20 transition-colors">
                                             <td className="p-8">
-                                                <div className="text-xs font-mono text-gray-900/70 uppercase">#{pay.razorpayPaymentId?.slice(-10)}</div>
+                                                <div className="text-xs font-mono text-white/70 uppercase">#{pay.razorpayPaymentId?.slice(-10)}</div>
                                             </td>
                                             <td className="p-8">
-                                                <div className="text-sm font-black text-gray-900 italic">{pay.userId?.name}</div>
+                                                <div className="text-sm font-black text-white italic">{pay.userId?.name}</div>
                                                 <div className="text-[10px] text-gray-600 uppercase">{pay.userId?.email}</div>
                                             </td>
                                             <td className="p-8">
-                                                <div className="text-xs font-bold text-gray-900 uppercase">{pay.hotelId?.name}</div>
+                                                <div className="text-xs font-bold text-white uppercase">{pay.hotelId?.name}</div>
                                             </td>
-                                            <td className="p-8 font-serif font-black text-gray-900 italic">₹{pay.totalAmount.toLocaleString()}</td>
+                                            <td className="p-8 font-serif font-black text-white italic">₹{pay.totalAmount.toLocaleString()}</td>
                                             <td className="p-8 text-right">
                                                 <span className={`px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest border italic ${pay.paymentStatus === 'Paid' ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-rose-500/10 text-rose-500 border-rose-500/20'}`}>
                                                     {pay.paymentStatus}
@@ -500,35 +500,35 @@ const AdminDashboard = () => {
                 {activeTab === 'Promotions' && (
                     <div className="space-y-8 animate-in fade-in slide-in-from-right-8 duration-700">
                         <div className="flex justify-between items-center">
-                            <h3 className="text-lg font-serif font-black text-gray-900 uppercase italic">Active Offers</h3>
-                            <button onClick={() => setShowPromoModal(true)} className="bg-[#FE81D4] text-gray-900 px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-[#FE81D4]/20 active:scale-95 transition-all">Authorize New Promo</button>
+                            <h3 className="text-lg font-serif font-black text-white uppercase italic">Active Offers</h3>
+                            <button onClick={() => setShowPromoModal(true)} className="bg-[#0B2D72] text-white px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-[#0B2D72]/20 active:scale-95 transition-all">Authorize New Promo</button>
                         </div>
                         <div className="bg-[#111114] rounded-[2.5rem] border border-gray-800/50 overflow-hidden">
                             <table className="w-full text-left">
                                 <thead className="bg-[#1a1a1e]">
                                     <tr>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-gray-900">Property</th>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-gray-900">Code</th>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-gray-900">Discount</th>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-gray-900">Expiry</th>
-                                        <th className="p-8 text-right text-[10px] font-black uppercase tracking-widest text-gray-900">Status</th>
+                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-white">Property</th>
+                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-white">Code</th>
+                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-white">Discount</th>
+                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-white">Expiry</th>
+                                        <th className="p-8 text-right text-[10px] font-black uppercase tracking-widest text-white">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-800/50">
                                     {promotionsList.map(p => (
                                         <tr key={p._id} className="hover:bg-gray-800/20 transition-colors">
-                                            <td className="p-8 text-xs font-bold text-gray-900 italic max-w-[150px] truncate" title={p.hotelId ? p.hotelId.name : 'Global Collection'}>
+                                            <td className="p-8 text-xs font-bold text-white italic max-w-[150px] truncate" title={p.hotelId ? p.hotelId.name : 'Global Collection'}>
                                                 {p.hotelId ? p.hotelId.name : 'Global Collection'}
                                             </td>
-                                            <td className="p-8 font-mono text-gray-900 font-black">{p.code}</td>
-                                            <td className="p-8 text-xs font-bold text-gray-900 italic">{p.discount}{p.type === 'percentage' ? '%' : ' INR'} OFF</td>
-                                            <td className="p-8 text-[10px] text-gray-900 font-black uppercase">{new Date(p.expiryDate).toLocaleDateString()}</td>
+                                            <td className="p-8 font-mono text-white font-black">{p.code}</td>
+                                            <td className="p-8 text-xs font-bold text-white italic">{p.discount}{p.type === 'percentage' ? '%' : ' INR'} OFF</td>
+                                            <td className="p-8 text-[10px] text-white font-black uppercase">{new Date(p.expiryDate).toLocaleDateString()}</td>
                                             <td className="p-8 text-right">
                                                 <div className="flex justify-end gap-6 items-center">
                                                     <button onClick={() => handleTogglePromo(p._id, p.isActive)} className={`text-[10px] font-black uppercase tracking-widest ${p.isActive ? 'text-emerald-500' : 'text-rose-500'}`}>
                                                         {p.isActive ? 'Active' : 'Halt'}
                                                     </button>
-                                                    <button onClick={() => handleDeletePromo(p._id)} className="text-gray-600 hover:text-gray-900 transition-colors">🗑️</button>
+                                                    <button onClick={() => handleDeletePromo(p._id)} className="text-gray-600 hover:text-white transition-colors">🗑️</button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -546,28 +546,28 @@ const AdminDashboard = () => {
                             <table className="w-full text-left">
                                 <thead className="bg-[#1a1a1e]">
                                     <tr>
-                                        <th className="p-10 text-[10px] font-black uppercase tracking-widest text-gray-900">Patron & Hotel</th>
-                                        <th className="p-10 text-[10px] font-black uppercase tracking-widest text-gray-900">Reflection</th>
-                                        <th className="p-10 text-right text-[10px] font-black uppercase tracking-widest text-gray-900">Moderation</th>
+                                        <th className="p-10 text-[10px] font-black uppercase tracking-widest text-white">Patron & Hotel</th>
+                                        <th className="p-10 text-[10px] font-black uppercase tracking-widest text-white">Reflection</th>
+                                        <th className="p-10 text-right text-[10px] font-black uppercase tracking-widest text-white">Moderation</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-800/50">
                                     {reviewsList.map(r => (
                                         <tr key={r._id} className="hover:bg-gray-800/20 transition-colors">
                                             <td className="p-10 min-w-[300px]">
-                                                <div className="text-lg font-serif font-black text-gray-900 italic">{r.userId?.name}</div>
-                                                <div className="text-[10px] font-bold text-gray-900 uppercase tracking-widest mt-1">@ {r.hotelId?.name}</div>
+                                                <div className="text-lg font-serif font-black text-white italic">{r.userId?.name}</div>
+                                                <div className="text-[10px] font-bold text-white uppercase tracking-widest mt-1">@ {r.hotelId?.name}</div>
                                             </td>
                                             <td className="p-10">
                                                 <div className="flex gap-1 mb-3">
                                                     {[...Array(5)].map((_, i) => (
-                                                        <span key={i} className={i < r.rating ? 'text-gray-900' : 'text-gray-800'}>★</span>
+                                                        <span key={i} className={i < r.rating ? 'text-white' : 'text-gray-800'}>★</span>
                                                     ))}
                                                 </div>
-                                                <p className="text-sm font-medium text-gray-900 leading-relaxed max-w-xl italic">"{r.comment}"</p>
+                                                <p className="text-sm font-medium text-white leading-relaxed max-w-xl italic">"{r.comment}"</p>
                                             </td>
                                             <td className="p-10 text-right">
-                                                <button onClick={() => handleDeleteReview(r._id)} className="text-rose-500 hover:text-gray-900 bg-rose-500/10 hover:bg-rose-500 border border-rose-500/20 px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all italic">Purge</button>
+                                                <button onClick={() => handleDeleteReview(r._id)} className="text-rose-500 hover:text-white bg-rose-500/10 hover:bg-rose-500 border border-rose-500/20 px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all italic">Purge</button>
                                             </td>
                                         </tr>
                                     ))}
@@ -583,7 +583,7 @@ const AdminDashboard = () => {
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
                             {/* REVENUE CHART */}
                             <div className="bg-[#111114] p-12 rounded-[3rem] border border-gray-800/50">
-                                <h3 className="text-lg font-serif font-black text-gray-900 mb-10 uppercase italic">Revenue Trajectory</h3>
+                                <h3 className="text-lg font-serif font-black text-white mb-10 uppercase italic">Revenue Trajectory</h3>
                                 <div className="h-[400px]">
                                     <Line 
                                         data={{
@@ -614,7 +614,7 @@ const AdminDashboard = () => {
 
                             {/* USER GROWTH CHART */}
                             <div className="bg-[#111114] p-12 rounded-[3rem] border border-gray-800/50">
-                                <h3 className="text-lg font-serif font-black text-gray-900 mb-10 uppercase italic">Patron Growth</h3>
+                                <h3 className="text-lg font-serif font-black text-white mb-10 uppercase italic">Patron Growth</h3>
                                 <div className="h-[400px]">
                                     <Bar 
                                         data={{
@@ -644,11 +644,11 @@ const AdminDashboard = () => {
                         {/* BOTTOM STATS */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             <div className="bg-[#111114] p-10 rounded-[2.5rem] border border-gray-800/50 text-center">
-                                <div className="text-4xl font-serif font-black text-gray-900 mb-2 italic">₹{(analytics.totalRevenue / (analytics.totalBookings || 1)).toFixed(0)}</div>
+                                <div className="text-4xl font-serif font-black text-white mb-2 italic">₹{(analytics.totalRevenue / (analytics.totalBookings || 1)).toFixed(0)}</div>
                                 <div className="text-[10px] font-black uppercase tracking-widest text-gray-600 italic">Average Order Value</div>
                             </div>
                             <div className="bg-[#111114] p-10 rounded-[2.5rem] border border-gray-800/50 text-center">
-                                <div className="text-4xl font-serif font-black text-gray-900 mb-2 italic">{((analytics.totalBookings / (analytics.totalUsers || 1)) * 100).toFixed(1)}%</div>
+                                <div className="text-4xl font-serif font-black text-white mb-2 italic">{((analytics.totalBookings / (analytics.totalUsers || 1)) * 100).toFixed(1)}%</div>
                                 <div className="text-[10px] font-black uppercase tracking-widest text-gray-600 italic">Booking Conversion</div>
                             </div>
                             <div className="bg-[#111114] p-10 rounded-[2.5rem] border border-gray-800/50 text-center">
@@ -662,13 +662,13 @@ const AdminDashboard = () => {
 
             {/* PROMOTION MODAL */}
             {showPromoModal && (
-                <div className="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-[#FAACBF]/90 backdrop-blur-xl animate-in fade-in duration-500">
+                <div className="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-[#0AC4E0]/90 backdrop-blur-xl animate-in fade-in duration-500">
                     <div className="bg-[#111114] w-full max-w-2xl rounded-[3rem] shadow-2xl relative border border-white/10 overflow-hidden animate-in zoom-in-95 duration-500">
                         <div className="p-16">
                             <header className="text-center mb-16">
-                                <h3 className="text-[10px] font-black text-gray-900 uppercase tracking-[0.6em] mb-4 italic">Promotional Protocol</h3>
-                                <h4 className="text-4xl font-serif font-black text-gray-900 uppercase tracking-tighter italic italic">Authorize New Offer</h4>
-                                <div className="h-1 w-24 bg-[#FE81D4] mx-auto mt-6 rounded-full"></div>
+                                <h3 className="text-[10px] font-black text-white uppercase tracking-[0.6em] mb-4 italic">Promotional Protocol</h3>
+                                <h4 className="text-4xl font-serif font-black text-white uppercase tracking-tighter italic italic">Authorize New Offer</h4>
+                                <div className="h-1 w-24 bg-[#0B2D72] mx-auto mt-6 rounded-full"></div>
                             </header>
 
                             <form onSubmit={handleCreatePromo} className="space-y-8">
@@ -677,7 +677,7 @@ const AdminDashboard = () => {
                                         <label className="text-[9px] font-black text-gray-600 uppercase tracking-widest ml-1">Elite Code</label>
                                         <input 
                                             type="text" required placeholder="EX: LUXURY25"
-                                            className="w-full bg-[#FAACBF]/40 border border-white/10 p-5 rounded-2xl text-gray-900 outline-none focus:border-[#FE81D4] font-black tracking-widest uppercase transition-all"
+                                            className="w-full bg-[#0AC4E0]/40 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#0B2D72] font-black tracking-widest uppercase transition-all"
                                             value={promoForm.code} onChange={e => setPromoForm({...promoForm, code: e.target.value.toUpperCase()})}
                                         />
                                     </div>
@@ -685,7 +685,7 @@ const AdminDashboard = () => {
                                         <label className="text-[9px] font-black text-gray-600 uppercase tracking-widest ml-1">Benefit Value</label>
                                         <input 
                                             type="number" required
-                                            className="w-full bg-[#FAACBF]/40 border border-white/10 p-5 rounded-2xl text-gray-900 outline-none focus:border-[#FE81D4] font-black transition-all"
+                                            className="w-full bg-[#0AC4E0]/40 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#0B2D72] font-black transition-all"
                                             value={promoForm.discount} onChange={e => setPromoForm({...promoForm, discount: e.target.value})}
                                         />
                                     </div>
@@ -695,7 +695,7 @@ const AdminDashboard = () => {
                                     <div className="space-y-3">
                                         <label className="text-[9px] font-black text-gray-600 uppercase tracking-widest ml-1">Protocol Type</label>
                                         <select 
-                                            className="w-full bg-[#FAACBF]/40 border border-white/10 p-5 rounded-2xl text-gray-900 outline-none focus:border-[#FE81D4] font-bold transition-all appearance-none"
+                                            className="w-full bg-[#0AC4E0]/40 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#0B2D72] font-bold transition-all appearance-none"
                                             value={promoForm.type} onChange={e => setPromoForm({...promoForm, type: e.target.value})}
                                         >
                                             <option value="percentage">Percentage (%)</option>
@@ -705,7 +705,7 @@ const AdminDashboard = () => {
                                     <div className="space-y-3">
                                         <label className="text-[9px] font-black text-gray-600 uppercase tracking-widest ml-1">Applicable Property</label>
                                         <select 
-                                            className="w-full bg-[#FAACBF]/40 border border-white/10 p-5 rounded-2xl text-gray-900 outline-none focus:border-[#FE81D4] font-bold transition-all appearance-none"
+                                            className="w-full bg-[#0AC4E0]/40 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#0B2D72] font-bold transition-all appearance-none"
                                             value={promoForm.hotelId} onChange={e => setPromoForm({...promoForm, hotelId: e.target.value})}
                                         >
                                             <option value="">Global Protocol (All Properties)</option>
@@ -721,7 +721,7 @@ const AdminDashboard = () => {
                                         <label className="text-[9px] font-black text-gray-600 uppercase tracking-widest ml-1">Termination Date</label>
                                         <input 
                                             type="date" required
-                                            className="w-full bg-[#FAACBF]/40 border border-white/10 p-5 rounded-2xl text-gray-900 outline-none focus:border-[#FE81D4] font-bold transition-all color-scheme-dark"
+                                            className="w-full bg-[#0AC4E0]/40 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#0B2D72] font-bold transition-all color-scheme-dark"
                                             value={promoForm.expiryDate} onChange={e => setPromoForm({...promoForm, expiryDate: e.target.value})}
                                         />
                                     </div>
@@ -731,7 +731,7 @@ const AdminDashboard = () => {
                                     <label className="text-[9px] font-black text-gray-600 uppercase tracking-widest ml-1">Description</label>
                                     <textarea 
                                         required rows="3" placeholder="Define the offer's impact..."
-                                        className="w-full bg-[#FAACBF]/40 border border-white/10 p-5 rounded-2xl text-gray-900 outline-none focus:border-[#FE81D4] font-medium italic transition-all resize-none"
+                                        className="w-full bg-[#0AC4E0]/40 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#0B2D72] font-medium italic transition-all resize-none"
                                         value={promoForm.description} onChange={e => setPromoForm({...promoForm, description: e.target.value})}
                                     />
                                 </div>
@@ -739,13 +739,13 @@ const AdminDashboard = () => {
                                 <div className="flex gap-4 pt-4">
                                     <button 
                                         type="button" onClick={() => setShowPromoModal(false)}
-                                        className="flex-grow py-5 bg-white/5 text-gray-900 font-black uppercase tracking-widest text-[10px] rounded-2xl hover:bg-white hover:text-black transition-all"
+                                        className="flex-grow py-5 bg-white/5 text-white font-black uppercase tracking-widest text-[10px] rounded-2xl hover:bg-white hover:text-black transition-all"
                                     >
                                         Cancel Protocol
                                     </button>
                                     <button 
                                         type="submit"
-                                        className="flex-[2] py-5 bg-[#FE81D4] text-gray-900 font-black uppercase tracking-[0.4em] text-[10px] rounded-2xl hover:bg-white transition-all shadow-xl shadow-[#FE81D4]/20 transform active:scale-95"
+                                        className="flex-[2] py-5 bg-[#0B2D72] text-white font-black uppercase tracking-[0.4em] text-[10px] rounded-2xl hover:bg-white transition-all shadow-xl shadow-[#0B2D72]/20 transform active:scale-95"
                                     >
                                         Confirm Authorization
                                     </button>

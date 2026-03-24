@@ -65,13 +65,13 @@ const HeroSection = () => {
 
       {/* Typography and Call to Action */}
       <div className="z-20 text-center px-4 max-w-3xl mx-auto flex flex-col items-center mt-8">
-        <h1 className="text-4xl md:text-5xl lg:text-[58px] font-serif font-black text-gray-900 tracking-tight leading-tight mb-8 drop-shadow-sm uppercase">
+        <h1 className="text-4xl md:text-5xl lg:text-[58px] font-serif font-black text-white tracking-tight leading-tight mb-8 drop-shadow-sm uppercase">
           WELCOME TO A NEW<br />LEVEL OF LUXURY
         </h1>
         
         <Link 
           to={user ? "/hotels" : "/register"} 
-          className="bg-[#FE81D4] text-gray-900 font-bold text-lg md:text-xl px-12 py-4 rounded-full shadow-xl shadow-[#FE81D4]/20 hover:bg-[#FE81D4] hover:shadow-2xl hover:-translate-y-1 transition duration-300 mb-6"
+          className="bg-[#0B2D72] text-white font-bold text-lg md:text-xl px-12 py-4 rounded-full shadow-xl shadow-[#0B2D72]/20 hover:bg-[#0B2D72] hover:shadow-2xl hover:-translate-y-1 transition duration-300 mb-6"
         >
           BOOK NOW
         </Link>

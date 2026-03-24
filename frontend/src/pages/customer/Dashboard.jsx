@@ -11,10 +11,10 @@ const CustomerDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FAACBF] py-20 px-4 relative overflow-hidden">
+    <div className="min-h-screen bg-[#0AC4E0] py-20 px-4 relative overflow-hidden">
       {/* Ambient Background Glow */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#FE81D4]/10 blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#FE81D4]/10 blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0B2D72]/10 blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#0B2D72]/10 blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Header Section */}
@@ -29,7 +29,7 @@ const CustomerDashboard = () => {
             <p className="text-gray-900 mt-4 font-medium tracking-wide">Your luxury experience continues here.</p>
           </div>
           <div className="hidden md:flex items-center gap-4 bg-white/5 border border-white/10 px-6 py-3 rounded-2xl backdrop-blur-md">
-            <div className="w-12 h-12 rounded-full bg-[#FE81D4] flex items-center justify-center text-black font-black text-xl shadow-lg shadow-[#FE81D4]/20">
+            <div className="w-12 h-12 rounded-full bg-[#0B2D72] flex items-center justify-center text-black font-black text-xl shadow-lg shadow-[#0B2D72]/20">
               {user?.name?.charAt(0)}
             </div>
             <div>
@@ -48,10 +48,10 @@ const CustomerDashboard = () => {
                 <Link 
                   key={item.name} 
                   to={item.path}
-                  className="group flex items-center justify-between p-8 bg-[#FAACBF] border border-white/5 rounded-[2rem] hover:border-[#FE81D4]/30 hover:bg-[#FE81D4]/5 transition-all duration-500 shadow-2xl"
+                  className="group flex items-center justify-between p-8 bg-[#0AC4E0] border border-white/5 rounded-[2rem] hover:border-[#0B2D72]/30 hover:bg-[#0B2D72]/5 transition-all duration-500 shadow-2xl"
                 >
                   <div className="flex items-center gap-6">
-                    <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-gray-900 group-hover:scale-110 group-hover:bg-[#FE81D4] group-hover:text-gray-900 transition-all duration-500">
+                    <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-gray-900 group-hover:scale-110 group-hover:bg-[#0B2D72] group-hover:text-white transition-all duration-500">
                       <item.icon className="w-6 h-6" />
                     </div>
                     <div>
@@ -67,7 +67,7 @@ const CustomerDashboard = () => {
 
           {/* Guest Stats & Actions */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="bg-gradient-to-br from-[#FAACBF] to-[#FAACBF] rounded-[3rem] p-10 border border-white/5 shadow-2xl relative overflow-hidden group">
+            <div className="bg-gradient-to-br from-[#0AC4E0] to-[#0AC4E0] rounded-[3rem] p-10 border border-white/5 shadow-2xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                 <Award size={150} />
               </div>
@@ -101,11 +101,11 @@ const CustomerDashboard = () => {
             </div>
 
             {/* Exclusive Offer Card */}
-            <div className="bg-[#FE81D4] p-10 rounded-[3rem] shadow-2xl shadow-[#FE81D4]/20 text-black overflow-hidden relative group">
+            <div className="bg-[#0B2D72] p-10 rounded-[3rem] shadow-2xl shadow-[#0B2D72]/20 text-black overflow-hidden relative group">
               <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/20 blur-3xl rounded-full"></div>
               <h4 className="text-[10px] font-black uppercase tracking-[0.5em] mb-4 opacity-70">Privilege Update</h4>
               <p className="text-2xl font-serif font-black uppercase leading-tight italic mb-6">Unlock the Royal Penthouse for 20% less</p>
-              <button className="bg-[#FAACBF] text-gray-900 px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-xl">Secure Access</button>
+              <button className="bg-[#0AC4E0] text-gray-900 px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-xl">Secure Access</button>
             </div>
           </div>
         </div>

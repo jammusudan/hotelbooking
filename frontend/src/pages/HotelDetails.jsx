@@ -187,19 +187,19 @@ const HotelDetails = () => {
   };
 
   if (loading) return (
-    <div className="min-h-screen flex items-center justify-center bg-[#FAACBF]">
+    <div className="min-h-screen flex items-center justify-center bg-[#0AC4E0]">
       <div className="flex flex-col items-center">
-        <div className="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-[#FE81D4] mb-8"></div>
-        <p className="text-gray-900 font-black uppercase tracking-[0.4em] animate-pulse text-xs">Awaiting Perfection</p>
+        <div className="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-[#0B2D72] mb-8"></div>
+        <p className="text-white font-black uppercase tracking-[0.4em] animate-pulse text-xs">Awaiting Perfection</p>
       </div>
     </div>
   );
 
   if (!hotel) return (
-    <div className="min-h-screen flex items-center justify-center bg-[#FAACBF] text-gray-900">
+    <div className="min-h-screen flex items-center justify-center bg-[#0AC4E0] text-white">
       <div className="text-center p-12 border border-white/5 rounded-[3rem]">
         <h2 className="text-4xl font-serif font-black mb-4 italic">Sanctuary Undiscovered</h2>
-        <button onClick={() => navigate('/hotels')} className="text-gray-900 font-black uppercase tracking-widest text-[10px] hover:text-gray-900 transition-colors">Return to Collections</button>
+        <button onClick={() => navigate('/hotels')} className="text-white font-black uppercase tracking-widest text-[10px] hover:text-white transition-colors">Return to Collections</button>
       </div>
     </div>
   );
@@ -207,7 +207,7 @@ const HotelDetails = () => {
   const selectedRoom = rooms.find(r => r._id === selectedRoomId);
 
   return (
-    <div className="bg-[#FAACBF] min-h-screen text-gray-900 pt-20 overflow-x-hidden">
+    <div className="bg-[#0AC4E0] min-h-screen text-white pt-20 overflow-x-hidden">
       
       {/* Cinematic Hero */}
       <div className="relative h-[85vh] w-full overflow-hidden">
@@ -234,27 +234,27 @@ const HotelDetails = () => {
                 />
             ))}
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#FAACBF] via-[#FAACBF]/40 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0AC4E0] via-[#0AC4E0]/40 to-transparent"></div>
         
         <div className="absolute bottom-12 left-0 w-full p-4 md:p-16 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-end gap-12 z-10">
           <div className="max-w-3xl animate-in fade-in slide-in-from-bottom duration-1000">
             <div className="flex items-center gap-4 mb-8">
-              <span className="w-8 h-[1px] bg-[#FE81D4]"></span>
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-900">Navan Certified Hotel</span>
+              <span className="w-8 h-[1px] bg-[#0B2D72]"></span>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white">Navan Certified Hotel</span>
             </div>
             <h1 className="text-5xl md:text-7xl lg:text-9xl font-serif font-black mb-8 uppercase tracking-tighter leading-[0.85] italic">{hotel.name}</h1>
-            <div className="flex flex-wrap items-center gap-10 text-[10px] font-black uppercase tracking-[0.3em] text-gray-900">
-              <span className="flex items-center gap-2"><MapPin size={14} className="text-gray-900" /> {hotel.city}, {hotel.country}</span>
-              <span className="flex items-center gap-2 font-serif italic text-gray-900 tracking-normal text-base"><Star size={14} className="fill-[#FE81D4]" /> {hotel.rating?.toFixed(1) || 'NEW'} Elite Score</span>
+            <div className="flex flex-wrap items-center gap-10 text-[10px] font-black uppercase tracking-[0.3em] text-white">
+              <span className="flex items-center gap-2"><MapPin size={14} className="text-white" /> {hotel.city}, {hotel.country}</span>
+              <span className="flex items-center gap-2 font-serif italic text-white tracking-normal text-base"><Star size={14} className="fill-[#0B2D72]" /> {hotel.rating?.toFixed(1) || 'NEW'} Elite Score</span>
             </div>
           </div>
           
-          <div className="flex flex-wrap md:flex-nowrap gap-4 p-4 bg-[#FAACBF]/40 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] animate-in fade-in slide-in-from-right duration-1000">
+          <div className="flex flex-wrap md:flex-nowrap gap-4 p-4 bg-[#0AC4E0]/40 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] animate-in fade-in slide-in-from-right duration-1000">
             {(hotel.images?.length > 0 ? hotel.images : [getHotelImage(hotel)]).slice(0, 4).map((img, i) => (
               <button 
                 key={i} 
                 onClick={() => setMainImage(img)}
-                className={`w-14 h-14 md:w-20 md:h-20 rounded-2xl overflow-hidden border-2 transition-all duration-500 flex-shrink-0 ${mainImage === img ? 'border-[#FE81D4] scale-110 shadow-2xl shadow-[#FE81D4]/20' : 'border-white/5 opacity-40 hover:opacity-100'}`}
+                className={`w-14 h-14 md:w-20 md:h-20 rounded-2xl overflow-hidden border-2 transition-all duration-500 flex-shrink-0 ${mainImage === img ? 'border-[#0B2D72] scale-110 shadow-2xl shadow-[#0B2D72]/20' : 'border-white/5 opacity-40 hover:opacity-100'}`}
               >
                 <img 
                   src={img} 
@@ -278,11 +278,11 @@ const HotelDetails = () => {
           
           {/* Narrative */}
           <section>
-            <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-900 mb-12 flex items-center gap-4">
-              <span className="w-4 h-4 rounded-full border border-[#FE81D4]/30 flex items-center justify-center"><span className="w-1 h-1 bg-[#FE81D4] rounded-full"></span></span>
+            <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-white mb-12 flex items-center gap-4">
+              <span className="w-4 h-4 rounded-full border border-[#0B2D72]/30 flex items-center justify-center"><span className="w-1 h-1 bg-[#0B2D72] rounded-full"></span></span>
               The Narrative
             </h2>
-            <div className="text-xl md:text-2xl font-serif text-gray-900 leading-relaxed italic border-l-2 border-[#FE81D4]/20 pl-12">
+            <div className="text-xl md:text-2xl font-serif text-white leading-relaxed italic border-l-2 border-[#0B2D72]/20 pl-12">
               {hotel.description.split('\n').map((para, i) => <p key={i} className="mb-6">{para}</p>)}
             </div>
           </section>
@@ -290,29 +290,29 @@ const HotelDetails = () => {
           {/* Promotional Offers */}
           {promotions.length > 0 && (
             <section>
-               <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-900 mb-12 flex items-center gap-4">
-                 <span className="w-4 h-4 rounded-full border border-[#FE81D4]/30 flex items-center justify-center"><span className="w-1 h-1 bg-[#FE81D4] rounded-full"></span></span>
+               <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-white mb-12 flex items-center gap-4">
+                 <span className="w-4 h-4 rounded-full border border-[#0B2D72]/30 flex items-center justify-center"><span className="w-1 h-1 bg-[#0B2D72] rounded-full"></span></span>
                  Active Protocols
                </h2>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                  {promotions.map((promo) => (
-                   <div key={promo._id} className="p-8 bg-gradient-to-br from-[#FE81D4]/10 to-transparent border border-[#FE81D4]/30 rounded-[2rem] relative overflow-hidden group">
-                     <div className="absolute top-0 right-0 w-32 h-32 bg-[#FE81D4]/10 rounded-bl-full group-hover:scale-125 transition-transform duration-700"></div>
+                   <div key={promo._id} className="p-8 bg-gradient-to-br from-[#0B2D72]/10 to-transparent border border-[#0B2D72]/30 rounded-[2rem] relative overflow-hidden group">
+                     <div className="absolute top-0 right-0 w-32 h-32 bg-[#0B2D72]/10 rounded-bl-full group-hover:scale-125 transition-transform duration-700"></div>
                      <div className="flex justify-between items-start mb-4 relative z-10">
-                       <span className="text-3xl font-serif font-black text-gray-900 italic tracking-tighter">
-                         {promo.discount}{promo.type === 'percentage' ? '%' : ' INR'} <span className="text-gray-900 text-xl">OFF</span>
+                       <span className="text-3xl font-serif font-black text-white italic tracking-tighter">
+                         {promo.discount}{promo.type === 'percentage' ? '%' : ' INR'} <span className="text-white text-xl">OFF</span>
                        </span>
-                       <span className="bg-[#FE81D4] text-gray-900 text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-xl border border-[#FE81D4] shadow-xl shadow-[#FE81D4]/20">
+                       <span className="bg-[#0B2D72] text-white text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-xl border border-[#0B2D72] shadow-xl shadow-[#0B2D72]/20">
                          {promo.code}
                        </span>
                      </div>
-                     <p className="text-sm font-medium text-gray-900 font-serif italic mb-6 relative z-10">"{promo.description}"</p>
+                     <p className="text-sm font-medium text-white font-serif italic mb-6 relative z-10">"{promo.description}"</p>
                      
-                     <div className="flex justify-between items-center relative z-10 border-t border-[#FE81D4]/20 pt-4 mt-auto">
-                        <div className="text-[9px] font-black uppercase tracking-widest text-gray-900">
+                     <div className="flex justify-between items-center relative z-10 border-t border-[#0B2D72]/20 pt-4 mt-auto">
+                        <div className="text-[9px] font-black uppercase tracking-widest text-white">
                           Valid Until
                         </div>
-                        <div className="text-[9px] font-black uppercase tracking-[0.2em] text-gray-900">
+                        <div className="text-[9px] font-black uppercase tracking-[0.2em] text-white">
                           {new Date(promo.expiryDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
                         </div>
                      </div>
@@ -324,14 +324,14 @@ const HotelDetails = () => {
 
           {/* Amenities Grid */}
           <section>
-             <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-900 mb-12">Curated Provisions</h2>
+             <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-white mb-12">Curated Provisions</h2>
              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                {(hotel.amenities || []).map(amenity => (
-                 <div key={amenity} className="group p-8 bg-[#FAACBF] border border-white/5 rounded-[2rem] hover:border-[#FE81D4]/30 transition-all flex flex-col items-center text-center gap-5">
-                   <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-gray-900 group-hover:scale-110 transition-transform">
+                 <div key={amenity} className="group p-8 bg-[#0AC4E0] border border-white/5 rounded-[2rem] hover:border-[#0B2D72]/30 transition-all flex flex-col items-center text-center gap-5">
+                   <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                      {getAmenityIcon(amenity)}
                    </div>
-                   <span className="text-[10px] font-black uppercase tracking-widest text-gray-900 group-hover:text-gray-900 transition-colors">{amenity}</span>
+                   <span className="text-[10px] font-black uppercase tracking-widest text-white group-hover:text-white transition-colors">{amenity}</span>
                  </div>
                ))}
              </div>
@@ -339,11 +339,11 @@ const HotelDetails = () => {
 
           {/* Chamber Tiers */}
           <section>
-             <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-900 mb-12">Chamber Tiers</h2>
+             <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-white mb-12">Chamber Tiers</h2>
              <div className="space-y-8">
                {rooms.length === 0 ? (
-                 <div className="p-20 bg-[#FAACBF] rounded-[3rem] border border-white/5 text-center">
-                   <p className="text-gray-900 font-serif italic text-xl">No chambers currently available for reservation.</p>
+                 <div className="p-20 bg-[#0AC4E0] rounded-[3rem] border border-white/5 text-center">
+                   <p className="text-white font-serif italic text-xl">No chambers currently available for reservation.</p>
                  </div>
                ) : (
                  rooms.map(room => (
@@ -354,8 +354,8 @@ const HotelDetails = () => {
                         room.isMaintenance 
                           ? 'opacity-40 cursor-not-allowed border-white/5 bg-transparent' 
                           : selectedRoomId === room._id 
-                            ? 'bg-[#FE81D4] border-[#FE81D4] text-black shadow-2xl shadow-[#FE81D4]/20 translate-x-4' 
-                            : 'bg-[#FAACBF] border-white/5 hover:border-[#FE81D4]/30 cursor-pointer'
+                            ? 'bg-[#0B2D72] border-[#0B2D72] text-black shadow-2xl shadow-[#0B2D72]/20 translate-x-4' 
+                            : 'bg-[#0AC4E0] border-white/5 hover:border-[#0B2D72]/30 cursor-pointer'
                       }`}
                     >
                       <div className="w-full md:w-80 h-60 rounded-[2rem] overflow-hidden relative group-hover:shadow-2xl transition-all">
@@ -365,8 +365,8 @@ const HotelDetails = () => {
                           alt={room.type}
                         />
                         {room.isMaintenance && (
-                            <div className="absolute inset-0 bg-[#FAACBF]/80 flex items-center justify-center backdrop-blur-sm">
-                                <span className="text-[8px] font-black uppercase tracking-widest text-gray-900 border border-white/20 px-4 py-2 rounded-full italic">Refining</span>
+                            <div className="absolute inset-0 bg-[#0AC4E0]/80 flex items-center justify-center backdrop-blur-sm">
+                                <span className="text-[8px] font-black uppercase tracking-widest text-white border border-white/20 px-4 py-2 rounded-full italic">Refining</span>
                             </div>
                         )}
                       </div>
@@ -374,8 +374,8 @@ const HotelDetails = () => {
                       <div className="flex-grow flex flex-col justify-center">
                         <div className="flex justify-between items-start mb-6">
                           <div>
-                             <h3 className={`text-3xl font-serif font-black uppercase tracking-tight italic mb-2 ${selectedRoomId === room._id ? 'text-black' : 'text-gray-900'}`}>{room.type} Suite</h3>
-                             <p className={`text-[10px] font-black uppercase tracking-[0.2em] ${selectedRoomId === room._id ? 'text-black/60' : 'text-gray-900'}`}>Capacity: {room.adults || 1} ADULTS, {room.children || 0} KIDS</p>
+                             <h3 className={`text-3xl font-serif font-black uppercase tracking-tight italic mb-2 ${selectedRoomId === room._id ? 'text-black' : 'text-white'}`}>{room.type} Suite</h3>
+                             <p className={`text-[10px] font-black uppercase tracking-[0.2em] ${selectedRoomId === room._id ? 'text-black/60' : 'text-white'}`}>Capacity: {room.adults || 1} ADULTS, {room.children || 0} KIDS</p>
                           </div>
                           {!room.isMaintenance && (
                              <div className="text-right">
@@ -387,14 +387,14 @@ const HotelDetails = () => {
                         
                         <div className="flex flex-wrap gap-4 mt-auto">
                            {selectedRoomId === room._id && !room.isMaintenance && (
-                             <span className="text-[9px] font-black uppercase tracking-widest bg-[#FAACBF] text-gray-900 px-4 py-2 rounded-full border border-black/10">Active Choice</span>
+                             <span className="text-[9px] font-black uppercase tracking-widest bg-[#0AC4E0] text-white px-4 py-2 rounded-full border border-black/10">Active Choice</span>
                            )}
                            <span className={`text-[9px] font-black uppercase tracking-widest px-4 py-2 rounded-full border ${
                              room.isMaintenance 
-                               ? 'border-white/10 text-gray-900' 
+                               ? 'border-white/10 text-white' 
                                : selectedRoomId === room._id 
                                  ? 'border-black/20 text-black font-black' 
-                                 : 'border-white/10 text-gray-900'
+                                 : 'border-white/10 text-white'
                            }`}>
                              {room.isMaintenance ? 'Unavailable' : room.count > 0 ? 'Protocol Ready' : 'Fully Committed'}
                            </span>
@@ -407,57 +407,57 @@ const HotelDetails = () => {
           </section>
 
           {/* Testimonials */}
-          <section className="bg-[#FAACBF] p-16 rounded-[4rem] border border-white/5 relative overflow-hidden">
-             <div className="absolute top-0 right-0 w-96 h-96 bg-[#FE81D4]/5 blur-[120px] pointer-events-none"></div>
+          <section className="bg-[#0AC4E0] p-16 rounded-[4rem] border border-white/5 relative overflow-hidden">
+             <div className="absolute top-0 right-0 w-96 h-96 bg-[#0B2D72]/5 blur-[120px] pointer-events-none"></div>
              
              <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-10">
                 <div className="animate-in fade-in slide-in-from-left duration-1000">
-                   <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-900 mb-4">Customer Reflections</h2>
+                   <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-white mb-4">Customer Reflections</h2>
                    <p className="text-5xl font-serif font-black italic tracking-tighter">Voices of the Journey</p>
                 </div>
                 <div className="flex items-center gap-10">
-                   <button onClick={() => setIsReviewModalOpen(true)} className="bg-[#FE81D4]/10 text-gray-900 border border-[#FE81D4]/20 px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[9px] hover:bg-[#FE81D4] hover:text-gray-900 transition-all">Script Your Narrative</button>
+                   <button onClick={() => setIsReviewModalOpen(true)} className="bg-[#0B2D72]/10 text-white border border-[#0B2D72]/20 px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[9px] hover:bg-[#0B2D72] hover:text-white transition-all">Script Your Narrative</button>
                    <div className="text-right">
-                      <div className="text-7xl font-serif font-black text-gray-900 leading-none mb-2">{hotel.rating?.toFixed(1) || 'NEW'}</div>
-                      <div className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-900">Global Luxury Score</div>
+                      <div className="text-7xl font-serif font-black text-white leading-none mb-2">{hotel.rating?.toFixed(1) || 'NEW'}</div>
+                      <div className="text-[10px] font-black uppercase tracking-[0.3em] text-white">Global Luxury Score</div>
                    </div>
                 </div>
              </div>
 
              {reviews.length === 0 ? (
-               <p className="text-gray-900 italic font-serif text-2xl border-l-[3px] border-[#FE81D4]/30 pl-10 py-4">Be the first to script your narrative in this refined sanctuary.</p>
+               <p className="text-white italic font-serif text-2xl border-l-[3px] border-[#0B2D72]/30 pl-10 py-4">Be the first to script your narrative in this refined sanctuary.</p>
              ) : (
                <div className="space-y-10">
                  {reviews.map(rev => (
-                   <div key={rev._id} className="p-12 bg-[#FAACBF]/40 rounded-[3rem] border border-white/5 hover:border-[#FE81D4]/20 transition-all group">
+                   <div key={rev._id} className="p-12 bg-[#0AC4E0]/40 rounded-[3rem] border border-white/5 hover:border-[#0B2D72]/20 transition-all group">
                      <div className="flex items-center gap-8 mb-10">
-                        <div className="w-16 h-16 rounded-full bg-[#FE81D4] text-gray-900 flex items-center justify-center font-black text-2xl shadow-xl shadow-[#FE81D4]/20">
+                        <div className="w-16 h-16 rounded-full bg-[#0B2D72] text-white flex items-center justify-center font-black text-2xl shadow-xl shadow-[#0B2D72]/20">
                           {rev.userId?.name?.charAt(0) || 'U'}
                         </div>
                         <div>
-                           <div className="font-black uppercase tracking-[0.3em] text-sm text-gray-900 mb-2">{rev.userId?.name}</div>
-                           <div className="flex text-gray-900 gap-1">
+                           <div className="font-black uppercase tracking-[0.3em] text-sm text-white mb-2">{rev.userId?.name}</div>
+                           <div className="flex text-white gap-1">
                              {[...Array(5)].map((_, i) => (
-                               <Star key={i} size={14} className={i < rev.rating ? 'fill-[#FE81D4] text-gray-900' : 'text-gray-700'} />
+                               <Star key={i} size={14} className={i < rev.rating ? 'fill-[#0B2D72] text-white' : 'text-gray-700'} />
                              ))}
                            </div>
                         </div>
                         <div className="ml-auto hidden md:block">
-                           <span className="text-[8px] font-black uppercase tracking-[0.4em] bg-white/5 border border-white/10 px-6 py-3 rounded-full text-gray-900">Verified Experience</span>
+                           <span className="text-[8px] font-black uppercase tracking-[0.4em] bg-white/5 border border-white/10 px-6 py-3 rounded-full text-white">Verified Experience</span>
                         </div>
                      </div>
                      
-                     <p className="text-gray-900 italic font-serif text-xl leading-relaxed mb-10 pl-10 border-l border-[#FE81D4]/20">
+                     <p className="text-white italic font-serif text-xl leading-relaxed mb-10 pl-10 border-l border-[#0B2D72]/20">
                         "{rev.comment}"
                      </p>
 
                      {rev.managerResponse && (
-                        <div className="mt-10 bg-[#FE81D4]/5 p-10 rounded-[2.5rem] border border-[#FE81D4]/10">
+                        <div className="mt-10 bg-[#0B2D72]/5 p-10 rounded-[2.5rem] border border-[#0B2D72]/10">
                            <div className="flex items-center gap-4 mb-6">
-                              <Award size={18} className="text-gray-900" />
-                              <span className="text-[9px] font-black uppercase tracking-[0.4em] text-gray-900">Curator Response</span>
+                              <Award size={18} className="text-white" />
+                              <span className="text-[9px] font-black uppercase tracking-[0.4em] text-white">Curator Response</span>
                            </div>
-                           <p className="text-base text-gray-900 font-serif leading-relaxed italic opacity-80">
+                           <p className="text-base text-white font-serif leading-relaxed italic opacity-80">
                               "{rev.managerResponse}"
                            </p>
                         </div>
@@ -472,75 +472,75 @@ const HotelDetails = () => {
 
         {/* Sidebar Booking */}
         <aside className="lg:col-span-4">
-          <div className="sticky top-32 bg-[#FAACBF] border border-white/5 rounded-[4rem] p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden">
-             <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#FE81D4] to-transparent opacity-50"></div>
+          <div className="sticky top-32 bg-[#0AC4E0] border border-white/5 rounded-[4rem] p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden">
+             <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#0B2D72] to-transparent opacity-50"></div>
              
              <h3 className="text-2xl font-serif font-black text-center uppercase tracking-tight italic mb-2">Reserve Stay</h3>
-             <p className="text-[10px] font-black text-gray-900 text-center uppercase tracking-[0.5em] mb-12">Elite Protocol</p>
+             <p className="text-[10px] font-black text-white text-center uppercase tracking-[0.5em] mb-12">Elite Protocol</p>
 
              <form onSubmit={handleBooking} className="space-y-10">
                 <div className="space-y-4">
-                   <label className="text-[9px] font-black uppercase tracking-[0.4em] text-gray-900 pl-4 font-serif italic">Check-In Arrival</label>
+                   <label className="text-[9px] font-black uppercase tracking-[0.4em] text-white pl-4 font-serif italic">Check-In Arrival</label>
                    <div className="relative group">
-                      <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-900 transition-transform group-focus-within:scale-110" size={16} />
+                      <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 text-white transition-transform group-focus-within:scale-110" size={16} />
                       <input 
                         type="date" required min={new Date().toISOString().split('T')[0]}
                         value={checkIn} onChange={(e) => setCheckIn(e.target.value)}
-                        className="w-full bg-[#FAACBF]/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black color-scheme-dark outline-none focus:border-[#FE81D4] transition-all"
+                        className="w-full bg-[#0AC4E0]/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black color-scheme-dark outline-none focus:border-[#0B2D72] transition-all"
                       />
                    </div>
                 </div>
 
                 <div className="space-y-4">
-                   <label className="text-[9px] font-black uppercase tracking-[0.4em] text-gray-900 pl-4 font-serif italic">Check-Out Departure</label>
+                   <label className="text-[9px] font-black uppercase tracking-[0.4em] text-white pl-4 font-serif italic">Check-Out Departure</label>
                    <div className="relative group">
-                      <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-900 transition-transform group-focus-within:scale-110" size={16} />
+                      <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 text-white transition-transform group-focus-within:scale-110" size={16} />
                       <input 
                         type="date" required min={checkIn || new Date().toISOString().split('T')[0]}
                         value={checkOut} onChange={(e) => setCheckOut(e.target.value)}
-                        className="w-full bg-[#FAACBF]/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black color-scheme-dark outline-none focus:border-[#FE81D4] transition-all"
+                        className="w-full bg-[#0AC4E0]/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black color-scheme-dark outline-none focus:border-[#0B2D72] transition-all"
                       />
                    </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-4">
-                     <label className="text-[9px] font-black uppercase tracking-[0.4em] text-gray-900 pl-4 font-serif italic">Adults</label>
+                     <label className="text-[9px] font-black uppercase tracking-[0.4em] text-white pl-4 font-serif italic">Adults</label>
                      <div className="relative group">
-                        <Users className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-900 transition-transform group-focus-within:scale-110" size={16} />
+                        <Users className="absolute left-4 top-1/2 -translate-y-1/2 text-white transition-transform group-focus-within:scale-110" size={16} />
                         <input 
                           type="number" min="1" required 
                           value={adults} onChange={(e) => setAdults(e.target.value)}
-                          className="w-full bg-[#FAACBF]/40 border border-white/10 rounded-2xl p-4 pl-12 text-sm font-black outline-none focus:border-[#FE81D4] transition-all"
+                          className="w-full bg-[#0AC4E0]/40 border border-white/10 rounded-2xl p-4 pl-12 text-sm font-black outline-none focus:border-[#0B2D72] transition-all"
                         />
                      </div>
                   </div>
                   <div className="space-y-4">
-                     <label className="text-[9px] font-black uppercase tracking-[0.4em] text-gray-900 pl-4 font-serif italic">Children</label>
+                     <label className="text-[9px] font-black uppercase tracking-[0.4em] text-white pl-4 font-serif italic">Children</label>
                      <div className="relative group">
-                        <Users className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-900 transition-transform group-focus-within:scale-110" size={16} />
+                        <Users className="absolute left-4 top-1/2 -translate-y-1/2 text-white transition-transform group-focus-within:scale-110" size={16} />
                         <input 
                           type="number" min="0" required 
                           value={children} onChange={(e) => setChildren(e.target.value)}
-                          className="w-full bg-[#FAACBF]/40 border border-white/10 rounded-2xl p-4 pl-12 text-sm font-black outline-none focus:border-[#FE81D4] transition-all"
+                          className="w-full bg-[#0AC4E0]/40 border border-white/10 rounded-2xl p-4 pl-12 text-sm font-black outline-none focus:border-[#0B2D72] transition-all"
                         />
                      </div>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                   <label className="text-[9px] font-black uppercase tracking-[0.4em] text-gray-900 pl-4 font-serif italic">Tier Selection</label>
+                   <label className="text-[9px] font-black uppercase tracking-[0.4em] text-white pl-4 font-serif italic">Tier Selection</label>
                    <div className="relative group">
-                      <Box className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-900 transition-transform group-focus-within:scale-110" size={16} />
+                      <Box className="absolute left-6 top-1/2 -translate-y-1/2 text-white transition-transform group-focus-within:scale-110" size={16} />
                       <select 
                         value={selectedRoomId} 
                         onChange={(e) => setSelectedRoomId(e.target.value)}
-                        className="w-full bg-[#FAACBF]/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black outline-none focus:border-[#FE81D4] transition-all appearance-none cursor-pointer"
+                        className="w-full bg-[#0AC4E0]/40 border border-white/10 rounded-2xl p-5 pl-16 text-sm font-black outline-none focus:border-[#0B2D72] transition-all appearance-none cursor-pointer"
                         required
                       >
-                        <option value="" disabled className="bg-[#FAACBF]">Select Tier</option>
+                        <option value="" disabled className="bg-[#0AC4E0]">Select Tier</option>
                         {rooms.map(r => (
-                          <option key={r._id} value={r._id} className="bg-[#FAACBF] text-gray-900">
+                          <option key={r._id} value={r._id} className="bg-[#0AC4E0] text-white">
                             {r.type} — ₹{r.pricePerNight}
                           </option>
                         ))}
@@ -551,8 +551,8 @@ const HotelDetails = () => {
 
                 {checkingAvailability && (
                   <div className="flex items-center gap-3 px-4 py-3 bg-white/5 rounded-2xl border border-white/10 animate-pulse">
-                    <div className="w-2 h-2 bg-[#FE81D4] rounded-full animate-ping"></div>
-                    <span className="text-[9px] font-black uppercase tracking-widest text-gray-900">Scanning Availability Hub...</span>
+                    <div className="w-2 h-2 bg-[#0B2D72] rounded-full animate-ping"></div>
+                    <span className="text-[9px] font-black uppercase tracking-widest text-white">Scanning Availability Hub...</span>
                   </div>
                 )}
 
@@ -580,9 +580,9 @@ const HotelDetails = () => {
 
                 <div className="pt-8 border-t border-white/5">
                    <div className="flex justify-between items-center mb-10">
-                      <span className="text-[10px] font-black text-gray-900 uppercase tracking-widest font-serif italic">Est. Journey Value</span>
+                      <span className="text-[10px] font-black text-white uppercase tracking-widest font-serif italic">Est. Journey Value</span>
                       <div className="text-right">
-                         <div className="text-4xl font-serif font-black text-gray-900 italic leading-none">
+                         <div className="text-4xl font-serif font-black text-white italic leading-none">
                             ₹{(selectedRoom?.pricePerNight || 0) * (checkIn && checkOut ? Math.max(1, Math.ceil((new Date(checkOut) - new Date(checkIn)) / (1000 * 60 * 60 * 24))) : 1)}
                          </div>
                       </div>
@@ -591,7 +591,7 @@ const HotelDetails = () => {
                    <button 
                      type="submit" 
                      disabled={bookingLoading || !selectedRoomId || (availability && !availability.available) || checkingAvailability}
-                     className="w-full py-6 bg-[#FE81D4] text-gray-900 font-black uppercase tracking-[0.5em] rounded-2xl hover:bg-white hover:shadow-2xl hover:shadow-[#FE81D4]/30 transition-all transform active:scale-95 disabled:opacity-50 disabled:bg-gray-800 disabled:text-gray-900 text-[10px]"
+                     className="w-full py-6 bg-[#0B2D72] text-white font-black uppercase tracking-[0.5em] rounded-2xl hover:bg-white hover:shadow-2xl hover:shadow-[#0B2D72]/30 transition-all transform active:scale-95 disabled:opacity-50 disabled:bg-gray-800 disabled:text-white text-[10px]"
                    >
                      {bookingLoading ? 'Authorizing...' : checkingAvailability ? 'Synchronizing...' : (availability && !availability.available) ? 'No Space' : 'Book Protocol'}
                    </button>
@@ -599,9 +599,9 @@ const HotelDetails = () => {
              </form>
           </div>
           
-          <div className="mt-12 p-10 bg-gradient-to-br from-[#FE81D4]/5 to-transparent border border-white/5 rounded-[3rem] text-center">
-             <Award size={32} className="text-gray-900 mx-auto mb-6" />
-             <p className="text-[9px] font-black uppercase tracking-[0.3em] text-gray-900 leading-relaxed italic">
+          <div className="mt-12 p-10 bg-gradient-to-br from-[#0B2D72]/5 to-transparent border border-white/5 rounded-[3rem] text-center">
+             <Award size={32} className="text-white mx-auto mb-6" />
+             <p className="text-[9px] font-black uppercase tracking-[0.3em] text-white leading-relaxed italic">
                Best Rate Pursuit • Member Access • Digital Concierge Ready
              </p>
           </div>
@@ -610,28 +610,28 @@ const HotelDetails = () => {
       </div>
 
       {isReviewModalOpen && (
-                <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-[#FAACBF]/80 backdrop-blur-md animate-in fade-in duration-500">
-                    <div className="bg-[#FAACBF] w-full max-w-xl rounded-[3rem] shadow-2xl relative border border-white/10 overflow-hidden animate-in zoom-in-95 duration-500">
-                        <div className="absolute top-0 left-0 w-full h-2 bg-[#FE81D4]"></div>
-                        <button onClick={() => setIsReviewModalOpen(false)} className="absolute top-10 right-10 text-gray-900 hover:text-gray-900 transition-colors outline-none z-10">
+                <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-[#0AC4E0]/80 backdrop-blur-md animate-in fade-in duration-500">
+                    <div className="bg-[#0AC4E0] w-full max-w-xl rounded-[3rem] shadow-2xl relative border border-white/10 overflow-hidden animate-in zoom-in-95 duration-500">
+                        <div className="absolute top-0 left-0 w-full h-2 bg-[#0B2D72]"></div>
+                        <button onClick={() => setIsReviewModalOpen(false)} className="absolute top-10 right-10 text-white hover:text-white transition-colors outline-none z-10">
                             <X size={24} />
                         </button>
                         
                         <div className="p-16">
                             <div className="text-center mb-12">
-                                <span className="text-[10px] font-black text-gray-900 uppercase tracking-[0.5em] mb-4 block">Hotel Review</span>
-                                <h3 className="text-4xl font-serif font-black text-gray-900 uppercase tracking-tight italic leading-none">Review Your Stay</h3>
+                                <span className="text-[10px] font-black text-white uppercase tracking-[0.5em] mb-4 block">Hotel Review</span>
+                                <h3 className="text-4xl font-serif font-black text-white uppercase tracking-tight italic leading-none">Review Your Stay</h3>
                             </div>
 
                             <form onSubmit={submitReview} className="space-y-10">
                                 <div className="space-y-4">
-                                    <label className="text-[10px] font-black text-gray-900 uppercase tracking-widest flex justify-center">Rating</label>
-                                    <div className="flex justify-center gap-6 py-8 bg-[#FAACBF]/40 rounded-[2.5rem] border border-white/5">
+                                    <label className="text-[10px] font-black text-white uppercase tracking-widest flex justify-center">Rating</label>
+                                    <div className="flex justify-center gap-6 py-8 bg-[#0AC4E0]/40 rounded-[2.5rem] border border-white/5">
                                         {[1, 2, 3, 4, 5].map((star) => (
                                             <button 
                                                 key={star} type="button" 
                                                 onClick={() => setReviewForm({...reviewForm, rating: star})}
-                                                className={`text-5xl transition-all duration-500 ${reviewForm.rating >= star ? 'text-gray-900 scale-125 drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]' : 'text-gray-800 grayscale opacity-20'}`}
+                                                className={`text-5xl transition-all duration-500 ${reviewForm.rating >= star ? 'text-white scale-125 drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]' : 'text-gray-800 grayscale opacity-20'}`}
                                             >
                                                 ★
                                             </button>
@@ -640,20 +640,20 @@ const HotelDetails = () => {
                                 </div>
 
                                 <div className="space-y-3">
-                                    <label className="text-[10px] font-black text-gray-900 uppercase tracking-widest pl-2">Your Comments</label>
+                                    <label className="text-[10px] font-black text-white uppercase tracking-widest pl-2">Your Comments</label>
                                     <textarea 
                                         required rows="4"
                                         placeholder="Tell us about your stay..."
                                         value={reviewForm.comment}
                                         onChange={(e) => setReviewForm({...reviewForm, comment: e.target.value})}
-                                        className="w-full bg-[#FAACBF]/40 border border-white/10 rounded-[2rem] p-8 text-gray-900 focus:border-[#FE81D4] outline-none text-sm font-medium transition-all resize-none placeholder:text-gray-700 italic"
+                                        className="w-full bg-[#0AC4E0]/40 border border-white/10 rounded-[2rem] p-8 text-white focus:border-[#0B2D72] outline-none text-sm font-medium transition-all resize-none placeholder:text-gray-700 italic"
                                     />
                                 </div>
 
                                 <button 
                                     type="submit" 
                                     disabled={reviewLoading}
-                                    className="w-full bg-[#FE81D4] text-gray-900 font-black uppercase tracking-[0.4em] py-6 rounded-2xl hover:bg-white transition-all transform active:scale-95 disabled:opacity-50 shadow-2xl shadow-[#FE81D4]/10 text-[10px]"
+                                    className="w-full bg-[#0B2D72] text-white font-black uppercase tracking-[0.4em] py-6 rounded-2xl hover:bg-white transition-all transform active:scale-95 disabled:opacity-50 shadow-2xl shadow-[#0B2D72]/10 text-[10px]"
                                 >
                                     {reviewLoading ? 'Submitting Review...' : 'Submit Review'}
                                 </button>
