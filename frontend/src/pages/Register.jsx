@@ -33,19 +33,19 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#EDF7BD] py-24 px-4 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-full h-[500px] bg-[#281C59]/5 blur-[150px] pointer-events-none"></div>
+    <div className="min-h-screen flex items-center justify-center bg-[#FAACBF] py-24 px-4 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-full h-[500px] bg-[#FE81D4]/5 blur-[150px] pointer-events-none"></div>
       
       <div className="max-w-md w-full relative group">
-        <div className="absolute -inset-1 bg-gradient-to-r from-[#281C59] via-[#281C59] to-[#281C59] rounded-[3rem] blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
+        <div className="absolute -inset-1 bg-gradient-to-r from-[#FE81D4] via-[#FE81D4] to-[#FE81D4] rounded-[3rem] blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
         
-        <div className="relative space-y-8 bg-[#EDF7BD] border border-white/5 p-10 md:p-14 rounded-[3rem] shadow-2xl overflow-hidden">
+        <div className="relative space-y-8 bg-[#FAACBF] border border-white/5 p-10 md:p-14 rounded-[3rem] shadow-2xl overflow-hidden">
           <div className="absolute top-0 left-0 p-8 opacity-10">
-             <UserPlus size={120} className="text-[#281C59]" />
+             <UserPlus size={120} className="text-gray-900" />
           </div>
 
           <div className="text-center relative z-10">
-            <p className="text-xs font-black text-[#281C59] uppercase tracking-widest leading-relaxed">
+            <p className="text-xs font-black text-gray-900 uppercase tracking-widest leading-relaxed">
               Begin your journey with Navan.
             </p>
           </div>
@@ -67,7 +67,7 @@ const Register = () => {
                 <label className="text-[9px] font-black text-gray-600 uppercase tracking-[0.4em] ml-1">Name</label>
                 <div className="relative">
                    <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" size={16} />
-                   <input type="text" required className="w-full bg-[#EDF7BD]/40 border border-white/10 p-4 pl-12 rounded-xl text-[#281C59] focus:border-[#281C59]/50 outline-none transition-all font-medium text-sm" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+                   <input type="text" required className="w-full bg-[#FAACBF]/40 border border-white/10 p-4 pl-12 rounded-xl text-gray-900 focus:border-[#FE81D4]/50 outline-none transition-all font-medium text-sm" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
                 </div>
               </div>
 
@@ -75,7 +75,7 @@ const Register = () => {
                 <label className="text-[9px] font-black text-gray-600 uppercase tracking-[0.4em] ml-1">Email</label>
                 <div className="relative">
                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" size={16} />
-                   <input type="email" required className="w-full bg-[#EDF7BD]/40 border border-white/10 p-4 pl-12 rounded-xl text-[#281C59] focus:border-[#281C59]/50 outline-none transition-all font-medium text-sm" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                   <input type="email" required className="w-full bg-[#FAACBF]/40 border border-white/10 p-4 pl-12 rounded-xl text-gray-900 focus:border-[#FE81D4]/50 outline-none transition-all font-medium text-sm" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
               </div>
 
@@ -83,21 +83,21 @@ const Register = () => {
                 <label className="text-[9px] font-black text-gray-600 uppercase tracking-[0.4em] ml-1">Password</label>
                 <div className="relative">
                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" size={16} />
-                   <input type="password" required className="w-full bg-[#EDF7BD]/40 border border-white/10 p-4 pl-12 rounded-xl text-[#281C59] focus:border-[#281C59]/50 outline-none transition-all font-medium text-sm" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                   <input type="password" required className="w-full bg-[#FAACBF]/40 border border-white/10 p-4 pl-12 rounded-xl text-gray-900 focus:border-[#FE81D4]/50 outline-none transition-all font-medium text-sm" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
               </div>
               
               <div className="space-y-2">
                 <label className="text-[9px] font-black text-gray-600 uppercase tracking-[0.4em] ml-1">Select Role</label>
-                <select value={role} onChange={(e) => setRole(e.target.value)} className="w-full bg-[#EDF7BD]/40 border border-white/10 p-4 rounded-xl text-[#281C59] focus:border-[#281C59]/50 outline-none transition-all font-medium text-sm appearance-none cursor-pointer">
-                   <option value="customer" className="bg-[#EDF7BD]">Customer (Book Hotels)</option>
-                   <option value="manager" className="bg-[#EDF7BD]">Manager (Manage Hotels)</option>
-                   <option value="admin" className="bg-[#EDF7BD]">Admin (Control Center)</option>
+                <select value={role} onChange={(e) => setRole(e.target.value)} className="w-full bg-[#FAACBF]/40 border border-white/10 p-4 rounded-xl text-gray-900 focus:border-[#FE81D4]/50 outline-none transition-all font-medium text-sm appearance-none cursor-pointer">
+                   <option value="customer" className="bg-[#FAACBF]">Customer (Book Hotels)</option>
+                   <option value="manager" className="bg-[#FAACBF]">Manager (Manage Hotels)</option>
+                   <option value="admin" className="bg-[#FAACBF]">Admin (Control Center)</option>
                 </select>
               </div>
             </div>
 
-            <button type="submit" className="w-full group relative flex items-center justify-center gap-3 py-5 bg-[#281C59] text-[#EDF7BD] font-black uppercase tracking-[0.4em] text-[11px] rounded-2xl hover:bg-white transition-all transform active:scale-95 mt-8">
+            <button type="submit" className="w-full group relative flex items-center justify-center gap-3 py-5 bg-[#FE81D4] text-gray-900 font-black uppercase tracking-[0.4em] text-[11px] rounded-2xl hover:bg-white transition-all transform active:scale-95 mt-8">
               Sign Up <Sparkles size={14} />
             </button>
           </form>
@@ -105,7 +105,7 @@ const Register = () => {
           <div className="text-center pt-8 border-t border-white/5 relative z-10">
             <p className="text-[10px] font-black text-gray-600 uppercase tracking-[0.4em]">
               Already have an account? 
-              <Link to="/login" className="text-[#281C59] font-black ml-2 hover:underline decoration-[#281C59]/30 underline-offset-4">
+              <Link to="/login" className="text-gray-900 font-black ml-2 hover:underline decoration-[#FE81D4]/30 underline-offset-4">
                 Login here
               </Link>
             </p>

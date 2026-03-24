@@ -27,11 +27,11 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="min-h-[90vh] flex items-center justify-center bg-[#EDF7BD] pt-32 pb-16 px-4">
+    <div className="min-h-[90vh] flex items-center justify-center bg-[#FAACBF] pt-32 pb-16 px-4">
       <div className="max-w-md w-full space-y-8 bg-white shadow-2xl p-10 rounded-xl">
         <div className="text-center">
           <h2 className="text-4xl font-black text-gray-900 uppercase tracking-tight">Forgot Password</h2>
-          <p className="text-[#281C59] text-xs mt-2 uppercase tracking-widest font-bold">
+          <p className="text-gray-900 text-xs mt-2 uppercase tracking-widest font-bold">
             Enter your email to reset
           </p>
         </div>
@@ -44,7 +44,7 @@ const ForgotPassword = () => {
             <input
               type="email"
               required
-              className="w-full border border-gray-200 p-4 rounded-xl focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all text-gray-900 font-bold placeholder:text-[#281C59]"
+              className="w-full border border-gray-200 p-4 rounded-xl focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all text-gray-900 font-bold placeholder:text-gray-900"
               placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -54,14 +54,14 @@ const ForgotPassword = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#EDF7BD] text-[#281C59] py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-[#EDF7BD] transition-all disabled:opacity-50 shadow-lg"
+            className="w-full bg-[#FAACBF] text-gray-900 py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-[#FAACBF] transition-all disabled:opacity-50 shadow-lg"
           >
             {loading ? 'Sending Request...' : 'Send Reset Link'}
           </button>
         </form>
         
         <div className="text-center mt-6">
-          <Link to="/login" className="text-xs font-black text-[#281C59] hover:text-black uppercase tracking-widest transition-all">
+          <Link to="/login" className="text-xs font-black text-gray-900 hover:text-black uppercase tracking-widest transition-all">
             Back to Login
           </Link>
         </div>

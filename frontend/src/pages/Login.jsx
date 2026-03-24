@@ -62,23 +62,23 @@ const Login = ({ role = "customer" }) => {
   const config = roleConfigs[role];
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#EDF7BD] py-24 px-4 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-[500px] bg-[#281C59]/5 blur-[150px] pointer-events-none"></div>
+    <div className="min-h-screen flex items-center justify-center bg-[#FAACBF] py-24 px-4 relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-[500px] bg-[#FE81D4]/5 blur-[150px] pointer-events-none"></div>
       
       <div className="max-w-md w-full relative group">
-        <div className="absolute -inset-1 bg-gradient-to-r from-[#281C59] via-[#281C59] to-[#281C59] rounded-[3rem] blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
+        <div className="absolute -inset-1 bg-gradient-to-r from-[#FE81D4] via-[#FE81D4] to-[#FE81D4] rounded-[3rem] blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
         
-        <div className="relative space-y-8 bg-[#EDF7BD] border border-white/5 p-10 md:p-14 rounded-[3rem] shadow-2xl overflow-hidden">
+        <div className="relative space-y-8 bg-[#FAACBF] border border-white/5 p-10 md:p-14 rounded-[3rem] shadow-2xl overflow-hidden">
           <div className="absolute top-0 right-0 p-8 opacity-10">
-             <Globe size={120} className="text-[#281C59]" />
+             <Globe size={120} className="text-gray-900" />
           </div>
 
           <div className="text-center relative z-10">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-white/5 rounded-3xl text-[#281C59] mb-8 border border-white/5 shadow-inner">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-white/5 rounded-3xl text-gray-900 mb-8 border border-white/5 shadow-inner">
               {config.icon}
             </div>
-            <h2 className="text-4xl font-serif font-black text-[#281C59] uppercase tracking-tighter italic mb-4">{config.title}</h2>
-            <p className="text-xs font-black text-[#281C59] uppercase tracking-widest leading-relaxed">
+            <h2 className="text-4xl font-serif font-black text-gray-900 uppercase tracking-tighter italic mb-4">{config.title}</h2>
+            <p className="text-xs font-black text-gray-900 uppercase tracking-widest leading-relaxed">
               {config.desc}
             </p>
           </div>
@@ -96,7 +96,7 @@ const Login = ({ role = "customer" }) => {
                 type="email"
                 required
                 placeholder="Email"
-                className="w-full bg-[#EDF7BD]/40 border border-white/10 p-4 rounded-xl text-[#281C59] focus:border-[#281C59]/50 outline-none transition-all font-medium text-sm"
+                className="w-full bg-[#FAACBF]/40 border border-white/10 p-4 rounded-xl text-gray-900 focus:border-[#FE81D4]/50 outline-none transition-all font-medium text-sm"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -108,21 +108,21 @@ const Login = ({ role = "customer" }) => {
                 type="password"
                 required
                 placeholder="Password"
-                className="w-full bg-[#EDF7BD]/40 border border-white/10 p-4 rounded-xl text-[#281C59] focus:border-[#281C59]/50 outline-none transition-all font-medium text-sm"
+                className="w-full bg-[#FAACBF]/40 border border-white/10 p-4 rounded-xl text-gray-900 focus:border-[#FE81D4]/50 outline-none transition-all font-medium text-sm"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
             <div className="flex justify-end">
-              <Link to="/forgot-password" size="sm" className="text-[9px] font-black text-gray-600 hover:text-[#281C59] uppercase tracking-[0.3em] transition-colors">
+              <Link to="/forgot-password" size="sm" className="text-[9px] font-black text-gray-600 hover:text-gray-900 uppercase tracking-[0.3em] transition-colors">
                 Forgot Password
               </Link>
             </div>
 
             <button
               type="submit"
-              className="w-full group relative flex items-center justify-center gap-3 py-5 bg-[#281C59] text-[#EDF7BD] font-black uppercase tracking-[0.4em] text-[11px] rounded-2xl hover:bg-white transition-all transform active:scale-95"
+              className="w-full group relative flex items-center justify-center gap-3 py-5 bg-[#FE81D4] text-gray-900 font-black uppercase tracking-[0.4em] text-[11px] rounded-2xl hover:bg-white transition-all transform active:scale-95"
             >
               Login <Sparkles size={14} />
             </button>
@@ -135,20 +135,20 @@ const Login = ({ role = "customer" }) => {
                   <div className="w-full border-t border-white/5"></div>
                 </div>
                 <div className="relative flex justify-center text-[9px] uppercase font-black text-gray-600">
-                  <span className="bg-[#EDF7BD] px-4 tracking-[0.4em]">External Links</span>
+                  <span className="bg-[#FAACBF] px-4 tracking-[0.4em]">External Links</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4 relative z-10">
                 <a
                  href={`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001/api'}/auth/google?role=${role}`}
-                  className="flex items-center justify-center gap-3 border border-white/5 p-4 rounded-xl hover:bg-white/5 font-black text-[10px] uppercase tracking-widest transition-all text-[#281C59] hover:text-[#281C59]"
+                  className="flex items-center justify-center gap-3 border border-white/5 p-4 rounded-xl hover:bg-white/5 font-black text-[10px] uppercase tracking-widest transition-all text-gray-900 hover:text-gray-900"
                 >
                   Google
                 </a>
                 <a
                   href={`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001/api'}/auth/github?role=${role}`}
-                  className="flex items-center justify-center gap-3 bg-white/5 p-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all text-[#281C59]"
+                  className="flex items-center justify-center gap-3 bg-white/5 p-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all text-gray-900"
                 >
                   GitHub
                 </a>
@@ -161,7 +161,7 @@ const Login = ({ role = "customer" }) => {
               New here?
               <Link
                 to="/register"
-                className="text-[#281C59] font-black ml-2 hover:underline decoration-[#281C59]/30 underline-offset-4"
+                className="text-gray-900 font-black ml-2 hover:underline decoration-[#FE81D4]/30 underline-offset-4"
               >
                 Sign Up here
               </Link>

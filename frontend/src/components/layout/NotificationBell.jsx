@@ -76,7 +76,7 @@ const NotificationBell = () => {
 
   const getIcon = (type) => {
     switch (type) {
-      case 'booking': return <Sparkles size={14} className="text-[#281C59]" />;
+      case 'booking': return <Sparkles size={14} className="text-gray-900" />;
       case 'payment': return <Receipt size={14} className="text-green-500" />;
       case 'cancellation': return <ShieldAlert size={14} className="text-rose-500" />;
       default: return <Bell size={14} className="text-blue-500" />;
@@ -89,21 +89,21 @@ const NotificationBell = () => {
     <div className="relative" ref={dropdownRef}>
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-2 text-[#281C59] hover:text-[#281C59] transition-colors bg-white/5 rounded-full border border-white/5"
+        className="relative p-2 text-gray-900 hover:text-gray-900 transition-colors bg-white/5 rounded-full border border-white/5"
       >
         <Bell size={20} />
         {unreadCount > 0 && (
-          <span className="absolute top-1 right-1 w-4 h-4 bg-[#281C59] text-[10px] font-black text-black rounded-full flex items-center justify-center animate-pulse border border-[#EDF7BD]">
+          <span className="absolute top-1 right-1 w-4 h-4 bg-[#FE81D4] text-[10px] font-black text-black rounded-full flex items-center justify-center animate-pulse border border-[#FAACBF]">
             {unreadCount > 9 ? '9+' : unreadCount}
           </span>
         )}
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-4 w-80 bg-[#EDF7BD] border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-300">
+        <div className="absolute right-0 mt-4 w-80 bg-[#FAACBF] border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-300">
           <div className="p-4 border-b border-white/5 flex items-center justify-between">
-            <h3 className="text-[10px] uppercase font-black tracking-[0.3em] text-[#281C59]">Navan Protocol Alerts</h3>
-            <button onClick={() => setIsOpen(false)}><X size={14} className="text-gray-600 hover:text-[#281C59]" /></button>
+            <h3 className="text-[10px] uppercase font-black tracking-[0.3em] text-gray-900">Navan Protocol Alerts</h3>
+            <button onClick={() => setIsOpen(false)}><X size={14} className="text-gray-600 hover:text-gray-900" /></button>
           </div>
 
           <div className="max-h-[400px] overflow-y-auto">
@@ -115,7 +115,7 @@ const NotificationBell = () => {
               notifications.map((n) => (
                 <div 
                   key={n._id} 
-                  className={`p-4 border-b border-white/5 flex gap-4 transition-colors ${n.isRead ? 'opacity-60' : 'bg-white/[0.02] border-l-2 border-l-[#281C59]'}`}
+                  className={`p-4 border-b border-white/5 flex gap-4 transition-colors ${n.isRead ? 'opacity-60' : 'bg-white/[0.02] border-l-2 border-l-[#FE81D4]'}`}
                 >
                   <div className="mt-1 flex-shrink-0">
                     <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/5">
@@ -123,7 +123,7 @@ const NotificationBell = () => {
                     </div>
                   </div>
                   <div className="flex-grow space-y-1">
-                    <p className={`text-xs leading-relaxed ${n.isRead ? 'text-[#281C59]' : 'text-gray-200 font-medium'}`}>
+                    <p className={`text-xs leading-relaxed ${n.isRead ? 'text-gray-900' : 'text-gray-200 font-medium'}`}>
                       {n.message}
                     </p>
                     <div className="flex items-center justify-between">
@@ -133,7 +133,7 @@ const NotificationBell = () => {
                       {!n.isRead && (
                         <button 
                           onClick={() => markAsRead(n._id)}
-                          className="text-[9px] font-black text-[#281C59] hover:text-[#281C59] uppercase tracking-widest flex items-center gap-1"
+                          className="text-[9px] font-black text-gray-900 hover:text-gray-900 uppercase tracking-widest flex items-center gap-1"
                         >
                           Clear <Check size={10} />
                         </button>
@@ -145,7 +145,7 @@ const NotificationBell = () => {
             )}
           </div>
 
-          <div className="p-4 bg-[#EDF7BD]/40 text-center">
+          <div className="p-4 bg-[#FAACBF]/40 text-center">
             <p className="text-[9px] uppercase font-black text-gray-700 tracking-[0.2em]">Secure Notification Node v1.0</p>
           </div>
         </div>
