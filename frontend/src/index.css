@@ -21,7 +21,7 @@
 
 body {
   font-family: var(--font-sans);
-  background-color: #85C79A;
+  background-color: white;
   color: #111827;
   -webkit-font-smoothing: antialiased;
 }

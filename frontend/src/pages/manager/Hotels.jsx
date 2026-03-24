@@ -201,7 +201,7 @@ const Hotels = () => {
       {/* Hotel Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-[#85C79A]/60 backdrop-blur-xl" onClick={() => setIsModalOpen(false)}></div>
+          <div className="absolute inset-0 bg-white/60 backdrop-blur-xl" onClick={() => setIsModalOpen(false)}></div>
           <div className="relative bg-[#111114] w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-[3rem] border border-gray-800 shadow-2xl p-10 animate-in fade-in zoom-in-95 duration-300">
             <div className="flex items-center justify-between mb-12">
               <h2 className="text-3xl font-serif font-black text-white italic tracking-tighter uppercase">
@@ -209,7 +209,7 @@ const Hotels = () => {
               </h2>
               <button 
                 onClick={() => setIsModalOpen(false)}
-                className="p-2.5 bg-[#85C79A] text-white hover:text-white hover:bg-gray-800 rounded-xl transition-all border border-gray-800"
+                className="p-2.5 bg-white text-white hover:text-white hover:bg-gray-800 rounded-xl transition-all border border-gray-800"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -222,7 +222,7 @@ const Hotels = () => {
                   <input 
                     required 
                     placeholder="e.g. Royal Grand Conservatory"
-                    className="w-full px-6 py-4 bg-[#85C79A]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-white transition-all shadow-inner placeholder:text-gray-700"
+                    className="w-full px-6 py-4 bg-white/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-white transition-all shadow-inner placeholder:text-gray-700"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   />
@@ -232,7 +232,7 @@ const Hotels = () => {
                   <input 
                     required 
                     placeholder="e.g. Monte Carlo"
-                    className="w-full px-6 py-4 bg-[#85C79A]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-white transition-all shadow-inner placeholder:text-gray-700"
+                    className="w-full px-6 py-4 bg-white/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-white transition-all shadow-inner placeholder:text-gray-700"
                     value={formData.city}
                     onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                   />
@@ -244,7 +244,7 @@ const Hotels = () => {
                 <textarea 
                   required 
                   rows="4"
-                  className="w-full px-6 py-4 bg-[#85C79A]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-white transition-all shadow-inner placeholder:text-gray-700 resize-none italic"
+                  className="w-full px-6 py-4 bg-white/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-white transition-all shadow-inner placeholder:text-gray-700 resize-none italic"
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   placeholder="Describe the architectural significance and luxury allure..."
@@ -256,7 +256,7 @@ const Hotels = () => {
                   <label className="text-[10px] font-black text-white uppercase tracking-[0.3em] ml-2">Address</label>
                   <input 
                     required 
-                    className="w-full px-6 py-4 bg-[#85C79A]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-white transition-all shadow-inner placeholder:text-gray-700"
+                    className="w-full px-6 py-4 bg-white/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-white transition-all shadow-inner placeholder:text-gray-700"
                     value={formData.address}
                     onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                   />
@@ -265,7 +265,7 @@ const Hotels = () => {
                   <label className="text-[10px] font-black text-white uppercase tracking-[0.3em] ml-2">Country</label>
                   <input 
                     required 
-                    className="w-full px-6 py-4 bg-[#85C79A]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-white transition-all shadow-inner placeholder:text-gray-700"
+                    className="w-full px-6 py-4 bg-white/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-white transition-all shadow-inner placeholder:text-gray-700"
                     value={formData.country}
                     onChange={(e) => setFormData({ ...formData, country: e.target.value })}
                   />
@@ -276,7 +276,7 @@ const Hotels = () => {
                 <label className="text-[10px] font-black text-white uppercase tracking-[0.3em] ml-2">Hotel Amenities</label>
                 <input 
                   placeholder="Private Grotto, Michelin Star Kitchen, Helipad..."
-                  className="w-full px-6 py-4 bg-[#85C79A]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-white transition-all shadow-inner placeholder:text-gray-700 font-mono tracking-tighter"
+                  className="w-full px-6 py-4 bg-white/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-white transition-all shadow-inner placeholder:text-gray-700 font-mono tracking-tighter"
                   value={formData.amenities}
                   onChange={(e) => setFormData({ ...formData, amenities: e.target.value })}
                 />
@@ -298,7 +298,7 @@ const Hotels = () => {
                     <div className="relative flex-1">
                       <ImageIcon className="absolute left-6 top-5 w-4 h-4 text-gray-600" />
                       <input 
-                        className="w-full pl-14 pr-6 py-4 bg-[#85C79A]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-white transition-all text-sm placeholder:text-gray-700"
+                        className="w-full pl-14 pr-6 py-4 bg-white/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-white transition-all text-sm placeholder:text-gray-700"
                         placeholder="https://lux-vault.com/property-shot-1.jpg"
                         value={img}
                         onChange={(e) => handleImageChange(idx, e.target.value)}

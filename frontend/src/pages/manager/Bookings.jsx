@@ -98,12 +98,12 @@ const Bookings = () => {
           <input 
             type="text"
             placeholder="Search by patron or estate legacy..."
-            className="w-full pl-16 pr-6 py-4 bg-[#85C79A]/50 border border-gray-800/80 rounded-2xl focus:border-[#0B2D72]/50 outline-none text-sm font-bold text-gray-900 transition-all shadow-inner placeholder:text-gray-700"
+            className="w-full pl-16 pr-6 py-4 bg-white/50 border border-gray-800/80 rounded-2xl focus:border-[#0B2D72]/50 outline-none text-sm font-bold text-gray-900 transition-all shadow-inner placeholder:text-gray-700"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <div className="flex items-center gap-4 bg-[#85C79A]/50 border border-gray-800/80 rounded-2xl px-6 py-2 group hover:border-[#0B2D72]/30 transition-all">
+        <div className="flex items-center gap-4 bg-white/50 border border-gray-800/80 rounded-2xl px-6 py-2 group hover:border-[#0B2D72]/30 transition-all">
           <Filter className="w-4 h-4 text-gray-900 group-hover:text-gray-900 transition-colors" />
           <select 
             className="bg-transparent border-none text-gray-900 text-xs font-black uppercase tracking-widest focus:ring-0 cursor-pointer"
@@ -138,10 +138,10 @@ const Bookings = () => {
               </thead>
               <tbody className="divide-y divide-gray-800/30">
                 {filteredBookings.map((booking) => (
-                  <tr key={booking._id} className="hover:bg-[#85C79A]/50 transition-all group">
+                  <tr key={booking._id} className="hover:bg-white/50 transition-all group">
                     <td className="px-10 py-10">
                       <div className="flex items-center gap-6">
-                        <div className="w-14 h-14 rounded-2xl bg-[#85C79A] border border-gray-800 flex items-center justify-center text-gray-900 group-hover:scale-110 transition-transform shadow-inner">
+                        <div className="w-14 h-14 rounded-2xl bg-white border border-gray-800 flex items-center justify-center text-gray-900 group-hover:scale-110 transition-transform shadow-inner">
                           <User className="w-6 h-6" />
                         </div>
                         <div>
@@ -160,7 +160,7 @@ const Bookings = () => {
                             {new Date(booking.checkOut).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
                           </span>
                         </div>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#85C79A] border border-gray-800 rounded-lg text-[9px] font-black text-gray-600 uppercase tracking-widest">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-gray-800 rounded-lg text-[9px] font-black text-gray-600 uppercase tracking-widest">
                           <Clock className="w-3 h-3" />
                           {Math.ceil((new Date(booking.checkOut) - new Date(booking.checkIn)) / (1000 * 60 * 60 * 24))} CYCLE TOTAL
                         </div>
@@ -238,7 +238,7 @@ const Bookings = () => {
                             )}
                             <button 
                               onClick={() => navigate(`/invoice/${booking._id}`)}
-                              className="p-3 bg-[#85C79A] text-gray-900 hover:text-gray-900 rounded-xl transition-all border border-gray-800 shadow-lg hover:border-[#0B2D72]/30 group/inv"
+                              className="p-3 bg-white text-gray-900 hover:text-gray-900 rounded-xl transition-all border border-gray-800 shadow-lg hover:border-[#0B2D72]/30 group/inv"
                               title="View Official Invoice"
                             >
                               <FileText className="w-5 h-5 group-hover/inv:text-gray-900 transition-colors" />
@@ -254,7 +254,7 @@ const Bookings = () => {
           </div>
           
           {filteredBookings.length === 0 && (
-            <div className="text-center py-32 bg-[#85C79A]/20 group">
+            <div className="text-center py-32 bg-white/20 group">
               <ClipboardList className="w-16 h-16 text-gray-800 mx-auto mb-6 group-hover:text-gray-900/20 transition-colors animate-pulse" />
               <p className="text-gray-600 font-bold uppercase tracking-[0.3em] text-[10px] italic">Telemetry null: No records match current extraction criteria.</p>
             </div>

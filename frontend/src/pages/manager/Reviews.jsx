@@ -64,7 +64,7 @@ const Reviews = () => {
               
               <div className="mb-10 flex justify-between items-start">
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-[#85C79A] border border-gray-800 flex items-center justify-center text-white font-black shadow-inner group-hover:scale-110 transition-transform">
+                  <div className="w-14 h-14 rounded-2xl bg-white border border-gray-800 flex items-center justify-center text-white font-black shadow-inner group-hover:scale-110 transition-transform">
                     {review.userId?.name?.charAt(0)}
                   </div>
                   <div>
@@ -130,7 +130,7 @@ const Reviews = () => {
                       </button>
                     </div>
                     <textarea 
-                      className="w-full p-6 bg-[#85C79A]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none text-sm font-bold text-white transition-all shadow-inner placeholder:text-gray-800 resize-none italic"
+                      className="w-full p-6 bg-white/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none text-sm font-bold text-white transition-all shadow-inner placeholder:text-gray-800 resize-none italic"
                       placeholder="Address the patron's narrative..."
                       rows="3"
                       value={replyText}
