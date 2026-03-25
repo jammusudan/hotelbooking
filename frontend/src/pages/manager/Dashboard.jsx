@@ -92,7 +92,7 @@ const Dashboard = () => {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {statsCards.map((card, i) => (
-          <div key={card.title} className="bg-[#0B2D72] border border-gray-800/50 p-8 rounded-[2rem] hover:border-[#0B2D72]/30 transition-all group relative overflow-hidden">
+          <div key={card.title} className="bg-transparent p-8 transition-all group relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-[#0B2D72]/5 rounded-bl-[100%] transition-all group-hover:bg-[#0B2D72]/10"></div>
             <div className="text-3xl mb-4 grayscale group-hover:grayscale-0 transition-all shadow-[0_0_15px_rgba(0,0,0,0.5)]">
               <card.icon className={`w-8 h-8 ${card.color.replace('text-', 'text-black')}`} />
@@ -105,7 +105,7 @@ const Dashboard = () => {
 
       {/* Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <div className="bg-[#0B2D72] p-10 rounded-[2.5rem] border border-gray-800/50 shadow-2xl relative overflow-hidden group">
+        <div className="bg-transparent p-10 relative overflow-hidden group">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#0B2D72]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <h3 className="text-lg font-serif font-black text-black mb-8 uppercase italic border-b border-gray-800 pb-4">Booking Analytics</h3>
           <div className="h-[300px]">
@@ -154,7 +154,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="bg-[#0B2D72] p-10 rounded-[2.5rem] border border-gray-800/50 shadow-2xl relative overflow-hidden group">
+        <div className="bg-transparent p-10 relative overflow-hidden group">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <h3 className="text-lg font-serif font-black text-black mb-8 uppercase italic border-b border-gray-800 pb-4">Revenue Growth</h3>
           <div className="h-[300px]">

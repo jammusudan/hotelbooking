@@ -250,7 +250,7 @@ const AdminDashboard = () => {
                                 { label: 'Users', value: analytics.totalUsers, icon: '👤' },
                                 { label: 'Hotels', value: analytics.totalHotels, icon: '🏰' }
                             ].map((s, i) => (
-                                <div key={i} className="bg-[#0B2D72] border border-gray-800/50 p-8 rounded-[2rem] hover:border-[#0B2D72]/30 transition-all group">
+                                <div key={i} className="bg-transparent p-8 transition-all group">
                                     <div className="text-3xl mb-4 grayscale group-hover:grayscale-0 transition-all">{s.icon}</div>
                                     <div className="text-3xl font-serif font-black text-black mb-1">{s.value}</div>
                                     <div className="text-[10px] font-black uppercase tracking-widest text-black">{s.label}</div>
@@ -260,7 +260,7 @@ const AdminDashboard = () => {
 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                             {/* RECENT FEED */}
-                            <div className="bg-[#0B2D72] p-10 rounded-[2.5rem] border border-gray-800/50">
+                            <div className="bg-transparent p-10">
                                 <h3 className="text-lg font-serif font-black text-black mb-8 uppercase italic border-b border-gray-800 pb-4">Live Activity</h3>
                                 <div className="space-y-4">
                                     {feed.map(item => (
@@ -305,13 +305,13 @@ const AdminDashboard = () => {
                 {activeTab === 'Approve Hotels' && (
                     <div className="space-y-8 animate-in fade-in slide-in-from-right-8 duration-700">
                         {unapprovedHotels.length === 0 ? (
-                            <div className="bg-[#0B2D72] rounded-[3rem] p-24 text-center border border-gray-800/50">
+                            <div className="bg-transparent p-24 text-center">
                                 <div className="text-6xl mb-6 grayscale opacity-30">⚖️</div>
                                 <h3 className="text-2xl font-serif font-black text-black mb-2 italic">Lobby Empty</h3>
                                 <p className="text-black font-bold uppercase tracking-widest text-[10px]">All pending property reviews are complete.</p>
                             </div>
                         ) : (
-                            <div className="bg-[#0B2D72] rounded-[2.5rem] border border-gray-800/50 overflow-hidden">
+                            <div className="bg-transparent overflow-hidden">
                                 <table className="w-full text-left">
                                     <thead className="bg-[#1a1a1e]">
                                         <tr>
@@ -582,7 +582,7 @@ const AdminDashboard = () => {
                     <div className="space-y-12 animate-in fade-in slide-in-from-right-8 duration-700">
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
                             {/* REVENUE CHART */}
-                            <div className="bg-[#0B2D72] p-12 rounded-[3rem] border border-gray-800/50">
+                            <div className="bg-transparent p-12">
                                 <h3 className="text-lg font-serif font-black text-black mb-10 uppercase italic">Revenue Trajectory</h3>
                                 <div className="h-[400px]">
                                     <Line 
@@ -643,7 +643,7 @@ const AdminDashboard = () => {
 
                         {/* BOTTOM STATS */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <div className="bg-[#0B2D72] p-10 rounded-[2.5rem] border border-gray-800/50 text-center">
+                            <div className="bg-transparent p-10 text-center">
                                 <div className="text-4xl font-serif font-black text-black mb-2 italic">₹{(analytics.totalRevenue / (analytics.totalBookings || 1)).toFixed(0)}</div>
                                 <div className="text-[10px] font-black uppercase tracking-widest text-black italic">Average Order Value</div>
                             </div>
