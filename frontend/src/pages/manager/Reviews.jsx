@@ -53,13 +53,13 @@ const Reviews = () => {
       </header>
 
       {loading && reviews.length === 0 ? (
-        <div className="flex items-center justify-center py-32 bg-[#111114] rounded-[3rem] border border-gray-800/50 border-dashed">
+        <div className="flex items-center justify-center py-32 bg-[#0B2D72] rounded-[3rem] border border-gray-800/50 border-dashed">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-[#0B2D72]"></div>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
           {reviews.map((review) => (
-            <div key={review._id} className="bg-[#111114] rounded-[2.5rem] p-10 border border-gray-800/50 hover:border-[#0B2D72]/30 transition-all group relative flex flex-col shadow-2xl overflow-hidden">
+            <div key={review._id} className="bg-[#0B2D72] rounded-[2.5rem] p-10 border border-gray-800/50 hover:border-[#0B2D72]/30 transition-all group relative flex flex-col shadow-2xl overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#0B2D72]/5 rounded-bl-full -mr-16 -mt-16 transition-all group-hover:bg-[#0B2D72]/10"></div>
               
               <div className="mb-10 flex justify-between items-start">
@@ -155,7 +155,7 @@ const Reviews = () => {
       )}
 
       {reviews.length === 0 && !loading && (
-        <div className="text-center py-32 bg-[#111114] rounded-[3rem] border border-gray-800/50 border-dashed group">
+        <div className="text-center py-32 bg-[#0B2D72] rounded-[3rem] border border-gray-800/50 border-dashed group">
           <MessageSquare className="w-16 h-16 text-black mx-auto mb-8 group-hover:text-black/20 transition-colors animate-pulse" />
           <p className="text-black font-bold uppercase tracking-[0.3em] text-[10px] italic">Telemetry null: No guest testimonials retrieved.</p>
         </div>

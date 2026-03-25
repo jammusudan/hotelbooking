@@ -31,8 +31,8 @@ const Navbar = () => {
   // Use transparent bg on home top, dark otherwise
   const navClasses = `fixed w-full z-50 transition-all duration-300 border-b ${
      scrolled 
-        ? 'bg-[#0992C2]/90 backdrop-blur-xl border-gray-800/50 py-3 shadow-2xl' 
-        : (isHome ? 'bg-transparent border-transparent py-5' : 'bg-[#0992C2] border-gray-800 py-4 shadow-lg')
+        ? 'bg-[#EDF7BD]/90 backdrop-blur-xl border-gray-800/50 py-3 shadow-2xl' 
+        : (isHome ? 'bg-transparent border-transparent py-5' : 'bg-[#EDF7BD] border-gray-800 py-4 shadow-lg')
   }`;
 
   const linkColor = scrolled ? 'text-black hover:text-black' : (isHome ? 'text-black hover:text-black' : 'text-black hover:text-black');
@@ -85,7 +85,7 @@ const Navbar = () => {
             ) : (
               <div className="space-x-4 flex items-center pl-6 border-l border-gray-300/30">
                 <Link to="/login" className={`text-sm font-medium tracking-wide transition ${linkColor}`}>Log In</Link>
-                <Link to="/register" className="bg-[#0992C2] hover:bg-[#0992C2] text-black text-sm font-bold px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all">Join Now</Link>
+                <Link to="/register" className="bg-[#EDF7BD] hover:bg-[#EDF7BD] text-black text-sm font-bold px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all">Join Now</Link>
               </div>
             )}
           </div>
@@ -109,7 +109,7 @@ const Navbar = () => {
 
       {/* Mobile Menu Dropdown */}
       <div 
-        className={`md:hidden absolute top-full left-0 w-full bg-[#0992C2]/95 backdrop-blur-3xl border-b border-gray-800 shadow-2xl transition-all duration-300 overflow-hidden ${
+        className={`md:hidden absolute top-full left-0 w-full bg-[#EDF7BD]/95 backdrop-blur-3xl border-b border-gray-800 shadow-2xl transition-all duration-300 overflow-hidden ${
           isMobileMenuOpen ? 'max-h-[500px] py-4' : 'max-h-0 py-0 border-transparent'
         }`}
       >
@@ -120,7 +120,7 @@ const Navbar = () => {
           {user ? (
             <div className="pt-2 flex flex-col space-y-4">
               <div className="flex items-center gap-3 py-2">
-                <div className="w-10 h-10 rounded-full bg-[#0992C2] flex items-center justify-center text-black font-black text-lg">
+                <div className="w-10 h-10 rounded-full bg-[#EDF7BD] flex items-center justify-center text-black font-black text-lg">
                   {user.name.charAt(0)}
                 </div>
                 <div>
@@ -151,7 +151,7 @@ const Navbar = () => {
           ) : (
             <div className="pt-4 flex flex-col space-y-3">
               <Link to="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#EDF7BD]/5 hover:bg-[#EDF7BD]/10 text-black font-medium py-3 rounded-xl transition border border-white/5">Log In</Link>
-              <Link to="/register" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#0992C2] hover:bg-[#0992C2] text-black font-bold py-3 rounded-xl shadow-lg transition-all">Join Now</Link>
+              <Link to="/register" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#EDF7BD] hover:bg-[#EDF7BD] text-black font-bold py-3 rounded-xl shadow-lg transition-all">Join Now</Link>
             </div>
           )}
         </div>

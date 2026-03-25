@@ -237,7 +237,7 @@ const ManagerDashboard = () => {
             )}
 
             {/* SIDEBAR */}
-            <aside className="w-72 bg-[#111114] border-r border-gray-800/50 flex flex-col sticky top-20 h-[calc(100vh-5rem)]">
+            <aside className="w-72 bg-[#0B2D72] border-r border-gray-800/50 flex flex-col sticky top-20 h-[calc(100vh-5rem)]">
                 <div className="p-8 pb-12">
                     <h2 className="text-xl font-serif font-black text-black tracking-tighter uppercase italic">Manager Portal</h2>
                     <p className="text-[10px] font-bold text-black tracking-[0.3em] mt-2">PROPERTY PROTOCOL</p>
@@ -310,7 +310,7 @@ const ManagerDashboard = () => {
             {/* MAIN CONTENT */}
             <main className="flex-grow p-12 overflow-y-auto">
                 {isCreating || (myHotels.length === 0 && !loading) ? (
-                    <div className="max-w-3xl mx-auto bg-[#111114] p-12 rounded-[3rem] border border-gray-800/50 shadow-2xl relative overflow-hidden animate-in fade-in zoom-in-95">
+                    <div className="max-w-3xl mx-auto bg-[#0B2D72] p-12 rounded-[3rem] border border-gray-800/50 shadow-2xl relative overflow-hidden animate-in fade-in zoom-in-95">
                         <div className="absolute top-0 right-12 bottom-0 left-0 pointer-events-none opacity-10">
                              <div className="text-[20rem] font-black italic">NEW</div>
                         </div>
@@ -373,7 +373,7 @@ const ManagerDashboard = () => {
                                         <div 
                                             key={hotel._id} 
                                             onClick={() => { setSelectedHotel(hotel); fetchHotelDetails(hotel._id); setActiveTab('overview'); }}
-                                            className={`group relative bg-[#111114] p-8 rounded-[2.5rem] border transition-all cursor-pointer overflow-hidden ${selectedHotel?._id === hotel._id ? 'border-[#0B2D72] shadow-2xl shadow-[#0B2D72]/10' : 'border-gray-800/50 hover:border-[#0B2D72]/30'}`}
+                                            className={`group relative bg-[#0B2D72] p-8 rounded-[2.5rem] border transition-all cursor-pointer overflow-hidden ${selectedHotel?._id === hotel._id ? 'border-[#0B2D72] shadow-2xl shadow-[#0B2D72]/10' : 'border-gray-800/50 hover:border-[#0B2D72]/30'}`}
                                         >
                                             <div className="absolute top-0 right-0 px-6 py-2 rounded-bl-3xl text-[9px] font-black uppercase tracking-[0.2em] shadow-lg bg-[#0B2D72] text-black">
                                                 {hotel.isApproved ? 'Active' : 'Pending'}
@@ -402,7 +402,7 @@ const ManagerDashboard = () => {
                                     ))}
                                     <div 
                                         onClick={() => { setIsCreating(true); setSelectedHotel(null); }}
-                                        className="group bg-[#111114]/50 border-2 border-dashed border-gray-800 p-8 rounded-[2.5rem] flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#0B2D72]/50 hover:bg-[#0B2D72]/5 transition-all min-h-[300px]"
+                                        className="group bg-[#0B2D72]/50 border-2 border-dashed border-gray-800 p-8 rounded-[2.5rem] flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#0B2D72]/50 hover:bg-[#0B2D72]/5 transition-all min-h-[300px]"
                                     >
                                         <div className="w-20 h-20 bg-[#EDF7BD] rounded-full flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition-transform">➕</div>
                                         <p className="text-lg font-serif font-black text-black uppercase italic mb-2 group-hover:text-black">Onboard New Property</p>
@@ -416,7 +416,7 @@ const ManagerDashboard = () => {
                         {activeTab === 'overview' && selectedHotel && (
                             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-in fade-in slide-in-from-bottom-6 duration-700">
                                 <div className="lg:col-span-2 space-y-8">
-                                    <div className="bg-[#111114] p-10 rounded-[2.5rem] border border-gray-800/50 relative overflow-hidden group">
+                                    <div className="bg-[#0B2D72] p-10 rounded-[2.5rem] border border-gray-800/50 relative overflow-hidden group">
                                         <div className={`absolute top-0 right-0 px-6 py-2 rounded-bl-3xl text-[10px] font-black uppercase tracking-[0.2em] shadow-lg ${selectedHotel.isApproved ? 'bg-emerald-500 text-black shadow-emerald-500/20' : 'bg-[#0B2D72] text-black shadow-[#0B2D72]/20'}`}>
                                             {selectedHotel.isApproved ? 'Active Sanctuary' : 'Awaiting Approval'}
                                         </div>
@@ -429,7 +429,7 @@ const ManagerDashboard = () => {
                                     </div>
 
                                     {showHotelEdit && (
-                                        <div className="bg-[#111114] p-10 rounded-[2.5rem] border border-[#0B2D72]/50 shadow-2xl animate-in fade-in zoom-in-95">
+                                        <div className="bg-[#0B2D72] p-10 rounded-[2.5rem] border border-[#0B2D72]/50 shadow-2xl animate-in fade-in zoom-in-95">
                                             <div className="flex justify-between items-center mb-8">
                                                 <h4 className="text-xl font-black uppercase tracking-widest text-black italic">Refine Property Details</h4>
                                                 <button onClick={() => setShowHotelEdit(false)} className="text-black hover:text-black transition-colors">✕</button>
@@ -471,21 +471,21 @@ const ManagerDashboard = () => {
                                     )}
                                     
                                     <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                                        <div className="bg-[#111114] border border-gray-800/50 p-8 rounded-[2rem] hover:border-[#0B2D72]/30 transition-all group">
+                                        <div className="bg-[#0B2D72] border border-gray-800/50 p-8 rounded-[2rem] hover:border-[#0B2D72]/30 transition-all group">
                                             <div className="text-3xl font-serif font-black text-black mb-1">{reservations.length}</div>
                                             <div className="text-[10px] font-black uppercase tracking-widest text-black">Total Reservations</div>
                                         </div>
-                                        <div className="bg-[#111114] border border-gray-800/50 p-8 rounded-[2rem] hover:border-[#0B2D72]/30 transition-all group">
+                                        <div className="bg-[#0B2D72] border border-gray-800/50 p-8 rounded-[2rem] hover:border-[#0B2D72]/30 transition-all group">
                                             <div className="text-3xl font-serif font-black text-black mb-1">{rooms.length}</div>
                                             <div className="text-[10px] font-black uppercase tracking-widest text-black">Active Room Tiers</div>
                                         </div>
-                                        <div className="bg-[#111114] border border-gray-800/50 p-8 rounded-[2rem] hover:border-[#0B2D72]/30 transition-all group">
+                                        <div className="bg-[#0B2D72] border border-gray-800/50 p-8 rounded-[2rem] hover:border-[#0B2D72]/30 transition-all group">
                                             <div className="text-3xl font-serif font-black text-black mb-1">{reviews.length}</div>
                                             <div className="text-[10px] font-black uppercase tracking-widest text-black">Guest Reflections</div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="bg-[#111114] p-8 rounded-[2.5rem] border border-gray-800/50 shadow-sm flex flex-col items-center justify-center text-center">
+                                <div className="bg-[#0B2D72] p-8 rounded-[2.5rem] border border-gray-800/50 shadow-sm flex flex-col items-center justify-center text-center">
                                      <div className="w-full h-48 bg-[#EDF7BD] rounded-3xl overflow-hidden mb-6 border border-gray-800">
                                          <img src={getHotelImage(selectedHotel)} className="w-full h-full object-cover" alt="Hotel" />
                                      </div>
@@ -504,24 +504,24 @@ const ManagerDashboard = () => {
                                     </div>
                                 ) : analytics ? (
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                                        <div className="bg-[#111114] p-8 rounded-[2rem] border border-gray-800/50">
+                                        <div className="bg-[#0B2D72] p-8 rounded-[2rem] border border-gray-800/50">
                                             <p className="text-[10px] font-black text-black uppercase tracking-widest mb-2">Total Revenue (Elite)</p>
                                             <div className="text-3xl font-serif font-black text-black italic">₹{analytics.totalRevenue.toLocaleString()}</div>
                                         </div>
-                                        <div className="bg-[#111114] p-8 rounded-[2rem] border border-gray-800/50">
+                                        <div className="bg-[#0B2D72] p-8 rounded-[2rem] border border-gray-800/50">
                                             <p className="text-[10px] font-black text-black uppercase tracking-widest mb-2">Occupancy Rate</p>
                                             <div className="text-3xl font-serif font-black text-black italic">{analytics.occupancyRate}%</div>
                                         </div>
-                                        <div className="bg-[#111114] p-8 rounded-[2rem] border border-gray-800/50">
+                                        <div className="bg-[#0B2D72] p-8 rounded-[2rem] border border-gray-800/50">
                                             <p className="text-[10px] font-black text-black uppercase tracking-widest mb-2">Confirmed Bookings</p>
                                             <div className="text-3xl font-serif font-black text-black italic">{analytics.stats.total}</div>
                                         </div>
-                                        <div className="bg-[#111114] p-8 rounded-[2rem] border border-gray-800/50">
+                                        <div className="bg-[#0B2D72] p-8 rounded-[2rem] border border-gray-800/50">
                                             <p className="text-[10px] font-black text-black uppercase tracking-widest mb-2">Pending Inquiries</p>
                                             <div className="text-3xl font-serif font-black text-rose-500 italic">{analytics.stats.pending}</div>
                                         </div>
                                         
-                                        <div className="lg:col-span-4 bg-[#111114] p-10 rounded-[2.5rem] border border-gray-800/50">
+                                        <div className="lg:col-span-4 bg-[#0B2D72] p-10 rounded-[2.5rem] border border-gray-800/50">
                                             <h3 className="text-xl font-black uppercase tracking-widest text-black italic mb-8">Revenue Momentum</h3>
                                             <div className="flex items-end gap-2 h-48">
                                                 {analytics.monthlyRevenue.map((m, idx) => {
@@ -549,7 +549,7 @@ const ManagerDashboard = () => {
                         {/* TAB: ROOMS */}
                         {activeTab === 'rooms' && selectedHotel && (
                             <div className="space-y-8 animate-in fade-in slide-in-from-right-8 duration-700">
-                                <div className="flex justify-between items-center bg-[#111114] p-8 rounded-[2rem] border border-gray-800/50">
+                                <div className="flex justify-between items-center bg-[#0B2D72] p-8 rounded-[2rem] border border-gray-800/50">
                                     <h3 className="text-2xl font-serif font-black text-black uppercase tracking-tighter italic">Inventory Management</h3>
                                     <button 
                                         onClick={() => { setShowRoomForm(!showRoomForm); setRoomFormData({ type: 'Single', pricePerNight: '', capacity: 1, count: 1, amenities: '', id: null }); }}
@@ -560,7 +560,7 @@ const ManagerDashboard = () => {
                                 </div>
 
                                 {showRoomForm && (
-                                    <div className="bg-[#111114] p-10 rounded-[2.5rem] border border-[#0B2D72]/50 shadow-2xl animate-in fade-in zoom-in-95">
+                                    <div className="bg-[#0B2D72] p-10 rounded-[2.5rem] border border-[#0B2D72]/50 shadow-2xl animate-in fade-in zoom-in-95">
                                         <h4 className="text-xl font-black uppercase tracking-widest mb-8 text-black italic">{roomFormData.id ? 'Edit Chamber Tier' : 'New Chamber Category'}</h4>
                                         <form onSubmit={handleRoomAction} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                                             <div className="space-y-2">
@@ -620,7 +620,7 @@ const ManagerDashboard = () => {
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                     {rooms.map(room => (
-                                        <div key={room._id} className="bg-[#111114] p-8 rounded-[2.5rem] border border-gray-800/50 shadow-lg flex flex-col group transition-all hover:border-[#0B2D72]/30">
+                                        <div key={room._id} className="bg-[#0B2D72] p-8 rounded-[2.5rem] border border-gray-800/50 shadow-lg flex flex-col group transition-all hover:border-[#0B2D72]/30">
                                             <div className="flex justify-between items-start mb-6">
                                                 <h4 className="text-2xl font-serif font-black text-black uppercase tracking-tighter italic">{room.type} Suite</h4>
                                                 <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -648,7 +648,7 @@ const ManagerDashboard = () => {
                         {/* TAB: RESERVATIONS */}
                         {activeTab === 'reservations' && selectedHotel && (
                             <div className="space-y-8 animate-in fade-in slide-in-from-right-8 duration-700">
-                                <div className="bg-[#111114] p-10 rounded-[2.5rem] border border-gray-800/50">
+                                <div className="bg-[#0B2D72] p-10 rounded-[2.5rem] border border-gray-800/50">
                                     <h3 className="text-2xl font-serif font-black text-black uppercase tracking-tighter italic mb-8">Reservation Folio</h3>
                                     {reservations.length === 0 ? (
                                         <div className="text-center py-24 bg-[#EDF7BD]/30 rounded-[2rem] border border-dashed border-gray-800">
@@ -716,7 +716,7 @@ const ManagerDashboard = () => {
                         {/* TAB: FEEDBACK */}
                         {activeTab === 'feedback' && selectedHotel && (
                             <div className="space-y-12 animate-in fade-in slide-in-from-right-8 duration-700">
-                                <div className="bg-[#111114] p-10 rounded-[2.5rem] border border-gray-800/50">
+                                <div className="bg-[#0B2D72] p-10 rounded-[2.5rem] border border-gray-800/50">
                                     <h3 className="text-2xl font-serif font-black text-black uppercase tracking-tighter italic mb-8">Guest Reflections</h3>
                                     
                                     {reviews.length === 0 ? (

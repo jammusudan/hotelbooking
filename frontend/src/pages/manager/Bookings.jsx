@@ -92,7 +92,7 @@ const Bookings = () => {
       </header>
 
       {/* Filters & Search */}
-      <div className="bg-[#111114] p-6 rounded-3xl border border-gray-800/50 shadow-2xl flex flex-col md:flex-row gap-6">
+      <div className="bg-[#0B2D72] p-6 rounded-3xl border border-gray-800/50 shadow-2xl flex flex-col md:flex-row gap-6">
         <div className="relative flex-1 group">
           <Search className="absolute left-6 top-4 w-5 h-5 text-black group-hover:text-black transition-colors" />
           <input 
@@ -120,11 +120,11 @@ const Bookings = () => {
       </div>
 
       {loading && bookings.length === 0 ? (
-        <div className="flex items-center justify-center py-32 bg-[#111114] rounded-[3rem] border border-gray-800/50 border-dashed">
+        <div className="flex items-center justify-center py-32 bg-[#0B2D72] rounded-[3rem] border border-gray-800/50 border-dashed">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-[#0B2D72]"></div>
         </div>
       ) : (
-        <div className="bg-[#111114] rounded-[2.5rem] border border-gray-800/50 shadow-2xl overflow-hidden">
+        <div className="bg-[#0B2D72] rounded-[2.5rem] border border-gray-800/50 shadow-2xl overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left font-sans">
               <thead className="bg-[#1c1c20]">

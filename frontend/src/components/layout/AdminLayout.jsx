@@ -86,10 +86,10 @@ const AdminLayout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0992C2] flex font-sans text-black">
+    <div className="min-h-screen bg-[#EDF7BD] flex font-sans text-black">
       {/* Sidebar */}
       <aside 
-        className={`fixed inset-y-0 left-0 z-50 w-72 bg-[#111114] border-r border-gray-800/50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-y-0 left-0 z-50 w-72 bg-[#0B2D72] border-r border-gray-800/50 transform transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:relative lg:translate-x-0 h-screen sticky top-0`}
       >
@@ -113,7 +113,7 @@ const AdminLayout = () => {
                   to={item.path}
                   className={`w-full flex items-center gap-4 px-6 py-4 rounded-2xl text-sm font-bold transition-all ${
                     isActive 
-                      ? 'bg-[#0992C2] text-black shadow-lg shadow-[#0992C2]/20' 
+                      ? 'bg-[#EDF7BD] text-black shadow-lg shadow-[#EDF7BD]/20' 
                       : 'text-black hover:bg-gray-800 hover:text-black'
                   }`}
                 >
@@ -127,7 +127,7 @@ const AdminLayout = () => {
           <div className="p-8 border-t border-gray-800/50">
             <div className="mb-6">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#0992C2] to-[#0992C2] flex items-center justify-center text-black font-black">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#EDF7BD] to-[#EDF7BD] flex items-center justify-center text-black font-black">
                   {user?.name?.charAt(0) || 'A'}
                 </div>
                 <div>
@@ -150,7 +150,7 @@ const AdminLayout = () => {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Topbar */}
-        <header className="h-20 bg-[#0992C2]/80 backdrop-blur-md border-b border-gray-800/50 flex items-center justify-between px-8 sticky top-0 z-40">
+        <header className="h-20 bg-[#EDF7BD]/80 backdrop-blur-md border-b border-gray-800/50 flex items-center justify-between px-8 sticky top-0 z-40">
           <button 
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             className="p-2 text-black hover:bg-gray-800/50 rounded-xl lg:hidden"
@@ -170,7 +170,7 @@ const AdminLayout = () => {
               <input 
                 type="text" 
                 placeholder="Search telemetry..." 
-                className="bg-[#EDF7BD]/5 border border-gray-800 rounded-xl py-2 pl-10 pr-4 text-xs font-bold text-black focus:border-[#0992C2]/50 outline-none w-48 focus:w-64 transition-all"
+                className="bg-[#EDF7BD]/5 border border-gray-800 rounded-xl py-2 pl-10 pr-4 text-xs font-bold text-black focus:border-[#EDF7BD]/50 outline-none w-48 focus:w-64 transition-all"
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
@@ -180,7 +180,7 @@ const AdminLayout = () => {
               />
               
               {showDropdown && searchQuery.trim() && (
-                <div className="absolute top-full mt-4 right-0 w-80 bg-[#111114] border border-gray-800 rounded-2xl shadow-2xl p-4 animate-in fade-in slide-in-from-top-4">
+                <div className="absolute top-full mt-4 right-0 w-80 bg-[#0B2D72] border border-gray-800 rounded-2xl shadow-2xl p-4 animate-in fade-in slide-in-from-top-4">
                   {isSearching ? (
                      <div className="flex items-center justify-center py-8 text-black">
                         <Loader2 className="w-5 h-5 animate-spin" />
@@ -192,7 +192,7 @@ const AdminLayout = () => {
                           <h4 className="text-[10px] font-black uppercase tracking-widest text-black mb-3">Patrons Found</h4>
                           <div className="space-y-2">
                              {searchResults.users.map(u => (
-                               <div key={u._id} className="flex flex-col p-3 bg-[#0992C2]/40 border border-white/5 rounded-xl hover:border-[#0992C2]/30 transition-all cursor-default">
+                               <div key={u._id} className="flex flex-col p-3 bg-[#EDF7BD]/40 border border-white/5 rounded-xl hover:border-[#EDF7BD]/30 transition-all cursor-default">
                                   <div className="flex justify-between items-center mb-1">
                                     <span className="text-xs font-bold text-black">{u.name}</span>
                                     <span className="text-[9px] font-black uppercase text-black">{u.role}</span>
@@ -209,7 +209,7 @@ const AdminLayout = () => {
                           <h4 className="text-[10px] font-black uppercase tracking-widest text-black mb-3">Sanctuaries Found</h4>
                           <div className="space-y-2">
                              {searchResults.hotels.map(h => (
-                               <div key={h._id} className="flex flex-col p-3 bg-[#0992C2]/40 border border-white/5 rounded-xl hover:border-[#0992C2]/30 transition-all cursor-default">
+                               <div key={h._id} className="flex flex-col p-3 bg-[#EDF7BD]/40 border border-white/5 rounded-xl hover:border-[#EDF7BD]/30 transition-all cursor-default">
                                   <div className="flex justify-between items-center mb-1">
                                     <span className="text-xs font-bold text-black italic truncate pr-2">{h.name}</span>
                                     <span className={`text-[9px] font-black uppercase ${h.isApproved ? 'text-emerald-500' : 'text-rose-500'}`}>{h.isApproved ? 'Active' : 'Halted'}</span>
@@ -234,27 +234,27 @@ const AdminLayout = () => {
 
             <button className="p-2.5 text-black hover:bg-gray-800/50 rounded-xl relative border border-gray-800/50 group">
               <Bell className="w-5 h-5 group-hover:text-black transition-colors" />
-              <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#0992C2] rounded-full border-2 border-white shadow-[0_0_8px_rgba(212,175,55,0.4)]"></span>
+              <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#EDF7BD] rounded-full border-2 border-white shadow-[0_0_8px_rgba(212,175,55,0.4)]"></span>
             </button>
 
             {/* Root Admin Profile Dropdown */}
             <div className="flex items-center gap-4 pl-4 border-l border-gray-800/50 relative" ref={profileRef}>
               <div className="text-right hidden sm:block">
                 <p className="text-xs font-black text-black uppercase tracking-tighter">Root Admin</p>
-                <div className="h-0.5 w-full bg-[#0992C2]/30 mt-0.5"></div>
+                <div className="h-0.5 w-full bg-[#EDF7BD]/30 mt-0.5"></div>
               </div>
               <button 
                 onClick={() => setShowProfileDropdown(!showProfileDropdown)}
-                className="w-10 h-10 rounded-xl bg-[#0992C2] border border-gray-800 flex items-center justify-center text-black shadow-inner hover:bg-gray-800 transition-colors focus:outline-none"
+                className="w-10 h-10 rounded-xl bg-[#EDF7BD] border border-gray-800 flex items-center justify-center text-black shadow-inner hover:bg-gray-800 transition-colors focus:outline-none"
               >
                 <ShieldAlert className="w-5 h-5" />
               </button>
 
               {/* Profile Menu Overlay */}
               {showProfileDropdown && (
-                <div className="absolute top-full mt-4 right-0 w-64 bg-[#111114] border border-gray-800 rounded-2xl shadow-2xl p-5 animate-in fade-in slide-in-from-top-4 z-50">
+                <div className="absolute top-full mt-4 right-0 w-64 bg-[#0B2D72] border border-gray-800 rounded-2xl shadow-2xl p-5 animate-in fade-in slide-in-from-top-4 z-50">
                   <div className="pb-4 border-b border-gray-800/50 mb-4 text-center">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#0992C2] to-[#0992C2] mx-auto flex items-center justify-center text-black font-black text-lg mb-3 shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#EDF7BD] to-[#EDF7BD] mx-auto flex items-center justify-center text-black font-black text-lg mb-3 shadow-[0_0_15px_rgba(212,175,55,0.3)]">
                       {user?.name?.charAt(0) || 'A'}
                     </div>
                     <p className="text-xs font-black text-black">{user?.name || 'Administrator'}</p>

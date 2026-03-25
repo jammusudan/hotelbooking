@@ -34,10 +34,10 @@ const ManagerLayout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0992C2] flex font-sans text-black">
+    <div className="min-h-screen bg-[#EDF7BD] flex font-sans text-black">
       {/* Sidebar */}
       <aside 
-        className={`fixed inset-y-0 left-0 z-50 w-72 bg-[#111114] border-r border-gray-800/50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-y-0 left-0 z-50 w-72 bg-[#0B2D72] border-r border-gray-800/50 transform transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:relative lg:translate-x-0 h-screen sticky top-0`}
       >
@@ -61,7 +61,7 @@ const ManagerLayout = () => {
                   to={item.path}
                   className={`w-full flex items-center gap-4 px-6 py-4 rounded-2xl text-sm font-bold transition-all ${
                     isActive 
-                      ? 'bg-[#0992C2] text-black shadow-lg shadow-[#0992C2]/20' 
+                      ? 'bg-[#EDF7BD] text-black shadow-lg shadow-[#EDF7BD]/20' 
                       : 'text-black hover:bg-gray-800 hover:text-black'
                   }`}
                 >
@@ -75,7 +75,7 @@ const ManagerLayout = () => {
           <div className="p-8 border-t border-gray-800/50">
             <div className="mb-6">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#0992C2] to-[#0992C2] flex items-center justify-center text-black font-black">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#EDF7BD] to-[#EDF7BD] flex items-center justify-center text-black font-black">
                   {user?.name?.charAt(0)}
                 </div>
                 <div>
@@ -98,7 +98,7 @@ const ManagerLayout = () => {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Topbar */}
-        <header className="h-20 bg-[#0992C2]/80 backdrop-blur-md border-b border-gray-800/50 flex items-center justify-between px-8 sticky top-0 z-40">
+        <header className="h-20 bg-[#EDF7BD]/80 backdrop-blur-md border-b border-gray-800/50 flex items-center justify-between px-8 sticky top-0 z-40">
           <button 
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             className="p-2 text-black hover:bg-gray-800/50 rounded-xl lg:hidden"
@@ -115,14 +115,14 @@ const ManagerLayout = () => {
           <div className="flex items-center gap-4">
             <button className="p-2.5 text-black hover:bg-gray-800/50 rounded-xl relative border border-gray-800/50 shadow-inner group">
               <Bell className="w-5 h-5 group-hover:text-black transition-colors" />
-              <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#0992C2] rounded-full border-2 border-white shadow-[0_0_8px_rgba(212,175,55,0.4)]"></span>
+              <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#EDF7BD] rounded-full border-2 border-white shadow-[0_0_8px_rgba(212,175,55,0.4)]"></span>
             </button>
             <div className="flex items-center gap-4 pl-4 border-l border-gray-800/50">
               <div className="text-right hidden sm:block">
                 <p className="text-xs font-black text-black uppercase tracking-tighter">Manager</p>
-                <div className="h-0.5 w-full bg-[#0992C2]/30 mt-0.5"></div>
+                <div className="h-0.5 w-full bg-[#EDF7BD]/30 mt-0.5"></div>
               </div>
-              <div className="w-10 h-10 rounded-xl bg-[#0992C2] border border-gray-800 flex items-center justify-center text-black shadow-inner">
+              <div className="w-10 h-10 rounded-xl bg-[#EDF7BD] border border-gray-800 flex items-center justify-center text-black shadow-inner">
                 <UserIcon className="w-5 h-5" />
               </div>
             </div>

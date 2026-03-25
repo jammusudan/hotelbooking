@@ -132,20 +132,20 @@ const Hotels = () => {
       </header>
 
       {loading && hotels.length === 0 ? (
-        <div className="flex items-center justify-center py-32 bg-[#111114] rounded-[3rem] border border-gray-800/50 border-dashed">
+        <div className="flex items-center justify-center py-32 bg-[#0B2D72] rounded-[3rem] border border-gray-800/50 border-dashed">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-[#0B2D72]"></div>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
           {hotels.map((hotel) => (
-            <div key={hotel._id} className="bg-[#111114] rounded-[2.5rem] overflow-hidden border border-gray-800/50 hover:border-[#0B2D72]/30 transition-all group relative flex flex-col">
+            <div key={hotel._id} className="bg-[#0B2D72] rounded-[2.5rem] overflow-hidden border border-gray-800/50 hover:border-[#0B2D72]/30 transition-all group relative flex flex-col">
               <div className="relative h-64 overflow-hidden">
                 <img 
                   src={getHotelImage(hotel)} 
                   alt={hotel.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 grayscale-[20%] group-hover:grayscale-0"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#111114] via-transparent to-transparent opacity-80"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B2D72] via-transparent to-transparent opacity-80"></div>
                 
                 <div className="absolute top-6 right-6 flex gap-2">
                   <span className={`px-4 py-1.5 rounded-xl text-[9px] font-black uppercase tracking-widest border shadow-xl backdrop-blur-md ${
@@ -202,7 +202,7 @@ const Hotels = () => {
       {isModalOpen && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-[#EDF7BD]/60 backdrop-blur-xl" onClick={() => setIsModalOpen(false)}></div>
-          <div className="relative bg-[#111114] w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-[3rem] border border-gray-800 shadow-2xl p-10 animate-in fade-in zoom-in-95 duration-300">
+          <div className="relative bg-[#0B2D72] w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-[3rem] border border-gray-800 shadow-2xl p-10 animate-in fade-in zoom-in-95 duration-300">
             <div className="flex items-center justify-between mb-12">
               <h2 className="text-3xl font-serif font-black text-black italic tracking-tighter uppercase">
                 {editingHotel ? 'Edit Hotel Details' : 'Add New Hotel'}

@@ -148,13 +148,13 @@ const Rooms = () => {
       )}
 
       {loading && rooms.length === 0 ? (
-        <div className="flex items-center justify-center py-32 bg-[#111114] rounded-[3rem] border border-gray-800/50 border-dashed">
+        <div className="flex items-center justify-center py-32 bg-[#0B2D72] rounded-[3rem] border border-gray-800/50 border-dashed">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-[#0B2D72]"></div>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
           {rooms.map((room) => (
-            <div key={room._id} className="bg-[#111114] rounded-[2.5rem] p-8 border border-gray-800/50 hover:border-[#0B2D72]/30 transition-all group relative flex flex-col shadow-2xl">
+            <div key={room._id} className="bg-[#0B2D72] rounded-[2.5rem] p-8 border border-gray-800/50 hover:border-[#0B2D72]/30 transition-all group relative flex flex-col shadow-2xl">
               <div className="flex justify-between items-start mb-8 pb-6 border-b border-gray-800/50">
                 <div className="p-4 bg-[#0B2D72]/10 text-black rounded-2xl border border-[#0B2D72]/20 shadow-inner group-hover:scale-110 transition-transform">
                   <Bed className="w-7 h-7" />
@@ -225,7 +225,7 @@ const Rooms = () => {
       {isModalOpen && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-[#EDF7BD]/60 backdrop-blur-xl" onClick={() => setIsModalOpen(false)}></div>
-          <div className="relative bg-[#111114] w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-[3rem] border border-gray-800 shadow-2xl p-10 animate-in fade-in zoom-in-95 duration-300">
+          <div className="relative bg-[#0B2D72] w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-[3rem] border border-gray-800 shadow-2xl p-10 animate-in fade-in zoom-in-95 duration-300">
             <div className="flex items-center justify-between mb-12">
               <h2 className="text-3xl font-serif font-black text-black italic tracking-tighter uppercase">
                 {editingRoom ? 'Edit Room Category' : 'Add New Room Category'}
@@ -249,7 +249,7 @@ const Rooms = () => {
                     onChange={(e) => setFormData({ ...formData, hotelId: e.target.value })}
                   >
                     {hotels.map(h => (
-                      <option key={h._id} value={h._id} className="bg-[#111114]">{h.name}</option>
+                      <option key={h._id} value={h._id} className="bg-[#0B2D72]">{h.name}</option>
                     ))}
                   </select>
                 </div>
@@ -261,12 +261,12 @@ const Rooms = () => {
                     value={formData.type}
                     onChange={(e) => setFormData({ ...formData, type: e.target.value })}
                   >
-                    <option value="Single" className="bg-[#111114]">Single</option>
-                    <option value="Double" className="bg-[#111114]">Double</option>
-                    <option value="Suite" className="bg-[#111114]">Suite</option>
-                    <option value="Deluxe" className="bg-[#111114]">Deluxe</option>
-                    <option value="Family" className="bg-[#111114]">Family</option>
-                    <option value="Penthouse" className="bg-[#111114]">Penthouse</option>
+                    <option value="Single" className="bg-[#0B2D72]">Single</option>
+                    <option value="Double" className="bg-[#0B2D72]">Double</option>
+                    <option value="Suite" className="bg-[#0B2D72]">Suite</option>
+                    <option value="Deluxe" className="bg-[#0B2D72]">Deluxe</option>
+                    <option value="Family" className="bg-[#0B2D72]">Family</option>
+                    <option value="Penthouse" className="bg-[#0B2D72]">Penthouse</option>
                   </select>
                 </div>
               </div>
