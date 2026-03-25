@@ -55,7 +55,7 @@ const CustomerDashboard = () => {
                       <item.icon className="w-6 h-6" />
                     </div>
                     <div>
-                      <span className="block text-xl font-serif font-black text-black uppercase tracking-tight mb-1 group-hover:text-black transition-colors">{item.name}</span>
+                      <span className="block text-xl font-serif font-black text-white uppercase tracking-tight mb-1 group-hover:text-white transition-colors">{item.name}</span>
                       <span className="text-[10px] font-bold text-gray-300 uppercase tracking-widest">{item.description}</span>
                     </div>
                   </div>

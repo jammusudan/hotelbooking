@@ -333,7 +333,7 @@ const Hotels = () => {
 
                         {/* Promo Badge */}
                         {hotelPromo && (
-                           <div className="absolute top-6 left-6 bg-transparent text-white px-4 py-2 rounded-2xl border border-black/20 flex items-center gap-2 shadow-2xl z-20">
+                           <div className="absolute top-6 left-6 bg-[#003049] text-white px-4 py-2 rounded-2xl border border-white/20 flex items-center gap-2 shadow-2xl z-20">
                              <Sparkles size={12} className="text-white" />
                              <span className="text-xs font-black uppercase font-sans tracking-widest">{hotelPromo.discount}{hotelPromo.type === 'percentage' ? '%' : ' INR'} OFF</span>
                            </div>
@@ -341,7 +341,7 @@ const Hotels = () => {
 
                         {/* Starting Price Plate */}
                         <div className="absolute bottom-6 left-6">
-                           <div className="bg-transparent text-white px-6 py-3 rounded-2xl font-serif font-black shadow-2xl border-2 border-transparent/50">
+                           <div className="bg-[#003049] text-white px-6 py-3 rounded-2xl font-serif font-black shadow-2xl border border-white/20">
                              <span className="text-sm opacity-60 tracking-tighter mr-1 uppercase font-sans font-black">from</span>
                              <span className="text-xl italic">₹{hotel.startingPrice || 0}</span>
                              <span className="text-[9px] opacity-60 tracking-widest ml-1 uppercase font-sans font-black">/ night</span>

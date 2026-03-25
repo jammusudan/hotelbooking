@@ -249,7 +249,7 @@ const HotelDetails = () => {
             </div>
           </div>
           
-          <div className="flex flex-wrap md:flex-nowrap gap-4 p-4 bg-[#EDF7BD]/40 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] animate-in fade-in slide-in-from-right duration-1000">
+          <div className="flex flex-wrap md:flex-nowrap gap-4 p-4 bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] animate-in fade-in slide-in-from-right duration-1000">
             {(hotel.images?.length > 0 ? hotel.images : [getHotelImage(hotel)]).slice(0, 4).map((img, i) => (
               <button 
                 key={i} 
@@ -296,8 +296,8 @@ const HotelDetails = () => {
                </h2>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                  {promotions.map((promo) => (
-                   <div key={promo._id} className="p-8 bg-gradient-to-br from-transparent/10 to-transparent border border-transparent/30 rounded-[2rem] relative overflow-hidden group">
-                     <div className="absolute top-0 right-0 w-32 h-32 bg-transparent/10 rounded-bl-full group-hover:scale-125 transition-transform duration-700"></div>
+                   <div key={promo._id} className="p-8 bg-[#003049] border border-white/10 rounded-[2rem] relative overflow-hidden group">
+                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full group-hover:scale-125 transition-transform duration-700"></div>
                      <div className="flex justify-between items-start mb-4 relative z-10">
                        <span className="text-3xl font-serif font-black text-white italic tracking-tighter">
                          {promo.discount}{promo.type === 'percentage' ? '%' : ' INR'} <span className="text-white text-xl">OFF</span>
@@ -350,13 +350,7 @@ const HotelDetails = () => {
                     <div 
                       key={room._id} 
                       onClick={() => !room.isMaintenance && setSelectedRoomId(room._id)}
-                      className={`group flex flex-col md:flex-row gap-8 p-8 rounded-[3rem] border transition-all duration-700 ${
-                        room.isMaintenance 
-                          ? 'opacity-40 cursor-not-allowed border-white/5 bg-transparent' 
-                          : selectedRoomId === room._id 
-                            ? 'bg-transparent border-transparent text-white shadow-2xl shadow-transparent/20 translate-x-4' 
-                            : 'bg-[#003049] border-white/10 shadow-2xl cursor-pointer'
-                      }`}
+                      className={`group flex flex-col md:flex-row gap-8 p-8 rounded-[3rem] border transition-all duration-700 ${room.isMaintenance ? 'opacity-40 cursor-not-allowed border-white/5 bg-transparent' : selectedRoomId === room._id ? 'bg-[#003049] border-white/20 text-white shadow-2xl shadow-black/20 translate-x-4' : 'bg-[#003049] border-white/10 shadow-2xl cursor-pointer'}`}
                     >
                       <div className="w-full md:w-80 h-60 rounded-[2rem] overflow-hidden relative group-hover:shadow-2xl transition-all">
                         <img 
@@ -599,7 +593,7 @@ const HotelDetails = () => {
              </form>
           </div>
           
-          <div className="mt-12 p-10 bg-gradient-to-br from-transparent/5 to-transparent border border-white/5 rounded-[3rem] text-center">
+          <div className="mt-12 p-10 bg-[#003049] border border-white/10 rounded-[3rem] text-center shadow-2xl">
              <Award size={32} className="text-white mx-auto mb-6" />
              <p className="text-[9px] font-black uppercase tracking-[0.3em] text-white leading-relaxed italic">
                Best Rate Pursuit • Member Access • Digital Concierge Ready
