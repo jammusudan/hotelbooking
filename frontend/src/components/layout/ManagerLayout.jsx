@@ -44,7 +44,7 @@ const ManagerLayout = () => {
         <div className="h-full flex flex-col">
           <div className="p-8 pb-12">
             <h1 className="text-xl font-serif font-black text-black tracking-tighter uppercase italic flex items-center gap-3">
-              <div className="w-8 h-8 overflow-hidden rounded-lg bg-[#7FB77E]/5 p-1">
+              <div className="w-8 h-8 overflow-hidden rounded-lg bg-[#EDF7BD]/5 p-1">
                 <img src="/logo.png" alt="Navan Logo" className="w-full h-full object-contain" />
               </div>
               <span>Navan</span>

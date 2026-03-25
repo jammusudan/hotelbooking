@@ -8,7 +8,7 @@ const Profile = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-[#7FB77E] py-20 px-4 relative overflow-hidden font-sans">
+    <div className="min-h-screen bg-[#EDF7BD] py-20 px-4 relative overflow-hidden font-sans">
       <div className="absolute top-[-10%] right-[-5%] w-[40rem] h-[40rem] bg-[#0B2D72]/10 blur-[150px] pointer-events-none"></div>
 
       <div className="max-w-4xl mx-auto relative z-10">
@@ -29,7 +29,7 @@ const Profile = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="md:col-span-1 space-y-6">
-            <div className="bg-[#7FB77E] p-10 rounded-[3rem] border border-white/5 flex flex-col items-center text-center shadow-2xl">
+            <div className="bg-[#EDF7BD] p-10 rounded-[3rem] border border-white/5 flex flex-col items-center text-center shadow-2xl">
               <div className="w-32 h-32 rounded-full bg-[#0B2D72] flex items-center justify-center text-black font-black text-5xl mb-6 shadow-xl shadow-[#0B2D72]/20">
                 {user?.name?.charAt(0) || 'U'}
               </div>
@@ -47,7 +47,7 @@ const Profile = () => {
           </div>
 
           <div className="md:col-span-2">
-            <div className="bg-[#7FB77E] p-12 rounded-[3rem] border border-white/5 shadow-2xl">
+            <div className="bg-[#EDF7BD] p-12 rounded-[3rem] border border-white/5 shadow-2xl">
               <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-3">
@@ -57,7 +57,7 @@ const Profile = () => {
                     <input 
                       type="text" 
                       defaultValue={user?.name}
-                      className="w-full bg-[#7FB77E]/50 border border-gray-800 rounded-2xl p-4 text-black font-bold outline-none focus:border-[#0B2D72]/50 transition-colors"
+                      className="w-full bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl p-4 text-black font-bold outline-none focus:border-[#0B2D72]/50 transition-colors"
                     />
                   </div>
                   <div className="space-y-3">
@@ -67,7 +67,7 @@ const Profile = () => {
                     <input 
                       type="email" 
                       defaultValue={user?.email}
-                      className="w-full bg-[#7FB77E]/50 border border-gray-800 rounded-2xl p-4 text-black font-bold outline-none cursor-not-allowed"
+                      className="w-full bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl p-4 text-black font-bold outline-none cursor-not-allowed"
                       disabled
                     />
                   </div>
@@ -81,7 +81,7 @@ const Profile = () => {
                     <input 
                       type="text" 
                       placeholder="+91 Add Secure Line"
-                      className="w-full bg-[#7FB77E]/50 border border-gray-800 rounded-2xl p-4 text-black font-bold outline-none focus:border-[#0B2D72]/50 transition-colors"
+                      className="w-full bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl p-4 text-black font-bold outline-none focus:border-[#0B2D72]/50 transition-colors"
                     />
                   </div>
                   <div className="space-y-3">
@@ -91,13 +91,13 @@ const Profile = () => {
                     <input 
                       type="text" 
                       placeholder="Add Residency Location"
-                      className="w-full bg-[#7FB77E]/50 border border-gray-800 rounded-2xl p-4 text-black font-bold outline-none focus:border-[#0B2D72]/50 transition-colors"
+                      className="w-full bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl p-4 text-black font-bold outline-none focus:border-[#0B2D72]/50 transition-colors"
                     />
                   </div>
                 </div>
 
                 <div className="pt-8 border-t border-gray-800/50 flex justify-end">
-                  <button className="flex items-center gap-3 bg-[#0B2D72] text-black px-8 py-4 rounded-xl font-black uppercase text-[10px] tracking-[0.3em] hover:bg-[#7FB77E] transition-all shadow-xl shadow-[#0B2D72]/10 active:scale-95">
+                  <button className="flex items-center gap-3 bg-[#0B2D72] text-black px-8 py-4 rounded-xl font-black uppercase text-[10px] tracking-[0.3em] hover:bg-[#EDF7BD] transition-all shadow-xl shadow-[#0B2D72]/10 active:scale-95">
                     <Save className="w-4 h-4" /> Save Modifications
                   </button>
                 </div>

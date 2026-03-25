@@ -89,7 +89,7 @@ const NotificationBell = () => {
     <div className="relative" ref={dropdownRef}>
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-2 text-black hover:text-black transition-colors bg-[#7FB77E]/5 rounded-full border border-white/5"
+        className="relative p-2 text-black hover:text-black transition-colors bg-[#EDF7BD]/5 rounded-full border border-white/5"
       >
         <Bell size={20} />
         {unreadCount > 0 && (
@@ -100,7 +100,7 @@ const NotificationBell = () => {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-4 w-80 bg-[#7FB77E] border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-300">
+        <div className="absolute right-0 mt-4 w-80 bg-[#EDF7BD] border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-300">
           <div className="p-4 border-b border-white/5 flex items-center justify-between">
             <h3 className="text-[10px] uppercase font-black tracking-[0.3em] text-black">Navan Protocol Alerts</h3>
             <button onClick={() => setIsOpen(false)}><X size={14} className="text-black hover:text-black" /></button>
@@ -115,10 +115,10 @@ const NotificationBell = () => {
               notifications.map((n) => (
                 <div 
                   key={n._id} 
-                  className={`p-4 border-b border-white/5 flex gap-4 transition-colors ${n.isRead ? 'opacity-60' : 'bg-[#7FB77E]/[0.02] border-l-2 border-l-[#0B2D72]'}`}
+                  className={`p-4 border-b border-white/5 flex gap-4 transition-colors ${n.isRead ? 'opacity-60' : 'bg-[#EDF7BD]/[0.02] border-l-2 border-l-[#0B2D72]'}`}
                 >
                   <div className="mt-1 flex-shrink-0">
-                    <div className="w-8 h-8 rounded-lg bg-[#7FB77E]/5 flex items-center justify-center border border-white/5">
+                    <div className="w-8 h-8 rounded-lg bg-[#EDF7BD]/5 flex items-center justify-center border border-white/5">
                       {getIcon(n.type)}
                     </div>
                   </div>
@@ -145,7 +145,7 @@ const NotificationBell = () => {
             )}
           </div>
 
-          <div className="p-4 bg-[#7FB77E]/40 text-center">
+          <div className="p-4 bg-[#EDF7BD]/40 text-center">
             <p className="text-[9px] uppercase font-black text-black tracking-[0.2em]">Secure Notification Node v1.0</p>
           </div>
         </div>

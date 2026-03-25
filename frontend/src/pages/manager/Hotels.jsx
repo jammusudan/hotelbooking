@@ -124,7 +124,7 @@ const Hotels = () => {
         </div>
         <button 
           onClick={() => handleOpenModal()}
-          className="flex items-center justify-center gap-3 bg-[#0B2D72] text-black px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-[#7FB77E] hover:text-black transition-all shadow-lg shadow-[#0B2D72]/20 active:scale-95 group"
+          className="flex items-center justify-center gap-3 bg-[#0B2D72] text-black px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-[#EDF7BD] hover:text-black transition-all shadow-lg shadow-[#0B2D72]/20 active:scale-95 group"
         >
           <Plus className="w-5 h-5 group-hover:rotate-90 transition-transform" />
           <span>Add New Hotel</span>
@@ -201,7 +201,7 @@ const Hotels = () => {
       {/* Hotel Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-[#7FB77E]/60 backdrop-blur-xl" onClick={() => setIsModalOpen(false)}></div>
+          <div className="absolute inset-0 bg-[#EDF7BD]/60 backdrop-blur-xl" onClick={() => setIsModalOpen(false)}></div>
           <div className="relative bg-[#111114] w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-[3rem] border border-gray-800 shadow-2xl p-10 animate-in fade-in zoom-in-95 duration-300">
             <div className="flex items-center justify-between mb-12">
               <h2 className="text-3xl font-serif font-black text-black italic tracking-tighter uppercase">
@@ -209,7 +209,7 @@ const Hotels = () => {
               </h2>
               <button 
                 onClick={() => setIsModalOpen(false)}
-                className="p-2.5 bg-[#7FB77E] text-black hover:text-black hover:bg-gray-800 rounded-xl transition-all border border-gray-800"
+                className="p-2.5 bg-[#EDF7BD] text-black hover:text-black hover:bg-gray-800 rounded-xl transition-all border border-gray-800"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -222,7 +222,7 @@ const Hotels = () => {
                   <input 
                     required 
                     placeholder="e.g. Royal Grand Conservatory"
-                    className="w-full px-6 py-4 bg-[#7FB77E]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black"
+                    className="w-full px-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   />
@@ -232,7 +232,7 @@ const Hotels = () => {
                   <input 
                     required 
                     placeholder="e.g. Monte Carlo"
-                    className="w-full px-6 py-4 bg-[#7FB77E]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black"
+                    className="w-full px-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black"
                     value={formData.city}
                     onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                   />
@@ -244,7 +244,7 @@ const Hotels = () => {
                 <textarea 
                   required 
                   rows="4"
-                  className="w-full px-6 py-4 bg-[#7FB77E]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black resize-none italic"
+                  className="w-full px-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black resize-none italic"
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   placeholder="Describe the architectural significance and luxury allure..."
@@ -256,7 +256,7 @@ const Hotels = () => {
                   <label className="text-[10px] font-black text-black uppercase tracking-[0.3em] ml-2">Address</label>
                   <input 
                     required 
-                    className="w-full px-6 py-4 bg-[#7FB77E]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black"
+                    className="w-full px-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black"
                     value={formData.address}
                     onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                   />
@@ -265,7 +265,7 @@ const Hotels = () => {
                   <label className="text-[10px] font-black text-black uppercase tracking-[0.3em] ml-2">Country</label>
                   <input 
                     required 
-                    className="w-full px-6 py-4 bg-[#7FB77E]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black"
+                    className="w-full px-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black"
                     value={formData.country}
                     onChange={(e) => setFormData({ ...formData, country: e.target.value })}
                   />
@@ -276,7 +276,7 @@ const Hotels = () => {
                 <label className="text-[10px] font-black text-black uppercase tracking-[0.3em] ml-2">Hotel Amenities</label>
                 <input 
                   placeholder="Private Grotto, Michelin Star Kitchen, Helipad..."
-                  className="w-full px-6 py-4 bg-[#7FB77E]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black font-mono tracking-tighter"
+                  className="w-full px-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black font-mono tracking-tighter"
                   value={formData.amenities}
                   onChange={(e) => setFormData({ ...formData, amenities: e.target.value })}
                 />
@@ -298,7 +298,7 @@ const Hotels = () => {
                     <div className="relative flex-1">
                       <ImageIcon className="absolute left-6 top-5 w-4 h-4 text-black" />
                       <input 
-                        className="w-full pl-14 pr-6 py-4 bg-[#7FB77E]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all text-sm placeholder:text-black"
+                        className="w-full pl-14 pr-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all text-sm placeholder:text-black"
                         placeholder="https://lux-vault.com/property-shot-1.jpg"
                         value={img}
                         onChange={(e) => handleImageChange(idx, e.target.value)}
@@ -320,7 +320,7 @@ const Hotels = () => {
               <button 
                 type="submit" 
                 disabled={submitLoading}
-                className="w-full py-5 bg-[#0B2D72] text-black rounded-2xl font-black uppercase tracking-[0.3em] shadow-2xl shadow-[#0B2D72]/20 hover:bg-[#7FB77E] active:scale-[0.98] transition-all disabled:opacity-50 disabled:scale-100 flex items-center justify-center gap-4 text-sm mt-8 border border-white/10"
+                className="w-full py-5 bg-[#0B2D72] text-black rounded-2xl font-black uppercase tracking-[0.3em] shadow-2xl shadow-[#0B2D72]/20 hover:bg-[#EDF7BD] active:scale-[0.98] transition-all disabled:opacity-50 disabled:scale-100 flex items-center justify-center gap-4 text-sm mt-8 border border-white/10"
               >
                 {submitLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Save Hotel Details'}
               </button>

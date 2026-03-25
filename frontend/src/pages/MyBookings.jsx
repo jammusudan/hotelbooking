@@ -120,13 +120,13 @@ const MyBookings = () => {
     };
 
     if (loading) return (
-        <div className="min-h-screen flex items-center justify-center bg-[#7FB77E]">
+        <div className="min-h-screen flex items-center justify-center bg-[#EDF7BD]">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0B2D72]"></div>
         </div>
     );
 
     return (
-        <div className="bg-[#7FB77E] min-h-screen pt-32 pb-24 relative overflow-hidden">
+        <div className="bg-[#EDF7BD] min-h-screen pt-32 pb-24 relative overflow-hidden">
             {/* Ambient Background Glow */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-[#0B2D72]/5 blur-[120px] pointer-events-none"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#0B2D72]/5 blur-[120px] pointer-events-none"></div>
@@ -147,15 +147,15 @@ const MyBookings = () => {
                 </div>
 
                 {bookings.length === 0 ? (
-                    <div className="text-center py-32 bg-[#7FB77E] rounded-[3rem] border border-dashed border-white/10 border-2">
+                    <div className="text-center py-32 bg-[#EDF7BD] rounded-[3rem] border border-dashed border-white/10 border-2">
                         <div className="text-6xl mb-8 opacity-20 grayscale">🧳</div>
                         <p className="text-2xl font-serif font-black text-black uppercase tracking-widest mb-10 italic">No bookings found</p>
-                        <Link to="/hotels" className="inline-block bg-[#0B2D72] text-black px-12 py-5 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-[#7FB77E] transition-all transform active:scale-95 shadow-2xl shadow-[#0B2D72]/10">Find Hotels</Link>
+                        <Link to="/hotels" className="inline-block bg-[#0B2D72] text-black px-12 py-5 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-[#EDF7BD] transition-all transform active:scale-95 shadow-2xl shadow-[#0B2D72]/10">Find Hotels</Link>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 gap-12">
                         {bookings.map((booking) => (
-                            <div key={booking._id} className="group bg-[#7FB77E] rounded-[3rem] border border-white/5 shadow-2xl hover:border-[#0B2D72]/30 transition-all duration-700 overflow-hidden flex flex-col lg:flex-row shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)]">
+                            <div key={booking._id} className="group bg-[#EDF7BD] rounded-[3rem] border border-white/5 shadow-2xl hover:border-[#0B2D72]/30 transition-all duration-700 overflow-hidden flex flex-col lg:flex-row shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)]">
                                 
                                 {/* Image Section */}
                                 <div className="lg:w-1/3 min-h-[300px] overflow-hidden relative">
@@ -199,7 +199,7 @@ const MyBookings = () => {
                                             </div>
                                         </div>
 
-                                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 p-10 bg-[#7FB77E]/40 rounded-[2.5rem] border border-white/5">
+                                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 p-10 bg-[#EDF7BD]/40 rounded-[2.5rem] border border-white/5">
                                             <div className="space-y-2">
                                                 <span className="text-[9px] font-black text-black uppercase tracking-[0.2em] block">Arrival</span>
                                                 <strong className="text-xs font-black text-black uppercase tracking-widest">{new Date(booking.checkIn).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</strong>
@@ -221,14 +221,14 @@ const MyBookings = () => {
 
                                     <div className="mt-12 flex flex-wrap gap-4">
                                         {booking.status === 'Pending' && (
-                                            <Link to={`/payment/${booking._id}`} className="bg-[#0B2D72] text-black px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#7FB77E] transition-all shadow-xl shadow-[#0B2D72]/10 flex items-center gap-2">
+                                            <Link to={`/payment/${booking._id}`} className="bg-[#0B2D72] text-black px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#EDF7BD] transition-all shadow-xl shadow-[#0B2D72]/10 flex items-center gap-2">
                                                 <CreditCard size={14} /> Finalize Payment
                                             </Link>
                                         )}
                                         {booking.status === 'Confirmed' && (
                                             <Link 
                                                 to={`/invoice/${booking._id}`}
-                                                className="bg-[#7FB77E]/5 text-black border border-white/10 px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#7FB77E] hover:text-black transition-all flex items-center gap-2"
+                                                className="bg-[#EDF7BD]/5 text-black border border-white/10 px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#EDF7BD] hover:text-black transition-all flex items-center gap-2"
                                             >
                                                 <Receipt size={14} /> Digtal Invoice
                                             </Link>
@@ -236,7 +236,7 @@ const MyBookings = () => {
                                         {booking.status === 'Confirmed' && (
                                             <button 
                                                 onClick={() => setReviewingBooking(booking)}
-                                                className="bg-[#0B2D72] text-black px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#7FB77E] transition-all shadow-xl shadow-[#0B2D72]/10 flex items-center gap-2"
+                                                className="bg-[#0B2D72] text-black px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#EDF7BD] transition-all shadow-xl shadow-[#0B2D72]/10 flex items-center gap-2"
                                             >
                                                 <MessageCircle size={14} /> Write a Review
                                             </button>
@@ -250,7 +250,7 @@ const MyBookings = () => {
                                             </button>
                                         )}
                                         {booking.paymentStatus === 'Refunded' && (
-                                            <span className="bg-[#7FB77E]/5 text-black px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest border border-white/5 flex items-center gap-2">
+                                            <span className="bg-[#EDF7BD]/5 text-black px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest border border-white/5 flex items-center gap-2">
                                                 <ShieldCheck size={14} /> Refunded to Source
                                             </span>
                                         )}
@@ -258,7 +258,7 @@ const MyBookings = () => {
                                             <>
                                                 <button 
                                                     onClick={() => startEdit(booking)} 
-                                                    className="bg-[#7FB77E]/5 text-black border border-white/10 px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#0B2D72] hover:text-black transition-all flex items-center gap-2"
+                                                    className="bg-[#EDF7BD]/5 text-black border border-white/10 px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#0B2D72] hover:text-black transition-all flex items-center gap-2"
                                                 >
                                                     <Edit3 size={14} /> Edit Dates
                                                 </button>
@@ -280,8 +280,8 @@ const MyBookings = () => {
 
             {/* MODIFICATION MODAL */}
             {editingBooking && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#7FB77E]/80 backdrop-blur-md animate-in fade-in duration-500">
-                    <div className="bg-[#7FB77E] w-full max-w-xl rounded-[3rem] shadow-2xl relative border border-white/10 overflow-hidden animate-in zoom-in-95 duration-500">
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#EDF7BD]/80 backdrop-blur-md animate-in fade-in duration-500">
+                    <div className="bg-[#EDF7BD] w-full max-w-xl rounded-[3rem] shadow-2xl relative border border-white/10 overflow-hidden animate-in zoom-in-95 duration-500">
                         <div className="absolute top-0 left-0 w-full h-2 bg-[#0B2D72]"></div>
                         <button onClick={() => setEditingBooking(null)} className="absolute top-10 right-10 text-black hover:text-black transition-colors outline-none z-10">
                             <X size={24} />
@@ -301,7 +301,7 @@ const MyBookings = () => {
                                             type="date" required 
                                             value={editForm.checkIn}
                                             onChange={(e) => setEditForm({...editForm, checkIn: e.target.value})}
-                                            className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-2xl p-4 text-sm text-black focus:border-[#0B2D72] outline-none transition-all font-bold color-scheme-dark"
+                                            className="w-full bg-[#EDF7BD]/40 border border-white/10 rounded-2xl p-4 text-sm text-black focus:border-[#0B2D72] outline-none transition-all font-bold color-scheme-dark"
                                         />
                                     </div>
                                     <div className="space-y-2">
@@ -310,7 +310,7 @@ const MyBookings = () => {
                                             type="date" required 
                                             value={editForm.checkOut}
                                             onChange={(e) => setEditForm({...editForm, checkOut: e.target.value})}
-                                            className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-2xl p-4 text-sm text-black focus:border-[#0B2D72] outline-none transition-all font-bold color-scheme-dark"
+                                            className="w-full bg-[#EDF7BD]/40 border border-white/10 rounded-2xl p-4 text-sm text-black focus:border-[#0B2D72] outline-none transition-all font-bold color-scheme-dark"
                                         />
                                     </div>
                                 </div>
@@ -321,7 +321,7 @@ const MyBookings = () => {
                                         type="number" min="1" required 
                                         value={editForm.guests}
                                         onChange={(e) => setEditForm({...editForm, guests: parseInt(e.target.value)})}
-                                        className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-2xl p-4 text-sm text-black focus:border-[#0B2D72] outline-none transition-all font-bold"
+                                        className="w-full bg-[#EDF7BD]/40 border border-white/10 rounded-2xl p-4 text-sm text-black focus:border-[#0B2D72] outline-none transition-all font-bold"
                                     />
                                 </div>
 
@@ -334,7 +334,7 @@ const MyBookings = () => {
                                 <button 
                                     type="submit" 
                                     disabled={updateLoading}
-                                    className="w-full bg-[#0B2D72] text-black font-black uppercase tracking-[0.4em] py-6 rounded-2xl hover:bg-[#7FB77E] transition-all transform active:scale-95 disabled:opacity-50 shadow-2xl shadow-[#0B2D72]/10 text-[10px]"
+                                    className="w-full bg-[#0B2D72] text-black font-black uppercase tracking-[0.4em] py-6 rounded-2xl hover:bg-[#EDF7BD] transition-all transform active:scale-95 disabled:opacity-50 shadow-2xl shadow-[#0B2D72]/10 text-[10px]"
                                 >
                                     {updateLoading ? 'Saving Changes...' : 'Save Changes'}
                                 </button>
@@ -346,8 +346,8 @@ const MyBookings = () => {
 
             {/* REVIEW MODAL */}
             {reviewingBooking && (
-                <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-[#7FB77E]/80 backdrop-blur-md animate-in fade-in duration-500">
-                    <div className="bg-[#7FB77E] w-full max-w-xl rounded-[3rem] shadow-2xl relative border border-white/10 overflow-hidden animate-in zoom-in-95 duration-500">
+                <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-[#EDF7BD]/80 backdrop-blur-md animate-in fade-in duration-500">
+                    <div className="bg-[#EDF7BD] w-full max-w-xl rounded-[3rem] shadow-2xl relative border border-white/10 overflow-hidden animate-in zoom-in-95 duration-500">
                         <div className="absolute top-0 left-0 w-full h-2 bg-[#0B2D72]"></div>
                         <button onClick={() => setReviewingBooking(null)} className="absolute top-10 right-10 text-black hover:text-black transition-colors outline-none z-10">
                             <X size={24} />
@@ -362,7 +362,7 @@ const MyBookings = () => {
                             <form onSubmit={submitReview} className="space-y-10">
                                 <div className="space-y-4">
                                     <label className="text-[10px] font-black text-black uppercase tracking-widest flex justify-center">Rating</label>
-                                    <div className="flex justify-center gap-6 py-8 bg-[#7FB77E]/40 rounded-[2.5rem] border border-white/5">
+                                    <div className="flex justify-center gap-6 py-8 bg-[#EDF7BD]/40 rounded-[2.5rem] border border-white/5">
                                         {[1, 2, 3, 4, 5].map((star) => (
                                             <button 
                                                 key={star} type="button" 
@@ -382,14 +382,14 @@ const MyBookings = () => {
                                         placeholder="Tell us about your stay..."
                                         value={reviewForm.comment}
                                         onChange={(e) => setReviewForm({...reviewForm, comment: e.target.value})}
-                                        className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-[2rem] p-8 text-black focus:border-[#0B2D72] outline-none text-sm font-medium transition-all resize-none placeholder:text-black italic"
+                                        className="w-full bg-[#EDF7BD]/40 border border-white/10 rounded-[2rem] p-8 text-black focus:border-[#0B2D72] outline-none text-sm font-medium transition-all resize-none placeholder:text-black italic"
                                     />
                                 </div>
 
                                 <button 
                                     type="submit" 
                                     disabled={reviewLoading}
-                                    className="w-full bg-[#0B2D72] text-black font-black uppercase tracking-[0.4em] py-6 rounded-2xl hover:bg-[#7FB77E] transition-all transform active:scale-95 disabled:opacity-50 shadow-2xl shadow-[#0B2D72]/10 text-[10px]"
+                                    className="w-full bg-[#0B2D72] text-black font-black uppercase tracking-[0.4em] py-6 rounded-2xl hover:bg-[#EDF7BD] transition-all transform active:scale-95 disabled:opacity-50 shadow-2xl shadow-[#0B2D72]/10 text-[10px]"
                                 >
                                     {reviewLoading ? 'Submitting Review...' : 'Submit Review'}
                                 </button>

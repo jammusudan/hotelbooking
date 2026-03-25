@@ -110,19 +110,19 @@ const Payment = () => {
     };
 
     if (loading) return (
-        <div className="min-h-screen flex items-center justify-center bg-[#7FB77E]">
+        <div className="min-h-screen flex items-center justify-center bg-[#EDF7BD]">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0B2D72]"></div>
         </div>
     );
 
     return (
-        <div className="min-h-screen bg-[#7FB77E] flex items-center justify-center p-6 pt-24 pb-12">
+        <div className="min-h-screen bg-[#EDF7BD] flex items-center justify-center p-6 pt-24 pb-12">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#0B2D72]/10 via-transparent to-transparent opacity-50 pointer-events-none"></div>
             
             <div className="max-w-2xl w-full relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-[#0B2D72] via-[#0B2D72] to-[#0B2D72] rounded-[3rem] blur opacity-25"></div>
                 
-                <div className="relative bg-[#7FB77E] border border-white/10 rounded-[3rem] overflow-hidden shadow-2xl">
+                <div className="relative bg-[#EDF7BD] border border-white/10 rounded-[3rem] overflow-hidden shadow-2xl">
                     <div className="h-2 w-full bg-gradient-to-r from-transparent via-[#0B2D72] to-transparent"></div>
 
                     <div className="p-8 md:p-12">
@@ -147,7 +147,7 @@ const Payment = () => {
                             <div className="space-y-8">
                                 {paymentStep === 'overview' ? (
                                     <div className="animate-in fade-in slide-in-from-right-8 duration-500">
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-[#7FB77E]/5 p-8 rounded-[2.5rem] border border-white/5 shadow-inner mb-8">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-[#EDF7BD]/5 p-8 rounded-[2.5rem] border border-white/5 shadow-inner mb-8">
                                             <div className="space-y-6">
                                                 <div className="space-y-1">
                                                     <span className="text-[10px] font-black text-black uppercase tracking-widest block">Hotel</span>
@@ -169,7 +169,7 @@ const Payment = () => {
 
                                         <button 
                                             onClick={() => setPaymentStep('details')}
-                                            className="w-full group relative flex items-center justify-center gap-4 py-6 bg-[#7FB77E] text-black font-black uppercase tracking-[0.4em] rounded-2xl hover:bg-[#0B2D72] hover:text-black transition-all transform active:scale-[0.98]"
+                                            className="w-full group relative flex items-center justify-center gap-4 py-6 bg-[#EDF7BD] text-black font-black uppercase tracking-[0.4em] rounded-2xl hover:bg-[#0B2D72] hover:text-black transition-all transform active:scale-[0.98]"
                                         >
                                             <span className="absolute left-8 text-xl group-hover:scale-125 transition-transform">⚔️</span>
                                             Proceed to Payment
@@ -177,7 +177,7 @@ const Payment = () => {
                                     </div>
                                 ) : (
                                     <div className="animate-in fade-in slide-in-from-left-8 duration-500 space-y-6">
-                                        <div className="bg-[#7FB77E]/5 p-8 rounded-[2.5rem] border border-white/5 shadow-inner">
+                                        <div className="bg-[#EDF7BD]/5 p-8 rounded-[2.5rem] border border-white/5 shadow-inner">
                                             <h3 className="text-xs font-black text-black uppercase tracking-[0.3em] mb-6 flex items-center justify-between">
                                                 Billing & Security 
                                                 <button onClick={() => setPaymentStep('overview')} className="text-black hover:text-black transition-colors">Back</button>
@@ -190,7 +190,7 @@ const Payment = () => {
                                                         type="text"
                                                         value={billingDetails.name}
                                                         onChange={(e) => setBillingDetails({...billingDetails, name: e.target.value})}
-                                                        className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-xl p-3 text-sm text-black focus:border-[#0B2D72]/50 outline-none transition-all font-black uppercase"
+                                                        className="w-full bg-[#EDF7BD]/40 border border-white/10 rounded-xl p-3 text-sm text-black focus:border-[#0B2D72]/50 outline-none transition-all font-black uppercase"
                                                         placeholder="Full Name as on Card"
                                                     />
                                                 </div>
@@ -201,7 +201,7 @@ const Payment = () => {
                                                             type="tel"
                                                             value={billingDetails.phone}
                                                             onChange={(e) => setBillingDetails({...billingDetails, phone: e.target.value})}
-                                                            className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-xl p-3 text-sm text-black focus:border-[#0B2D72]/50 outline-none transition-all font-black"
+                                                            className="w-full bg-[#EDF7BD]/40 border border-white/10 rounded-xl p-3 text-sm text-black focus:border-[#0B2D72]/50 outline-none transition-all font-black"
                                                             placeholder="+91..."
                                                         />
                                                     </div>
@@ -211,7 +211,7 @@ const Payment = () => {
                                                             type="email"
                                                             value={billingDetails.email}
                                                             onChange={(e) => setBillingDetails({...billingDetails, email: e.target.value})}
-                                                            className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-xl p-3 text-sm text-black focus:border-[#0B2D72]/50 outline-none transition-all font-black"
+                                                            className="w-full bg-[#EDF7BD]/40 border border-white/10 rounded-xl p-3 text-sm text-black focus:border-[#0B2D72]/50 outline-none transition-all font-black"
                                                             placeholder="your@email.com"
                                                         />
                                                     </div>
@@ -230,7 +230,7 @@ const Payment = () => {
                                                 </p>
                                                 <button 
                                                     onClick={() => { setStatus('idle'); setErrorMessage(''); }}
-                                                    className="px-6 py-2 bg-[#7FB77E]/5 border border-white/10 rounded-xl text-[10px] font-black uppercase tracking-widest text-black hover:bg-[#7FB77E] hover:text-black transition-all"
+                                                    className="px-6 py-2 bg-[#EDF7BD]/5 border border-white/10 rounded-xl text-[10px] font-black uppercase tracking-widest text-black hover:bg-[#EDF7BD] hover:text-black transition-all"
                                                 >
                                                     Retry Payment
                                                 </button>

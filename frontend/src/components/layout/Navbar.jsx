@@ -44,7 +44,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           
           <Link to="/" className={`text-2xl md:text-3xl font-serif font-bold ${logoColor} transition flex items-center gap-3 group`}>
-            <div className="relative w-10 h-10 overflow-hidden rounded-xl bg-[#7FB77E]/10 p-1 group-hover:scale-110 transition-transform duration-300">
+            <div className="relative w-10 h-10 overflow-hidden rounded-xl bg-[#EDF7BD]/10 p-1 group-hover:scale-110 transition-transform duration-300">
               <img src="/logo.png" alt="Navan Logo" className="w-full h-full object-contain" />
             </div>
             <span className="tracking-tight">Navan</span>
@@ -64,7 +64,7 @@ const Navbar = () => {
                 <div className="flex items-center gap-4">
                   <NotificationBell />
                   {user.role === 'admin' ? (
-                    <Link to="/admin/dashboard" className="bg-[#7FB77E]/10 hover:bg-[#7FB77E]/20 text-black text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-lg transition-all border border-white/10">Console</Link>
+                    <Link to="/admin/dashboard" className="bg-[#EDF7BD]/10 hover:bg-[#EDF7BD]/20 text-black text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-lg transition-all border border-white/10">Console</Link>
                   ) : user.role === 'manager' ? (
                     <Link to="/manager/dashboard" className="bg-blue-600 hover:bg-blue-700 text-black text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-lg transition-all shadow-lg shadow-blue-600/20">Portal</Link>
                   ) : (
@@ -99,7 +99,7 @@ const Navbar = () => {
             )}
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 rounded-xl transition-colors ${linkColor} hover:bg-[#7FB77E]/10`}
+              className={`p-2 rounded-xl transition-colors ${linkColor} hover:bg-[#EDF7BD]/10`}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -131,13 +131,13 @@ const Navbar = () => {
               
               <div className="grid grid-cols-2 gap-3 pt-2">
                   {user.role === 'admin' ? (
-                    <Link to="/admin/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#7FB77E]/10 hover:bg-[#7FB77E]/20 text-black text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all border border-white/10">Console</Link>
+                    <Link to="/admin/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#EDF7BD]/10 hover:bg-[#EDF7BD]/20 text-black text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all border border-white/10">Console</Link>
                   ) : user.role === 'manager' ? (
                     <Link to="/manager/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-blue-600 hover:bg-blue-700 text-black text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all shadow-lg shadow-blue-600/20">Portal</Link>
                   ) : (
                     <>
-                      <Link to="/customer/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#7FB77E]/5 hover:bg-[#7FB77E]/10 text-black text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all border border-white/5">Dashboard</Link>
-                      <Link to="/my-bookings" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#7FB77E]/5 hover:bg-[#7FB77E]/10 text-black text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all border border-white/5">Bookings</Link>
+                      <Link to="/customer/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#EDF7BD]/5 hover:bg-[#EDF7BD]/10 text-black text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all border border-white/5">Dashboard</Link>
+                      <Link to="/my-bookings" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#EDF7BD]/5 hover:bg-[#EDF7BD]/10 text-black text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all border border-white/5">Bookings</Link>
                     </>
                   )}
                   <button 
@@ -150,7 +150,7 @@ const Navbar = () => {
             </div>
           ) : (
             <div className="pt-4 flex flex-col space-y-3">
-              <Link to="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#7FB77E]/5 hover:bg-[#7FB77E]/10 text-black font-medium py-3 rounded-xl transition border border-white/5">Log In</Link>
+              <Link to="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#EDF7BD]/5 hover:bg-[#EDF7BD]/10 text-black font-medium py-3 rounded-xl transition border border-white/5">Log In</Link>
               <Link to="/register" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#0992C2] hover:bg-[#0992C2] text-black font-bold py-3 rounded-xl shadow-lg transition-all">Join Now</Link>
             </div>
           )}
