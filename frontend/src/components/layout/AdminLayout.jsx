@@ -89,19 +89,19 @@ const AdminLayout = () => {
     <div className="min-h-screen bg-[#EDF7BD] flex font-sans text-black">
       {/* Sidebar */}
       <aside 
-        className={`fixed inset-y-0 left-0 z-50 w-72 bg-transparent border-r border-gray-800/50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-y-0 left-0 z-50 w-72 bg-[#003049] border-r border-[#003049] shadow-xl transform transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:relative lg:translate-x-0 h-screen sticky top-0`}
       >
         <div className="h-full flex flex-col">
           <div className="p-8 pb-12">
-            <h1 className="text-xl font-serif font-black text-black tracking-tighter uppercase italic flex items-center gap-3">
-              <div className="w-8 h-8 overflow-hidden rounded-lg bg-[#EDF7BD]/5 p-1 border border-white/10">
+            <h1 className="text-xl font-serif font-black text-white tracking-tighter uppercase italic flex items-center gap-3">
+              <div className="w-8 h-8 overflow-hidden rounded-lg bg-white/10 p-1 border border-white/20">
                 <img src="/logo.png" alt="Navan" className="w-full h-full object-contain" />
               </div>
               <span className="tracking-tighter">Navan</span>
             </h1>
-            <p className="text-[10px] font-bold text-black tracking-[0.3em] mt-2 uppercase">Admin Console</p>
+            <p className="text-[10px] font-bold text-white tracking-[0.3em] mt-2 uppercase">Admin Console</p>
           </div>
 
           <nav className="flex-grow px-4 space-y-2 overflow-y-auto">
@@ -114,31 +114,31 @@ const AdminLayout = () => {
                   className={`w-full flex items-center gap-4 px-6 py-4 rounded-2xl text-sm font-bold transition-all ${
                     isActive 
                       ? 'bg-[#EDF7BD] text-black shadow-lg shadow-[#EDF7BD]/20' 
-                      : 'text-black hover:bg-gray-800 hover:text-black'
+                      : 'text-white hover:bg-white/10 hover:text-white'
                   }`}
                 >
-                  <item.icon className={`w-5 h-5 ${isActive ? 'text-black' : 'text-black'}`} />
+                  <item.icon className={`w-5 h-5 ${isActive ? 'text-black' : 'text-white'}`} />
                   <span className="truncate">{item.name}</span>
                 </Link>
               );
             })}
           </nav>
 
-          <div className="p-8 border-t border-gray-800/50">
+          <div className="p-8 border-t border-white/10">
             <div className="mb-6">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#EDF7BD] to-[#EDF7BD] flex items-center justify-center text-black font-black">
+                <div className="w-10 h-10 rounded-full bg-[#EDF7BD] flex items-center justify-center text-black font-black">
                   {user?.name?.charAt(0) || 'A'}
                 </div>
                 <div>
-                  <p className="text-xs font-black text-black">{user?.name || 'Administrator'}</p>
-                  <p className="text-[9px] font-bold text-black uppercase tracking-widest leading-none mt-1">Console Master</p>
+                  <p className="text-xs font-black text-white">{user?.name || 'Administrator'}</p>
+                  <p className="text-[9px] font-bold text-white uppercase tracking-widest leading-none mt-1">Console Master</p>
                 </div>
               </div>
             </div>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-3 text-black hover:text-rose-400 text-[10px] font-black uppercase tracking-widest transition-all italic group"
+              className="flex items-center gap-3 text-white hover:text-rose-400 text-[10px] font-black uppercase tracking-widest transition-all italic group"
             >
               <LogOut className="w-4 h-4 group-hover:rotate-12 transition-transform" />
               <span>Exit Protocol</span>
