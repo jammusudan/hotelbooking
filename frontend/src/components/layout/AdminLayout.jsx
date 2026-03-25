@@ -86,22 +86,22 @@ const AdminLayout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#EDF7BD] flex font-sans text-black">
+    <div className="min-h-screen bg-[#003049] flex font-sans text-white">
       {/* Sidebar */}
       <aside 
-        className={`fixed inset-y-0 left-0 z-50 w-72 bg-transparent border-r border-gray-800/50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-y-0 left-0 z-50 w-72 bg-[#003049] border-r border-white/10/50 transform transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:relative lg:translate-x-0 h-screen sticky top-0`}
       >
         <div className="h-full flex flex-col">
           <div className="p-8 pb-12">
-            <h1 className="text-xl font-serif font-black text-black tracking-tighter uppercase italic flex items-center gap-3">
-              <div className="w-8 h-8 overflow-hidden rounded-lg bg-[#EDF7BD]/5 p-1 border border-white/10">
+            <h1 className="text-xl font-serif font-black text-white tracking-tighter uppercase italic flex items-center gap-3">
+              <div className="w-8 h-8 overflow-hidden rounded-lg bg-[#003049]/5 p-1 border border-white/10">
                 <img src="/logo.png" alt="Navan" className="w-full h-full object-contain" />
               </div>
               <span className="tracking-tighter">Navan</span>
             </h1>
-            <p className="text-[10px] font-bold text-black tracking-[0.3em] mt-2 uppercase">Admin Console</p>
+            <p className="text-[10px] font-bold text-white tracking-[0.3em] mt-2 uppercase">Admin Console</p>
           </div>
 
           <nav className="flex-grow px-4 space-y-2 overflow-y-auto">
@@ -113,32 +113,32 @@ const AdminLayout = () => {
                   to={item.path}
                   className={`w-full flex items-center gap-4 px-6 py-4 rounded-2xl text-sm font-bold transition-all ${
                     isActive 
-                      ? 'bg-[#EDF7BD] text-black shadow-lg shadow-[#EDF7BD]/20' 
-                      : 'text-black hover:bg-gray-800 hover:text-black'
+                      ? 'bg-[#003049] text-white shadow-lg shadow-[#003049]/20' 
+                      : 'text-white hover:bg-gray-800 hover:text-white'
                   }`}
                 >
-                  <item.icon className={`w-5 h-5 ${isActive ? 'text-black' : 'text-black'}`} />
+                  <item.icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-white'}`} />
                   <span className="truncate">{item.name}</span>
                 </Link>
               );
             })}
           </nav>
 
-          <div className="p-8 border-t border-gray-800/50">
+          <div className="p-8 border-t border-white/10/50">
             <div className="mb-6">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#EDF7BD] to-[#EDF7BD] flex items-center justify-center text-black font-black">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#003049] to-[#003049] flex items-center justify-center text-white font-black">
                   {user?.name?.charAt(0) || 'A'}
                 </div>
                 <div>
-                  <p className="text-xs font-black text-black">{user?.name || 'Administrator'}</p>
-                  <p className="text-[9px] font-bold text-black uppercase tracking-widest leading-none mt-1">Console Master</p>
+                  <p className="text-xs font-black text-white">{user?.name || 'Administrator'}</p>
+                  <p className="text-[9px] font-bold text-white uppercase tracking-widest leading-none mt-1">Console Master</p>
                 </div>
               </div>
             </div>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-3 text-black hover:text-rose-400 text-[10px] font-black uppercase tracking-widest transition-all italic group"
+              className="flex items-center gap-3 text-white hover:text-rose-400 text-[10px] font-black uppercase tracking-widest transition-all italic group"
             >
               <LogOut className="w-4 h-4 group-hover:rotate-12 transition-transform" />
               <span>Exit Protocol</span>
@@ -180,24 +180,24 @@ const AdminLayout = () => {
               />
               
               {showDropdown && searchQuery.trim() && (
-                <div className="absolute top-full mt-4 right-0 w-80 bg-transparent border border-gray-800 rounded-2xl shadow-2xl p-4 animate-in fade-in slide-in-from-top-4">
+                <div className="absolute top-full mt-4 right-0 w-80 bg-transparent border border-white/10 rounded-2xl shadow-2xl p-4 animate-in fade-in slide-in-from-top-4">
                   {isSearching ? (
-                     <div className="flex items-center justify-center py-8 text-black">
+                     <div className="flex items-center justify-center py-8 text-white">
                         <Loader2 className="w-5 h-5 animate-spin" />
                      </div>
                   ) : !searchResults ? null : (
                     <div className="space-y-6 max-h-[60vh] overflow-y-auto custom-scrollbar">
                       {searchResults.users?.length > 0 && (
                         <div>
-                          <h4 className="text-[10px] font-black uppercase tracking-widest text-black mb-3">Patrons Found</h4>
+                          <h4 className="text-[10px] font-black uppercase tracking-widest text-white mb-3">Patrons Found</h4>
                           <div className="space-y-2">
                              {searchResults.users.map(u => (
-                               <div key={u._id} className="flex flex-col p-3 bg-[#EDF7BD]/40 border border-white/5 rounded-xl hover:border-[#EDF7BD]/30 transition-all cursor-default">
+                               <div key={u._id} className="flex flex-col p-3 bg-[#003049]/40 border border-white/5 rounded-xl hover:border-[#003049]/30 transition-all cursor-default">
                                   <div className="flex justify-between items-center mb-1">
-                                    <span className="text-xs font-bold text-black">{u.name}</span>
-                                    <span className="text-[9px] font-black uppercase text-black">{u.role}</span>
+                                    <span className="text-xs font-bold text-white">{u.name}</span>
+                                    <span className="text-[9px] font-black uppercase text-white">{u.role}</span>
                                   </div>
-                                  <span className="text-[10px] text-black">{u.email}</span>
+                                  <span className="text-[10px] text-white">{u.email}</span>
                                </div>
                              ))}
                           </div>
@@ -206,15 +206,15 @@ const AdminLayout = () => {
 
                       {searchResults.hotels?.length > 0 && (
                         <div>
-                          <h4 className="text-[10px] font-black uppercase tracking-widest text-black mb-3">Sanctuaries Found</h4>
+                          <h4 className="text-[10px] font-black uppercase tracking-widest text-white mb-3">Sanctuaries Found</h4>
                           <div className="space-y-2">
                              {searchResults.hotels.map(h => (
-                               <div key={h._id} className="flex flex-col p-3 bg-[#EDF7BD]/40 border border-white/5 rounded-xl hover:border-[#EDF7BD]/30 transition-all cursor-default">
+                               <div key={h._id} className="flex flex-col p-3 bg-[#003049]/40 border border-white/5 rounded-xl hover:border-[#003049]/30 transition-all cursor-default">
                                   <div className="flex justify-between items-center mb-1">
-                                    <span className="text-xs font-bold text-black italic truncate pr-2">{h.name}</span>
+                                    <span className="text-xs font-bold text-white italic truncate pr-2">{h.name}</span>
                                     <span className={`text-[9px] font-black uppercase ${h.isApproved ? 'text-emerald-500' : 'text-rose-500'}`}>{h.isApproved ? 'Active' : 'Halted'}</span>
                                   </div>
-                                  <span className="text-[10px] text-black uppercase tracking-widest">{h.city}, {h.country}</span>
+                                  <span className="text-[10px] text-white uppercase tracking-widest">{h.city}, {h.country}</span>
                                </div>
                              ))}
                           </div>
@@ -222,7 +222,7 @@ const AdminLayout = () => {
                       )}
 
                       {searchResults.users?.length === 0 && searchResults.hotels?.length === 0 && (
-                         <div className="py-6 text-center text-[10px] font-bold uppercase tracking-widest text-black">
+                         <div className="py-6 text-center text-[10px] font-bold uppercase tracking-widest text-white">
                            No Telemetry Fragments Located
                          </div>
                       )}
@@ -234,35 +234,35 @@ const AdminLayout = () => {
 
             <button className="p-2.5 text-white hover:bg-white/10 rounded-xl relative border border-white/20 group">
               <Bell className="w-5 h-5 group-hover:text-white transition-colors" />
-              <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#EDF7BD] rounded-full border-2 border-white shadow-[0_0_8px_rgba(212,175,55,0.4)]"></span>
+              <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#003049] rounded-full border-2 border-white shadow-[0_0_8px_rgba(212,175,55,0.4)]"></span>
             </button>
 
             {/* Root Admin Profile Dropdown */}
             <div className="flex items-center gap-4 pl-4 border-l border-white/20 relative" ref={profileRef}>
               <div className="text-right hidden sm:block">
                 <p className="text-xs font-black text-white uppercase tracking-tighter">Root Admin</p>
-                <div className="h-0.5 w-full bg-[#EDF7BD]/50 mt-0.5"></div>
+                <div className="h-0.5 w-full bg-[#003049]/50 mt-0.5"></div>
               </div>
               <button 
                 onClick={() => setShowProfileDropdown(!showProfileDropdown)}
-                className="w-10 h-10 rounded-xl bg-[#EDF7BD] border border-gray-800 flex items-center justify-center text-black shadow-inner hover:bg-gray-800 transition-colors focus:outline-none"
+                className="w-10 h-10 rounded-xl bg-[#003049] border border-white/10 flex items-center justify-center text-white shadow-inner hover:bg-gray-800 transition-colors focus:outline-none"
               >
                 <ShieldAlert className="w-5 h-5" />
               </button>
 
               {/* Profile Menu Overlay */}
               {showProfileDropdown && (
-                <div className="absolute top-full mt-4 right-0 w-64 bg-transparent border border-gray-800 rounded-2xl shadow-2xl p-5 animate-in fade-in slide-in-from-top-4 z-50">
-                  <div className="pb-4 border-b border-gray-800/50 mb-4 text-center">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#EDF7BD] to-[#EDF7BD] mx-auto flex items-center justify-center text-black font-black text-lg mb-3 shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+                <div className="absolute top-full mt-4 right-0 w-64 bg-transparent border border-white/10 rounded-2xl shadow-2xl p-5 animate-in fade-in slide-in-from-top-4 z-50">
+                  <div className="pb-4 border-b border-white/10/50 mb-4 text-center">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#003049] to-[#003049] mx-auto flex items-center justify-center text-white font-black text-lg mb-3 shadow-[0_0_15px_rgba(212,175,55,0.3)]">
                       {user?.name?.charAt(0) || 'A'}
                     </div>
-                    <p className="text-xs font-black text-black">{user?.name || 'Administrator'}</p>
-                    <p className="text-[10px] text-black uppercase tracking-widest mt-1">{user?.email}</p>
+                    <p className="text-xs font-black text-white">{user?.name || 'Administrator'}</p>
+                    <p className="text-[10px] text-white uppercase tracking-widest mt-1">{user?.email}</p>
                   </div>
 
                   <div className="mb-4">
-                    <p className="text-[10px] font-black text-black uppercase tracking-widest mb-2">System Status</p>
+                    <p className="text-[10px] font-black text-white uppercase tracking-widest mb-2">System Status</p>
                     <div className="flex items-center justify-between p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
                       <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Global Telemetry</span>
                       <span className="flex h-2 w-2 relative">
@@ -274,7 +274,7 @@ const AdminLayout = () => {
 
                   <button 
                     onClick={handleLogout}
-                    className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-rose-500/10 text-rose-500 border border-rose-500/20 rounded-xl hover:bg-rose-500 hover:text-black transition-all text-[10px] font-black uppercase tracking-widest"
+                    className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-rose-500/10 text-rose-500 border border-rose-500/20 rounded-xl hover:bg-rose-500 hover:text-white transition-all text-[10px] font-black uppercase tracking-widest"
                   >
                     <LogOut className="w-4 h-4" /> Terminate Session
                   </button>
