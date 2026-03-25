@@ -12,17 +12,17 @@ const Security = () => {
       <div className="max-w-4xl mx-auto relative z-10">
         <button 
             onClick={() => navigate('/customer/dashboard')}
-            className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-900 hover:text-indigo-400 transition-colors mb-10 flex items-center gap-4"
+            className="text-[10px] font-black uppercase tracking-[0.4em] text-black hover:text-indigo-400 transition-colors mb-10 flex items-center gap-4"
         >
             <div className="w-8 h-8 rounded-full border border-gray-800 flex items-center justify-center">←</div>
             Return to Dashboard
         </button>
 
         <header className="mb-16">
-          <h1 className="text-4xl md:text-5xl font-serif font-black text-gray-900 uppercase tracking-tighter italic">
+          <h1 className="text-4xl md:text-5xl font-serif font-black text-black uppercase tracking-tighter italic">
             Account <span className="text-indigo-400">Security</span>
           </h1>
-          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-900 mt-4">Fortify your digital presence</p>
+          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-black mt-4">Fortify your digital presence</p>
         </header>
 
         <div className="space-y-8">
@@ -33,32 +33,32 @@ const Security = () => {
                   <Key className="w-8 h-8" />
                </div>
                <div>
-                  <h3 className="text-lg font-serif font-black text-gray-900 uppercase italic">Access Credentials</h3>
-                  <p className="text-[10px] font-black text-gray-900 uppercase tracking-widest mt-1">Rotate cryptographic passphrase</p>
+                  <h3 className="text-lg font-serif font-black text-black uppercase italic">Access Credentials</h3>
+                  <p className="text-[10px] font-black text-black uppercase tracking-widest mt-1">Rotate cryptographic passphrase</p>
                </div>
             </div>
 
             <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                  <div className="space-y-3">
-                   <label className="text-[9px] font-black text-gray-900 uppercase tracking-[0.3em]">Current Protocol</label>
+                   <label className="text-[9px] font-black text-black uppercase tracking-[0.3em]">Current Protocol</label>
                    <input 
                      type="password" 
                      placeholder="••••••••"
-                     className="w-full bg-[#7FB77E]/50 border border-gray-800 rounded-2xl p-4 text-gray-900 font-bold outline-none focus:border-indigo-400/50 transition-colors"
+                     className="w-full bg-[#7FB77E]/50 border border-gray-800 rounded-2xl p-4 text-black font-bold outline-none focus:border-indigo-400/50 transition-colors"
                    />
                  </div>
                  <div className="space-y-3">
-                   <label className="text-[9px] font-black text-gray-900 uppercase tracking-[0.3em]">New Protocol</label>
+                   <label className="text-[9px] font-black text-black uppercase tracking-[0.3em]">New Protocol</label>
                    <input 
                      type="password" 
                      placeholder="••••••••"
-                     className="w-full bg-[#7FB77E]/50 border border-gray-800 rounded-2xl p-4 text-gray-900 font-bold outline-none focus:border-indigo-400/50 transition-colors"
+                     className="w-full bg-[#7FB77E]/50 border border-gray-800 rounded-2xl p-4 text-black font-bold outline-none focus:border-indigo-400/50 transition-colors"
                    />
                  </div>
                </div>
                <div className="pt-4 flex justify-end">
-                  <button className="flex items-center gap-3 bg-[#7FB77E]/5 text-gray-900 px-8 py-4 rounded-xl font-black uppercase text-[10px] tracking-[0.3em] hover:bg-indigo-500 transition-all border border-white/10 shadow-xl active:scale-95">
+                  <button className="flex items-center gap-3 bg-[#7FB77E]/5 text-black px-8 py-4 rounded-xl font-black uppercase text-[10px] tracking-[0.3em] hover:bg-indigo-500 transition-all border border-white/10 shadow-xl active:scale-95">
                     <Lock className="w-4 h-4" /> Enforce New Passphrase
                   </button>
                </div>
@@ -72,15 +72,15 @@ const Security = () => {
                     <Smartphone className="w-8 h-8" />
                 </div>
                 <div>
-                    <h3 className="text-lg font-serif font-black text-gray-900 uppercase italic flex items-center gap-3">
+                    <h3 className="text-lg font-serif font-black text-black uppercase italic flex items-center gap-3">
                         Two-Factor Auth <CheckCircle2 className="w-5 h-5 text-emerald-500" />
                     </h3>
-                    <p className="text-[10px] font-medium text-gray-900 uppercase tracking-widest mt-2 max-w-sm leading-relaxed">
+                    <p className="text-[10px] font-medium text-black uppercase tracking-widest mt-2 max-w-sm leading-relaxed">
                         Your account is protected by an additional layer of biometric and temporal security.
                     </p>
                 </div>
               </div>
-              <button disabled className="px-6 py-3 bg-[#7FB77E] text-gray-900 rounded-xl text-[10px] font-black uppercase tracking-widest cursor-not-allowed border border-gray-800">
+              <button disabled className="px-6 py-3 bg-[#7FB77E] text-black rounded-xl text-[10px] font-black uppercase tracking-widest cursor-not-allowed border border-gray-800">
                   Active Profile
               </button>
           </div>
@@ -92,13 +92,13 @@ const Security = () => {
                     <ShieldAlert className="w-8 h-8" />
                 </div>
                 <div>
-                    <h3 className="text-lg font-serif font-black text-gray-900 uppercase italic">Active Deployments</h3>
-                    <p className="text-[10px] font-medium text-gray-900 uppercase tracking-widest mt-2 max-w-sm leading-relaxed">
+                    <h3 className="text-lg font-serif font-black text-black uppercase italic">Active Deployments</h3>
+                    <p className="text-[10px] font-medium text-black uppercase tracking-widest mt-2 max-w-sm leading-relaxed">
                         Terminate all active browser and device sessions globally to ensure containment.
                     </p>
                 </div>
               </div>
-              <button className="px-6 py-3 bg-rose-500/10 text-rose-500 hover:bg-rose-500 hover:text-gray-900 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all border border-rose-500/20 shadow-lg shadow-rose-500/5 hover:scale-105 active:scale-95">
+              <button className="px-6 py-3 bg-rose-500/10 text-rose-500 hover:bg-rose-500 hover:text-black rounded-xl text-[10px] font-black uppercase tracking-widest transition-all border border-rose-500/20 shadow-lg shadow-rose-500/5 hover:scale-105 active:scale-95">
                   Purge Sessions
               </button>
           </div>

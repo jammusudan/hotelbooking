@@ -35,8 +35,8 @@ const Navbar = () => {
         : (isHome ? 'bg-transparent border-transparent py-5' : 'bg-[#0992C2] border-gray-800 py-4 shadow-lg')
   }`;
 
-  const linkColor = scrolled ? 'text-white hover:text-white' : (isHome ? 'text-white hover:text-white' : 'text-white hover:text-white');
-  const logoColor = 'text-white hover:text-white';
+  const linkColor = scrolled ? 'text-black hover:text-black' : (isHome ? 'text-black hover:text-black' : 'text-black hover:text-black');
+  const logoColor = 'text-black hover:text-black';
 
   return (
     <nav className={navClasses}>
@@ -57,16 +57,16 @@ const Navbar = () => {
             {user ? (
               <div className="relative group flex items-center space-x-6 pl-6 border-l border-gray-300/30">
                 <div className="flex flex-col items-end">
-                  <span className={`text-[10px] uppercase font-black tracking-widest ${scrolled ? 'text-white' : 'text-white'}`}>{user.role}</span>
+                  <span className={`text-[10px] uppercase font-black tracking-widest ${scrolled ? 'text-black' : 'text-black'}`}>{user.role}</span>
                   <span className={`text-sm tracking-wide font-bold ${linkColor}`}>{user.name.split(' ')[0]}</span>
                 </div>
                 
                 <div className="flex items-center gap-4">
                   <NotificationBell />
                   {user.role === 'admin' ? (
-                    <Link to="/admin/dashboard" className="bg-[#7FB77E]/10 hover:bg-[#7FB77E]/20 text-white text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-lg transition-all border border-white/10">Console</Link>
+                    <Link to="/admin/dashboard" className="bg-[#7FB77E]/10 hover:bg-[#7FB77E]/20 text-black text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-lg transition-all border border-white/10">Console</Link>
                   ) : user.role === 'manager' ? (
-                    <Link to="/manager/dashboard" className="bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-lg transition-all shadow-lg shadow-blue-600/20">Portal</Link>
+                    <Link to="/manager/dashboard" className="bg-blue-600 hover:bg-blue-700 text-black text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-lg transition-all shadow-lg shadow-blue-600/20">Portal</Link>
                   ) : (
                     <>
                       <Link to="/customer/dashboard" className={`text-xs font-bold uppercase tracking-widest transition ${linkColor}`}>Dashboard</Link>
@@ -76,7 +76,7 @@ const Navbar = () => {
 
                   <button 
                     onClick={handleLogout} 
-                    className="text-[10px] font-black uppercase tracking-widest px-4 py-2 bg-rose-500/10 text-rose-500 hover:bg-rose-500 hover:text-white rounded-lg transition-all border border-rose-500/20"
+                    className="text-[10px] font-black uppercase tracking-widest px-4 py-2 bg-rose-500/10 text-rose-500 hover:bg-rose-500 hover:text-black rounded-lg transition-all border border-rose-500/20"
                   >
                     Exit
                   </button>
@@ -85,7 +85,7 @@ const Navbar = () => {
             ) : (
               <div className="space-x-4 flex items-center pl-6 border-l border-gray-300/30">
                 <Link to="/login" className={`text-sm font-medium tracking-wide transition ${linkColor}`}>Log In</Link>
-                <Link to="/register" className="bg-[#0992C2] hover:bg-[#0992C2] text-white text-sm font-bold px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all">Join Now</Link>
+                <Link to="/register" className="bg-[#0992C2] hover:bg-[#0992C2] text-black text-sm font-bold px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all">Join Now</Link>
               </div>
             )}
           </div>
@@ -114,8 +114,8 @@ const Navbar = () => {
         }`}
       >
         <div className="px-6 flex flex-col space-y-4">
-          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-white font-medium py-2 border-b border-gray-800/50">Home</Link>
-          <Link to="/hotels" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-white font-medium py-2 border-b border-gray-800/50">Destinations</Link>
+          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-black hover:text-black font-medium py-2 border-b border-gray-800/50">Home</Link>
+          <Link to="/hotels" onClick={() => setIsMobileMenuOpen(false)} className="text-black hover:text-black font-medium py-2 border-b border-gray-800/50">Destinations</Link>
           
           {user ? (
             <div className="pt-2 flex flex-col space-y-4">
@@ -124,25 +124,25 @@ const Navbar = () => {
                   {user.name.charAt(0)}
                 </div>
                 <div>
-                  <p className="text-white font-bold">{user.name}</p>
-                  <p className="text-[10px] uppercase font-black tracking-widest text-white">{user.role}</p>
+                  <p className="text-black font-bold">{user.name}</p>
+                  <p className="text-[10px] uppercase font-black tracking-widest text-black">{user.role}</p>
                 </div>
               </div>
               
               <div className="grid grid-cols-2 gap-3 pt-2">
                   {user.role === 'admin' ? (
-                    <Link to="/admin/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#7FB77E]/10 hover:bg-[#7FB77E]/20 text-white text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all border border-white/10">Console</Link>
+                    <Link to="/admin/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#7FB77E]/10 hover:bg-[#7FB77E]/20 text-black text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all border border-white/10">Console</Link>
                   ) : user.role === 'manager' ? (
-                    <Link to="/manager/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all shadow-lg shadow-blue-600/20">Portal</Link>
+                    <Link to="/manager/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-blue-600 hover:bg-blue-700 text-black text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all shadow-lg shadow-blue-600/20">Portal</Link>
                   ) : (
                     <>
-                      <Link to="/customer/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#7FB77E]/5 hover:bg-[#7FB77E]/10 text-white text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all border border-white/5">Dashboard</Link>
-                      <Link to="/my-bookings" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#7FB77E]/5 hover:bg-[#7FB77E]/10 text-white text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all border border-white/5">Bookings</Link>
+                      <Link to="/customer/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#7FB77E]/5 hover:bg-[#7FB77E]/10 text-black text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all border border-white/5">Dashboard</Link>
+                      <Link to="/my-bookings" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#7FB77E]/5 hover:bg-[#7FB77E]/10 text-black text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all border border-white/5">Bookings</Link>
                     </>
                   )}
                   <button 
                     onClick={() => { setIsMobileMenuOpen(false); handleLogout(); }} 
-                    className="col-span-2 mt-2 text-[10px] font-black uppercase tracking-widest px-4 py-3 bg-rose-500/10 text-rose-500 hover:bg-rose-500 hover:text-white rounded-lg transition-all border border-rose-500/20"
+                    className="col-span-2 mt-2 text-[10px] font-black uppercase tracking-widest px-4 py-3 bg-rose-500/10 text-rose-500 hover:bg-rose-500 hover:text-black rounded-lg transition-all border border-rose-500/20"
                   >
                     Logout
                   </button>
@@ -150,8 +150,8 @@ const Navbar = () => {
             </div>
           ) : (
             <div className="pt-4 flex flex-col space-y-3">
-              <Link to="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#7FB77E]/5 hover:bg-[#7FB77E]/10 text-white font-medium py-3 rounded-xl transition border border-white/5">Log In</Link>
-              <Link to="/register" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#0992C2] hover:bg-[#0992C2] text-white font-bold py-3 rounded-xl shadow-lg transition-all">Join Now</Link>
+              <Link to="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#7FB77E]/5 hover:bg-[#7FB77E]/10 text-black font-medium py-3 rounded-xl transition border border-white/5">Log In</Link>
+              <Link to="/register" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#0992C2] hover:bg-[#0992C2] text-black font-bold py-3 rounded-xl shadow-lg transition-all">Join Now</Link>
             </div>
           )}
         </div>

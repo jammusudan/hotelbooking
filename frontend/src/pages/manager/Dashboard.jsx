@@ -84,9 +84,9 @@ const Dashboard = () => {
   return (
     <div className="space-y-12 animate-in fade-in slide-in-from-bottom-6 duration-700">
       <header className="mb-12">
-        <h1 className="text-4xl font-serif font-black text-gray-900 tracking-tighter uppercase italic">Overview</h1>
+        <h1 className="text-4xl font-serif font-black text-black tracking-tighter uppercase italic">Overview</h1>
         <div className="h-1.5 w-24 bg-[#0B2D72] mt-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
-        <p className="text-[10px] font-black text-gray-900 uppercase tracking-[0.3em] mt-6">Protocol established: Tracking property performance and customer telemetry.</p>
+        <p className="text-[10px] font-black text-black uppercase tracking-[0.3em] mt-6">Protocol established: Tracking property performance and customer telemetry.</p>
       </header>
 
       {/* Stats Grid */}
@@ -95,10 +95,10 @@ const Dashboard = () => {
           <div key={card.title} className="bg-[#111114] border border-gray-800/50 p-8 rounded-[2rem] hover:border-[#0B2D72]/30 transition-all group relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-[#0B2D72]/5 rounded-bl-[100%] transition-all group-hover:bg-[#0B2D72]/10"></div>
             <div className="text-3xl mb-4 grayscale group-hover:grayscale-0 transition-all shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-              <card.icon className={`w-8 h-8 ${card.color.replace('text-', 'text-gray-900')}`} />
+              <card.icon className={`w-8 h-8 ${card.color.replace('text-', 'text-black')}`} />
             </div>
-            <div className="text-3xl font-serif font-black text-gray-900 mb-1">{card.value}</div>
-            <div className="text-[10px] font-black uppercase tracking-widest text-gray-900">{card.title}</div>
+            <div className="text-3xl font-serif font-black text-black mb-1">{card.value}</div>
+            <div className="text-[10px] font-black uppercase tracking-widest text-black">{card.title}</div>
           </div>
         ))}
       </div>
@@ -107,7 +107,7 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div className="bg-[#111114] p-10 rounded-[2.5rem] border border-gray-800/50 shadow-2xl relative overflow-hidden group">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#0B2D72]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          <h3 className="text-lg font-serif font-black text-gray-900 mb-8 uppercase italic border-b border-gray-800 pb-4">Booking Analytics</h3>
+          <h3 className="text-lg font-serif font-black text-black mb-8 uppercase italic border-b border-gray-800 pb-4">Booking Analytics</h3>
           <div className="h-[300px]">
             <Line 
               data={{
@@ -156,7 +156,7 @@ const Dashboard = () => {
 
         <div className="bg-[#111114] p-10 rounded-[2.5rem] border border-gray-800/50 shadow-2xl relative overflow-hidden group">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          <h3 className="text-lg font-serif font-black text-gray-900 mb-8 uppercase italic border-b border-gray-800 pb-4">Revenue Growth</h3>
+          <h3 className="text-lg font-serif font-black text-black mb-8 uppercase italic border-b border-gray-800 pb-4">Revenue Growth</h3>
           <div className="h-[300px]">
             <Bar 
               data={{

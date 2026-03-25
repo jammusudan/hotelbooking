@@ -30,8 +30,8 @@ const VerifyEmail = () => {
               <div className="absolute inset-0 rounded-full border-4 border-gray-100"></div>
               <div className="absolute inset-0 rounded-full border-4 border-black border-t-transparent animate-spin"></div>
             </div>
-            <h2 className="text-3xl font-black text-gray-900 uppercase tracking-tight">Authenticating</h2>
-            <p className="text-gray-900 text-sm font-bold uppercase tracking-widest">Verifying your credentials...</p>
+            <h2 className="text-3xl font-black text-black uppercase tracking-tight">Authenticating</h2>
+            <p className="text-black text-sm font-bold uppercase tracking-widest">Verifying your credentials...</p>
           </div>
         )}
 
@@ -40,11 +40,11 @@ const VerifyEmail = () => {
             <div className="mx-auto h-24 w-24 bg-green-50 rounded-full flex items-center justify-center text-green-500 text-5xl border-4 border-green-100 shadow-inner">
               ✓
             </div>
-            <h2 className="text-3xl font-black text-gray-900 uppercase tracking-tight">Access Granted</h2>
-            <p className="text-gray-900 text-sm font-medium leading-relaxed px-4">
+            <h2 className="text-3xl font-black text-black uppercase tracking-tight">Access Granted</h2>
+            <p className="text-black text-sm font-medium leading-relaxed px-4">
               Your identity has been confirmed. You now have full access to our luxury collection.
             </p>
-            <Link to="/login" className="inline-block w-full bg-[#7FB77E] text-gray-900 py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-[#7FB77E] transition-all shadow-lg mt-4">
+            <Link to="/login" className="inline-block w-full bg-[#7FB77E] text-black py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-[#7FB77E] transition-all shadow-lg mt-4">
               Step Inside
             </Link>
           </div>
@@ -55,8 +55,8 @@ const VerifyEmail = () => {
             <div className="mx-auto h-24 w-24 bg-red-50 rounded-full flex items-center justify-center text-red-500 text-5xl border-4 border-red-100 shadow-inner">
               ✕
             </div>
-            <h2 className="text-3xl font-black text-gray-900 uppercase tracking-tight">Access Denied</h2>
-            <p className="text-gray-900 text-sm font-medium leading-relaxed px-4">
+            <h2 className="text-3xl font-black text-black uppercase tracking-tight">Access Denied</h2>
+            <p className="text-black text-sm font-medium leading-relaxed px-4">
               {message || 'The verification link has expired or is invalid.'}
             </p>
             <Link to="/register" className="inline-block w-full border-2 border-black text-black py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-[#7FB77E] transition-all mt-4">

@@ -118,17 +118,17 @@ const Hotels = () => {
         {/* Page Header */}
         <div className="mb-16 flex flex-col md:flex-row justify-between items-end gap-8 border-b border-white/5 pb-10">
           <div>
-            <h1 className="text-xs font-black uppercase tracking-[0.6em] text-white mb-6 flex items-center gap-2">
+            <h1 className="text-xs font-black uppercase tracking-[0.6em] text-black mb-6 flex items-center gap-2">
               <Sparkles size={14} /> Hotel Collection
             </h1>
-            <h2 className="text-5xl md:text-7xl font-serif font-black text-white uppercase tracking-tighter leading-none italic">
-              Luxury <span className="text-white">Collections</span>
+            <h2 className="text-5xl md:text-7xl font-serif font-black text-black uppercase tracking-tighter leading-none italic">
+              Luxury <span className="text-black">Collections</span>
             </h2>
-            <p className="text-white mt-4 font-medium tracking-wide">Curated stays for the discerning traveler.</p>
+            <p className="text-black mt-4 font-medium tracking-wide">Curated stays for the discerning traveler.</p>
           </div>
           <div className="flex items-center gap-4 bg-[#7FB77E]/5 border border-white/10 px-6 py-3 rounded-2xl backdrop-blur-md">
-            <span className="text-2xl font-serif font-black text-white italic">{hotels.length}</span>
-            <span className="text-[10px] font-black text-white uppercase tracking-[0.2em]">Verified Properties</span>
+            <span className="text-2xl font-serif font-black text-black italic">{hotels.length}</span>
+            <span className="text-[10px] font-black text-black uppercase tracking-[0.2em]">Verified Properties</span>
           </div>
         </div>
 
@@ -142,24 +142,24 @@ const Hotels = () => {
               </div>
 
               <div className="flex justify-between items-center mb-10 relative z-10">
-                <h2 className="text-xs font-black text-white uppercase tracking-[0.3em] flex items-center gap-2">
-                  <Filter size={14} className="text-white" /> Refine Search
+                <h2 className="text-xs font-black text-black uppercase tracking-[0.3em] flex items-center gap-2">
+                  <Filter size={14} className="text-black" /> Refine Search
                 </h2>
-                <button onClick={clearFilters} className="text-[9px] font-black text-white uppercase tracking-widest hover:text-white transition-colors">Reset</button>
+                <button onClick={clearFilters} className="text-[9px] font-black text-black uppercase tracking-widest hover:text-black transition-colors">Reset</button>
               </div>
 
               {/* Price Range */}
               <div className="mb-10 relative z-10">
-                <label className="block text-[9px] font-black text-white uppercase tracking-[0.2em] mb-4 pl-1">Price Range (₹)</label>
+                <label className="block text-[9px] font-black text-black uppercase tracking-[0.2em] mb-4 pl-1">Price Range (₹)</label>
                 <div className="grid grid-cols-2 gap-3">
                   <input 
                     type="number" placeholder="Min" 
-                    className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-xl p-3 text-xs text-white focus:border-[#0B2D72]/50 focus:bg-[#7FB77E]/60 outline-none transition-all font-bold placeholder:text-gray-700"
+                    className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-xl p-3 text-xs text-black focus:border-[#0B2D72]/50 focus:bg-[#7FB77E]/60 outline-none transition-all font-bold placeholder:text-black"
                     value={minPrice} onChange={(e) => setMinPrice(e.target.value)}
                   />
                   <input 
                     type="number" placeholder="Max" 
-                    className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-xl p-3 text-xs text-white focus:border-[#0B2D72]/50 focus:bg-[#7FB77E]/60 outline-none transition-all font-bold placeholder:text-gray-700"
+                    className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-xl p-3 text-xs text-black focus:border-[#0B2D72]/50 focus:bg-[#7FB77E]/60 outline-none transition-all font-bold placeholder:text-black"
                     value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)}
                   />
                 </div>
@@ -167,16 +167,16 @@ const Hotels = () => {
 
               {/* Dates */}
               <div className="mb-10 relative z-10">
-                <label className="block text-[9px] font-black text-white uppercase tracking-[0.2em] mb-4 pl-1">Timeline</label>
+                <label className="block text-[9px] font-black text-black uppercase tracking-[0.2em] mb-4 pl-1">Timeline</label>
                 <div className="space-y-3">
                   <input 
                     type="date" 
-                    className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-xl p-3 text-xs text-white focus:border-[#0B2D72]/50 outline-none transition-all font-bold color-scheme-dark"
+                    className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-xl p-3 text-xs text-black focus:border-[#0B2D72]/50 outline-none transition-all font-bold color-scheme-dark"
                     value={checkIn} onChange={(e) => setCheckIn(e.target.value)}
                   />
                   <input 
                     type="date" 
-                    className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-xl p-3 text-xs text-white focus:border-[#0B2D72]/50 outline-none transition-all font-bold color-scheme-dark"
+                    className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-xl p-3 text-xs text-black focus:border-[#0B2D72]/50 outline-none transition-all font-bold color-scheme-dark"
                     value={checkOut} onChange={(e) => setCheckOut(e.target.value)}
                   />
                 </div>
@@ -184,34 +184,34 @@ const Hotels = () => {
 
               {/* Min Rating */}
               <div className="mb-10 relative z-10">
-                <label className="block text-[9px] font-black text-white uppercase tracking-[0.2em] mb-4 pl-1">Rating</label>
+                <label className="block text-[9px] font-black text-black uppercase tracking-[0.2em] mb-4 pl-1">Rating</label>
                 <div className="flex items-center gap-1 bg-[#7FB77E]/40 p-3 rounded-xl border border-white/10">
                   {[1, 2, 3, 4, 5].map(star => (
                     <button 
                       key={star}
                       onClick={() => setMinRating(star.toString())}
-                      className={`text-xl transition-all hover:scale-125 ${Number(minRating) >= star ? 'text-white' : 'text-gray-800'}`}
+                      className={`text-xl transition-all hover:scale-125 ${Number(minRating) >= star ? 'text-black' : 'text-black'}`}
                     >
                       ★
                     </button>
                   ))}
-                  <span className="ml-auto text-[10px] font-black text-white uppercase tracking-widest">{minRating}+ Rating</span>
+                  <span className="ml-auto text-[10px] font-black text-black uppercase tracking-widest">{minRating}+ Rating</span>
                 </div>
               </div>
 
               {/* Amenities */}
               <div className="mb-10 relative z-10">
-                <label className="block text-[9px] font-black text-white uppercase tracking-[0.2em] mb-4 pl-1">Amenities</label>
+                <label className="block text-[9px] font-black text-black uppercase tracking-[0.2em] mb-4 pl-1">Amenities</label>
                 <div className="grid grid-cols-2 gap-3">
                   {amenitiesOptions.map(amenity => (
-                    <label key={amenity} className="flex items-center text-[10px] font-bold text-white cursor-pointer group/item">
+                    <label key={amenity} className="flex items-center text-[10px] font-bold text-black cursor-pointer group/item">
                       <input 
                         type="checkbox" 
                         checked={selectedAmenities.includes(amenity)}
                         onChange={() => toggleAmenity(amenity)}
-                        className="w-4 h-4 rounded bg-[#7FB77E]/40 border-white/10 text-white mr-3 focus:ring-offset-black focus:ring-[#0B2D72] transition-all"
+                        className="w-4 h-4 rounded bg-[#7FB77E]/40 border-white/10 text-black mr-3 focus:ring-offset-black focus:ring-[#0B2D72] transition-all"
                       />
-                      <span className="group-hover/item:text-white transition-colors">{amenity}</span>
+                      <span className="group-hover/item:text-black transition-colors">{amenity}</span>
                     </label>
                   ))}
                 </div>
@@ -219,7 +219,7 @@ const Hotels = () => {
 
               <button 
                 onClick={fetchHotels}
-                className="w-full py-5 bg-[#0B2D72] text-white font-black uppercase tracking-[0.3em] text-[10px] rounded-2xl hover:bg-[#7FB77E] hover:text-black transition-all transform active:scale-95 shadow-xl shadow-[#0B2D72]/10 relative z-10"
+                className="w-full py-5 bg-[#0B2D72] text-black font-black uppercase tracking-[0.3em] text-[10px] rounded-2xl hover:bg-[#7FB77E] hover:text-black transition-all transform active:scale-95 shadow-xl shadow-[#0B2D72]/10 relative z-10"
               >
                 Apply Filters
               </button>
@@ -237,22 +237,22 @@ const Hotels = () => {
                 <input 
                   type="text" 
                   placeholder="Hotel name or description..."
-                  className="w-full px-8 py-6 focus:outline-none text-white bg-transparent text-sm font-bold uppercase tracking-wide placeholder:text-gray-700"
+                  className="w-full px-8 py-6 focus:outline-none text-black bg-transparent text-sm font-bold uppercase tracking-wide placeholder:text-black"
                   value={keyword}
                   onChange={(e) => { setKeyword(e.target.value); setActiveInput('keyword'); setShowSuggestions(true); }}
                   onFocus={() => { setActiveInput('keyword'); setShowSuggestions(true); }}
                 />
-                <Search className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-700 pointer-events-none" size={18} />
+                <Search className="absolute right-6 top-1/2 -translate-y-1/2 text-black pointer-events-none" size={18} />
                 
                 {showSuggestions && activeInput === 'keyword' && (suggestions.hotels.length > 0) && (
                   <div className="absolute top-[105%] left-0 w-full bg-[#161618] z-[60] border border-white/10 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2">
                      {suggestions.hotels.map(h => (
                        <div key={h._id} onClick={() => selectSuggestion(h.name, 'keyword')} className="px-8 py-4 hover:bg-[#0B2D72]/10 cursor-pointer flex justify-between items-center group/opt border-b border-white/5 last:border-0">
                           <div>
-                             <div className="text-xs font-black text-white group-hover/opt:text-white transition-colors uppercase tracking-widest">{h.name}</div>
-                             <div className="text-[9px] font-bold text-gray-600 uppercase tracking-[0.2em]">{h.city}</div>
+                             <div className="text-xs font-black text-black group-hover/opt:text-black transition-colors uppercase tracking-widest">{h.name}</div>
+                             <div className="text-[9px] font-bold text-black uppercase tracking-[0.2em]">{h.city}</div>
                           </div>
-                          <ChevronRight size={14} className="text-gray-800 group-hover/opt:text-white group-hover/opt:translate-x-1 transition-all" />
+                          <ChevronRight size={14} className="text-black group-hover/opt:text-black group-hover/opt:translate-x-1 transition-all" />
                        </div>
                      ))}
                   </div>
@@ -263,19 +263,19 @@ const Hotels = () => {
                 <input 
                   type="text" 
                   placeholder="Destination..."
-                  className="w-full px-8 py-6 focus:outline-none text-white bg-transparent text-sm font-bold uppercase tracking-wide placeholder:text-gray-700"
+                  className="w-full px-8 py-6 focus:outline-none text-black bg-transparent text-sm font-bold uppercase tracking-wide placeholder:text-black"
                   value={city}
                   onChange={(e) => { setCity(e.target.value); setActiveInput('city'); setShowSuggestions(true); }}
                   onFocus={() => { setActiveInput('city'); setShowSuggestions(true); }}
                 />
-                <MapPin className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-700 pointer-events-none" size={18} />
+                <MapPin className="absolute right-6 top-1/2 -translate-y-1/2 text-black pointer-events-none" size={18} />
                 
                 {showSuggestions && activeInput === 'city' && suggestions.cities.length > 0 && (
                   <div className="absolute top-[105%] left-0 w-full bg-[#161618] z-[60] border border-white/10 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2">
                      {suggestions.cities.map(c => (
                        <div key={c} onClick={() => selectSuggestion(c, 'city')} className="px-8 py-4 hover:bg-[#0B2D72]/10 cursor-pointer flex justify-between items-center group/opt border-b border-white/5 last:border-0">
-                          <span className="text-xs font-black text-white group-hover/opt:text-white transition-colors uppercase tracking-widest">{c}</span>
-                          <ChevronRight size={14} className="text-gray-800 group-hover/opt:text-white group-hover/opt:translate-x-1 transition-all" />
+                          <span className="text-xs font-black text-black group-hover/opt:text-black transition-colors uppercase tracking-widest">{c}</span>
+                          <ChevronRight size={14} className="text-black group-hover/opt:text-black group-hover/opt:translate-x-1 transition-all" />
                        </div>
                      ))}
                   </div>
@@ -300,9 +300,9 @@ const Hotels = () => {
             ) : hotels.length === 0 ? (
               <div className="text-center py-24 bg-[#7FB77E] rounded-[3rem] border border-dashed border-white/5 border-2">
                 <div className="text-6xl mb-8 opacity-20 grayscale">🏨</div>
-                <h3 className="text-3xl font-serif font-black text-white mb-2 italic">No Hotels Found</h3>
-                <p className="text-white mb-10 max-w-md mx-auto font-medium tracking-wide">The criteria provided does not match any hotels in our collection.</p>
-                <button onClick={clearFilters} className="bg-[#7FB77E]/5 hover:bg-[#7FB77E]/10 text-white px-10 py-4 rounded-2xl border border-white/10 font-black uppercase tracking-widest text-[10px] transition-all">Clear Search Filters</button>
+                <h3 className="text-3xl font-serif font-black text-black mb-2 italic">No Hotels Found</h3>
+                <p className="text-black mb-10 max-w-md mx-auto font-medium tracking-wide">The criteria provided does not match any hotels in our collection.</p>
+                <button onClick={clearFilters} className="bg-[#7FB77E]/5 hover:bg-[#7FB77E]/10 text-black px-10 py-4 rounded-2xl border border-white/10 font-black uppercase tracking-widest text-[10px] transition-all">Clear Search Filters</button>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -327,13 +327,13 @@ const Hotels = () => {
                         
                         {/* Rating Component */}
                         <div className="absolute top-6 right-6 bg-[#7FB77E]/60 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/10 flex items-center gap-2 shadow-2xl z-20">
-                          <Star size={12} className="text-white fill-[#0B2D72]" />
-                          <span className="text-xs font-black text-white">{hotel.rating ? hotel.rating.toFixed(1) : "NEW"}</span>
+                          <Star size={12} className="text-black fill-[#0B2D72]" />
+                          <span className="text-xs font-black text-black">{hotel.rating ? hotel.rating.toFixed(1) : "NEW"}</span>
                         </div>
 
                         {/* Promo Badge */}
                         {hotelPromo && (
-                           <div className="absolute top-6 left-6 bg-[#0B2D72] text-white px-4 py-2 rounded-2xl border border-black/20 flex items-center gap-2 shadow-2xl z-20">
+                           <div className="absolute top-6 left-6 bg-[#0B2D72] text-black px-4 py-2 rounded-2xl border border-black/20 flex items-center gap-2 shadow-2xl z-20">
                              <Sparkles size={12} className="text-black" />
                              <span className="text-xs font-black uppercase font-sans tracking-widest">{hotelPromo.discount}{hotelPromo.type === 'percentage' ? '%' : ' INR'} OFF</span>
                            </div>
@@ -341,7 +341,7 @@ const Hotels = () => {
 
                         {/* Starting Price Plate */}
                         <div className="absolute bottom-6 left-6">
-                           <div className="bg-[#0B2D72] text-white px-6 py-3 rounded-2xl font-serif font-black shadow-2xl border-2 border-[#0B2D72]/50">
+                           <div className="bg-[#0B2D72] text-black px-6 py-3 rounded-2xl font-serif font-black shadow-2xl border-2 border-[#0B2D72]/50">
                              <span className="text-sm opacity-60 tracking-tighter mr-1 uppercase font-sans font-black">from</span>
                              <span className="text-xl italic">₹{hotel.startingPrice || 0}</span>
                              <span className="text-[9px] opacity-60 tracking-widest ml-1 uppercase font-sans font-black">/ night</span>
@@ -352,27 +352,27 @@ const Hotels = () => {
                       {/* Estate Details */}
                       <div className="p-10 flex flex-col flex-grow">
                         <div className="mb-6">
-                          <h3 className="text-3xl font-serif font-black text-white mb-2 uppercase tracking-tight italic group-hover:text-white transition-colors">
+                          <h3 className="text-3xl font-serif font-black text-black mb-2 uppercase tracking-tight italic group-hover:text-black transition-colors">
                             {hotel.name}
                           </h3>
-                          <p className="flex items-center gap-2 text-white text-[10px] font-black uppercase tracking-[0.2em]">
-                            <MapPin size={10} className="text-white" /> {hotel.city}, {hotel.country}
+                          <p className="flex items-center gap-2 text-black text-[10px] font-black uppercase tracking-[0.2em]">
+                            <MapPin size={10} className="text-black" /> {hotel.city}, {hotel.country}
                           </p>
                         </div>
 
-                        <p className="text-white text-sm mb-8 line-clamp-2 leading-relaxed font-medium">
+                        <p className="text-black text-sm mb-8 line-clamp-2 leading-relaxed font-medium">
                           {hotel.description}
                         </p>
                         
                         {/* Amenities Preview */}
                         <div className="flex flex-wrap gap-2 mt-auto pt-8 border-t border-white/5">
                           {(hotel.amenities || []).slice(0, 3).map(a => (
-                            <span key={a} className="bg-[#7FB77E]/5 text-[9px] uppercase font-black tracking-widest text-white px-4 py-2 rounded-full border border-white/5 group-hover:bg-[#0B2D72]/10 group-hover:text-white group-hover:border-[#0B2D72]/20 transition-all duration-500">
+                            <span key={a} className="bg-[#7FB77E]/5 text-[9px] uppercase font-black tracking-widest text-black px-4 py-2 rounded-full border border-white/5 group-hover:bg-[#0B2D72]/10 group-hover:text-black group-hover:border-[#0B2D72]/20 transition-all duration-500">
                               {a}
                             </span>
                           ))}
                           {(hotel.amenities || []).length > 3 && (
-                            <span className="text-[9px] font-black text-white/50 uppercase tracking-widest self-center ml-2">+{hotel.amenities.length - 3}</span>
+                            <span className="text-[9px] font-black text-black/50 uppercase tracking-widest self-center ml-2">+{hotel.amenities.length - 3}</span>
                           )}
                         </div>
                       </div>

@@ -20,7 +20,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex flex-col bg-[#7FB77E] min-h-screen text-gray-900 overflow-x-hidden">
+    <div className="flex flex-col bg-[#7FB77E] min-h-screen text-black overflow-x-hidden">
       <HeroSection />
 
       {/* Exclusive Offers */}
@@ -29,7 +29,7 @@ const Home = () => {
           <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#0B2D72]/20 to-transparent"></div>
           <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
             <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom duration-1000">
-               <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-900 mb-6 flex items-center justify-center gap-4">
+               <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-black mb-6 flex items-center justify-center gap-4">
                  <span className="w-8 h-[1px] bg-[#0B2D72]/30"></span> Exclusive Privileges <span className="w-8 h-[1px] bg-[#0B2D72]/30"></span>
                </h2>
                <h3 className="text-4xl md:text-5xl lg:text-7xl font-serif font-black uppercase tracking-tighter italic">Active Protocols</h3>
@@ -44,24 +44,24 @@ const Home = () => {
                 >
                   <div className="absolute top-0 right-0 w-40 h-40 bg-[#0B2D72]/10 rounded-bl-[100%] transition-all opacity-0 group-hover:opacity-100 duration-500 group-hover:scale-110"></div>
                   <div className="flex justify-between items-start mb-6 relative z-10">
-                    <div className="text-3xl font-serif font-black text-gray-900 italic tracking-tighter">
-                      {promo.discount}{promo.type === 'percentage' ? '%' : ' INR'} <span className="text-gray-900 text-2xl">OFF</span>
+                    <div className="text-3xl font-serif font-black text-black italic tracking-tighter">
+                      {promo.discount}{promo.type === 'percentage' ? '%' : ' INR'} <span className="text-black text-2xl">OFF</span>
                     </div>
-                    <span className="bg-[#0B2D72]/10 text-white text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-xl border border-[#0B2D72]/20 shadow-inner group-hover:bg-[#0B2D72] group-hover:text-black transition-colors">
+                    <span className="bg-[#0B2D72]/10 text-black text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-xl border border-[#0B2D72]/20 shadow-inner group-hover:bg-[#0B2D72] group-hover:text-black transition-colors">
                       {promo.code}
                     </span>
                   </div>
-                  <p className="text-sm font-medium text-gray-900 font-serif italic mb-4 relative z-10 min-h-[40px] group-hover:text-gray-900 transition-colors">
+                  <p className="text-sm font-medium text-black font-serif italic mb-4 relative z-10 min-h-[40px] group-hover:text-black transition-colors">
                     "{promo.description}"
                   </p>
-                  <div className="text-[9px] font-black uppercase tracking-[0.2em] text-gray-900 mb-6 relative z-10 flex items-center gap-2">
+                  <div className="text-[9px] font-black uppercase tracking-[0.2em] text-black mb-6 relative z-10 flex items-center gap-2">
                     <MapPin size={12} /> {promo.hotelId ? `Valid at ${promo.hotelId.name}` : 'Global Collection'}
                   </div>
                   <div className="flex justify-between items-center relative z-10 border-t border-white/5 pt-4 mt-auto group-hover:border-[#0B2D72]/30 transition-colors">
-                    <div className="text-[9px] font-black uppercase tracking-[0.3em] text-gray-600 flex items-center gap-2 group-hover:text-gray-900 transition-colors">
-                       <Tag size={12} className="text-gray-900/50" /> Valid Until
+                    <div className="text-[9px] font-black uppercase tracking-[0.3em] text-black flex items-center gap-2 group-hover:text-black transition-colors">
+                       <Tag size={12} className="text-black/50" /> Valid Until
                     </div>
-                    <div className="text-[9px] font-black uppercase tracking-[0.2em] text-gray-900">
+                    <div className="text-[9px] font-black uppercase tracking-[0.2em] text-black">
                       {new Date(promo.expiryDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
                     </div>
                   </div>
@@ -79,7 +79,7 @@ const Home = () => {
         
         <div className="max-w-7xl mx-auto px-4 md:px-12">
           <div className="text-center mb-24 animate-in fade-in slide-in-from-bottom duration-1000">
-             <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-900 mb-6 flex items-center justify-center gap-4">
+             <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-black mb-6 flex items-center justify-center gap-4">
                <span className="w-8 h-[1px] bg-[#0B2D72]/30"></span> The Collections <span className="w-8 h-[1px] bg-[#0B2D72]/30"></span>
              </h2>
              <h3 className="text-4xl md:text-5xl lg:text-7xl font-serif font-black uppercase tracking-tighter italic">Iconic Destinations</h3>
@@ -94,15 +94,15 @@ const Home = () => {
               <div key={i} className="group relative h-[500px] rounded-[3rem] overflow-hidden border border-white/5 transition-all duration-700 hover:border-[#0B2D72]/30 shadow-2xl">
                 <img src={dest.img} alt={dest.name} className="w-full h-full object-cover group-hover:scale-110 transition duration-[3s]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent flex flex-col justify-end p-12">
-                   <h4 className="text-3xl md:text-4xl font-serif font-black text-gray-900 italic mb-2 group-hover:-translate-y-2 transition-transform duration-500">{dest.name}</h4>
-                   <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-900 opacity-0 group-hover:opacity-100 transition-all duration-700">{dest.count} Luxury Hotels</p>
+                   <h4 className="text-3xl md:text-4xl font-serif font-black text-black italic mb-2 group-hover:-translate-y-2 transition-transform duration-500">{dest.name}</h4>
+                   <p className="text-[10px] font-black uppercase tracking-[0.3em] text-black opacity-0 group-hover:opacity-100 transition-all duration-700">{dest.count} Luxury Hotels</p>
                 </div>
               </div>
             ))}
           </div>
           
           <div className="mt-24 text-center">
-             <Link to="/hotels" className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-900 hover:text-gray-900 transition-colors flex items-center justify-center gap-4">
+             <Link to="/hotels" className="text-[10px] font-black uppercase tracking-[0.5em] text-black hover:text-black transition-colors flex items-center justify-center gap-4">
                Explore Global Inventory <Sparkles size={14} />
              </Link>
           </div>
@@ -113,7 +113,7 @@ const Home = () => {
       <section className="py-32 bg-[#7FB77E] relative overflow-hidden">
          <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
             <div className="text-center mb-24">
-               <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-900 mb-6">The Navan Experience</h2>
+               <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-black mb-6">The Navan Experience</h2>
                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-black italic tracking-tighter">Beyond Standard Hospitality</h3>
             </div>
             
@@ -124,11 +124,11 @@ const Home = () => {
                  { icon: <Zap size={32} />, title: "Rate Supremacy", desc: "Our commitment to the absolute best value across all global collections." }
                ].map((item, i) => (
                  <div key={i} className="p-12 bg-[#7FB77E]/40 border border-white/5 rounded-[3rem] hover:border-[#0B2D72]/20 transition-all text-center">
-                    <div className="w-20 h-20 bg-[#7FB77E]/5 rounded-3xl flex items-center justify-center mx-auto mb-8 text-gray-900">
+                    <div className="w-20 h-20 bg-[#7FB77E]/5 rounded-3xl flex items-center justify-center mx-auto mb-8 text-black">
                        {item.icon}
                     </div>
                     <h4 className="text-2xl font-serif font-black uppercase italic mb-4 tracking-tight">{item.title}</h4>
-                    <p className="text-sm font-medium text-gray-900 leading-relaxed font-serif italic">{item.desc}</p>
+                    <p className="text-sm font-medium text-black leading-relaxed font-serif italic">{item.desc}</p>
                  </div>
                ))}
             </div>

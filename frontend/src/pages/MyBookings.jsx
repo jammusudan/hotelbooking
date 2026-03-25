@@ -136,21 +136,21 @@ const MyBookings = () => {
                 {/* Header Section */}
                 <div className="mb-20 flex flex-col md:flex-row justify-between items-end gap-8 border-b border-white/5 pb-10">
                     <div>
-                        <h1 className="text-xs font-black uppercase tracking-[0.6em] text-white mb-6 flex items-center gap-2">
+                        <h1 className="text-xs font-black uppercase tracking-[0.6em] text-black mb-6 flex items-center gap-2">
                              Your History
                         </h1>
-                        <h2 className="text-5xl md:text-7xl font-serif font-black text-white uppercase tracking-tighter leading-none italic">
-                            My <span className="text-white">Bookings</span>
+                        <h2 className="text-5xl md:text-7xl font-serif font-black text-black uppercase tracking-tighter leading-none italic">
+                            My <span className="text-black">Bookings</span>
                         </h2>
-                        <p className="text-white mt-4 font-medium tracking-wide italic">History of your stays with Navan.</p>
+                        <p className="text-black mt-4 font-medium tracking-wide italic">History of your stays with Navan.</p>
                     </div>
                 </div>
 
                 {bookings.length === 0 ? (
                     <div className="text-center py-32 bg-[#7FB77E] rounded-[3rem] border border-dashed border-white/10 border-2">
                         <div className="text-6xl mb-8 opacity-20 grayscale">🧳</div>
-                        <p className="text-2xl font-serif font-black text-white uppercase tracking-widest mb-10 italic">No bookings found</p>
-                        <Link to="/hotels" className="inline-block bg-[#0B2D72] text-white px-12 py-5 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-[#7FB77E] transition-all transform active:scale-95 shadow-2xl shadow-[#0B2D72]/10">Find Hotels</Link>
+                        <p className="text-2xl font-serif font-black text-black uppercase tracking-widest mb-10 italic">No bookings found</p>
+                        <Link to="/hotels" className="inline-block bg-[#0B2D72] text-black px-12 py-5 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-[#7FB77E] transition-all transform active:scale-95 shadow-2xl shadow-[#0B2D72]/10">Find Hotels</Link>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 gap-12">
@@ -174,7 +174,7 @@ const MyBookings = () => {
                                     <div className="absolute top-8 left-8">
                                         <span className={`px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl backdrop-blur-md border border-white/10 ${
                                             booking.status === 'Confirmed' ? 'bg-green-500/20 text-green-400' :
-                                            booking.status === 'Cancelled' ? 'bg-red-500/20 text-red-400' : 'bg-[#0B2D72]/20 text-white'
+                                            booking.status === 'Cancelled' ? 'bg-red-500/20 text-red-400' : 'bg-[#0B2D72]/20 text-black'
                                         }`}>
                                             {booking.status}
                                         </span>
@@ -186,49 +186,49 @@ const MyBookings = () => {
                                     <div>
                                         <div className="flex justify-between items-start mb-8">
                                             <div>
-                                                <h3 className="text-3xl font-serif font-black text-white hover:text-white transition-colors uppercase tracking-tight italic mb-2">
+                                                <h3 className="text-3xl font-serif font-black text-black hover:text-black transition-colors uppercase tracking-tight italic mb-2">
                                                     <Link to={`/hotels/${booking.hotelId?._id}`}>{booking.hotelId?.name}</Link>
                                                 </h3>
-                                                <p className="text-[10px] font-black text-white uppercase tracking-[0.3em] flex items-center gap-2">
-                                                    <MapPin size={10} className="text-white" /> {booking.hotelId?.city}, {booking.hotelId?.country}
+                                                <p className="text-[10px] font-black text-black uppercase tracking-[0.3em] flex items-center gap-2">
+                                                    <MapPin size={10} className="text-black" /> {booking.hotelId?.city}, {booking.hotelId?.country}
                                                 </p>
                                             </div>
                                             <div className="text-right">
-                                                <div className="text-3xl font-serif font-black text-white leading-none">₹{booking.totalAmount}</div>
-                                                <div className="text-[9px] font-black text-white uppercase mt-2 tracking-widest">Total Amount</div>
+                                                <div className="text-3xl font-serif font-black text-black leading-none">₹{booking.totalAmount}</div>
+                                                <div className="text-[9px] font-black text-black uppercase mt-2 tracking-widest">Total Amount</div>
                                             </div>
                                         </div>
 
                                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 p-10 bg-[#7FB77E]/40 rounded-[2.5rem] border border-white/5">
                                             <div className="space-y-2">
-                                                <span className="text-[9px] font-black text-gray-600 uppercase tracking-[0.2em] block">Arrival</span>
-                                                <strong className="text-xs font-black text-white uppercase tracking-widest">{new Date(booking.checkIn).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</strong>
+                                                <span className="text-[9px] font-black text-black uppercase tracking-[0.2em] block">Arrival</span>
+                                                <strong className="text-xs font-black text-black uppercase tracking-widest">{new Date(booking.checkIn).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</strong>
                                             </div>
                                             <div className="space-y-2">
-                                                <span className="text-[9px] font-black text-gray-600 uppercase tracking-[0.2em] block">Departure</span>
-                                                <strong className="text-xs font-black text-white uppercase tracking-widest">{new Date(booking.checkOut).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</strong>
+                                                <span className="text-[9px] font-black text-black uppercase tracking-[0.2em] block">Departure</span>
+                                                <strong className="text-xs font-black text-black uppercase tracking-widest">{new Date(booking.checkOut).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</strong>
                                             </div>
                                             <div className="space-y-2">
-                                                <span className="text-[9px] font-black text-gray-600 uppercase tracking-[0.2em] block">Room</span>
-                                                <strong className="text-xs font-black text-white uppercase tracking-widest">{booking.roomId?.type}</strong>
+                                                <span className="text-[9px] font-black text-black uppercase tracking-[0.2em] block">Room</span>
+                                                <strong className="text-xs font-black text-black uppercase tracking-widest">{booking.roomId?.type}</strong>
                                             </div>
                                             <div className="space-y-2">
-                                                <span className="text-[9px] font-black text-gray-600 uppercase tracking-[0.2em] block">Guests</span>
-                                                <strong className="text-xs font-black text-white uppercase tracking-widest">{booking.guests} Guests</strong>
+                                                <span className="text-[9px] font-black text-black uppercase tracking-[0.2em] block">Guests</span>
+                                                <strong className="text-xs font-black text-black uppercase tracking-widest">{booking.guests} Guests</strong>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div className="mt-12 flex flex-wrap gap-4">
                                         {booking.status === 'Pending' && (
-                                            <Link to={`/payment/${booking._id}`} className="bg-[#0B2D72] text-white px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#7FB77E] transition-all shadow-xl shadow-[#0B2D72]/10 flex items-center gap-2">
+                                            <Link to={`/payment/${booking._id}`} className="bg-[#0B2D72] text-black px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#7FB77E] transition-all shadow-xl shadow-[#0B2D72]/10 flex items-center gap-2">
                                                 <CreditCard size={14} /> Finalize Payment
                                             </Link>
                                         )}
                                         {booking.status === 'Confirmed' && (
                                             <Link 
                                                 to={`/invoice/${booking._id}`}
-                                                className="bg-[#7FB77E]/5 text-white border border-white/10 px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#7FB77E] hover:text-black transition-all flex items-center gap-2"
+                                                className="bg-[#7FB77E]/5 text-black border border-white/10 px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#7FB77E] hover:text-black transition-all flex items-center gap-2"
                                             >
                                                 <Receipt size={14} /> Digtal Invoice
                                             </Link>
@@ -236,7 +236,7 @@ const MyBookings = () => {
                                         {booking.status === 'Confirmed' && (
                                             <button 
                                                 onClick={() => setReviewingBooking(booking)}
-                                                className="bg-[#0B2D72] text-white px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#7FB77E] transition-all shadow-xl shadow-[#0B2D72]/10 flex items-center gap-2"
+                                                className="bg-[#0B2D72] text-black px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#7FB77E] transition-all shadow-xl shadow-[#0B2D72]/10 flex items-center gap-2"
                                             >
                                                 <MessageCircle size={14} /> Write a Review
                                             </button>
@@ -244,13 +244,13 @@ const MyBookings = () => {
                                         {booking.paymentStatus === 'Paid' && booking.status === 'Cancelled' && (
                                             <button 
                                                 onClick={() => handleRefund(booking._id)}
-                                                className="bg-[#0B2D72]/10 text-white border border-[#0B2D72]/20 px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#0B2D72] hover:text-white transition-all"
+                                                className="bg-[#0B2D72]/10 text-black border border-[#0B2D72]/20 px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#0B2D72] hover:text-black transition-all"
                                             >
                                                 Request Refund
                                             </button>
                                         )}
                                         {booking.paymentStatus === 'Refunded' && (
-                                            <span className="bg-[#7FB77E]/5 text-white px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest border border-white/5 flex items-center gap-2">
+                                            <span className="bg-[#7FB77E]/5 text-black px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest border border-white/5 flex items-center gap-2">
                                                 <ShieldCheck size={14} /> Refunded to Source
                                             </span>
                                         )}
@@ -258,13 +258,13 @@ const MyBookings = () => {
                                             <>
                                                 <button 
                                                     onClick={() => startEdit(booking)} 
-                                                    className="bg-[#7FB77E]/5 text-white border border-white/10 px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#0B2D72] hover:text-white transition-all flex items-center gap-2"
+                                                    className="bg-[#7FB77E]/5 text-black border border-white/10 px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#0B2D72] hover:text-black transition-all flex items-center gap-2"
                                                 >
                                                     <Edit3 size={14} /> Edit Dates
                                                 </button>
                                                 <button 
                                                     onClick={() => handleCancel(booking._id)} 
-                                                    className="bg-rose-500/10 text-rose-500 border border-rose-500/20 hover:bg-rose-500 hover:text-white px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2"
+                                                    className="bg-rose-500/10 text-rose-500 border border-rose-500/20 hover:bg-rose-500 hover:text-black px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2"
                                                 >
                                                     <Trash2 size={14} /> Cancel
                                                 </button>
@@ -283,45 +283,45 @@ const MyBookings = () => {
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#7FB77E]/80 backdrop-blur-md animate-in fade-in duration-500">
                     <div className="bg-[#7FB77E] w-full max-w-xl rounded-[3rem] shadow-2xl relative border border-white/10 overflow-hidden animate-in zoom-in-95 duration-500">
                         <div className="absolute top-0 left-0 w-full h-2 bg-[#0B2D72]"></div>
-                        <button onClick={() => setEditingBooking(null)} className="absolute top-10 right-10 text-white hover:text-white transition-colors outline-none z-10">
+                        <button onClick={() => setEditingBooking(null)} className="absolute top-10 right-10 text-black hover:text-black transition-colors outline-none z-10">
                             <X size={24} />
                         </button>
                         
                         <div className="p-16">
                             <div className="text-center mb-12">
-                                <h3 className="text-[10px] font-black text-white uppercase tracking-[0.5em] mb-4">Booking Details</h3>
-                                <h4 className="text-4xl font-serif font-black text-white uppercase tracking-tight italic leading-none">Edit Booking</h4>
+                                <h3 className="text-[10px] font-black text-black uppercase tracking-[0.5em] mb-4">Booking Details</h3>
+                                <h4 className="text-4xl font-serif font-black text-black uppercase tracking-tight italic leading-none">Edit Booking</h4>
                             </div>
                             
                             <form onSubmit={handleUpdate} className="space-y-8">
                                 <div className="grid grid-cols-2 gap-6">
                                     <div className="space-y-2">
-                                        <label className="text-[10px] font-black text-white uppercase tracking-widest pl-2">Revised Arrival</label>
+                                        <label className="text-[10px] font-black text-black uppercase tracking-widest pl-2">Revised Arrival</label>
                                         <input 
                                             type="date" required 
                                             value={editForm.checkIn}
                                             onChange={(e) => setEditForm({...editForm, checkIn: e.target.value})}
-                                            className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-2xl p-4 text-sm text-white focus:border-[#0B2D72] outline-none transition-all font-bold color-scheme-dark"
+                                            className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-2xl p-4 text-sm text-black focus:border-[#0B2D72] outline-none transition-all font-bold color-scheme-dark"
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-[10px] font-black text-white uppercase tracking-widest pl-2">Revised Departure</label>
+                                        <label className="text-[10px] font-black text-black uppercase tracking-widest pl-2">Revised Departure</label>
                                         <input 
                                             type="date" required 
                                             value={editForm.checkOut}
                                             onChange={(e) => setEditForm({...editForm, checkOut: e.target.value})}
-                                            className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-2xl p-4 text-sm text-white focus:border-[#0B2D72] outline-none transition-all font-bold color-scheme-dark"
+                                            className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-2xl p-4 text-sm text-black focus:border-[#0B2D72] outline-none transition-all font-bold color-scheme-dark"
                                         />
                                     </div>
                                 </div>
                                 
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-black text-white uppercase tracking-widest pl-2">Accompanying Guests</label>
+                                    <label className="text-[10px] font-black text-black uppercase tracking-widest pl-2">Accompanying Guests</label>
                                     <input 
                                         type="number" min="1" required 
                                         value={editForm.guests}
                                         onChange={(e) => setEditForm({...editForm, guests: parseInt(e.target.value)})}
-                                        className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-2xl p-4 text-sm text-white focus:border-[#0B2D72] outline-none transition-all font-bold"
+                                        className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-2xl p-4 text-sm text-black focus:border-[#0B2D72] outline-none transition-all font-bold"
                                     />
                                 </div>
 
@@ -334,7 +334,7 @@ const MyBookings = () => {
                                 <button 
                                     type="submit" 
                                     disabled={updateLoading}
-                                    className="w-full bg-[#0B2D72] text-white font-black uppercase tracking-[0.4em] py-6 rounded-2xl hover:bg-[#7FB77E] transition-all transform active:scale-95 disabled:opacity-50 shadow-2xl shadow-[#0B2D72]/10 text-[10px]"
+                                    className="w-full bg-[#0B2D72] text-black font-black uppercase tracking-[0.4em] py-6 rounded-2xl hover:bg-[#7FB77E] transition-all transform active:scale-95 disabled:opacity-50 shadow-2xl shadow-[#0B2D72]/10 text-[10px]"
                                 >
                                     {updateLoading ? 'Saving Changes...' : 'Save Changes'}
                                 </button>
@@ -349,25 +349,25 @@ const MyBookings = () => {
                 <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-[#7FB77E]/80 backdrop-blur-md animate-in fade-in duration-500">
                     <div className="bg-[#7FB77E] w-full max-w-xl rounded-[3rem] shadow-2xl relative border border-white/10 overflow-hidden animate-in zoom-in-95 duration-500">
                         <div className="absolute top-0 left-0 w-full h-2 bg-[#0B2D72]"></div>
-                        <button onClick={() => setReviewingBooking(null)} className="absolute top-10 right-10 text-white hover:text-white transition-colors outline-none z-10">
+                        <button onClick={() => setReviewingBooking(null)} className="absolute top-10 right-10 text-black hover:text-black transition-colors outline-none z-10">
                             <X size={24} />
                         </button>
                         
                         <div className="p-16">
                             <div className="text-center mb-12">
-                                <span className="text-[10px] font-black text-white uppercase tracking-[0.5em] mb-4 block">Hotel Review</span>
-                                <h3 className="text-4xl font-serif font-black text-white uppercase tracking-tight italic leading-none">Review Your Stay</h3>
+                                <span className="text-[10px] font-black text-black uppercase tracking-[0.5em] mb-4 block">Hotel Review</span>
+                                <h3 className="text-4xl font-serif font-black text-black uppercase tracking-tight italic leading-none">Review Your Stay</h3>
                             </div>
 
                             <form onSubmit={submitReview} className="space-y-10">
                                 <div className="space-y-4">
-                                    <label className="text-[10px] font-black text-white uppercase tracking-widest flex justify-center">Rating</label>
+                                    <label className="text-[10px] font-black text-black uppercase tracking-widest flex justify-center">Rating</label>
                                     <div className="flex justify-center gap-6 py-8 bg-[#7FB77E]/40 rounded-[2.5rem] border border-white/5">
                                         {[1, 2, 3, 4, 5].map((star) => (
                                             <button 
                                                 key={star} type="button" 
                                                 onClick={() => setReviewForm({...reviewForm, rating: star})}
-                                                className={`text-5xl transition-all duration-500 ${reviewForm.rating >= star ? 'text-white scale-125 drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]' : 'text-gray-800 grayscale opacity-20'}`}
+                                                className={`text-5xl transition-all duration-500 ${reviewForm.rating >= star ? 'text-black scale-125 drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]' : 'text-black grayscale opacity-20'}`}
                                             >
                                                 ★
                                             </button>
@@ -376,20 +376,20 @@ const MyBookings = () => {
                                 </div>
 
                                 <div className="space-y-3">
-                                    <label className="text-[10px] font-black text-white uppercase tracking-widest pl-2">Your Comments</label>
+                                    <label className="text-[10px] font-black text-black uppercase tracking-widest pl-2">Your Comments</label>
                                     <textarea 
                                         required rows="4"
                                         placeholder="Tell us about your stay..."
                                         value={reviewForm.comment}
                                         onChange={(e) => setReviewForm({...reviewForm, comment: e.target.value})}
-                                        className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-[2rem] p-8 text-white focus:border-[#0B2D72] outline-none text-sm font-medium transition-all resize-none placeholder:text-gray-700 italic"
+                                        className="w-full bg-[#7FB77E]/40 border border-white/10 rounded-[2rem] p-8 text-black focus:border-[#0B2D72] outline-none text-sm font-medium transition-all resize-none placeholder:text-black italic"
                                     />
                                 </div>
 
                                 <button 
                                     type="submit" 
                                     disabled={reviewLoading}
-                                    className="w-full bg-[#0B2D72] text-white font-black uppercase tracking-[0.4em] py-6 rounded-2xl hover:bg-[#7FB77E] transition-all transform active:scale-95 disabled:opacity-50 shadow-2xl shadow-[#0B2D72]/10 text-[10px]"
+                                    className="w-full bg-[#0B2D72] text-black font-black uppercase tracking-[0.4em] py-6 rounded-2xl hover:bg-[#7FB77E] transition-all transform active:scale-95 disabled:opacity-50 shadow-2xl shadow-[#0B2D72]/10 text-[10px]"
                                 >
                                     {reviewLoading ? 'Submitting Review...' : 'Submit Review'}
                                 </button>

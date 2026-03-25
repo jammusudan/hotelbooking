@@ -22,19 +22,19 @@
 body {
   font-family: var(--font-sans);
   background-color: #7FB77E;
-  color: #111827;
+  color: #000000;
   -webkit-font-smoothing: antialiased;
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition font-medium shadow-md;
+    @apply bg-primary-600 text-black px-4 py-2 rounded-lg hover:bg-primary-700 transition font-medium shadow-md;
   }
   .btn-secondary {
-    @apply bg-transparent text-gray-700 font-bold py-2 px-6 rounded border border-gray-300 hover:bg-gray-50 transition-colors duration-300;
+    @apply bg-transparent text-black font-bold py-2 px-6 rounded border border-gray-300 hover:bg-gray-50 transition-colors duration-300;
   }
   .btn-gold {
-    @apply bg-[#0B2D72] text-white font-bold py-2 px-6 rounded hover:bg-[#0B2D72] transition-colors duration-300;
+    @apply bg-[#0B2D72] text-black font-bold py-2 px-6 rounded hover:bg-[#0B2D72] transition-colors duration-300;
   }
   .input-field {
     @apply mt-1 block w-full px-4 py-3 bg-[#7FB77E] border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#0B2D72] focus:border-[#0B2D72] sm:text-sm;

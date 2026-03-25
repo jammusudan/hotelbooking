@@ -20,21 +20,21 @@ const CustomerDashboard = () => {
         {/* Header Section */}
         <div className="mb-16 flex flex-col md:flex-row justify-between items-end gap-6">
           <div className="text-left">
-            <h1 className="text-xs font-black uppercase tracking-[0.5em] text-gray-900 mb-4 flex items-center gap-2">
+            <h1 className="text-xs font-black uppercase tracking-[0.5em] text-black mb-4 flex items-center gap-2">
               <Sparkles size={14} /> Customer
             </h1>
-            <h2 className="text-5xl md:text-7xl font-serif font-black text-gray-900 uppercase tracking-tighter leading-none italic">
-              Welcome back, <span className="text-gray-900">{user?.name?.split(' ')[0]}</span>
+            <h2 className="text-5xl md:text-7xl font-serif font-black text-black uppercase tracking-tighter leading-none italic">
+              Welcome back, <span className="text-black">{user?.name?.split(' ')[0]}</span>
             </h2>
-            <p className="text-gray-900 mt-4 font-medium tracking-wide">Your luxury experience continues here.</p>
+            <p className="text-black mt-4 font-medium tracking-wide">Your luxury experience continues here.</p>
           </div>
           <div className="hidden md:flex items-center gap-4 bg-[#7FB77E]/5 border border-white/10 px-6 py-3 rounded-2xl backdrop-blur-md">
             <div className="w-12 h-12 rounded-full bg-[#0B2D72] flex items-center justify-center text-black font-black text-xl shadow-lg shadow-[#0B2D72]/20">
               {user?.name?.charAt(0)}
             </div>
             <div>
-              <p className="text-xs font-black text-gray-900 uppercase tracking-widest">{user?.name}</p>
-              <p className="text-[10px] font-bold text-gray-900 uppercase tracking-widest">{user?.role} Tier</p>
+              <p className="text-xs font-black text-black uppercase tracking-widest">{user?.name}</p>
+              <p className="text-[10px] font-bold text-black uppercase tracking-widest">{user?.role} Tier</p>
             </div>
           </div>
         </div>
@@ -42,7 +42,7 @@ const CustomerDashboard = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Main Navigation */}
           <div className="lg:col-span-7 space-y-6">
-            <h3 className="text-[10px] font-black text-gray-900 uppercase tracking-[0.4em] mb-4 ml-2">Legacy Access</h3>
+            <h3 className="text-[10px] font-black text-black uppercase tracking-[0.4em] mb-4 ml-2">Legacy Access</h3>
             <div className="grid grid-cols-1 gap-4">
               {menuItems.map((item) => (
                 <Link 
@@ -51,15 +51,15 @@ const CustomerDashboard = () => {
                   className="group flex items-center justify-between p-8 bg-[#7FB77E] border border-white/5 rounded-[2rem] hover:border-[#0B2D72]/30 hover:bg-[#0B2D72]/5 transition-all duration-500 shadow-2xl"
                 >
                   <div className="flex items-center gap-6">
-                    <div className="w-16 h-16 bg-[#7FB77E]/5 border border-white/10 rounded-2xl flex items-center justify-center text-gray-900 group-hover:scale-110 group-hover:bg-[#0B2D72] group-hover:text-white transition-all duration-500">
+                    <div className="w-16 h-16 bg-[#7FB77E]/5 border border-white/10 rounded-2xl flex items-center justify-center text-black group-hover:scale-110 group-hover:bg-[#0B2D72] group-hover:text-black transition-all duration-500">
                       <item.icon className="w-6 h-6" />
                     </div>
                     <div>
-                      <span className="block text-xl font-serif font-black text-gray-900 uppercase tracking-tight mb-1 group-hover:text-gray-900 transition-colors">{item.name}</span>
-                      <span className="text-[10px] font-bold text-gray-900 uppercase tracking-widest">{item.description}</span>
+                      <span className="block text-xl font-serif font-black text-black uppercase tracking-tight mb-1 group-hover:text-black transition-colors">{item.name}</span>
+                      <span className="text-[10px] font-bold text-black uppercase tracking-widest">{item.description}</span>
                     </div>
                   </div>
-                  <ChevronRight className="w-6 h-6 text-gray-700 group-hover:text-gray-900 group-hover:translate-x-2 transition-all" />
+                  <ChevronRight className="w-6 h-6 text-black group-hover:text-black group-hover:translate-x-2 transition-all" />
                 </Link>
               ))}
             </div>
@@ -72,28 +72,28 @@ const CustomerDashboard = () => {
                 <Award size={150} />
               </div>
 
-              <h3 className="text-[10px] font-black text-gray-900 uppercase tracking-[0.4em] mb-8 flex items-center gap-2">
+              <h3 className="text-[10px] font-black text-black uppercase tracking-[0.4em] mb-8 flex items-center gap-2">
                 <Shield size={12} /> Status Protocol
               </h3>
 
               <div className="space-y-6 mb-12 relative z-10">
                 <div className="flex justify-between items-end pb-4 border-b border-white/5">
-                  <span className="text-[10px] font-black text-gray-900 uppercase tracking-widest">Customer Tier</span>
-                  <span className="text-xl font-serif font-black text-gray-900 uppercase italic">Premium Member</span>
+                  <span className="text-[10px] font-black text-black uppercase tracking-widest">Customer Tier</span>
+                  <span className="text-xl font-serif font-black text-black uppercase italic">Premium Member</span>
                 </div>
                 <div className="flex justify-between items-end pb-4 border-b border-white/5">
-                  <span className="text-[10px] font-black text-gray-900 uppercase tracking-widest">Loyalty Points</span>
-                  <span className="text-xl font-serif font-black text-gray-900 uppercase">1,250 PTS</span>
+                  <span className="text-[10px] font-black text-black uppercase tracking-widest">Loyalty Points</span>
+                  <span className="text-xl font-serif font-black text-black uppercase">1,250 PTS</span>
                 </div>
                 <div className="flex justify-between items-end">
-                  <span className="text-[10px] font-black text-gray-900 uppercase tracking-widest">Active Since</span>
-                  <span className="text-sm font-bold text-gray-900 uppercase tracking-widest">Mar 2024</span>
+                  <span className="text-[10px] font-black text-black uppercase tracking-widest">Active Since</span>
+                  <span className="text-sm font-bold text-black uppercase tracking-widest">Mar 2024</span>
                 </div>
               </div>
 
               <button 
                 onClick={logout}
-                className="w-full flex items-center justify-center gap-3 py-5 bg-rose-500/10 text-rose-500 border border-rose-500/20 rounded-2xl font-black uppercase tracking-[0.3em] text-[10px] hover:bg-rose-500 hover:text-gray-900 transition-all transform active:scale-95 shadow-lg shadow-rose-500/5 group"
+                className="w-full flex items-center justify-center gap-3 py-5 bg-rose-500/10 text-rose-500 border border-rose-500/20 rounded-2xl font-black uppercase tracking-[0.3em] text-[10px] hover:bg-rose-500 hover:text-black transition-all transform active:scale-95 shadow-lg shadow-rose-500/5 group"
               >
                 <LogOut className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                 Terminate Session
@@ -105,7 +105,7 @@ const CustomerDashboard = () => {
               <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#7FB77E]/20 blur-3xl rounded-full"></div>
               <h4 className="text-[10px] font-black uppercase tracking-[0.5em] mb-4 opacity-70">Privilege Update</h4>
               <p className="text-2xl font-serif font-black uppercase leading-tight italic mb-6">Unlock the Royal Penthouse for 20% less</p>
-              <button className="bg-[#7FB77E] text-gray-900 px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-xl">Secure Access</button>
+              <button className="bg-[#7FB77E] text-black px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-xl">Secure Access</button>
             </div>
           </div>
         </div>

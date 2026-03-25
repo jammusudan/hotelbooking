@@ -76,7 +76,7 @@ const NotificationBell = () => {
 
   const getIcon = (type) => {
     switch (type) {
-      case 'booking': return <Sparkles size={14} className="text-gray-900" />;
+      case 'booking': return <Sparkles size={14} className="text-black" />;
       case 'payment': return <Receipt size={14} className="text-green-500" />;
       case 'cancellation': return <ShieldAlert size={14} className="text-rose-500" />;
       default: return <Bell size={14} className="text-blue-500" />;
@@ -89,7 +89,7 @@ const NotificationBell = () => {
     <div className="relative" ref={dropdownRef}>
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-2 text-gray-900 hover:text-gray-900 transition-colors bg-[#7FB77E]/5 rounded-full border border-white/5"
+        className="relative p-2 text-black hover:text-black transition-colors bg-[#7FB77E]/5 rounded-full border border-white/5"
       >
         <Bell size={20} />
         {unreadCount > 0 && (
@@ -102,14 +102,14 @@ const NotificationBell = () => {
       {isOpen && (
         <div className="absolute right-0 mt-4 w-80 bg-[#7FB77E] border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-300">
           <div className="p-4 border-b border-white/5 flex items-center justify-between">
-            <h3 className="text-[10px] uppercase font-black tracking-[0.3em] text-gray-900">Navan Protocol Alerts</h3>
-            <button onClick={() => setIsOpen(false)}><X size={14} className="text-gray-600 hover:text-gray-900" /></button>
+            <h3 className="text-[10px] uppercase font-black tracking-[0.3em] text-black">Navan Protocol Alerts</h3>
+            <button onClick={() => setIsOpen(false)}><X size={14} className="text-black hover:text-black" /></button>
           </div>
 
           <div className="max-h-[400px] overflow-y-auto">
             {notifications.length === 0 ? (
               <div className="p-8 text-center">
-                <p className="text-[10px] uppercase font-bold text-gray-600 tracking-widest">No Active Alerts</p>
+                <p className="text-[10px] uppercase font-bold text-black tracking-widest">No Active Alerts</p>
               </div>
             ) : (
               notifications.map((n) => (
@@ -123,17 +123,17 @@ const NotificationBell = () => {
                     </div>
                   </div>
                   <div className="flex-grow space-y-1">
-                    <p className={`text-xs leading-relaxed ${n.isRead ? 'text-gray-900' : 'text-gray-200 font-medium'}`}>
+                    <p className={`text-xs leading-relaxed ${n.isRead ? 'text-black' : 'text-black font-medium'}`}>
                       {n.message}
                     </p>
                     <div className="flex items-center justify-between">
-                      <span className="text-[8px] uppercase font-black text-gray-600 tracking-widest">
+                      <span className="text-[8px] uppercase font-black text-black tracking-widest">
                         {new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                       </span>
                       {!n.isRead && (
                         <button 
                           onClick={() => markAsRead(n._id)}
-                          className="text-[9px] font-black text-gray-900 hover:text-gray-900 uppercase tracking-widest flex items-center gap-1"
+                          className="text-[9px] font-black text-black hover:text-black uppercase tracking-widest flex items-center gap-1"
                         >
                           Clear <Check size={10} />
                         </button>
@@ -146,7 +146,7 @@ const NotificationBell = () => {
           </div>
 
           <div className="p-4 bg-[#7FB77E]/40 text-center">
-            <p className="text-[9px] uppercase font-black text-gray-700 tracking-[0.2em]">Secure Notification Node v1.0</p>
+            <p className="text-[9px] uppercase font-black text-black tracking-[0.2em]">Secure Notification Node v1.0</p>
           </div>
         </div>
       )}

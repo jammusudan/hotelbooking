@@ -41,11 +41,11 @@ const Register = () => {
         
         <div className="relative space-y-8 bg-[#7FB77E] border border-white/5 p-10 md:p-14 rounded-[3rem] shadow-2xl overflow-hidden">
           <div className="absolute top-0 left-0 p-8 opacity-10">
-             <UserPlus size={120} className="text-white" />
+             <UserPlus size={120} className="text-black" />
           </div>
 
           <div className="text-center relative z-10">
-            <p className="text-xs font-black text-white uppercase tracking-widest leading-relaxed">
+            <p className="text-xs font-black text-black uppercase tracking-widest leading-relaxed">
               Begin your journey with Navan.
             </p>
           </div>
@@ -64,32 +64,32 @@ const Register = () => {
 
             <div className="space-y-4">
               <div className="space-y-2">
-                <label className="text-[9px] font-black text-gray-600 uppercase tracking-[0.4em] ml-1">Name</label>
+                <label className="text-[9px] font-black text-black uppercase tracking-[0.4em] ml-1">Name</label>
                 <div className="relative">
-                   <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" size={16} />
-                   <input type="text" required className="w-full bg-[#7FB77E]/40 border border-white/10 p-4 pl-12 rounded-xl text-white focus:border-[#0B2D72]/50 outline-none transition-all font-medium text-sm" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+                   <User className="absolute left-4 top-1/2 -translate-y-1/2 text-black" size={16} />
+                   <input type="text" required className="w-full bg-[#7FB77E]/40 border border-white/10 p-4 pl-12 rounded-xl text-black focus:border-[#0B2D72]/50 outline-none transition-all font-medium text-sm" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-[9px] font-black text-gray-600 uppercase tracking-[0.4em] ml-1">Email</label>
+                <label className="text-[9px] font-black text-black uppercase tracking-[0.4em] ml-1">Email</label>
                 <div className="relative">
-                   <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" size={16} />
-                   <input type="email" required className="w-full bg-[#7FB77E]/40 border border-white/10 p-4 pl-12 rounded-xl text-white focus:border-[#0B2D72]/50 outline-none transition-all font-medium text-sm" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                   <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-black" size={16} />
+                   <input type="email" required className="w-full bg-[#7FB77E]/40 border border-white/10 p-4 pl-12 rounded-xl text-black focus:border-[#0B2D72]/50 outline-none transition-all font-medium text-sm" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-[9px] font-black text-gray-600 uppercase tracking-[0.4em] ml-1">Password</label>
+                <label className="text-[9px] font-black text-black uppercase tracking-[0.4em] ml-1">Password</label>
                 <div className="relative">
-                   <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" size={16} />
-                   <input type="password" required className="w-full bg-[#7FB77E]/40 border border-white/10 p-4 pl-12 rounded-xl text-white focus:border-[#0B2D72]/50 outline-none transition-all font-medium text-sm" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                   <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-black" size={16} />
+                   <input type="password" required className="w-full bg-[#7FB77E]/40 border border-white/10 p-4 pl-12 rounded-xl text-black focus:border-[#0B2D72]/50 outline-none transition-all font-medium text-sm" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
               </div>
               
               <div className="space-y-2">
-                <label className="text-[9px] font-black text-gray-600 uppercase tracking-[0.4em] ml-1">Select Role</label>
-                <select value={role} onChange={(e) => setRole(e.target.value)} className="w-full bg-[#7FB77E]/40 border border-white/10 p-4 rounded-xl text-white focus:border-[#0B2D72]/50 outline-none transition-all font-medium text-sm appearance-none cursor-pointer">
+                <label className="text-[9px] font-black text-black uppercase tracking-[0.4em] ml-1">Select Role</label>
+                <select value={role} onChange={(e) => setRole(e.target.value)} className="w-full bg-[#7FB77E]/40 border border-white/10 p-4 rounded-xl text-black focus:border-[#0B2D72]/50 outline-none transition-all font-medium text-sm appearance-none cursor-pointer">
                    <option value="customer" className="bg-[#7FB77E]">Customer (Book Hotels)</option>
                    <option value="manager" className="bg-[#7FB77E]">Manager (Manage Hotels)</option>
                    <option value="admin" className="bg-[#7FB77E]">Admin (Control Center)</option>
@@ -97,15 +97,15 @@ const Register = () => {
               </div>
             </div>
 
-            <button type="submit" className="w-full group relative flex items-center justify-center gap-3 py-5 bg-[#0B2D72] text-white font-black uppercase tracking-[0.4em] text-[11px] rounded-2xl hover:bg-[#7FB77E] transition-all transform active:scale-95 mt-8">
+            <button type="submit" className="w-full group relative flex items-center justify-center gap-3 py-5 bg-[#0B2D72] text-black font-black uppercase tracking-[0.4em] text-[11px] rounded-2xl hover:bg-[#7FB77E] transition-all transform active:scale-95 mt-8">
               Sign Up <Sparkles size={14} />
             </button>
           </form>
 
           <div className="text-center pt-8 border-t border-white/5 relative z-10">
-            <p className="text-[10px] font-black text-gray-600 uppercase tracking-[0.4em]">
+            <p className="text-[10px] font-black text-black uppercase tracking-[0.4em]">
               Already have an account? 
-              <Link to="/login" className="text-white font-black ml-2 hover:underline decoration-[#0B2D72]/30 underline-offset-4">
+              <Link to="/login" className="text-black font-black ml-2 hover:underline decoration-[#0B2D72]/30 underline-offset-4">
                 Login here
               </Link>
             </p>

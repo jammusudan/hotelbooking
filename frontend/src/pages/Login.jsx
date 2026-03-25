@@ -70,15 +70,15 @@ const Login = ({ role = "customer" }) => {
         
         <div className="relative space-y-8 bg-[#7FB77E] border border-white/5 p-10 md:p-14 rounded-[3rem] shadow-2xl overflow-hidden">
           <div className="absolute top-0 right-0 p-8 opacity-10">
-             <Globe size={120} className="text-white" />
+             <Globe size={120} className="text-black" />
           </div>
 
           <div className="text-center relative z-10">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-[#7FB77E]/5 rounded-3xl text-white mb-8 border border-white/5 shadow-inner">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-[#7FB77E]/5 rounded-3xl text-black mb-8 border border-white/5 shadow-inner">
               {config.icon}
             </div>
-            <h2 className="text-4xl font-serif font-black text-white uppercase tracking-tighter italic mb-4">{config.title}</h2>
-            <p className="text-xs font-black text-white uppercase tracking-widest leading-relaxed">
+            <h2 className="text-4xl font-serif font-black text-black uppercase tracking-tighter italic mb-4">{config.title}</h2>
+            <p className="text-xs font-black text-black uppercase tracking-widest leading-relaxed">
               {config.desc}
             </p>
           </div>
@@ -91,38 +91,38 @@ const Login = ({ role = "customer" }) => {
             )}
 
             <div className="space-y-3">
-              <label className="text-[9px] font-black text-gray-600 uppercase tracking-[0.4em] ml-1">Email</label>
+              <label className="text-[9px] font-black text-black uppercase tracking-[0.4em] ml-1">Email</label>
               <input
                 type="email"
                 required
                 placeholder="Email"
-                className="w-full bg-[#7FB77E]/40 border border-white/10 p-4 rounded-xl text-white focus:border-[#0B2D72]/50 outline-none transition-all font-medium text-sm"
+                className="w-full bg-[#7FB77E]/40 border border-white/10 p-4 rounded-xl text-black focus:border-[#0B2D72]/50 outline-none transition-all font-medium text-sm"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
             <div className="space-y-3">
-              <label className="text-[9px] font-black text-gray-600 uppercase tracking-[0.4em] ml-1">Password</label>
+              <label className="text-[9px] font-black text-black uppercase tracking-[0.4em] ml-1">Password</label>
               <input
                 type="password"
                 required
                 placeholder="Password"
-                className="w-full bg-[#7FB77E]/40 border border-white/10 p-4 rounded-xl text-white focus:border-[#0B2D72]/50 outline-none transition-all font-medium text-sm"
+                className="w-full bg-[#7FB77E]/40 border border-white/10 p-4 rounded-xl text-black focus:border-[#0B2D72]/50 outline-none transition-all font-medium text-sm"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
             <div className="flex justify-end">
-              <Link to="/forgot-password" size="sm" className="text-[9px] font-black text-gray-600 hover:text-white uppercase tracking-[0.3em] transition-colors">
+              <Link to="/forgot-password" size="sm" className="text-[9px] font-black text-black hover:text-black uppercase tracking-[0.3em] transition-colors">
                 Forgot Password
               </Link>
             </div>
 
             <button
               type="submit"
-              className="w-full group relative flex items-center justify-center gap-3 py-5 bg-[#0B2D72] text-white font-black uppercase tracking-[0.4em] text-[11px] rounded-2xl hover:bg-[#7FB77E] transition-all transform active:scale-95"
+              className="w-full group relative flex items-center justify-center gap-3 py-5 bg-[#0B2D72] text-black font-black uppercase tracking-[0.4em] text-[11px] rounded-2xl hover:bg-[#7FB77E] transition-all transform active:scale-95"
             >
               Login <Sparkles size={14} />
             </button>
@@ -134,7 +134,7 @@ const Login = ({ role = "customer" }) => {
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-white/5"></div>
                 </div>
-                <div className="relative flex justify-center text-[9px] uppercase font-black text-gray-600">
+                <div className="relative flex justify-center text-[9px] uppercase font-black text-black">
                   <span className="bg-[#7FB77E] px-4 tracking-[0.4em]">External Links</span>
                 </div>
               </div>
@@ -142,13 +142,13 @@ const Login = ({ role = "customer" }) => {
               <div className="grid grid-cols-2 gap-4 relative z-10">
                 <a
                  href={`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001/api'}/auth/google?role=${role}`}
-                  className="flex items-center justify-center gap-3 border border-white/5 p-4 rounded-xl hover:bg-[#7FB77E]/5 font-black text-[10px] uppercase tracking-widest transition-all text-white hover:text-white"
+                  className="flex items-center justify-center gap-3 border border-white/5 p-4 rounded-xl hover:bg-[#7FB77E]/5 font-black text-[10px] uppercase tracking-widest transition-all text-black hover:text-black"
                 >
                   Google
                 </a>
                 <a
                   href={`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001/api'}/auth/github?role=${role}`}
-                  className="flex items-center justify-center gap-3 bg-[#7FB77E]/5 p-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-[#7FB77E] hover:text-black transition-all text-white"
+                  className="flex items-center justify-center gap-3 bg-[#7FB77E]/5 p-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-[#7FB77E] hover:text-black transition-all text-black"
                 >
                   GitHub
                 </a>
@@ -157,11 +157,11 @@ const Login = ({ role = "customer" }) => {
           )}
 
           {config.registerLink && (
-            <p className="text-center text-[10px] text-gray-600 mt-8 font-black uppercase tracking-[0.2em] relative z-10">
+            <p className="text-center text-[10px] text-black mt-8 font-black uppercase tracking-[0.2em] relative z-10">
               New here?
               <Link
                 to="/register"
-                className="text-white font-black ml-2 hover:underline decoration-[#0B2D72]/30 underline-offset-4"
+                className="text-black font-black ml-2 hover:underline decoration-[#0B2D72]/30 underline-offset-4"
               >
                 Sign Up here
               </Link>
