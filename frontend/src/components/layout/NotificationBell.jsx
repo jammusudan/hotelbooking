@@ -93,7 +93,7 @@ const NotificationBell = () => {
       >
         <Bell size={20} />
         {unreadCount > 0 && (
-          <span className="absolute top-1 right-1 w-4 h-4 bg-[#0B2D72] text-[10px] font-black text-black rounded-full flex items-center justify-center animate-pulse border border-white">
+          <span className="absolute top-1 right-1 w-4 h-4 bg-transparent text-[10px] font-black text-black rounded-full flex items-center justify-center animate-pulse border border-white">
             {unreadCount > 9 ? '9+' : unreadCount}
           </span>
         )}
@@ -115,7 +115,7 @@ const NotificationBell = () => {
               notifications.map((n) => (
                 <div 
                   key={n._id} 
-                  className={`p-4 border-b border-white/5 flex gap-4 transition-colors ${n.isRead ? 'opacity-60' : 'bg-[#EDF7BD]/[0.02] border-l-2 border-l-[#0B2D72]'}`}
+                  className={`p-4 border-b border-white/5 flex gap-4 transition-colors ${n.isRead ? 'opacity-60' : 'bg-[#EDF7BD]/[0.02] border-l-2 border-l-[transparent]'}`}
                 >
                   <div className="mt-1 flex-shrink-0">
                     <div className="w-8 h-8 rounded-lg bg-[#EDF7BD]/5 flex items-center justify-center border border-white/5">

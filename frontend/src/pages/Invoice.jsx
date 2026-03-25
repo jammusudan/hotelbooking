@@ -30,7 +30,7 @@ const Invoice = () => {
 
     if (loading) return (
         <div className="min-h-screen flex items-center justify-center bg-[#EDF7BD]">
-            <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#0B2D72]"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-transparent"></div>
         </div>
     );
 
@@ -38,7 +38,7 @@ const Invoice = () => {
 
     return (
         <div className="min-h-screen bg-[#EDF7BD] py-24 px-4 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0B2D72]/5 blur-[150px] pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-transparent/5 blur-[150px] pointer-events-none"></div>
             
             {/* Action Bar */}
             <div className="max-w-4xl mx-auto mb-12 flex items-center justify-between print:hidden">
@@ -46,7 +46,7 @@ const Invoice = () => {
                     onClick={() => navigate(-1)}
                     className="flex items-center gap-3 text-black hover:text-black transition-all group"
                 >
-                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#0B2D72]/50 group-hover:bg-[#EDF7BD]/5 transition-all">
+                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-transparent/50 group-hover:bg-[#EDF7BD]/5 transition-all">
                        <ArrowLeft size={16} />
                     </div>
                     <span className="text-[10px] font-black uppercase tracking-[0.4em]">Back to Folio</span>
@@ -54,7 +54,7 @@ const Invoice = () => {
                 
                 <button 
                     onClick={handlePrint}
-                    className="flex items-center gap-4 px-10 py-5 bg-[#0B2D72] text-black rounded-2xl font-black uppercase text-[10px] tracking-[0.4em] hover:bg-[#EDF7BD] transition-all shadow-xl shadow-[#0B2D72]/10 active:scale-95"
+                    className="flex items-center gap-4 px-10 py-5 bg-transparent text-black rounded-2xl font-black uppercase text-[10px] tracking-[0.4em] hover:bg-[#EDF7BD] transition-all shadow-xl shadow-transparent/10 active:scale-95"
                 >
                     <Printer size={16} />
                     Print Settlement
@@ -63,7 +63,7 @@ const Invoice = () => {
 
             {/* Invoice Document */}
             <div className="max-w-4xl mx-auto bg-[#EDF7BD] text-black p-12 md:p-24 shadow-2xl rounded-[3rem] border border-white/5 relative overflow-hidden print:shadow-none print:p-0 print:bg-[#EDF7BD] print:text-black">
-                <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-[#0B2D72] to-transparent opacity-50"></div>
+                <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-transparent to-transparent opacity-50"></div>
                 
                 {/* Header */}
                 <div className="flex flex-col md:flex-row justify-between gap-16 mb-24 relative z-10">
@@ -151,7 +151,7 @@ const Invoice = () => {
                 {/* Footer / Security */}
                 <div className="bg-[#EDF7BD]/5 p-12 rounded-[2.5rem] border border-white/5 flex flex-col md:flex-row items-center justify-between gap-10 relative z-10">
                     <div className="flex items-center gap-6 text-black">
-                        <div className="w-16 h-16 rounded-full border border-[#0B2D72]/20 flex items-center justify-center text-black">
+                        <div className="w-16 h-16 rounded-full border border-transparent/20 flex items-center justify-center text-black">
                            <ShieldCheck size={32} />
                         </div>
                         <div>

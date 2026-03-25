@@ -89,7 +89,7 @@ const AdminLayout = () => {
     <div className="min-h-screen bg-[#EDF7BD] flex font-sans text-black">
       {/* Sidebar */}
       <aside 
-        className={`fixed inset-y-0 left-0 z-50 w-72 bg-[#0B2D72] border-r border-gray-800/50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-y-0 left-0 z-50 w-72 bg-transparent border-r border-gray-800/50 transform transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:relative lg:translate-x-0 h-screen sticky top-0`}
       >
@@ -180,7 +180,7 @@ const AdminLayout = () => {
               />
               
               {showDropdown && searchQuery.trim() && (
-                <div className="absolute top-full mt-4 right-0 w-80 bg-[#0B2D72] border border-gray-800 rounded-2xl shadow-2xl p-4 animate-in fade-in slide-in-from-top-4">
+                <div className="absolute top-full mt-4 right-0 w-80 bg-transparent border border-gray-800 rounded-2xl shadow-2xl p-4 animate-in fade-in slide-in-from-top-4">
                   {isSearching ? (
                      <div className="flex items-center justify-center py-8 text-black">
                         <Loader2 className="w-5 h-5 animate-spin" />
@@ -252,7 +252,7 @@ const AdminLayout = () => {
 
               {/* Profile Menu Overlay */}
               {showProfileDropdown && (
-                <div className="absolute top-full mt-4 right-0 w-64 bg-[#0B2D72] border border-gray-800 rounded-2xl shadow-2xl p-5 animate-in fade-in slide-in-from-top-4 z-50">
+                <div className="absolute top-full mt-4 right-0 w-64 bg-transparent border border-gray-800 rounded-2xl shadow-2xl p-5 animate-in fade-in slide-in-from-top-4 z-50">
                   <div className="pb-4 border-b border-gray-800/50 mb-4 text-center">
                     <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#EDF7BD] to-[#EDF7BD] mx-auto flex items-center justify-center text-black font-black text-lg mb-3 shadow-[0_0_15px_rgba(212,175,55,0.3)]">
                       {user?.name?.charAt(0) || 'A'}

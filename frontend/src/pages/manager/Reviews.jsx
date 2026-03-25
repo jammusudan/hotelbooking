@@ -48,19 +48,19 @@ const Reviews = () => {
     <div className="space-y-12 animate-in fade-in slide-in-from-bottom-6 duration-700 font-sans text-black">
       <header className="mb-12">
         <h1 className="text-4xl font-serif font-black text-black tracking-tighter uppercase italic">Legacy Testimonials</h1>
-        <div className="h-1.5 w-24 bg-[#0B2D72] mt-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
+        <div className="h-1.5 w-24 bg-transparent mt-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
         <p className="text-[10px] font-black text-black uppercase tracking-[0.3em] mt-6">Protocol established: Reviewing patron feedback and aesthetic sentiment.</p>
       </header>
 
       {loading && reviews.length === 0 ? (
-        <div className="flex items-center justify-center py-32 bg-[#0B2D72] rounded-[3rem] border border-gray-800/50 border-dashed">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-[#0B2D72]"></div>
+        <div className="flex items-center justify-center py-32 bg-transparent rounded-[3rem] border border-gray-800/50 border-dashed">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-transparent"></div>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
           {reviews.map((review) => (
-            <div key={review._id} className="bg-[#0B2D72] rounded-[2.5rem] p-10 border border-gray-800/50 hover:border-[#0B2D72]/30 transition-all group relative flex flex-col shadow-2xl overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#0B2D72]/5 rounded-bl-full -mr-16 -mt-16 transition-all group-hover:bg-[#0B2D72]/10"></div>
+            <div key={review._id} className="bg-transparent rounded-[2.5rem] p-10 border border-gray-800/50 hover:border-transparent/30 transition-all group relative flex flex-col shadow-2xl overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-transparent/5 rounded-bl-full -mr-16 -mt-16 transition-all group-hover:bg-transparent/10"></div>
               
               <div className="mb-10 flex justify-between items-start">
                 <div className="flex items-center gap-4">
@@ -77,7 +77,7 @@ const Reviews = () => {
                     {[...Array(5)].map((_, i) => (
                       <Star 
                         key={i} 
-                        className={`w-3 h-3 ${i < review.rating ? 'fill-[#0B2D72] text-black' : 'text-black shadow-inner'}`} 
+                        className={`w-3 h-3 ${i < review.rating ? 'fill-[transparent] text-black' : 'text-black shadow-inner'}`} 
                       />
                     ))}
                   </div>
@@ -95,7 +95,7 @@ const Reviews = () => {
                 </blockquote>
 
                 {review.managerResponse && (
-                  <div className="mt-8 bg-[#0B2D72]/5 p-6 rounded-2xl border border-[#0B2D72]/10 animate-in slide-in-from-top-4">
+                  <div className="mt-8 bg-transparent/5 p-6 rounded-2xl border border-transparent/10 animate-in slide-in-from-top-4">
                     <div className="flex items-center gap-3 text-black mb-2">
                       <Reply className="w-3.5 h-3.5 rotate-180" />
                       <span className="text-[9px] font-black uppercase tracking-widest">Protocol Response</span>
@@ -114,7 +114,7 @@ const Reviews = () => {
                   {!review.managerResponse && activeReplyId !== review._id && (
                     <button 
                       onClick={() => setActiveReplyId(review._id)}
-                      className="text-[9px] font-black text-black hover:text-black uppercase tracking-widest transition-colors flex items-center gap-2 bg-[#0B2D72]/10 px-4 py-2 rounded-xl border border-[#0B2D72]/10 hover:bg-[#0B2D72] hover:text-black"
+                      className="text-[9px] font-black text-black hover:text-black uppercase tracking-widest transition-colors flex items-center gap-2 bg-transparent/10 px-4 py-2 rounded-xl border border-transparent/10 hover:bg-transparent hover:text-black"
                     >
                       <Reply className="w-3.5 h-3.5" /> Initialize Response
                     </button>
@@ -130,7 +130,7 @@ const Reviews = () => {
                       </button>
                     </div>
                     <textarea 
-                      className="w-full p-6 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none text-sm font-bold text-black transition-all shadow-inner placeholder:text-black resize-none italic"
+                      className="w-full p-6 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent/50 outline-none text-sm font-bold text-black transition-all shadow-inner placeholder:text-black resize-none italic"
                       placeholder="Address the patron's narrative..."
                       rows="3"
                       value={replyText}
@@ -140,7 +140,7 @@ const Reviews = () => {
                       <button 
                         onClick={() => handleReply(review._id)}
                         disabled={submitLoading || !replyText.trim()}
-                        className="flex items-center gap-3 bg-[#0B2D72] text-black px-6 py-3 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-[#EDF7BD] transition-all disabled:opacity-30 shadow-lg shadow-[#0B2D72]/20"
+                        className="flex items-center gap-3 bg-transparent text-black px-6 py-3 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-[#EDF7BD] transition-all disabled:opacity-30 shadow-lg shadow-transparent/20"
                       >
                         {submitLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Send className="w-3.5 h-3.5" />}
                         Transmit Reply
@@ -155,7 +155,7 @@ const Reviews = () => {
       )}
 
       {reviews.length === 0 && !loading && (
-        <div className="text-center py-32 bg-[#0B2D72] rounded-[3rem] border border-gray-800/50 border-dashed group">
+        <div className="text-center py-32 bg-transparent rounded-[3rem] border border-gray-800/50 border-dashed group">
           <MessageSquare className="w-16 h-16 text-black mx-auto mb-8 group-hover:text-black/20 transition-colors animate-pulse" />
           <p className="text-black font-bold uppercase tracking-[0.3em] text-[10px] italic">Telemetry null: No guest testimonials retrieved.</p>
         </div>

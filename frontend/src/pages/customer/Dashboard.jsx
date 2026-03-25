@@ -13,8 +13,8 @@ const CustomerDashboard = () => {
   return (
     <div className="min-h-screen bg-[#EDF7BD] py-20 px-4 relative overflow-hidden">
       {/* Ambient Background Glow */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0B2D72]/10 blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#0B2D72]/10 blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-transparent/10 blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-transparent/10 blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Header Section */}
@@ -29,7 +29,7 @@ const CustomerDashboard = () => {
             <p className="text-black mt-4 font-medium tracking-wide">Your luxury experience continues here.</p>
           </div>
           <div className="hidden md:flex items-center gap-4 bg-[#EDF7BD]/5 border border-white/10 px-6 py-3 rounded-2xl backdrop-blur-md">
-            <div className="w-12 h-12 rounded-full bg-[#0B2D72] flex items-center justify-center text-black font-black text-xl shadow-lg shadow-[#0B2D72]/20">
+            <div className="w-12 h-12 rounded-full bg-transparent flex items-center justify-center text-black font-black text-xl shadow-lg shadow-transparent/20">
               {user?.name?.charAt(0)}
             </div>
             <div>
@@ -48,10 +48,10 @@ const CustomerDashboard = () => {
                 <Link 
                   key={item.name} 
                   to={item.path}
-                  className="group flex items-center justify-between p-8 bg-[#EDF7BD] border border-white/5 rounded-[2rem] hover:border-[#0B2D72]/30 hover:bg-[#0B2D72]/5 transition-all duration-500 shadow-2xl"
+                  className="group flex items-center justify-between p-8 bg-[#EDF7BD] border border-white/5 rounded-[2rem] hover:border-transparent/30 hover:bg-transparent/5 transition-all duration-500 shadow-2xl"
                 >
                   <div className="flex items-center gap-6">
-                    <div className="w-16 h-16 bg-[#EDF7BD]/5 border border-white/10 rounded-2xl flex items-center justify-center text-black group-hover:scale-110 group-hover:bg-[#0B2D72] group-hover:text-black transition-all duration-500">
+                    <div className="w-16 h-16 bg-[#EDF7BD]/5 border border-white/10 rounded-2xl flex items-center justify-center text-black group-hover:scale-110 group-hover:bg-transparent group-hover:text-black transition-all duration-500">
                       <item.icon className="w-6 h-6" />
                     </div>
                     <div>
@@ -101,7 +101,7 @@ const CustomerDashboard = () => {
             </div>
 
             {/* Exclusive Offer Card */}
-            <div className="bg-[#0B2D72] p-10 rounded-[3rem] shadow-2xl shadow-[#0B2D72]/20 text-black overflow-hidden relative group">
+            <div className="bg-transparent p-10 rounded-[3rem] shadow-2xl shadow-transparent/20 text-black overflow-hidden relative group">
               <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#EDF7BD]/20 blur-3xl rounded-full"></div>
               <h4 className="text-[10px] font-black uppercase tracking-[0.5em] mb-4 opacity-70">Privilege Update</h4>
               <p className="text-2xl font-serif font-black uppercase leading-tight italic mb-6">Unlock the Royal Penthouse for 20% less</p>

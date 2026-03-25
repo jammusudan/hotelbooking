@@ -34,10 +34,10 @@ body {
     @apply bg-transparent text-black font-bold py-2 px-6 rounded border border-gray-300 hover:bg-gray-50 transition-colors duration-300;
   }
   .btn-gold {
-    @apply bg-[#0B2D72] text-black font-bold py-2 px-6 rounded hover:bg-[#0B2D72] transition-colors duration-300;
+    @apply bg-transparent text-black font-bold py-2 px-6 rounded hover:bg-transparent transition-colors duration-300;
   }
   .input-field {
-    @apply mt-1 block w-full px-4 py-3 bg-[#EDF7BD] border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#0B2D72] focus:border-[#0B2D72] sm:text-sm;
+    @apply mt-1 block w-full px-4 py-3 bg-[#EDF7BD] border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[transparent] focus:border-transparent sm:text-sm;
   }
   .card {
     @apply bg-[#EDF7BD] rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300;

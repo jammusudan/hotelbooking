@@ -87,23 +87,23 @@ const Bookings = () => {
     <div className="space-y-12 animate-in fade-in slide-in-from-bottom-6 duration-700 font-sans">
       <header className="mb-12">
         <h1 className="text-4xl font-serif font-black text-black tracking-tighter uppercase italic">Reservation Folio</h1>
-        <div className="h-1.5 w-24 bg-[#0B2D72] mt-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
+        <div className="h-1.5 w-24 bg-transparent mt-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
         <p className="text-[10px] font-black text-black uppercase tracking-[0.3em] mt-6">Registry audit: tracking active customer deployments and settlements.</p>
       </header>
 
       {/* Filters & Search */}
-      <div className="bg-[#0B2D72] p-6 rounded-3xl border border-gray-800/50 shadow-2xl flex flex-col md:flex-row gap-6">
+      <div className="bg-transparent p-6 rounded-3xl border border-gray-800/50 shadow-2xl flex flex-col md:flex-row gap-6">
         <div className="relative flex-1 group">
           <Search className="absolute left-6 top-4 w-5 h-5 text-black group-hover:text-black transition-colors" />
           <input 
             type="text"
             placeholder="Search by patron or estate legacy..."
-            className="w-full pl-16 pr-6 py-4 bg-[#EDF7BD]/50 border border-gray-800/80 rounded-2xl focus:border-[#0B2D72]/50 outline-none text-sm font-bold text-black transition-all shadow-inner placeholder:text-black"
+            className="w-full pl-16 pr-6 py-4 bg-[#EDF7BD]/50 border border-gray-800/80 rounded-2xl focus:border-transparent/50 outline-none text-sm font-bold text-black transition-all shadow-inner placeholder:text-black"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <div className="flex items-center gap-4 bg-[#EDF7BD]/50 border border-gray-800/80 rounded-2xl px-6 py-2 group hover:border-[#0B2D72]/30 transition-all">
+        <div className="flex items-center gap-4 bg-[#EDF7BD]/50 border border-gray-800/80 rounded-2xl px-6 py-2 group hover:border-transparent/30 transition-all">
           <Filter className="w-4 h-4 text-black group-hover:text-black transition-colors" />
           <select 
             className="bg-transparent border-none text-black text-xs font-black uppercase tracking-widest focus:ring-0 cursor-pointer"
@@ -120,11 +120,11 @@ const Bookings = () => {
       </div>
 
       {loading && bookings.length === 0 ? (
-        <div className="flex items-center justify-center py-32 bg-[#0B2D72] rounded-[3rem] border border-gray-800/50 border-dashed">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-[#0B2D72]"></div>
+        <div className="flex items-center justify-center py-32 bg-transparent rounded-[3rem] border border-gray-800/50 border-dashed">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-transparent"></div>
         </div>
       ) : (
-        <div className="bg-[#0B2D72] rounded-[2.5rem] border border-gray-800/50 shadow-2xl overflow-hidden">
+        <div className="bg-transparent rounded-[2.5rem] border border-gray-800/50 shadow-2xl overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left font-sans">
               <thead className="bg-[#1c1c20]">
@@ -188,7 +188,7 @@ const Bookings = () => {
                           : booking.status === 'Cancelled' 
                           ? 'bg-rose-500/20 text-rose-500 border-rose-500/30' 
                           : booking.status === 'Completed'
-                          ? 'bg-[#0B2D72]/10 text-black border-[#0B2D72]/20'
+                          ? 'bg-transparent/10 text-black border-transparent/20'
                           : 'bg-amber-500/10 text-amber-500 border-amber-500/20'
                       }`}>
                         {booking.status}
@@ -212,7 +212,7 @@ const Bookings = () => {
                             {booking.status === 'Confirmed' && (
                               <button 
                                 onClick={() => handleStatusUpdate(booking._id, 'Completed')}
-                                className="p-3 bg-[#EDF7BD]/5 text-black hover:bg-[#0B2D72] hover:text-black rounded-xl transition-all border border-white/10 shadow-lg"
+                                className="p-3 bg-[#EDF7BD]/5 text-black hover:bg-transparent hover:text-black rounded-xl transition-all border border-white/10 shadow-lg"
                                 title="Seal Historical"
                               >
                                 <CheckCircle2 className="w-5 h-5" />
@@ -230,7 +230,7 @@ const Bookings = () => {
                              {booking.paymentStatus === 'Paid' && (
                               <button 
                                 onClick={() => handleRefund(booking._id)}
-                                className="p-3 bg-[#0B2D72]/10 text-black hover:bg-[#0B2D72] hover:text-black rounded-xl transition-all border border-[#0B2D72]/20 shadow-lg"
+                                className="p-3 bg-transparent/10 text-black hover:bg-transparent hover:text-black rounded-xl transition-all border border-transparent/20 shadow-lg"
                                 title="Initialize Refund protocol"
                               >
                                 <CreditCard className="w-5 h-5" />
@@ -238,7 +238,7 @@ const Bookings = () => {
                             )}
                             <button 
                               onClick={() => navigate(`/invoice/${booking._id}`)}
-                              className="p-3 bg-[#EDF7BD] text-black hover:text-black rounded-xl transition-all border border-gray-800 shadow-lg hover:border-[#0B2D72]/30 group/inv"
+                              className="p-3 bg-[#EDF7BD] text-black hover:text-black rounded-xl transition-all border border-gray-800 shadow-lg hover:border-transparent/30 group/inv"
                               title="View Official Invoice"
                             >
                               <FileText className="w-5 h-5 group-hover/inv:text-black transition-colors" />

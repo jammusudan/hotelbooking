@@ -223,7 +223,7 @@ const ManagerDashboard = () => {
 
     if (loading) return (
         <div className="min-h-screen flex items-center justify-center bg-[#EDF7BD]">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0B2D72]"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-transparent"></div>
         </div>
     );
 
@@ -231,13 +231,13 @@ const ManagerDashboard = () => {
         <div className="bg-[#EDF7BD] min-h-screen flex font-sans text-black pt-20">
             {/* LIVE ALERT / NOTIFICATION */}
             {(notification || notification) && (
-                <div className="fixed top-24 right-8 z-[100] bg-[#0B2D72] text-black px-6 py-3 rounded-xl shadow-2xl animate-in slide-in-from-right-10 font-black text-xs flex items-center gap-3">
+                <div className="fixed top-24 right-8 z-[100] bg-transparent text-black px-6 py-3 rounded-xl shadow-2xl animate-in slide-in-from-right-10 font-black text-xs flex items-center gap-3">
                     <span className="animate-pulse">📡</span> {notification}
                 </div>
             )}
 
             {/* SIDEBAR */}
-            <aside className="w-72 bg-[#0B2D72] border-r border-gray-800/50 flex flex-col sticky top-20 h-[calc(100vh-5rem)]">
+            <aside className="w-72 bg-transparent border-r border-gray-800/50 flex flex-col sticky top-20 h-[calc(100vh-5rem)]">
                 <div className="p-8 pb-12">
                     <h2 className="text-xl font-serif font-black text-black tracking-tighter uppercase italic">Manager Portal</h2>
                     <p className="text-[10px] font-bold text-black tracking-[0.3em] mt-2">PROPERTY PROTOCOL</p>
@@ -248,7 +248,7 @@ const ManagerDashboard = () => {
                         onClick={() => { setActiveTab('hotels'); setIsCreating(false); }}
                         className={`w-full flex items-center gap-4 px-6 py-4 rounded-2xl text-sm font-bold transition-all ${
                             activeTab === 'hotels' 
-                            ? 'bg-[#0B2D72] text-black shadow-lg shadow-[#0B2D72]/20' 
+                            ? 'bg-transparent text-black shadow-lg shadow-transparent/20' 
                             : 'text-black hover:bg-gray-800 hover:text-black'
                         }`}
                     >
@@ -276,7 +276,7 @@ const ManagerDashboard = () => {
                                     }}
                                     className={`w-full flex items-center gap-4 px-6 py-4 rounded-2xl text-sm font-bold transition-all ${
                                         activeTab === link.name 
-                                        ? 'bg-[#0B2D72] text-black shadow-lg shadow-[#0B2D72]/20' 
+                                        ? 'bg-transparent text-black shadow-lg shadow-transparent/20' 
                                         : 'text-black hover:bg-gray-800 hover:text-black'
                                     }`}
                                 >
@@ -296,7 +296,7 @@ const ManagerDashboard = () => {
                         <span>➕</span> Add New Property
                     </button>
                     <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#0B2D72] to-[#0B2D72] flex items-center justify-center text-black font-black">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-transparent to-transparent flex items-center justify-center text-black font-black">
                             {user?.name?.charAt(0)}
                         </div>
                         <div>
@@ -310,30 +310,30 @@ const ManagerDashboard = () => {
             {/* MAIN CONTENT */}
             <main className="flex-grow p-12 overflow-y-auto">
                 {isCreating || (myHotels.length === 0 && !loading) ? (
-                    <div className="max-w-3xl mx-auto bg-[#0B2D72] p-12 rounded-[3rem] border border-gray-800/50 shadow-2xl relative overflow-hidden animate-in fade-in zoom-in-95">
+                    <div className="max-w-3xl mx-auto bg-transparent p-12 rounded-[3rem] border border-gray-800/50 shadow-2xl relative overflow-hidden animate-in fade-in zoom-in-95">
                         <div className="absolute top-0 right-12 bottom-0 left-0 pointer-events-none opacity-10">
                              <div className="text-[20rem] font-black italic">NEW</div>
                         </div>
-                        <div className="absolute top-0 left-0 w-full h-1.5 bg-[#0B2D72]"></div>
+                        <div className="absolute top-0 left-0 w-full h-1.5 bg-transparent"></div>
                         <div className="flex justify-between items-start mb-8">
                              <h2 className="text-3xl font-serif font-black text-black uppercase tracking-tight italic">Onboard Your Sanctuary</h2>
                              {myHotels.length > 0 && <button onClick={() => setIsCreating(false)} className="text-black hover:text-black transition-colors">✕</button>}
                         </div>
                         <form onSubmit={handleCreateHotel} className="space-y-6">
-                            <input required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black transition-all" placeholder="Property Name (e.g. Royal Windsor)" value={hotelFormData.name} onChange={e=>setHotelFormData({...hotelFormData, name: e.target.value})} />
-                            <textarea required rows="4" className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black transition-all" placeholder="Property Epic/Description" value={hotelFormData.description} onChange={e=>setHotelFormData({...hotelFormData, description: e.target.value})} />
-                            <input required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black transition-all" placeholder="Full Address" value={hotelFormData.address} onChange={e=>setHotelFormData({...hotelFormData, address: e.target.value})} />
+                            <input required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black transition-all" placeholder="Property Name (e.g. Royal Windsor)" value={hotelFormData.name} onChange={e=>setHotelFormData({...hotelFormData, name: e.target.value})} />
+                            <textarea required rows="4" className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black transition-all" placeholder="Property Epic/Description" value={hotelFormData.description} onChange={e=>setHotelFormData({...hotelFormData, description: e.target.value})} />
+                            <input required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black transition-all" placeholder="Full Address" value={hotelFormData.address} onChange={e=>setHotelFormData({...hotelFormData, address: e.target.value})} />
                             <div className="grid grid-cols-2 gap-6">
-                                <input required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black transition-all" placeholder="City" value={hotelFormData.city} onChange={e=>setHotelFormData({...hotelFormData, city: e.target.value})} />
-                                <input required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black transition-all" placeholder="Country" value={hotelFormData.country} onChange={e=>setHotelFormData({...hotelFormData, country: e.target.value})} />
+                                <input required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black transition-all" placeholder="City" value={hotelFormData.city} onChange={e=>setHotelFormData({...hotelFormData, city: e.target.value})} />
+                                <input required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black transition-all" placeholder="Country" value={hotelFormData.country} onChange={e=>setHotelFormData({...hotelFormData, country: e.target.value})} />
                             </div>
-                            <input className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black transition-all" placeholder="Amenities (WiFi, Spa, Pool...)" value={hotelFormData.amenities} onChange={e=>setHotelFormData({...hotelFormData, amenities: e.target.value})} />
+                            <input className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black transition-all" placeholder="Amenities (WiFi, Spa, Pool...)" value={hotelFormData.amenities} onChange={e=>setHotelFormData({...hotelFormData, amenities: e.target.value})} />
                             
                             <div className="space-y-4">
                                 <label className="text-[10px] font-black text-black uppercase tracking-widest pl-2">Property Gallery (URLs)</label>
                                 {hotelFormData.images.map((img, idx) => (
                                     <div key={idx} className="flex gap-2">
-                                        <input className="flex-grow p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black transition-all" value={img} onChange={e => {
+                                        <input className="flex-grow p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black transition-all" value={img} onChange={e => {
                                             const newImg = [...hotelFormData.images];
                                             newImg[idx] = e.target.value;
                                             setHotelFormData({...hotelFormData, images: newImg});
@@ -347,7 +347,7 @@ const ManagerDashboard = () => {
                                 <button type="button" onClick={() => setHotelFormData({...hotelFormData, images: [...hotelFormData.images, '']})} className="text-[10px] font-black text-black uppercase tracking-widest hover:text-black transition-colors">＋ Add Image URL</button>
                             </div>
 
-                            <button type="submit" className="w-full bg-[#0B2D72] text-black py-5 rounded-2xl shadow-xl shadow-[#0B2D72]/10 font-black uppercase tracking-[0.2em] mt-4 hover:bg-[#0B2D72] active:scale-[0.98] transition-all">Initiate Registration</button>
+                            <button type="submit" className="w-full bg-transparent text-black py-5 rounded-2xl shadow-xl shadow-transparent/10 font-black uppercase tracking-[0.2em] mt-4 hover:bg-transparent active:scale-[0.98] transition-all">Initiate Registration</button>
                         </form>
                     </div>
                 ) : (
@@ -355,7 +355,7 @@ const ManagerDashboard = () => {
                         <header className="mb-12 flex justify-between items-end">
                             <div>
                                 <h1 className="text-4xl font-serif font-black text-black tracking-tighter uppercase italic">{activeTab}</h1>
-                                <div className="h-1.5 w-24 bg-[#0B2D72] mt-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
+                                <div className="h-1.5 w-24 bg-transparent mt-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
                             </div>
                             {selectedHotel && activeTab !== 'hotels' && (
                                 <div className="text-right">
@@ -373,9 +373,9 @@ const ManagerDashboard = () => {
                                         <div 
                                             key={hotel._id} 
                                             onClick={() => { setSelectedHotel(hotel); fetchHotelDetails(hotel._id); setActiveTab('overview'); }}
-                                            className={`group relative bg-[#0B2D72] p-8 rounded-[2.5rem] border transition-all cursor-pointer overflow-hidden ${selectedHotel?._id === hotel._id ? 'border-[#0B2D72] shadow-2xl shadow-[#0B2D72]/10' : 'border-gray-800/50 hover:border-[#0B2D72]/30'}`}
+                                            className={`group relative bg-transparent p-8 rounded-[2.5rem] border transition-all cursor-pointer overflow-hidden ${selectedHotel?._id === hotel._id ? 'border-transparent shadow-2xl shadow-transparent/10' : 'border-gray-800/50 hover:border-transparent/30'}`}
                                         >
-                                            <div className="absolute top-0 right-0 px-6 py-2 rounded-bl-3xl text-[9px] font-black uppercase tracking-[0.2em] shadow-lg bg-[#0B2D72] text-black">
+                                            <div className="absolute top-0 right-0 px-6 py-2 rounded-bl-3xl text-[9px] font-black uppercase tracking-[0.2em] shadow-lg bg-transparent text-black">
                                                 {hotel.isApproved ? 'Active' : 'Pending'}
                                             </div>
                                             <div className="h-40 bg-[#EDF7BD] rounded-3xl mb-6 overflow-hidden">
@@ -402,7 +402,7 @@ const ManagerDashboard = () => {
                                     ))}
                                     <div 
                                         onClick={() => { setIsCreating(true); setSelectedHotel(null); }}
-                                        className="group bg-[#0B2D72]/50 border-2 border-dashed border-gray-800 p-8 rounded-[2.5rem] flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#0B2D72]/50 hover:bg-[#0B2D72]/5 transition-all min-h-[300px]"
+                                        className="group bg-transparent/50 border-2 border-dashed border-gray-800 p-8 rounded-[2.5rem] flex flex-col items-center justify-center text-center cursor-pointer hover:border-transparent/50 hover:bg-transparent/5 transition-all min-h-[300px]"
                                     >
                                         <div className="w-20 h-20 bg-[#EDF7BD] rounded-full flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition-transform">➕</div>
                                         <p className="text-lg font-serif font-black text-black uppercase italic mb-2 group-hover:text-black">Onboard New Property</p>
@@ -416,32 +416,32 @@ const ManagerDashboard = () => {
                         {activeTab === 'overview' && selectedHotel && (
                             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-in fade-in slide-in-from-bottom-6 duration-700">
                                 <div className="lg:col-span-2 space-y-8">
-                                    <div className="bg-[#0B2D72] p-10 rounded-[2.5rem] border border-gray-800/50 relative overflow-hidden group">
-                                        <div className={`absolute top-0 right-0 px-6 py-2 rounded-bl-3xl text-[10px] font-black uppercase tracking-[0.2em] shadow-lg ${selectedHotel.isApproved ? 'bg-emerald-500 text-black shadow-emerald-500/20' : 'bg-[#0B2D72] text-black shadow-[#0B2D72]/20'}`}>
+                                    <div className="bg-transparent p-10 rounded-[2.5rem] border border-gray-800/50 relative overflow-hidden group">
+                                        <div className={`absolute top-0 right-0 px-6 py-2 rounded-bl-3xl text-[10px] font-black uppercase tracking-[0.2em] shadow-lg ${selectedHotel.isApproved ? 'bg-emerald-500 text-black shadow-emerald-500/20' : 'bg-transparent text-black shadow-transparent/20'}`}>
                                             {selectedHotel.isApproved ? 'Active Sanctuary' : 'Awaiting Approval'}
                                         </div>
                                         <div className="flex justify-between items-start mb-4">
                                             <h3 className="text-4xl font-serif font-black text-black uppercase tracking-tighter italic">{selectedHotel.name}</h3>
-                                            <button onClick={startEditHotel} className="text-black font-black text-[10px] uppercase tracking-widest border-b border-transparent hover:border-[#0B2D72] transition-all italic">Edit Property</button>
+                                            <button onClick={startEditHotel} className="text-black font-black text-[10px] uppercase tracking-widest border-b border-transparent hover:border-transparent transition-all italic">Edit Property</button>
                                         </div>
                                         <p className="text-black font-bold text-xs uppercase tracking-widest mb-8">📍 {selectedHotel.city}, {selectedHotel.country}</p>
-                                        <p className="text-black font-medium leading-relaxed italic border-l-2 border-[#0B2D72] pl-6">"{selectedHotel.description}"</p>
+                                        <p className="text-black font-medium leading-relaxed italic border-l-2 border-transparent pl-6">"{selectedHotel.description}"</p>
                                     </div>
 
                                     {showHotelEdit && (
-                                        <div className="bg-[#0B2D72] p-10 rounded-[2.5rem] border border-[#0B2D72]/50 shadow-2xl animate-in fade-in zoom-in-95">
+                                        <div className="bg-transparent p-10 rounded-[2.5rem] border border-transparent/50 shadow-2xl animate-in fade-in zoom-in-95">
                                             <div className="flex justify-between items-center mb-8">
                                                 <h4 className="text-xl font-black uppercase tracking-widest text-black italic">Refine Property Details</h4>
                                                 <button onClick={() => setShowHotelEdit(false)} className="text-black hover:text-black transition-colors">✕</button>
                                             </div>
                                             <form onSubmit={handleUpdateHotel} className="space-y-6">
-                                                <input required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black transition-all" placeholder="Property Name" value={hotelFormData.name} onChange={e=>setHotelFormData({...hotelFormData, name: e.target.value})} />
-                                                <textarea required rows="4" className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black transition-all" placeholder="Property Epic" value={hotelFormData.description} onChange={e=>setHotelFormData({...hotelFormData, description: e.target.value})} />
+                                                <input required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black transition-all" placeholder="Property Name" value={hotelFormData.name} onChange={e=>setHotelFormData({...hotelFormData, name: e.target.value})} />
+                                                <textarea required rows="4" className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black transition-all" placeholder="Property Epic" value={hotelFormData.description} onChange={e=>setHotelFormData({...hotelFormData, description: e.target.value})} />
                                                 <div className="grid grid-cols-2 gap-6">
-                                                    <input required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black transition-all" placeholder="City" value={hotelFormData.city} onChange={e=>setHotelFormData({...hotelFormData, city: e.target.value})} />
-                                                    <input required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black transition-all" placeholder="Country" value={hotelFormData.country} onChange={e=>setHotelFormData({...hotelFormData, country: e.target.value})} />
+                                                    <input required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black transition-all" placeholder="City" value={hotelFormData.city} onChange={e=>setHotelFormData({...hotelFormData, city: e.target.value})} />
+                                                    <input required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black transition-all" placeholder="Country" value={hotelFormData.country} onChange={e=>setHotelFormData({...hotelFormData, country: e.target.value})} />
                                                 </div>
-                                                <input className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black transition-all" placeholder="Main Property Image URL" value={hotelFormData.images[0] || ''} onChange={e=>{
+                                                <input className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black transition-all" placeholder="Main Property Image URL" value={hotelFormData.images[0] || ''} onChange={e=>{
                                                     const newImgs = [...hotelFormData.images];
                                                     newImgs[0] = e.target.value;
                                                     setHotelFormData({...hotelFormData, images: newImgs});
@@ -451,7 +451,7 @@ const ManagerDashboard = () => {
                                                     <label className="text-[10px] font-black text-black uppercase tracking-widest pl-2">Property Gallery (URLs)</label>
                                                     {hotelFormData.images.map((img, idx) => (
                                                         <div key={idx} className="flex gap-2">
-                                                            <input className="flex-grow p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black transition-all" value={img} onChange={e => {
+                                                            <input className="flex-grow p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black transition-all" value={img} onChange={e => {
                                                                 const newImg = [...hotelFormData.images];
                                                                 newImg[idx] = e.target.value;
                                                                 setHotelFormData({...hotelFormData, images: newImg});
@@ -465,27 +465,27 @@ const ManagerDashboard = () => {
                                                     <button type="button" onClick={() => setHotelFormData({...hotelFormData, images: [...hotelFormData.images, '']})} className="text-[10px] font-black text-black uppercase tracking-widest hover:text-black transition-colors">＋ Add Image URL</button>
                                                 </div>
 
-                                                <button type="submit" className="w-full bg-[#0B2D72] text-black py-5 rounded-2xl font-black uppercase tracking-[0.2em] hover:bg-[#0B2D72] transition-all">Authorize Global Updates</button>
+                                                <button type="submit" className="w-full bg-transparent text-black py-5 rounded-2xl font-black uppercase tracking-[0.2em] hover:bg-transparent transition-all">Authorize Global Updates</button>
                                             </form>
                                         </div>
                                     )}
                                     
                                     <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                                        <div className="bg-[#0B2D72] border border-gray-800/50 p-8 rounded-[2rem] hover:border-[#0B2D72]/30 transition-all group">
+                                        <div className="bg-transparent border border-gray-800/50 p-8 rounded-[2rem] hover:border-transparent/30 transition-all group">
                                             <div className="text-3xl font-serif font-black text-black mb-1">{reservations.length}</div>
                                             <div className="text-[10px] font-black uppercase tracking-widest text-black">Total Reservations</div>
                                         </div>
-                                        <div className="bg-[#0B2D72] border border-gray-800/50 p-8 rounded-[2rem] hover:border-[#0B2D72]/30 transition-all group">
+                                        <div className="bg-transparent border border-gray-800/50 p-8 rounded-[2rem] hover:border-transparent/30 transition-all group">
                                             <div className="text-3xl font-serif font-black text-black mb-1">{rooms.length}</div>
                                             <div className="text-[10px] font-black uppercase tracking-widest text-black">Active Room Tiers</div>
                                         </div>
-                                        <div className="bg-[#0B2D72] border border-gray-800/50 p-8 rounded-[2rem] hover:border-[#0B2D72]/30 transition-all group">
+                                        <div className="bg-transparent border border-gray-800/50 p-8 rounded-[2rem] hover:border-transparent/30 transition-all group">
                                             <div className="text-3xl font-serif font-black text-black mb-1">{reviews.length}</div>
                                             <div className="text-[10px] font-black uppercase tracking-widest text-black">Guest Reflections</div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="bg-[#0B2D72] p-8 rounded-[2.5rem] border border-gray-800/50 shadow-sm flex flex-col items-center justify-center text-center">
+                                <div className="bg-transparent p-8 rounded-[2.5rem] border border-gray-800/50 shadow-sm flex flex-col items-center justify-center text-center">
                                      <div className="w-full h-48 bg-[#EDF7BD] rounded-3xl overflow-hidden mb-6 border border-gray-800">
                                          <img src={getHotelImage(selectedHotel)} className="w-full h-full object-cover" alt="Hotel" />
                                      </div>
@@ -500,28 +500,28 @@ const ManagerDashboard = () => {
                             <div className="space-y-8 animate-in fade-in slide-in-from-right-8 duration-700">
                                 {analyticsLoading ? (
                                     <div className="flex justify-center py-20">
-                                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0B2D72]"></div>
+                                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-transparent"></div>
                                     </div>
                                 ) : analytics ? (
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                                        <div className="bg-[#0B2D72] p-8 rounded-[2rem] border border-gray-800/50">
+                                        <div className="bg-transparent p-8 rounded-[2rem] border border-gray-800/50">
                                             <p className="text-[10px] font-black text-black uppercase tracking-widest mb-2">Total Revenue (Elite)</p>
                                             <div className="text-3xl font-serif font-black text-black italic">₹{analytics.totalRevenue.toLocaleString()}</div>
                                         </div>
-                                        <div className="bg-[#0B2D72] p-8 rounded-[2rem] border border-gray-800/50">
+                                        <div className="bg-transparent p-8 rounded-[2rem] border border-gray-800/50">
                                             <p className="text-[10px] font-black text-black uppercase tracking-widest mb-2">Occupancy Rate</p>
                                             <div className="text-3xl font-serif font-black text-black italic">{analytics.occupancyRate}%</div>
                                         </div>
-                                        <div className="bg-[#0B2D72] p-8 rounded-[2rem] border border-gray-800/50">
+                                        <div className="bg-transparent p-8 rounded-[2rem] border border-gray-800/50">
                                             <p className="text-[10px] font-black text-black uppercase tracking-widest mb-2">Confirmed Bookings</p>
                                             <div className="text-3xl font-serif font-black text-black italic">{analytics.stats.total}</div>
                                         </div>
-                                        <div className="bg-[#0B2D72] p-8 rounded-[2rem] border border-gray-800/50">
+                                        <div className="bg-transparent p-8 rounded-[2rem] border border-gray-800/50">
                                             <p className="text-[10px] font-black text-black uppercase tracking-widest mb-2">Pending Inquiries</p>
                                             <div className="text-3xl font-serif font-black text-rose-500 italic">{analytics.stats.pending}</div>
                                         </div>
                                         
-                                        <div className="lg:col-span-4 bg-[#0B2D72] p-10 rounded-[2.5rem] border border-gray-800/50">
+                                        <div className="lg:col-span-4 bg-transparent p-10 rounded-[2.5rem] border border-gray-800/50">
                                             <h3 className="text-xl font-black uppercase tracking-widest text-black italic mb-8">Revenue Momentum</h3>
                                             <div className="flex items-end gap-2 h-48">
                                                 {analytics.monthlyRevenue.map((m, idx) => {
@@ -529,9 +529,9 @@ const ManagerDashboard = () => {
                                                     const height = (m.revenue / maxRevenue) * 100;
                                                     return (
                                                         <div key={idx} className="flex-grow flex flex-col items-center gap-4">
-                                                            <div className="w-full bg-[#0B2D72]/10 rounded-t-xl relative group transition-all" style={{ height: `${height}%` }}>
+                                                            <div className="w-full bg-transparent/10 rounded-t-xl relative group transition-all" style={{ height: `${height}%` }}>
                                                                 <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap text-[10px] font-black text-black">₹{m.revenue.toLocaleString()}</div>
-                                                                <div className="absolute inset-0 bg-[#0B2D72] opacity-20 group-hover:opacity-40 transition-opacity rounded-t-xl"></div>
+                                                                <div className="absolute inset-0 bg-transparent opacity-20 group-hover:opacity-40 transition-opacity rounded-t-xl"></div>
                                                             </div>
                                                             <span className="text-[10px] font-black text-black uppercase tracking-tighter">{m.month}</span>
                                                         </div>
@@ -549,23 +549,23 @@ const ManagerDashboard = () => {
                         {/* TAB: ROOMS */}
                         {activeTab === 'rooms' && selectedHotel && (
                             <div className="space-y-8 animate-in fade-in slide-in-from-right-8 duration-700">
-                                <div className="flex justify-between items-center bg-[#0B2D72] p-8 rounded-[2rem] border border-gray-800/50">
+                                <div className="flex justify-between items-center bg-transparent p-8 rounded-[2rem] border border-gray-800/50">
                                     <h3 className="text-2xl font-serif font-black text-black uppercase tracking-tighter italic">Inventory Management</h3>
                                     <button 
                                         onClick={() => { setShowRoomForm(!showRoomForm); setRoomFormData({ type: 'Single', pricePerNight: '', capacity: 1, count: 1, amenities: '', id: null }); }}
-                                        className="bg-[#0B2D72] text-black px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-[#0B2D72] transition-all"
+                                        className="bg-transparent text-black px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-transparent transition-all"
                                     >
                                         {showRoomForm ? 'Cancel Operation' : 'Add New Tier'}
                                     </button>
                                 </div>
 
                                 {showRoomForm && (
-                                    <div className="bg-[#0B2D72] p-10 rounded-[2.5rem] border border-[#0B2D72]/50 shadow-2xl animate-in fade-in zoom-in-95">
+                                    <div className="bg-transparent p-10 rounded-[2.5rem] border border-transparent/50 shadow-2xl animate-in fade-in zoom-in-95">
                                         <h4 className="text-xl font-black uppercase tracking-widest mb-8 text-black italic">{roomFormData.id ? 'Edit Chamber Tier' : 'New Chamber Category'}</h4>
                                         <form onSubmit={handleRoomAction} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                                             <div className="space-y-2">
                                                 <label className="text-[9px] font-black uppercase tracking-widest text-black pl-2">Suite Type</label>
-                                                <select className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black text-sm" value={roomFormData.type} onChange={e=>setRoomFormData({...roomFormData, type: e.target.value})}>
+                                                <select className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black text-sm" value={roomFormData.type} onChange={e=>setRoomFormData({...roomFormData, type: e.target.value})}>
                                                     <option value="Single">Single</option>
                                                     <option value="Double">Double</option>
                                                     <option value="Suite">Suite</option>
@@ -574,19 +574,19 @@ const ManagerDashboard = () => {
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-[9px] font-black uppercase tracking-widest text-black pl-2">Nightly Rate (₹)</label>
-                                                <input type="number" required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black text-sm" value={roomFormData.pricePerNight} onChange={e=>setRoomFormData({...roomFormData, pricePerNight: e.target.value})} />
+                                                <input type="number" required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black text-sm" value={roomFormData.pricePerNight} onChange={e=>setRoomFormData({...roomFormData, pricePerNight: e.target.value})} />
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-[9px] font-black uppercase tracking-widest text-black pl-2">Max Capacity</label>
-                                                <input type="number" required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black text-sm" value={roomFormData.capacity} onChange={e=>setRoomFormData({...roomFormData, capacity: e.target.value})} />
+                                                <input type="number" required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black text-sm" value={roomFormData.capacity} onChange={e=>setRoomFormData({...roomFormData, capacity: e.target.value})} />
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-[9px] font-black uppercase tracking-widest text-black pl-2">Inventory Count</label>
-                                                <input type="number" required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black text-sm" value={roomFormData.count} onChange={e=>setRoomFormData({...roomFormData, count: e.target.value})} />
+                                                <input type="number" required className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black text-sm" value={roomFormData.count} onChange={e=>setRoomFormData({...roomFormData, count: e.target.value})} />
                                             </div>
                                             <div className="md:col-span-2 lg:col-span-4 space-y-2">
                                                 <label className="text-[9px] font-black uppercase tracking-widest text-black pl-2">Amenities</label>
-                                                <input className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black text-sm" placeholder="WiFi, AC, Mini-bar, Pool View..." value={roomFormData.amenities} onChange={e=>setRoomFormData({...roomFormData, amenities: e.target.value})} />
+                                                <input className="w-full p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black text-sm" placeholder="WiFi, AC, Mini-bar, Pool View..." value={roomFormData.amenities} onChange={e=>setRoomFormData({...roomFormData, amenities: e.target.value})} />
                                             </div>
 
                                             {/* ROOM IMAGES */}
@@ -594,7 +594,7 @@ const ManagerDashboard = () => {
                                                 <label className="text-[9px] font-black uppercase tracking-widest text-black pl-2">Room Gallery (URLs)</label>
                                                 {roomFormData.images.map((img, idx) => (
                                                     <div key={idx} className="flex gap-2">
-                                                        <input className="flex-grow p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-bold text-black text-sm" value={img} onChange={e => {
+                                                        <input className="flex-grow p-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent outline-none font-bold text-black text-sm" value={img} onChange={e => {
                                                             const newImg = [...roomFormData.images];
                                                             newImg[idx] = e.target.value;
                                                             setRoomFormData({...roomFormData, images: newImg});
@@ -609,18 +609,18 @@ const ManagerDashboard = () => {
                                             </div>
 
                                             <div className="md:col-span-2 lg:col-span-4 flex items-center gap-4 bg-[#EDF7BD]/50 p-4 rounded-2xl border border-gray-800/50">
-                                                <input type="checkbox" id="maintenance" className="w-5 h-5 rounded accent-[#0B2D72]" checked={roomFormData.isMaintenance} onChange={e => setRoomFormData({...roomFormData, isMaintenance: e.target.checked})} />
+                                                <input type="checkbox" id="maintenance" className="w-5 h-5 rounded accent-[transparent]" checked={roomFormData.isMaintenance} onChange={e => setRoomFormData({...roomFormData, isMaintenance: e.target.checked})} />
                                                 <label htmlFor="maintenance" className="text-xs font-bold text-black uppercase tracking-widest cursor-pointer">Mark for Maintenance (Blackout Dates)</label>
                                             </div>
 
-                                            <button type="submit" className="md:col-span-2 lg:col-span-4 bg-[#0B2D72] text-black py-5 rounded-2xl font-black uppercase tracking-[0.2em] hover:bg-[#0B2D72] transition-all">{roomFormData.id ? 'Authorize Updates' : 'Add to Inventory'}</button>
+                                            <button type="submit" className="md:col-span-2 lg:col-span-4 bg-transparent text-black py-5 rounded-2xl font-black uppercase tracking-[0.2em] hover:bg-transparent transition-all">{roomFormData.id ? 'Authorize Updates' : 'Add to Inventory'}</button>
                                         </form>
                                     </div>
                                 )}
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                     {rooms.map(room => (
-                                        <div key={room._id} className="bg-[#0B2D72] p-8 rounded-[2.5rem] border border-gray-800/50 shadow-lg flex flex-col group transition-all hover:border-[#0B2D72]/30">
+                                        <div key={room._id} className="bg-transparent p-8 rounded-[2.5rem] border border-gray-800/50 shadow-lg flex flex-col group transition-all hover:border-transparent/30">
                                             <div className="flex justify-between items-start mb-6">
                                                 <h4 className="text-2xl font-serif font-black text-black uppercase tracking-tighter italic">{room.type} Suite</h4>
                                                 <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -636,7 +636,7 @@ const ManagerDashboard = () => {
                                                 <div className="flex items-center gap-3 bg-[#EDF7BD]/50 p-3 rounded-2xl border border-gray-800/50 italic"><span className="text-lg grayscale group-hover:grayscale-0">👤</span> {room.capacity} GUESTS CAPACITY</div>
                                                 <div className="flex items-center gap-3 bg-[#EDF7BD]/50 p-3 rounded-2xl border border-gray-800/50 italic"><span className="text-lg grayscale group-hover:grayscale-0">🏨</span> {room.count} UNITS AVAILABLE</div>
                                                 <div className="flex flex-wrap gap-2 pt-2">
-                                                    {room.amenities.map(a => <span key={a} className="bg-[#0B2D72]/10 text-black border border-[#0B2D72]/20 px-3 py-1 rounded-full text-[9px] uppercase font-black italic">{a}</span>)}
+                                                    {room.amenities.map(a => <span key={a} className="bg-transparent/10 text-black border border-transparent/20 px-3 py-1 rounded-full text-[9px] uppercase font-black italic">{a}</span>)}
                                                 </div>
                                             </div>
                                         </div>
@@ -648,7 +648,7 @@ const ManagerDashboard = () => {
                         {/* TAB: RESERVATIONS */}
                         {activeTab === 'reservations' && selectedHotel && (
                             <div className="space-y-8 animate-in fade-in slide-in-from-right-8 duration-700">
-                                <div className="bg-[#0B2D72] p-10 rounded-[2.5rem] border border-gray-800/50">
+                                <div className="bg-transparent p-10 rounded-[2.5rem] border border-gray-800/50">
                                     <h3 className="text-2xl font-serif font-black text-black uppercase tracking-tighter italic mb-8">Reservation Folio</h3>
                                     {reservations.length === 0 ? (
                                         <div className="text-center py-24 bg-[#EDF7BD]/30 rounded-[2rem] border border-dashed border-gray-800">
@@ -690,7 +690,7 @@ const ManagerDashboard = () => {
                                                             <td className="py-8">
                                                                 <span className={`px-4 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest border italic ${
                                                                     res.status === 'Confirmed' ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 
-                                                                    res.status === 'Pending' ? 'bg-[#0B2D72]/10 text-black border-[#0B2D72]/20' : 'bg-rose-500/10 text-rose-500 border-rose-500/20'
+                                                                    res.status === 'Pending' ? 'bg-transparent/10 text-black border-transparent/20' : 'bg-rose-500/10 text-rose-500 border-rose-500/20'
                                                                 }`}>
                                                                     {res.status}
                                                                 </span>
@@ -716,7 +716,7 @@ const ManagerDashboard = () => {
                         {/* TAB: FEEDBACK */}
                         {activeTab === 'feedback' && selectedHotel && (
                             <div className="space-y-12 animate-in fade-in slide-in-from-right-8 duration-700">
-                                <div className="bg-[#0B2D72] p-10 rounded-[2.5rem] border border-gray-800/50">
+                                <div className="bg-transparent p-10 rounded-[2.5rem] border border-gray-800/50">
                                     <h3 className="text-2xl font-serif font-black text-black uppercase tracking-tighter italic mb-8">Guest Reflections</h3>
                                     
                                     {reviews.length === 0 ? (
@@ -727,7 +727,7 @@ const ManagerDashboard = () => {
                                     ) : (
                                         <div className="space-y-8">
                                             {reviews.map(review => (
-                                                <div key={review._id} className="p-10 bg-[#EDF7BD]/40 border border-gray-800/50 rounded-[2.5rem] hover:border-[#0B2D72]/20 transition-all">
+                                                <div key={review._id} className="p-10 bg-[#EDF7BD]/40 border border-gray-800/50 rounded-[2.5rem] hover:border-transparent/20 transition-all">
                                                     <div className="flex justify-between items-start mb-8">
                                                         <div>
                                                             <div className="text-black text-2xl mb-2 italic">
@@ -744,7 +744,7 @@ const ManagerDashboard = () => {
                                                     <p className="text-black font-medium italic mb-10 border-l-2 border-gray-800 pl-8 leading-relaxed text-lg">"{review.comment}"</p>
 
                                                     {review.managerResponse ? (
-                                                        <div className="bg-[#0B2D72]/5 p-8 rounded-[2rem] border border-[#0B2D72]/20">
+                                                        <div className="bg-transparent/5 p-8 rounded-[2rem] border border-transparent/20">
                                                             <div className="flex items-center gap-3 mb-4">
                                                                 <span className="text-lg grayscale">🤵</span>
                                                                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black italic">Concierge Response</span>
@@ -753,9 +753,9 @@ const ManagerDashboard = () => {
                                                         </div>
                                                     ) : (
                                                         respondingTo === review._id ? (
-                                                            <div className="bg-[#EDF7BD] border border-[#0B2D72]/30 p-8 rounded-[2.5rem] animate-in slide-in-from-top-4">
+                                                            <div className="bg-[#EDF7BD] border border-transparent/30 p-8 rounded-[2.5rem] animate-in slide-in-from-top-4">
                                                                 <textarea 
-                                                                    className="w-full p-6 bg-[#EDF7BD]/40 border-2 border-gray-800 rounded-2xl focus:border-[#0B2D72] outline-none font-medium text-black italic mb-6 resize-none transition-all"
+                                                                    className="w-full p-6 bg-[#EDF7BD]/40 border-2 border-gray-800 rounded-2xl focus:border-transparent outline-none font-medium text-black italic mb-6 resize-none transition-all"
                                                                     placeholder="Compose your elegant concierge response..."
                                                                     rows="4"
                                                                     value={managerResponse}
@@ -765,7 +765,7 @@ const ManagerDashboard = () => {
                                                                     <button 
                                                                         onClick={() => submitResponse(review._id)}
                                                                         disabled={responseLoading}
-                                                                        className="bg-[#0B2D72] text-black px-10 py-4 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-[#0B2D72] transition-all active:scale-95 disabled:opacity-50"
+                                                                        className="bg-transparent text-black px-10 py-4 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-transparent transition-all active:scale-95 disabled:opacity-50"
                                                                     >
                                                                         {responseLoading ? 'Publishing...' : 'Publish Response'}
                                                                     </button>
@@ -780,7 +780,7 @@ const ManagerDashboard = () => {
                                                         ) : (
                                                             <button 
                                                                 onClick={() => setRespondingTo(review._id)}
-                                                                className="text-black font-black text-[10px] uppercase tracking-widest border-b border-transparent hover:border-[#0B2D72] transition-all outline-none italic"
+                                                                className="text-black font-black text-[10px] uppercase tracking-widest border-b border-transparent hover:border-transparent transition-all outline-none italic"
                                                             >
                                                                 Provide Concierge Response
                                                             </button>

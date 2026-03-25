@@ -124,13 +124,13 @@ const Rooms = () => {
       <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-8 mb-12">
         <div>
           <h1 className="text-4xl font-serif font-black text-black tracking-tighter uppercase italic">Room Management</h1>
-          <div className="h-1.5 w-24 bg-[#0B2D72] mt-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
+          <div className="h-1.5 w-24 bg-transparent mt-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
           <p className="text-[10px] font-black text-black uppercase tracking-[0.3em] mt-6">Pricing strategy and room availability management.</p>
         </div>
         <button 
           onClick={() => handleOpenModal()}
           disabled={hotels.length === 0}
-          className="flex items-center justify-center gap-3 bg-[#0B2D72] text-black px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-[#EDF7BD] hover:text-black transition-all shadow-lg shadow-[#0B2D72]/20 active:scale-95 group disabled:opacity-30"
+          className="flex items-center justify-center gap-3 bg-transparent text-black px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-[#EDF7BD] hover:text-black transition-all shadow-lg shadow-transparent/20 active:scale-95 group disabled:opacity-30"
         >
           <Plus className="w-5 h-5 group-hover:rotate-90 transition-transform" />
           <span>Add New Room</span>
@@ -148,15 +148,15 @@ const Rooms = () => {
       )}
 
       {loading && rooms.length === 0 ? (
-        <div className="flex items-center justify-center py-32 bg-[#0B2D72] rounded-[3rem] border border-gray-800/50 border-dashed">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-[#0B2D72]"></div>
+        <div className="flex items-center justify-center py-32 bg-transparent rounded-[3rem] border border-gray-800/50 border-dashed">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-transparent"></div>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
           {rooms.map((room) => (
-            <div key={room._id} className="bg-[#0B2D72] rounded-[2.5rem] p-8 border border-gray-800/50 hover:border-[#0B2D72]/30 transition-all group relative flex flex-col shadow-2xl">
+            <div key={room._id} className="bg-transparent rounded-[2.5rem] p-8 border border-gray-800/50 hover:border-transparent/30 transition-all group relative flex flex-col shadow-2xl">
               <div className="flex justify-between items-start mb-8 pb-6 border-b border-gray-800/50">
-                <div className="p-4 bg-[#0B2D72]/10 text-black rounded-2xl border border-[#0B2D72]/20 shadow-inner group-hover:scale-110 transition-transform">
+                <div className="p-4 bg-transparent/10 text-black rounded-2xl border border-transparent/20 shadow-inner group-hover:scale-110 transition-transform">
                   <Bed className="w-7 h-7" />
                 </div>
                 <div className="flex gap-4">
@@ -211,7 +211,7 @@ const Rooms = () => {
 
               <div className="flex flex-wrap gap-2.5 mt-auto">
                 {room.amenities.map(a => (
-                  <span key={a} className="bg-[#EDF7BD]/50 text-black px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest border border-gray-800 group-hover:border-[#0B2D72]/20 transition-colors">
+                  <span key={a} className="bg-[#EDF7BD]/50 text-black px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest border border-gray-800 group-hover:border-transparent/20 transition-colors">
                     {a}
                   </span>
                 ))}
@@ -225,7 +225,7 @@ const Rooms = () => {
       {isModalOpen && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-[#EDF7BD]/60 backdrop-blur-xl" onClick={() => setIsModalOpen(false)}></div>
-          <div className="relative bg-[#0B2D72] w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-[3rem] border border-gray-800 shadow-2xl p-10 animate-in fade-in zoom-in-95 duration-300">
+          <div className="relative bg-transparent w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-[3rem] border border-gray-800 shadow-2xl p-10 animate-in fade-in zoom-in-95 duration-300">
             <div className="flex items-center justify-between mb-12">
               <h2 className="text-3xl font-serif font-black text-black italic tracking-tighter uppercase">
                 {editingRoom ? 'Edit Room Category' : 'Add New Room Category'}
@@ -244,12 +244,12 @@ const Rooms = () => {
                   <label className="text-[10px] font-black text-black uppercase tracking-[0.3em] ml-2">Select Hotel</label>
                   <select 
                     required 
-                    className="w-full px-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all shadow-inner appearance-none cursor-pointer"
+                    className="w-full px-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent/50 outline-none font-bold text-black transition-all shadow-inner appearance-none cursor-pointer"
                     value={formData.hotelId}
                     onChange={(e) => setFormData({ ...formData, hotelId: e.target.value })}
                   >
                     {hotels.map(h => (
-                      <option key={h._id} value={h._id} className="bg-[#0B2D72]">{h.name}</option>
+                      <option key={h._id} value={h._id} className="bg-transparent">{h.name}</option>
                     ))}
                   </select>
                 </div>
@@ -257,16 +257,16 @@ const Rooms = () => {
                   <label className="text-[10px] font-black text-black uppercase tracking-[0.3em] ml-2">Room Type</label>
                   <select 
                     required 
-                    className="w-full px-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all shadow-inner appearance-none cursor-pointer"
+                    className="w-full px-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent/50 outline-none font-bold text-black transition-all shadow-inner appearance-none cursor-pointer"
                     value={formData.type}
                     onChange={(e) => setFormData({ ...formData, type: e.target.value })}
                   >
-                    <option value="Single" className="bg-[#0B2D72]">Single</option>
-                    <option value="Double" className="bg-[#0B2D72]">Double</option>
-                    <option value="Suite" className="bg-[#0B2D72]">Suite</option>
-                    <option value="Deluxe" className="bg-[#0B2D72]">Deluxe</option>
-                    <option value="Family" className="bg-[#0B2D72]">Family</option>
-                    <option value="Penthouse" className="bg-[#0B2D72]">Penthouse</option>
+                    <option value="Single" className="bg-transparent">Single</option>
+                    <option value="Double" className="bg-transparent">Double</option>
+                    <option value="Suite" className="bg-transparent">Suite</option>
+                    <option value="Deluxe" className="bg-transparent">Deluxe</option>
+                    <option value="Family" className="bg-transparent">Family</option>
+                    <option value="Penthouse" className="bg-transparent">Penthouse</option>
                   </select>
                 </div>
               </div>
@@ -278,7 +278,7 @@ const Rooms = () => {
                     type="number"
                     required 
                     placeholder="0"
-                    className="w-full px-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black"
+                    className="w-full px-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black"
                     value={formData.pricePerNight}
                     onChange={(e) => setFormData({ ...formData, pricePerNight: e.target.value })}
                   />
@@ -288,7 +288,7 @@ const Rooms = () => {
                   <input 
                     type="number"
                     required 
-                    className="w-full px-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black"
+                    className="w-full px-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black"
                     value={formData.capacity}
                     onChange={(e) => setFormData({ ...formData, capacity: e.target.value })}
                   />
@@ -299,7 +299,7 @@ const Rooms = () => {
                     type="number"
                     required 
                     placeholder="1"
-                    className="w-full px-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black"
+                    className="w-full px-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black"
                     value={formData.count}
                     onChange={(e) => setFormData({ ...formData, count: e.target.value })}
                   />
@@ -310,7 +310,7 @@ const Rooms = () => {
                 <label className="text-[10px] font-black text-black uppercase tracking-[0.3em] ml-2">Room Amenities</label>
                 <input 
                   placeholder="Atmosphere Control, Smart Mirror, Vaulted Ceilings..."
-                  className="w-full px-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-[#0B2D72]/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black font-mono tracking-tighter"
+                  className="w-full px-6 py-4 bg-[#EDF7BD]/50 border border-gray-800 rounded-2xl focus:border-transparent/50 outline-none font-bold text-black transition-all shadow-inner placeholder:text-black font-mono tracking-tighter"
                   value={formData.amenities}
                   onChange={(e) => setFormData({ ...formData, amenities: e.target.value })}
                 />
@@ -320,7 +320,7 @@ const Rooms = () => {
                 <input 
                   type="checkbox" 
                   id="maintenance" 
-                  className="w-6 h-6 border-gray-800 bg-[#EDF7BD] rounded-lg checked:bg-[#0B2D72] checked:border-[#0B2D72] appearance-none cursor-pointer transition-all flex items-center justify-center after:content-[''] after:hidden checked:after:block after:w-2 after:h-4 after:border-r-2 after:border-b-2 after:border-black after:rotate-45"
+                  className="w-6 h-6 border-gray-800 bg-[#EDF7BD] rounded-lg checked:bg-transparent checked:border-transparent appearance-none cursor-pointer transition-all flex items-center justify-center after:content-[''] after:hidden checked:after:block after:w-2 after:h-4 after:border-r-2 after:border-b-2 after:border-black after:rotate-45"
                   checked={formData.isMaintenance}
                   onChange={(e) => setFormData({ ...formData, isMaintenance: e.target.checked })}
                 />
@@ -330,7 +330,7 @@ const Rooms = () => {
               <button 
                 type="submit" 
                 disabled={submitLoading}
-                className="w-full py-5 bg-[#0B2D72] text-black rounded-2xl font-black uppercase tracking-[0.3em] shadow-2xl shadow-[#0B2D72]/20 hover:bg-[#EDF7BD] active:scale-[0.98] transition-all disabled:opacity-50 disabled:scale-100 flex items-center justify-center gap-4 text-sm mt-8 border border-white/10"
+                className="w-full py-5 bg-transparent text-black rounded-2xl font-black uppercase tracking-[0.3em] shadow-2xl shadow-transparent/20 hover:bg-[#EDF7BD] active:scale-[0.98] transition-all disabled:opacity-50 disabled:scale-100 flex items-center justify-center gap-4 text-sm mt-8 border border-white/10"
               >
                 {submitLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Save Room Details'}
               </button>

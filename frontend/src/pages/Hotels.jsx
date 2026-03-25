@@ -110,8 +110,8 @@ const Hotels = () => {
   return (
     <div className="bg-[#EDF7BD] min-h-screen pt-32 pb-24 relative overflow-hidden">
       {/* Ambient Glows */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0B2D72]/5 blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#0B2D72]/5 blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-transparent/5 blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-transparent/5 blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -154,12 +154,12 @@ const Hotels = () => {
                 <div className="grid grid-cols-2 gap-3">
                   <input 
                     type="number" placeholder="Min" 
-                    className="w-full bg-[#EDF7BD]/40 border border-white/10 rounded-xl p-3 text-xs text-black focus:border-[#0B2D72]/50 focus:bg-[#EDF7BD]/60 outline-none transition-all font-bold placeholder:text-black"
+                    className="w-full bg-[#EDF7BD]/40 border border-white/10 rounded-xl p-3 text-xs text-black focus:border-transparent/50 focus:bg-[#EDF7BD]/60 outline-none transition-all font-bold placeholder:text-black"
                     value={minPrice} onChange={(e) => setMinPrice(e.target.value)}
                   />
                   <input 
                     type="number" placeholder="Max" 
-                    className="w-full bg-[#EDF7BD]/40 border border-white/10 rounded-xl p-3 text-xs text-black focus:border-[#0B2D72]/50 focus:bg-[#EDF7BD]/60 outline-none transition-all font-bold placeholder:text-black"
+                    className="w-full bg-[#EDF7BD]/40 border border-white/10 rounded-xl p-3 text-xs text-black focus:border-transparent/50 focus:bg-[#EDF7BD]/60 outline-none transition-all font-bold placeholder:text-black"
                     value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)}
                   />
                 </div>
@@ -171,12 +171,12 @@ const Hotels = () => {
                 <div className="space-y-3">
                   <input 
                     type="date" 
-                    className="w-full bg-[#EDF7BD]/40 border border-white/10 rounded-xl p-3 text-xs text-black focus:border-[#0B2D72]/50 outline-none transition-all font-bold color-scheme-dark"
+                    className="w-full bg-[#EDF7BD]/40 border border-white/10 rounded-xl p-3 text-xs text-black focus:border-transparent/50 outline-none transition-all font-bold color-scheme-dark"
                     value={checkIn} onChange={(e) => setCheckIn(e.target.value)}
                   />
                   <input 
                     type="date" 
-                    className="w-full bg-[#EDF7BD]/40 border border-white/10 rounded-xl p-3 text-xs text-black focus:border-[#0B2D72]/50 outline-none transition-all font-bold color-scheme-dark"
+                    className="w-full bg-[#EDF7BD]/40 border border-white/10 rounded-xl p-3 text-xs text-black focus:border-transparent/50 outline-none transition-all font-bold color-scheme-dark"
                     value={checkOut} onChange={(e) => setCheckOut(e.target.value)}
                   />
                 </div>
@@ -209,7 +209,7 @@ const Hotels = () => {
                         type="checkbox" 
                         checked={selectedAmenities.includes(amenity)}
                         onChange={() => toggleAmenity(amenity)}
-                        className="w-4 h-4 rounded bg-[#EDF7BD]/40 border-white/10 text-black mr-3 focus:ring-offset-black focus:ring-[#0B2D72] transition-all"
+                        className="w-4 h-4 rounded bg-[#EDF7BD]/40 border-white/10 text-black mr-3 focus:ring-offset-black focus:ring-[transparent] transition-all"
                       />
                       <span className="group-hover/item:text-black transition-colors">{amenity}</span>
                     </label>
@@ -219,7 +219,7 @@ const Hotels = () => {
 
               <button 
                 onClick={fetchHotels}
-                className="w-full py-5 bg-[#0B2D72] text-black font-black uppercase tracking-[0.3em] text-[10px] rounded-2xl hover:bg-[#EDF7BD] hover:text-black transition-all transform active:scale-95 shadow-xl shadow-[#0B2D72]/10 relative z-10"
+                className="w-full py-5 bg-transparent text-black font-black uppercase tracking-[0.3em] text-[10px] rounded-2xl hover:bg-[#EDF7BD] hover:text-black transition-all transform active:scale-95 shadow-xl shadow-transparent/10 relative z-10"
               >
                 Apply Filters
               </button>
@@ -231,7 +231,7 @@ const Hotels = () => {
             
             {/* Search Consol */}
             <form onSubmit={handleSearch} className="flex w-full bg-[#EDF7BD] border border-white/10 rounded-[2.5rem] shadow-2xl relative group overflow-hidden">
-              <div className="absolute inset-0 bg-[#0B2D72]/5 opacity-0 group-focus-within:opacity-100 transition-opacity pointer-events-none"></div>
+              <div className="absolute inset-0 bg-transparent/5 opacity-0 group-focus-within:opacity-100 transition-opacity pointer-events-none"></div>
               
               <div className="flex-grow relative border-r border-white/5">
                 <input 
@@ -247,7 +247,7 @@ const Hotels = () => {
                 {showSuggestions && activeInput === 'keyword' && (suggestions.hotels.length > 0) && (
                   <div className="absolute top-[105%] left-0 w-full bg-[#161618] z-[60] border border-white/10 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2">
                      {suggestions.hotels.map(h => (
-                       <div key={h._id} onClick={() => selectSuggestion(h.name, 'keyword')} className="px-8 py-4 hover:bg-[#0B2D72]/10 cursor-pointer flex justify-between items-center group/opt border-b border-white/5 last:border-0">
+                       <div key={h._id} onClick={() => selectSuggestion(h.name, 'keyword')} className="px-8 py-4 hover:bg-transparent/10 cursor-pointer flex justify-between items-center group/opt border-b border-white/5 last:border-0">
                           <div>
                              <div className="text-xs font-black text-black group-hover/opt:text-black transition-colors uppercase tracking-widest">{h.name}</div>
                              <div className="text-[9px] font-bold text-black uppercase tracking-[0.2em]">{h.city}</div>
@@ -273,7 +273,7 @@ const Hotels = () => {
                 {showSuggestions && activeInput === 'city' && suggestions.cities.length > 0 && (
                   <div className="absolute top-[105%] left-0 w-full bg-[#161618] z-[60] border border-white/10 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2">
                      {suggestions.cities.map(c => (
-                       <div key={c} onClick={() => selectSuggestion(c, 'city')} className="px-8 py-4 hover:bg-[#0B2D72]/10 cursor-pointer flex justify-between items-center group/opt border-b border-white/5 last:border-0">
+                       <div key={c} onClick={() => selectSuggestion(c, 'city')} className="px-8 py-4 hover:bg-transparent/10 cursor-pointer flex justify-between items-center group/opt border-b border-white/5 last:border-0">
                           <span className="text-xs font-black text-black group-hover/opt:text-black transition-colors uppercase tracking-widest">{c}</span>
                           <ChevronRight size={14} className="text-black group-hover/opt:text-black group-hover/opt:translate-x-1 transition-all" />
                        </div>
@@ -284,7 +284,7 @@ const Hotels = () => {
 
               <button 
                 type="submit" 
-                className="bg-[#0B2D72] hover:bg-[#EDF7BD] text-black px-10 font-black uppercase tracking-[0.3em] text-[10px] transition-all transform active:scale-95"
+                className="bg-transparent hover:bg-[#EDF7BD] text-black px-10 font-black uppercase tracking-[0.3em] text-[10px] transition-all transform active:scale-95"
               >
                 Search
               </button>
@@ -310,7 +310,7 @@ const Hotels = () => {
                   const hotelPromo = promotions.find(p => !p.hotelId || (p.hotelId && p.hotelId._id === hotel._id));
                   return (
                   <Link key={hotel._id} to={`/hotels/${hotel._id}`} className="group h-full">
-                    <div className="bg-[#EDF7BD] border border-white/5 rounded-[3rem] overflow-hidden flex flex-col h-full transition-all duration-700 hover:border-[#0B2D72]/30 hover:shadow-[0_40px_80px_-20px_rgba(212,175,55,0.1)] group-hover:-translate-y-3 shadow-2xl">
+                    <div className="bg-[#EDF7BD] border border-white/5 rounded-[3rem] overflow-hidden flex flex-col h-full transition-all duration-700 hover:border-transparent/30 hover:shadow-[0_40px_80px_-20px_rgba(212,175,55,0.1)] group-hover:-translate-y-3 shadow-2xl">
                       
                       {/* Estate Image */}
                       <div className="relative h-[300px] overflow-hidden">
@@ -327,13 +327,13 @@ const Hotels = () => {
                         
                         {/* Rating Component */}
                         <div className="absolute top-6 right-6 bg-[#EDF7BD]/60 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/10 flex items-center gap-2 shadow-2xl z-20">
-                          <Star size={12} className="text-black fill-[#0B2D72]" />
+                          <Star size={12} className="text-black fill-[transparent]" />
                           <span className="text-xs font-black text-black">{hotel.rating ? hotel.rating.toFixed(1) : "NEW"}</span>
                         </div>
 
                         {/* Promo Badge */}
                         {hotelPromo && (
-                           <div className="absolute top-6 left-6 bg-[#0B2D72] text-black px-4 py-2 rounded-2xl border border-black/20 flex items-center gap-2 shadow-2xl z-20">
+                           <div className="absolute top-6 left-6 bg-transparent text-black px-4 py-2 rounded-2xl border border-black/20 flex items-center gap-2 shadow-2xl z-20">
                              <Sparkles size={12} className="text-black" />
                              <span className="text-xs font-black uppercase font-sans tracking-widest">{hotelPromo.discount}{hotelPromo.type === 'percentage' ? '%' : ' INR'} OFF</span>
                            </div>
@@ -341,7 +341,7 @@ const Hotels = () => {
 
                         {/* Starting Price Plate */}
                         <div className="absolute bottom-6 left-6">
-                           <div className="bg-[#0B2D72] text-black px-6 py-3 rounded-2xl font-serif font-black shadow-2xl border-2 border-[#0B2D72]/50">
+                           <div className="bg-transparent text-black px-6 py-3 rounded-2xl font-serif font-black shadow-2xl border-2 border-transparent/50">
                              <span className="text-sm opacity-60 tracking-tighter mr-1 uppercase font-sans font-black">from</span>
                              <span className="text-xl italic">₹{hotel.startingPrice || 0}</span>
                              <span className="text-[9px] opacity-60 tracking-widest ml-1 uppercase font-sans font-black">/ night</span>
@@ -367,7 +367,7 @@ const Hotels = () => {
                         {/* Amenities Preview */}
                         <div className="flex flex-wrap gap-2 mt-auto pt-8 border-t border-white/5">
                           {(hotel.amenities || []).slice(0, 3).map(a => (
-                            <span key={a} className="bg-[#EDF7BD]/5 text-[9px] uppercase font-black tracking-widest text-black px-4 py-2 rounded-full border border-white/5 group-hover:bg-[#0B2D72]/10 group-hover:text-black group-hover:border-[#0B2D72]/20 transition-all duration-500">
+                            <span key={a} className="bg-[#EDF7BD]/5 text-[9px] uppercase font-black tracking-widest text-black px-4 py-2 rounded-full border border-white/5 group-hover:bg-transparent/10 group-hover:text-black group-hover:border-transparent/20 transition-all duration-500">
                               {a}
                             </span>
                           ))}

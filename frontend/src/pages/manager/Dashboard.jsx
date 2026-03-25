@@ -85,7 +85,7 @@ const Dashboard = () => {
     <div className="space-y-12 animate-in fade-in slide-in-from-bottom-6 duration-700">
       <header className="mb-12">
         <h1 className="text-4xl font-serif font-black text-black tracking-tighter uppercase italic">Overview</h1>
-        <div className="h-1.5 w-24 bg-[#0B2D72] mt-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
+        <div className="h-1.5 w-24 bg-transparent mt-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
         <p className="text-[10px] font-black text-black uppercase tracking-[0.3em] mt-6">Protocol established: Tracking property performance and customer telemetry.</p>
       </header>
 
@@ -93,7 +93,7 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {statsCards.map((card, i) => (
           <div key={card.title} className="bg-transparent p-8 transition-all group relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-[#0B2D72]/5 rounded-bl-[100%] transition-all group-hover:bg-[#0B2D72]/10"></div>
+            <div className="absolute top-0 right-0 w-24 h-24 bg-transparent/5 rounded-bl-[100%] transition-all group-hover:bg-transparent/10"></div>
             <div className="text-3xl mb-4 grayscale group-hover:grayscale-0 transition-all shadow-[0_0_15px_rgba(0,0,0,0.5)]">
               <card.icon className={`w-8 h-8 ${card.color.replace('text-', 'text-black')}`} />
             </div>
@@ -106,7 +106,7 @@ const Dashboard = () => {
       {/* Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div className="bg-transparent p-10 relative overflow-hidden group">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#0B2D72]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-transparent/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <h3 className="text-lg font-serif font-black text-black mb-8 uppercase italic border-b border-gray-800 pb-4">Booking Analytics</h3>
           <div className="h-[300px]">
             <Line 
@@ -128,7 +128,7 @@ const Dashboard = () => {
                 plugins: { 
                     legend: { display: false },
                     tooltip: {
-                      backgroundColor: '#0B2D72',
+                      backgroundColor: 'transparent',
                       titleColor: '#d4af37',
                       bodyColor: '#fff',
                       borderColor: '#gray-800',
@@ -174,7 +174,7 @@ const Dashboard = () => {
                 plugins: { 
                     legend: { display: false },
                     tooltip: {
-                      backgroundColor: '#0B2D72',
+                      backgroundColor: 'transparent',
                       titleColor: '#10b981',
                       bodyColor: '#fff',
                       borderColor: '#gray-800',

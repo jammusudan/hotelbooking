@@ -49,9 +49,9 @@ const Footer = () => {
               <input 
                 type="email" 
                 placeholder="Email address" 
-                className="bg-gray-800 border-gray-700 text-black px-4 py-2 w-full focus:outline-none focus:border-[#0B2D72] rounded-l-md"
+                className="bg-gray-800 border-gray-700 text-black px-4 py-2 w-full focus:outline-none focus:border-transparent rounded-l-md"
               />
-              <button className="bg-[#0B2D72] hover:bg-[#0B2D72] text-black px-4 py-2 font-bold transition rounded-r-md">
+              <button className="bg-transparent hover:bg-transparent text-black px-4 py-2 font-bold transition rounded-r-md">
                 →
               </button>
             </form>

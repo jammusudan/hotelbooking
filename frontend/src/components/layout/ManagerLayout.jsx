@@ -37,7 +37,7 @@ const ManagerLayout = () => {
     <div className="min-h-screen bg-[#EDF7BD] flex font-sans text-black">
       {/* Sidebar */}
       <aside 
-        className={`fixed inset-y-0 left-0 z-50 w-72 bg-[#0B2D72] border-r border-gray-800/50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-y-0 left-0 z-50 w-72 bg-transparent border-r border-gray-800/50 transform transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:relative lg:translate-x-0 h-screen sticky top-0`}
       >

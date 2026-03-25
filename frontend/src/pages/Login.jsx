@@ -63,10 +63,10 @@ const Login = ({ role = "customer" }) => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#EDF7BD] py-24 px-4 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-[500px] bg-[#0B2D72]/5 blur-[150px] pointer-events-none"></div>
+      <div className="absolute top-0 left-0 w-full h-[500px] bg-transparent/5 blur-[150px] pointer-events-none"></div>
       
       <div className="max-w-md w-full relative group">
-        <div className="absolute -inset-1 bg-gradient-to-r from-[#0B2D72] via-[#0B2D72] to-[#0B2D72] rounded-[3rem] blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
+        <div className="absolute -inset-1 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-[3rem] blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
         
         <div className="relative space-y-8 bg-[#EDF7BD] border border-white/5 p-10 md:p-14 rounded-[3rem] shadow-2xl overflow-hidden">
           <div className="absolute top-0 right-0 p-8 opacity-10">
@@ -96,7 +96,7 @@ const Login = ({ role = "customer" }) => {
                 type="email"
                 required
                 placeholder="Email"
-                className="w-full bg-[#EDF7BD]/40 border border-white/10 p-4 rounded-xl text-black focus:border-[#0B2D72]/50 outline-none transition-all font-medium text-sm"
+                className="w-full bg-[#EDF7BD]/40 border border-white/10 p-4 rounded-xl text-black focus:border-transparent/50 outline-none transition-all font-medium text-sm"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -108,7 +108,7 @@ const Login = ({ role = "customer" }) => {
                 type="password"
                 required
                 placeholder="Password"
-                className="w-full bg-[#EDF7BD]/40 border border-white/10 p-4 rounded-xl text-black focus:border-[#0B2D72]/50 outline-none transition-all font-medium text-sm"
+                className="w-full bg-[#EDF7BD]/40 border border-white/10 p-4 rounded-xl text-black focus:border-transparent/50 outline-none transition-all font-medium text-sm"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -122,7 +122,7 @@ const Login = ({ role = "customer" }) => {
 
             <button
               type="submit"
-              className="w-full group relative flex items-center justify-center gap-3 py-5 bg-[#0B2D72] text-black font-black uppercase tracking-[0.4em] text-[11px] rounded-2xl hover:bg-[#EDF7BD] transition-all transform active:scale-95"
+              className="w-full group relative flex items-center justify-center gap-3 py-5 bg-transparent text-black font-black uppercase tracking-[0.4em] text-[11px] rounded-2xl hover:bg-[#EDF7BD] transition-all transform active:scale-95"
             >
               Login <Sparkles size={14} />
             </button>
@@ -161,7 +161,7 @@ const Login = ({ role = "customer" }) => {
               New here?
               <Link
                 to="/register"
-                className="text-black font-black ml-2 hover:underline decoration-[#0B2D72]/30 underline-offset-4"
+                className="text-black font-black ml-2 hover:underline decoration-[transparent]/30 underline-offset-4"
               >
                 Sign Up here
               </Link>
