@@ -40,28 +40,28 @@ const Home = () => {
                 <Link 
                   key={promo._id} 
                   to={promo.hotelId ? `/hotels/${promo.hotelId._id}` : '/hotels'}
-                  className="block p-8 bg-[#EDF7BD] border border-transparent/20 rounded-[2.5rem] hover:border-transparent/50 hover:bg-[#EDF7BD]/5 hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden shadow-2xl cursor-pointer"
+                  className="block p-8 bg-[#003049] border border-white/10 rounded-[2.5rem] hover:border-transparent/50 hover:bg-[#EDF7BD]/5 hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden shadow-2xl cursor-pointer"
                 >
                   <div className="absolute top-0 right-0 w-40 h-40 bg-transparent/10 rounded-bl-[100%] transition-all opacity-0 group-hover:opacity-100 duration-500 group-hover:scale-110"></div>
                   <div className="flex justify-between items-start mb-6 relative z-10">
-                    <div className="text-3xl font-serif font-black text-black italic tracking-tighter">
-                      {promo.discount}{promo.type === 'percentage' ? '%' : ' INR'} <span className="text-black text-2xl">OFF</span>
+                    <div className="text-3xl font-serif font-black text-white italic tracking-tighter">
+                      {promo.discount}{promo.type === 'percentage' ? '%' : ' INR'} <span className="text-white text-2xl">OFF</span>
                     </div>
-                    <span className="bg-transparent/10 text-black text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-xl border border-transparent/20 shadow-inner group-hover:bg-transparent group-hover:text-black transition-colors">
+                    <span className="bg-transparent/10 text-white text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-xl border border-transparent/20 shadow-inner group-hover:bg-transparent group-hover:text-white transition-colors">
                       {promo.code}
                     </span>
                   </div>
-                  <p className="text-sm font-medium text-black font-serif italic mb-4 relative z-10 min-h-[40px] group-hover:text-black transition-colors">
+                  <p className="text-sm font-medium text-white font-serif italic mb-4 relative z-10 min-h-[40px] group-hover:text-white transition-colors">
                     "{promo.description}"
                   </p>
-                  <div className="text-[9px] font-black uppercase tracking-[0.2em] text-black mb-6 relative z-10 flex items-center gap-2">
+                  <div className="text-[9px] font-black uppercase tracking-[0.2em] text-white mb-6 relative z-10 flex items-center gap-2">
                     <MapPin size={12} /> {promo.hotelId ? `Valid at ${promo.hotelId.name}` : 'Global Collection'}
                   </div>
                   <div className="flex justify-between items-center relative z-10 border-t border-white/5 pt-4 mt-auto group-hover:border-transparent/30 transition-colors">
-                    <div className="text-[9px] font-black uppercase tracking-[0.3em] text-black flex items-center gap-2 group-hover:text-black transition-colors">
-                       <Tag size={12} className="text-black/50" /> Valid Until
+                    <div className="text-[9px] font-black uppercase tracking-[0.3em] text-white flex items-center gap-2 group-hover:text-white transition-colors">
+                       <Tag size={12} className="text-white/50" /> Valid Until
                     </div>
-                    <div className="text-[9px] font-black uppercase tracking-[0.2em] text-black">
+                    <div className="text-[9px] font-black uppercase tracking-[0.2em] text-white">
                       {new Date(promo.expiryDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
                     </div>
                   </div>
@@ -123,12 +123,12 @@ const Home = () => {
                  { icon: <Award size={32} />, title: "Elite Concierge", desc: "A dedicated digital curator available round the clock to refine your journey." },
                  { icon: <Zap size={32} />, title: "Rate Supremacy", desc: "Our commitment to the absolute best value across all global collections." }
                ].map((item, i) => (
-                 <div key={i} className="p-12 bg-[#EDF7BD]/40 border border-white/5 rounded-[3rem] hover:border-transparent/20 transition-all text-center">
-                    <div className="w-20 h-20 bg-[#EDF7BD]/5 rounded-3xl flex items-center justify-center mx-auto mb-8 text-black">
+                 <div key={i} className="p-12 bg-[#003049] border border-white/10 rounded-[3rem] hover:border-transparent/20 transition-all text-center">
+                    <div className="w-20 h-20 bg-white/10 rounded-3xl flex items-center justify-center mx-auto mb-8 text-black">
                        {item.icon}
                     </div>
-                    <h4 className="text-2xl font-serif font-black uppercase italic mb-4 tracking-tight">{item.title}</h4>
-                    <p className="text-sm font-medium text-black leading-relaxed font-serif italic">{item.desc}</p>
+                    <h4 className="text-2xl font-serif font-black text-white uppercase italic mb-4 tracking-tight">{item.title}</h4>
+                    <p className="text-sm font-medium text-white leading-relaxed font-serif italic">{item.desc}</p>
                  </div>
                ))}
             </div>

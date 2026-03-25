@@ -68,17 +68,17 @@ const Login = ({ role = "customer" }) => {
       <div className="max-w-md w-full relative group">
         <div className="absolute -inset-1 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-[3rem] blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
         
-        <div className="relative space-y-8 bg-[#EDF7BD] border border-white/5 p-10 md:p-14 rounded-[3rem] shadow-2xl overflow-hidden">
+        <div className="relative space-y-8 bg-[#003049] border border-white/10 p-10 md:p-14 rounded-[3rem] shadow-2xl overflow-hidden">
           <div className="absolute top-0 right-0 p-8 opacity-10">
-             <Globe size={120} className="text-black" />
+             <Globe size={120} className="text-white" />
           </div>
 
           <div className="text-center relative z-10">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-[#EDF7BD]/5 rounded-3xl text-black mb-8 border border-white/5 shadow-inner">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 rounded-3xl text-white mb-8 border border-white/5 shadow-inner">
               {config.icon}
             </div>
-            <h2 className="text-4xl font-serif font-black text-black uppercase tracking-tighter italic mb-4">{config.title}</h2>
-            <p className="text-xs font-black text-black uppercase tracking-widest leading-relaxed">
+            <h2 className="text-4xl font-serif font-black text-white uppercase tracking-tighter italic mb-4">{config.title}</h2>
+            <p className="text-xs font-black text-white uppercase tracking-widest leading-relaxed">
               {config.desc}
             </p>
           </div>
@@ -91,38 +91,38 @@ const Login = ({ role = "customer" }) => {
             )}
 
             <div className="space-y-3">
-              <label className="text-[9px] font-black text-black uppercase tracking-[0.4em] ml-1">Email</label>
+              <label className="text-[9px] font-black text-white uppercase tracking-[0.4em] ml-1">Email</label>
               <input
                 type="email"
                 required
                 placeholder="Email"
-                className="w-full bg-[#EDF7BD]/40 border border-white/10 p-4 rounded-xl text-black focus:border-transparent/50 outline-none transition-all font-medium text-sm"
+                className="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white focus:border-transparent/50 outline-none transition-all font-medium text-sm"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
             <div className="space-y-3">
-              <label className="text-[9px] font-black text-black uppercase tracking-[0.4em] ml-1">Password</label>
+              <label className="text-[9px] font-black text-white uppercase tracking-[0.4em] ml-1">Password</label>
               <input
                 type="password"
                 required
                 placeholder="Password"
-                className="w-full bg-[#EDF7BD]/40 border border-white/10 p-4 rounded-xl text-black focus:border-transparent/50 outline-none transition-all font-medium text-sm"
+                className="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white focus:border-transparent/50 outline-none transition-all font-medium text-sm"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
             <div className="flex justify-end">
-              <Link to="/forgot-password" size="sm" className="text-[9px] font-black text-black hover:text-black uppercase tracking-[0.3em] transition-colors">
+              <Link to="/forgot-password" size="sm" className="text-[9px] font-black text-white hover:text-white uppercase tracking-[0.3em] transition-colors">
                 Forgot Password
               </Link>
             </div>
 
             <button
               type="submit"
-              className="w-full group relative flex items-center justify-center gap-3 py-5 bg-transparent text-black font-black uppercase tracking-[0.4em] text-[11px] rounded-2xl hover:bg-[#EDF7BD] transition-all transform active:scale-95"
+              className="w-full group relative flex items-center justify-center gap-3 py-5 bg-transparent text-white font-black uppercase tracking-[0.4em] text-[11px] rounded-2xl hover:bg-white/10 transition-all transform active:scale-95"
             >
               Login <Sparkles size={14} />
             </button>
@@ -134,21 +134,21 @@ const Login = ({ role = "customer" }) => {
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-white/5"></div>
                 </div>
-                <div className="relative flex justify-center text-[9px] uppercase font-black text-black">
-                  <span className="bg-[#EDF7BD] px-4 tracking-[0.4em]">External Links</span>
+                <div className="relative flex justify-center text-[9px] uppercase font-black text-white">
+                  <span className="bg-[#003049] px-4 tracking-[0.4em]">External Links</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4 relative z-10">
                 <a
                  href={`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001/api'}/auth/google?role=${role}`}
-                  className="flex items-center justify-center gap-3 border border-white/5 p-4 rounded-xl hover:bg-[#EDF7BD]/5 font-black text-[10px] uppercase tracking-widest transition-all text-black hover:text-black"
+                  className="flex items-center justify-center gap-3 border border-white/5 p-4 rounded-xl hover:bg-white/10/5 font-black text-[10px] uppercase tracking-widest transition-all text-white hover:text-white"
                 >
                   Google
                 </a>
                 <a
                   href={`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001/api'}/auth/github?role=${role}`}
-                  className="flex items-center justify-center gap-3 bg-[#EDF7BD]/5 p-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-[#EDF7BD] hover:text-black transition-all text-black"
+                  className="flex items-center justify-center gap-3 bg-white/5 p-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-white/10 hover:text-white transition-all text-white"
                 >
                   GitHub
                 </a>
@@ -157,11 +157,11 @@ const Login = ({ role = "customer" }) => {
           )}
 
           {config.registerLink && (
-            <p className="text-center text-[10px] text-black mt-8 font-black uppercase tracking-[0.2em] relative z-10">
+            <p className="text-center text-[10px] text-white mt-8 font-black uppercase tracking-[0.2em] relative z-10">
               New here?
               <Link
                 to="/register"
-                className="text-black font-black ml-2 hover:underline decoration-[transparent]/30 underline-offset-4"
+                className="text-white font-black ml-2 hover:underline decoration-[transparent]/30 underline-offset-4"
               >
                 Sign Up here
               </Link>
