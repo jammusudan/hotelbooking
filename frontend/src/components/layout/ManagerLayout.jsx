@@ -98,29 +98,29 @@ const ManagerLayout = () => {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Topbar */}
-        <header className="h-20 bg-[#EDF7BD]/80 backdrop-blur-md border-b border-gray-800/50 flex items-center justify-between px-8 sticky top-0 z-40">
+        <header className="h-20 bg-[#003049] backdrop-blur-md border-b border-[#003049] flex items-center justify-between px-8 sticky top-0 z-40 shadow-lg">
           <button 
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="p-2 text-black hover:bg-gray-800/50 rounded-xl lg:hidden"
+            className="p-2 text-white hover:bg-white/10 rounded-xl lg:hidden"
           >
             {isSidebarOpen ? <X /> : <Menu />}
           </button>
 
           <div className="flex-1 px-4 lg:px-0">
-            <h2 className="text-sm font-serif font-black text-black tracking-widest uppercase italic hidden sm:block">
+            <h2 className="text-sm font-serif font-black text-white tracking-widest uppercase italic hidden sm:block">
               Manager Dashboard
             </h2>
           </div>
 
           <div className="flex items-center gap-4">
-            <button className="p-2.5 text-black hover:bg-gray-800/50 rounded-xl relative border border-gray-800/50 shadow-inner group">
-              <Bell className="w-5 h-5 group-hover:text-black transition-colors" />
+            <button className="p-2.5 text-white hover:bg-white/10 rounded-xl relative border border-white/20 shadow-inner group">
+              <Bell className="w-5 h-5 group-hover:text-white transition-colors" />
               <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#EDF7BD] rounded-full border-2 border-white shadow-[0_0_8px_rgba(212,175,55,0.4)]"></span>
             </button>
-            <div className="flex items-center gap-4 pl-4 border-l border-gray-800/50">
+            <div className="flex items-center gap-4 pl-4 border-l border-white/20">
               <div className="text-right hidden sm:block">
-                <p className="text-xs font-black text-black uppercase tracking-tighter">Manager</p>
-                <div className="h-0.5 w-full bg-[#EDF7BD]/30 mt-0.5"></div>
+                <p className="text-xs font-black text-white uppercase tracking-tighter">Manager</p>
+                <div className="h-0.5 w-full bg-[#EDF7BD]/50 mt-0.5"></div>
               </div>
               <div className="w-10 h-10 rounded-xl bg-[#EDF7BD] border border-gray-800 flex items-center justify-center text-black shadow-inner">
                 <UserIcon className="w-5 h-5" />

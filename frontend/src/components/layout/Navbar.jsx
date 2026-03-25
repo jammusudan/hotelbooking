@@ -31,12 +31,12 @@ const Navbar = () => {
   // Use transparent bg on home top, dark otherwise
   const navClasses = `fixed w-full z-50 transition-all duration-300 border-b ${
      scrolled 
-        ? 'bg-[#EDF7BD]/90 backdrop-blur-xl border-gray-800/50 py-3 shadow-2xl' 
-        : (isHome ? 'bg-transparent border-transparent py-5' : 'bg-[#EDF7BD] border-gray-800 py-4 shadow-lg')
+        ? 'bg-[#003049] backdrop-blur-xl border-[#003049] py-3 shadow-2xl' 
+        : (isHome ? 'bg-transparent border-transparent py-5' : 'bg-[#003049] border-[#003049] py-4 shadow-lg')
   }`;
 
-  const linkColor = scrolled ? 'text-black hover:text-black' : (isHome ? 'text-black hover:text-black' : 'text-black hover:text-black');
-  const logoColor = 'text-black hover:text-black';
+  const linkColor = scrolled || !isHome ? 'text-white hover:text-gray-200' : 'text-black hover:text-black';
+  const logoColor = scrolled || !isHome ? 'text-white hover:text-gray-200' : 'text-black hover:text-black';
 
   return (
     <nav className={navClasses}>
@@ -57,7 +57,7 @@ const Navbar = () => {
             {user ? (
               <div className="relative group flex items-center space-x-6 pl-6 border-l border-gray-300/30">
                 <div className="flex flex-col items-end">
-                  <span className={`text-[10px] uppercase font-black tracking-widest ${scrolled ? 'text-black' : 'text-black'}`}>{user.role}</span>
+                  <span className={`text-[10px] uppercase font-black tracking-widest ${scrolled || !isHome ? 'text-gray-300' : 'text-black'}`}>{user.role}</span>
                   <span className={`text-sm tracking-wide font-bold ${linkColor}`}>{user.name.split(' ')[0]}</span>
                 </div>
                 
@@ -109,13 +109,13 @@ const Navbar = () => {
 
       {/* Mobile Menu Dropdown */}
       <div 
-        className={`md:hidden absolute top-full left-0 w-full bg-[#EDF7BD]/95 backdrop-blur-3xl border-b border-gray-800 shadow-2xl transition-all duration-300 overflow-hidden ${
+        className={`md:hidden absolute top-full left-0 w-full bg-[#003049] backdrop-blur-3xl border-b border-[#003049] shadow-2xl transition-all duration-300 overflow-hidden ${
           isMobileMenuOpen ? 'max-h-[500px] py-4' : 'max-h-0 py-0 border-transparent'
         }`}
       >
         <div className="px-6 flex flex-col space-y-4">
-          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-black hover:text-black font-medium py-2 border-b border-gray-800/50">Home</Link>
-          <Link to="/hotels" onClick={() => setIsMobileMenuOpen(false)} className="text-black hover:text-black font-medium py-2 border-b border-gray-800/50">Destinations</Link>
+          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-gray-200 font-medium py-2 border-b border-white/10">Home</Link>
+          <Link to="/hotels" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-gray-200 font-medium py-2 border-b border-white/10">Destinations</Link>
           
           {user ? (
             <div className="pt-2 flex flex-col space-y-4">
@@ -124,8 +124,8 @@ const Navbar = () => {
                   {user.name.charAt(0)}
                 </div>
                 <div>
-                  <p className="text-black font-bold">{user.name}</p>
-                  <p className="text-[10px] uppercase font-black tracking-widest text-black">{user.role}</p>
+                  <p className="text-white font-bold">{user.name}</p>
+                  <p className="text-[10px] uppercase font-black tracking-widest text-gray-300">{user.role}</p>
                 </div>
               </div>
               
@@ -150,8 +150,8 @@ const Navbar = () => {
             </div>
           ) : (
             <div className="pt-4 flex flex-col space-y-3">
-              <Link to="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#EDF7BD]/5 hover:bg-[#EDF7BD]/10 text-black font-medium py-3 rounded-xl transition border border-white/5">Log In</Link>
-              <Link to="/register" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#EDF7BD] hover:bg-[#EDF7BD] text-black font-bold py-3 rounded-xl shadow-lg transition-all">Join Now</Link>
+              <Link to="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-white/10 hover:bg-white/20 text-white font-medium py-3 rounded-xl transition border border-white/5">Log In</Link>
+              <Link to="/register" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#EDF7BD] hover:bg-white text-black font-bold py-3 rounded-xl shadow-lg transition-all">Join Now</Link>
             </div>
           )}
         </div>

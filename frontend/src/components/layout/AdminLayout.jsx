@@ -150,27 +150,27 @@ const AdminLayout = () => {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Topbar */}
-        <header className="h-20 bg-[#EDF7BD]/80 backdrop-blur-md border-b border-gray-800/50 flex items-center justify-between px-8 sticky top-0 z-40">
+        <header className="h-20 bg-[#003049] backdrop-blur-md border-b border-[#003049] flex items-center justify-between px-8 sticky top-0 z-40 shadow-lg">
           <button 
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="p-2 text-black hover:bg-gray-800/50 rounded-xl lg:hidden"
+            className="p-2 text-white hover:bg-white/10 rounded-xl lg:hidden"
           >
             {isSidebarOpen ? <X /> : <Menu />}
           </button>
 
           <div className="flex-1 px-4 lg:px-0">
-            <h2 className="text-sm font-serif font-black text-black tracking-widest uppercase italic hidden sm:block">
+            <h2 className="text-sm font-serif font-black text-white tracking-widest uppercase italic hidden sm:block">
               Admin Dashboard
             </h2>
           </div>
 
           <div className="flex items-center gap-6">
             <div className="hidden md:flex relative" ref={searchRef}>
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white" />
               <input 
                 type="text" 
                 placeholder="Search telemetry..." 
-                className="bg-[#EDF7BD]/5 border border-gray-800 rounded-xl py-2 pl-10 pr-4 text-xs font-bold text-black focus:border-[#EDF7BD]/50 outline-none w-48 focus:w-64 transition-all"
+                className="bg-white/10 border border-white/20 rounded-xl py-2 pl-10 pr-4 text-xs font-bold text-white placeholder-white/70 outline-none w-48 focus:w-64 transition-all"
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
@@ -232,16 +232,16 @@ const AdminLayout = () => {
               )}
             </div>
 
-            <button className="p-2.5 text-black hover:bg-gray-800/50 rounded-xl relative border border-gray-800/50 group">
-              <Bell className="w-5 h-5 group-hover:text-black transition-colors" />
+            <button className="p-2.5 text-white hover:bg-white/10 rounded-xl relative border border-white/20 group">
+              <Bell className="w-5 h-5 group-hover:text-white transition-colors" />
               <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#EDF7BD] rounded-full border-2 border-white shadow-[0_0_8px_rgba(212,175,55,0.4)]"></span>
             </button>
 
             {/* Root Admin Profile Dropdown */}
-            <div className="flex items-center gap-4 pl-4 border-l border-gray-800/50 relative" ref={profileRef}>
+            <div className="flex items-center gap-4 pl-4 border-l border-white/20 relative" ref={profileRef}>
               <div className="text-right hidden sm:block">
-                <p className="text-xs font-black text-black uppercase tracking-tighter">Root Admin</p>
-                <div className="h-0.5 w-full bg-[#EDF7BD]/30 mt-0.5"></div>
+                <p className="text-xs font-black text-white uppercase tracking-tighter">Root Admin</p>
+                <div className="h-0.5 w-full bg-[#EDF7BD]/50 mt-0.5"></div>
               </div>
               <button 
                 onClick={() => setShowProfileDropdown(!showProfileDropdown)}
