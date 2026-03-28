@@ -120,17 +120,17 @@ const Rooms = () => {
   };
 
   return (
-    <div className="space-y-12 animate-in fade-in slide-in-from-bottom-6 duration-700">
-      <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-8 mb-12">
+    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-6 duration-700">
+      <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-8">
         <div>
-          <h1 className="text-4xl font-serif font-black text-black tracking-tighter uppercase italic">Room Management</h1>
+          <h1 className="text-2xl sm:text-3xl font-serif font-black text-black tracking-tighter uppercase italic">Room Management</h1>
           <div className="h-1.5 w-24 bg-transparent mt-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
           <p className="text-[10px] font-black text-black uppercase tracking-[0.3em] mt-6">Pricing strategy and room availability management.</p>
         </div>
         <button 
           onClick={() => handleOpenModal()}
           disabled={hotels.length === 0}
-          className="flex items-center justify-center gap-3 bg-transparent text-black px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-[#EDF7BD] hover:text-black transition-all shadow-lg shadow-transparent/20 active:scale-95 group disabled:opacity-30"
+          className="flex items-center justify-center gap-3 bg-transparent text-black px-6 py-3 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-[#EDF7BD] hover:text-black transition-all shadow-lg shadow-transparent/20 active:scale-95 group disabled:opacity-30"
         >
           <Plus className="w-5 h-5 group-hover:rotate-90 transition-transform" />
           <span>Add New Room</span>
@@ -225,7 +225,7 @@ const Rooms = () => {
       {isModalOpen && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-[#EDF7BD]/60 backdrop-blur-xl" onClick={() => setIsModalOpen(false)}></div>
-          <div className="relative bg-transparent w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-[3rem] border border-gray-800 shadow-2xl p-10 animate-in fade-in zoom-in-95 duration-300">
+          <div className="relative bg-[#EDF7BD] w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-[2rem] sm:rounded-[3rem] border border-gray-800 shadow-2xl p-6 sm:p-10 animate-in fade-in zoom-in-95 duration-300">
             <div className="flex items-center justify-between mb-12">
               <h2 className="text-3xl font-serif font-black text-black italic tracking-tighter uppercase">
                 {editingRoom ? 'Edit Room Category' : 'Add New Room Category'}

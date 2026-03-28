@@ -118,7 +118,7 @@ const Hotels = () => {
     <div className="space-y-12 animate-in fade-in slide-in-from-bottom-6 duration-700">
       <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-8 mb-12">
         <div>
-          <h1 className="text-4xl font-serif font-black text-black tracking-tighter uppercase italic">Hotel Portfolio</h1>
+          <h1 className="text-3xl sm:text-4xl font-serif font-black text-black tracking-tighter uppercase italic">Hotel Portfolio</h1>
           <div className="h-1.5 w-24 bg-transparent mt-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
           <p className="text-[10px] font-black text-black uppercase tracking-[0.3em] mt-6">Manage and curate your verified properties.</p>
         </div>
@@ -202,7 +202,7 @@ const Hotels = () => {
       {isModalOpen && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-[#EDF7BD]/60 backdrop-blur-xl" onClick={() => setIsModalOpen(false)}></div>
-          <div className="relative bg-transparent w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-[3rem] border border-gray-800 shadow-2xl p-10 animate-in fade-in zoom-in-95 duration-300">
+          <div className="relative bg-[#EDF7BD] w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-[2rem] sm:rounded-[3rem] border border-gray-800 shadow-2xl p-6 sm:p-10 animate-in fade-in zoom-in-95 duration-300">
             <div className="flex items-center justify-between mb-12">
               <h2 className="text-3xl font-serif font-black text-black italic tracking-tighter uppercase">
                 {editingHotel ? 'Edit Hotel Details' : 'Add New Hotel'}

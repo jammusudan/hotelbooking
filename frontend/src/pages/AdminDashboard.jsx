@@ -231,9 +231,9 @@ const AdminDashboard = () => {
             )}
 
             {/* MAIN CONTENT */}
-            <main className="max-w-7xl mx-auto px-8 py-12 bg-[#EDF7BD]">
+            <main className="max-w-7xl mx-auto px-4 sm:px-8 py-10 sm:py-12 bg-[#EDF7BD]">
                 <header className="mb-12">
-                    <h1 className="text-4xl font-serif font-black text-black tracking-tighter uppercase italic pt-8">{activeTab}</h1>
+                    <h1 className="text-3xl sm:text-4xl font-serif font-black text-black tracking-tighter uppercase italic pt-8">{activeTab}</h1>
                     <div className="h-1.5 w-24 bg-transparent mt-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
                     <p className="text-[10px] font-black text-black uppercase tracking-[0.3em] mt-6">
                         Protocol established: Global oversight and administrative telemetry active.
@@ -250,10 +250,10 @@ const AdminDashboard = () => {
                                 { label: 'Users', value: analytics.totalUsers, icon: '👤' },
                                 { label: 'Hotels', value: analytics.totalHotels, icon: '🏰' }
                             ].map((s, i) => (
-                                <div key={i} className="bg-transparent p-8 transition-all group">
-                                    <div className="text-3xl mb-4 grayscale group-hover:grayscale-0 transition-all">{s.icon}</div>
-                                    <div className="text-3xl font-serif font-black text-black mb-1">{s.value}</div>
-                                    <div className="text-[10px] font-black uppercase tracking-widest text-black">{s.label}</div>
+                                <div key={i} className="bg-transparent p-6 sm:p-8 transition-all group">
+                                    <div className="text-2xl sm:text-3xl mb-4 grayscale group-hover:grayscale-0 transition-all">{s.icon}</div>
+                                    <div className="text-2xl sm:text-3xl font-serif font-black text-black mb-1">{s.value}</div>
+                                    <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-black">{s.label}</div>
                                 </div>
                             ))}
                         </div>
@@ -645,17 +645,17 @@ const AdminDashboard = () => {
 
                         {/* BOTTOM STATS */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <div className="bg-transparent p-10 text-center">
-                                <div className="text-4xl font-serif font-black text-black mb-2 italic">₹{(analytics.totalRevenue / (analytics.totalBookings || 1)).toFixed(0)}</div>
-                                <div className="text-[10px] font-black uppercase tracking-widest text-black italic">Average Order Value</div>
+                            <div className="bg-transparent p-6 sm:p-10 text-center">
+                                <div className="text-3xl sm:text-4xl font-serif font-black text-black mb-2 italic">₹{(analytics.totalRevenue / (analytics.totalBookings || 1)).toFixed(0)}</div>
+                                <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-black italic">Average Order Value</div>
                             </div>
-                            <div className="bg-transparent p-10 rounded-[2.5rem] border border-gray-800/50 text-center">
-                                <div className="text-4xl font-serif font-black text-black mb-2 italic">{((analytics.totalBookings / (analytics.totalUsers || 1)) * 100).toFixed(1)}%</div>
-                                <div className="text-[10px] font-black uppercase tracking-widest text-black italic">Booking Conversion</div>
+                            <div className="bg-transparent p-6 sm:p-10 rounded-[2.5rem] border border-gray-800/50 text-center">
+                                <div className="text-3xl sm:text-4xl font-serif font-black text-black mb-2 italic">{((analytics.totalBookings / (analytics.totalUsers || 1)) * 100).toFixed(1)}%</div>
+                                <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-black italic">Booking Conversion</div>
                             </div>
-                            <div className="bg-transparent p-10 rounded-[2.5rem] border border-gray-800/50 text-center">
-                                <div className="text-4xl font-serif font-black text-emerald-500 mb-2 italic">{analytics.totalHotels}+</div>
-                                <div className="text-[10px] font-black uppercase tracking-widest text-black italic">Verified Inventory Units</div>
+                            <div className="bg-transparent p-6 sm:p-10 rounded-[2.5rem] border border-gray-800/50 text-center">
+                                <div className="text-3xl sm:text-4xl font-serif font-black text-emerald-500 mb-2 italic">{analytics.totalHotels}+</div>
+                                <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-black italic">Verified Inventory Units</div>
                             </div>
                         </div>
                     </div>
