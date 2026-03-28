@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 
 const AdminLayout = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth >= 1024);
   const { user, logout } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -55,8 +55,19 @@ const AdminLayout = () => {
         setShowProfileDropdown(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsSidebarOpen(true);
+      } else {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   useEffect(() => {
@@ -87,58 +98,76 @@ const AdminLayout = () => {
 
   return (
     <div className="min-h-screen bg-[#EDF7BD] flex font-sans text-black">
+    <>
+      {/* Mobile Sidebar Overlay */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden transition-opacity duration-300"
+          onClick={() => setIsSidebarOpen(false)}
+        ></div>
+      )}
+
       {/* Sidebar */}
       <aside 
-        className={`fixed inset-y-0 left-0 z-50 w-72 bg-[#003049] border-r border-[#003049] shadow-xl transform transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-y-0 left-0 z-50 w-72 bg-[#003049] border-r border-white/5 shadow-2xl transform transition-transform duration-500 ease-in-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:relative lg:translate-x-0 h-screen sticky top-0`}
       >
         <div className="h-full flex flex-col">
-          <div className="p-8 pb-12">
-            <h1 className="text-xl font-serif font-black text-white tracking-tighter uppercase italic flex items-center gap-3">
-              <div className="w-8 h-8 overflow-hidden rounded-lg bg-white/10 p-1 border border-white/20">
-                <img src="/logo.png" alt="Navan" className="w-full h-full object-contain" />
-              </div>
-              <span className="tracking-tighter">Navan</span>
-            </h1>
-            <p className="text-[10px] font-bold text-white tracking-[0.3em] mt-2 uppercase">Admin Console</p>
+          <div className="p-8 pb-10 flex items-center justify-between">
+            <div>
+              <h1 className="text-xl font-serif font-black text-white tracking-tighter uppercase italic flex items-center gap-3">
+                <div className="w-8 h-8 overflow-hidden rounded-lg bg-[#EDF7BD] p-1 shadow-lg">
+                  <img src="/logo.png" alt="Navan" className="w-full h-full object-contain" />
+                </div>
+                <span className="tracking-tighter">Navan</span>
+              </h1>
+              <p className="text-[9px] font-bold text-[#EDF7BD]/40 tracking-[0.3em] mt-1.5 uppercase">Admin Console</p>
+            </div>
+            <button 
+              onClick={() => setIsSidebarOpen(false)}
+              className="p-2 text-white/40 hover:text-white lg:hidden transition-colors"
+            >
+              <X size={20} />
+            </button>
           </div>
 
-          <nav className="flex-grow px-4 space-y-2 overflow-y-auto">
+          <nav className="flex-grow px-4 pb-8 space-y-1.5 overflow-y-auto custom-scrollbar">
             {menuItems.map((item) => {
               const isActive = location.pathname === item.path;
               return (
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`w-full flex items-center gap-4 px-6 py-4 rounded-2xl text-sm font-bold transition-all ${
+                  onClick={() => window.innerWidth < 1024 && setIsSidebarOpen(false)}
+                  className={`w-full flex items-center gap-4 px-6 py-4 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all duration-300 ${
                     isActive 
-                      ? 'bg-[#EDF7BD] text-black shadow-lg shadow-[#EDF7BD]/20' 
-                      : 'text-white hover:bg-white/10 hover:text-white'
+                      ? 'bg-[#EDF7BD] text-[#003049] shadow-2xl scale-[1.02]' 
+                      : 'text-white/60 hover:bg-white/5 hover:text-white'
                   }`}
                 >
-                  <item.icon className={`w-5 h-5 ${isActive ? 'text-black' : 'text-white'}`} />
+                  <item.icon className={`w-4 h-4 ${isActive ? 'text-[#003049]' : ''}`} />
                   <span className="truncate">{item.name}</span>
                 </Link>
               );
             })}
           </nav>
 
-          <div className="p-8 border-t border-white/10">
-            <div className="mb-6">
+          <div className="p-8 border-t border-white/5 bg-black/10">
+            <div className="mb-8">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#EDF7BD] flex items-center justify-center text-black font-black">
+                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#EDF7BD] font-black shadow-inner">
                   {user?.name?.charAt(0) || 'A'}
                 </div>
-                <div>
-                  <p className="text-xs font-black text-white">{user?.name || 'Administrator'}</p>
-                  <p className="text-[9px] font-bold text-white uppercase tracking-widest leading-none mt-1">Console Master</p>
+                <div className="min-w-0">
+                  <p className="text-[11px] font-black text-white truncate">{user?.name || 'Administrator'}</p>
+                  <p className="text-[8px] font-bold text-[#EDF7BD]/40 uppercase tracking-widest leading-none mt-1 truncate">Console Master</p>
                 </div>
               </div>
             </div>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-3 text-white hover:text-rose-400 text-[10px] font-black uppercase tracking-widest transition-all italic group"
+              className="w-full flex items-center justify-center gap-3 bg-rose-500/10 text-rose-400 py-4 px-6 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all hover:bg-rose-500 hover:text-white group border border-rose-500/20"
             >
               <LogOut className="w-4 h-4 group-hover:rotate-12 transition-transform" />
               <span>Exit Protocol</span>
@@ -146,31 +175,32 @@ const AdminLayout = () => {
           </div>
         </div>
       </aside>
+    </>
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Topbar */}
-        <header className="h-20 bg-[#003049] backdrop-blur-md border-b border-[#003049] flex items-center justify-between px-8 sticky top-0 z-40 shadow-lg">
+        <header className="h-20 bg-white/40 backdrop-blur-3xl border-b border-black/5 flex items-center justify-between px-6 md:px-8 sticky top-0 z-40 shadow-sm">
           <button 
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="p-2 text-white hover:bg-white/10 rounded-xl lg:hidden"
+            className="p-3 text-[#003049] hover:bg-[#003049]/5 rounded-xl transition-colors lg:hidden bg-white/50 border border-black/5"
           >
-            {isSidebarOpen ? <X /> : <Menu />}
+            {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
 
           <div className="flex-1 px-4 lg:px-0">
-            <h2 className="text-sm font-serif font-black text-white tracking-widest uppercase italic hidden sm:block">
-              Admin Dashboard
+            <h2 className="text-sm font-serif font-black text-[#003049] tracking-[0.2em] uppercase italic">
+              Console <span className="hidden sm:inline">Overview</span>
             </h2>
           </div>
 
-          <div className="flex items-center gap-6">
-            <div className="hidden md:flex relative" ref={searchRef}>
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white" />
+          <div className="flex items-center gap-4 md:gap-6">
+            <div className="hidden lg:flex relative" ref={searchRef}>
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#003049]/40" />
               <input 
                 type="text" 
                 placeholder="Search telemetry..." 
-                className="bg-white/10 border border-white/20 rounded-xl py-2 pl-10 pr-4 text-xs font-bold text-white placeholder-white/70 outline-none w-48 focus:w-64 transition-all"
+                className="bg-[#003049]/5 border border-black/5 rounded-xl py-2.5 pl-10 pr-4 text-[11px] font-black text-[#003049] placeholder-[#003049]/30 outline-none w-48 focus:w-64 transition-all focus:bg-white focus:shadow-xl"
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);

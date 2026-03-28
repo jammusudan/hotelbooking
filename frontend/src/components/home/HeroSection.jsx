@@ -27,56 +27,57 @@ const HeroSection = () => {
       </div>
 
       {/* Image Collage */}
-      <div className="relative w-full max-w-5xl h-[350px] md:h-[450px] mb-12 flex justify-center items-center z-10 w-full px-4 mt-8 md:mt-0">
+      <div className="relative w-full max-w-5xl h-[300px] sm:h-[350px] md:h-[450px] mb-8 md:mb-12 flex justify-center items-center z-10 px-4 mt-8 md:mt-0">
         
         {/* Left Image (Hammock) */}
-        <div className="absolute left-4 md:left-24 top-16 md:top-24 transform -rotate-[15deg] transition hover:scale-105 hover:z-30 duration-300 z-10">
-          <div className="bg-[#EDF7BD] p-2 md:p-3 shadow-2xl rounded-sm">
+        <div className="absolute left-0 sm:left-4 md:left-24 top-12 sm:top-16 md:top-24 transform -rotate-[15deg] transition hover:scale-105 hover:z-30 duration-300 z-10">
+          <div className="bg-[#EDF7BD] p-1.5 md:p-3 shadow-2xl rounded-sm">
             <img 
               src="/images/sunset.png" 
               alt="Sunset Hammock" 
-              className="w-36 h-48 md:w-64 md:h-72 object-cover"
+              className="w-28 h-36 sm:w-36 sm:h-48 md:w-64 md:h-72 object-cover"
             />
           </div>
         </div>
 
         {/* Center Image (Breakfast) - overlapping */}
-        <div className="absolute z-20 transform -translate-y-8 md:-translate-y-4 hover:scale-105 duration-300">
-          <div className="bg-[#EDF7BD] p-2 md:p-4 shadow-2xl rounded-sm">
+        <div className="absolute z-20 transform -translate-y-4 hover:scale-105 duration-300">
+          <div className="bg-[#EDF7BD] p-1.5 md:p-4 shadow-2xl rounded-sm">
             <img 
               src="/images/breakfast.png" 
               alt="Breakfast on Bed" 
-              className="w-48 h-56 md:w-80 md:h-96 object-cover"
+              className="w-36 h-44 sm:w-48 sm:h-56 md:w-80 md:h-96 object-cover"
             />
           </div>
         </div>
 
         {/* Right Image (Room) */}
-        <div className="absolute right-4 md:right-24 top-20 md:top-24 transform rotate-[10deg] transition hover:scale-105 hover:z-30 duration-300 z-10">
-          <div className="bg-[#EDF7BD] p-2 md:p-3 shadow-2xl rounded-sm">
+        <div className="absolute right-0 sm:right-4 md:right-24 top-16 sm:top-20 md:top-24 transform rotate-[10deg] transition hover:scale-105 hover:z-30 duration-300 z-10">
+          <div className="bg-[#EDF7BD] p-1.5 md:p-3 shadow-2xl rounded-sm">
             <img 
               src="/images/room.png" 
               alt="Luxury Room" 
-              className="w-36 h-48 md:w-64 md:h-72 object-cover"
+              className="w-28 h-36 sm:w-36 sm:h-48 md:w-64 md:h-72 object-cover"
             />
           </div>
         </div>
       </div>
 
       {/* Typography and Call to Action */}
-      <div className="z-20 text-center px-4 max-w-3xl mx-auto flex flex-col items-center mt-8">
-        <h1 className="text-4xl md:text-5xl lg:text-[58px] font-serif font-black text-black tracking-tight leading-tight mb-8 drop-shadow-sm uppercase">
-          WELCOME TO A NEW<br />LEVEL OF LUXURY
+      <div className="z-20 text-center px-4 max-w-4xl mx-auto flex flex-col items-center mt-4 md:mt-8">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-serif font-black text-[#003049] tracking-tight leading-[1.1] mb-8 drop-shadow-sm uppercase">
+          WELCOME TO A NEW<br className="hidden sm:block" /> LEVEL OF LUXURY
         </h1>
         
         <Link 
           to={user ? "/hotels" : "/register"} 
-          className="bg-transparent text-black font-bold text-lg md:text-xl px-12 py-4 rounded-full shadow-xl shadow-transparent/20 hover:bg-transparent hover:shadow-2xl hover:-translate-y-1 transition duration-300 mb-6"
+          className="group relative inline-flex items-center justify-center px-10 py-4 font-bold text-white transition-all duration-300 bg-[#003049] rounded-full hover:bg-[#003049]/90 hover:scale-105 active:scale-95 shadow-xl shadow-[#003049]/20"
         >
-          BOOK NOW
+          <span className="relative uppercase tracking-widest text-sm md:text-base">Book Your Stay</span>
+          <div className="absolute inset-0 rounded-full border-2 border-white/10 group-hover:border-white/20 transition-colors" />
         </Link>
         
-        <p className="text-black font-bold tracking-widest uppercase text-sm">
+        <p className="text-[#003049]/60 font-black tracking-[0.3em] uppercase text-[10px] md:text-xs mt-8">
           www.navan.com
         </p>
       </div>

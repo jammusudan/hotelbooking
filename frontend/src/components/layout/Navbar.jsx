@@ -39,124 +39,135 @@ const Navbar = () => {
   const logoColor = scrolled || !isHome ? 'text-white hover:text-gray-200' : 'text-black hover:text-black';
 
   return (
-    <nav className={navClasses}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          
-          <Link to="/" className={`text-2xl md:text-3xl font-serif font-bold ${logoColor} transition flex items-center gap-3 group`}>
-            <div className="relative w-10 h-10 overflow-hidden rounded-xl bg-[#EDF7BD]/10 p-1 group-hover:scale-110 transition-transform duration-300">
-              <img src="/logo.png" alt="Navan Logo" className="w-full h-full object-contain" />
+    <>
+      {/* Backdrop overlay for mobile menu */}
+      <div 
+        className={`md:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-40 transition-opacity duration-500 ${
+          isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
+
+      <nav className={navClasses}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center">
+            
+            <Link to="/" className={`text-2xl md:text-3xl font-serif font-bold ${logoColor} transition flex items-center gap-3 group`}>
+              <div className="relative w-10 h-10 overflow-hidden rounded-xl bg-[#EDF7BD]/10 p-1 group-hover:scale-110 transition-transform duration-300">
+                <img src="/logo.png" alt="Navan Logo" className="w-full h-full object-contain" />
+              </div>
+              <span className="tracking-tight">Navan</span>
+            </Link>
+            
+            <div className="hidden md:flex space-x-8 items-center">
+              <Link to="/" className={`text-sm font-medium tracking-wide transition ${linkColor}`}>Home</Link>
+              <Link to="/hotels" className={`text-sm font-medium tracking-wide transition ${linkColor}`}>Destinations</Link>
+              
+              {user ? (
+                <div className="relative group flex items-center space-x-6 pl-6 border-l border-gray-300/30">
+                  <div className="flex flex-col items-end">
+                    <span className={`text-[10px] uppercase font-black tracking-widest ${scrolled || !isHome ? 'text-gray-300' : 'text-black'}`}>{user.role}</span>
+                    <span className={`text-sm tracking-wide font-bold ${linkColor}`}>{user.name.split(' ')[0]}</span>
+                  </div>
+                  
+                  <div className="flex items-center gap-4">
+                    <NotificationBell />
+                    {user.role === 'admin' ? (
+                      <Link to="/admin/dashboard" className="bg-[#EDF7BD]/10 hover:bg-[#EDF7BD]/20 text-[#EDF7BD] text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-lg transition-all border border-white/10">Console</Link>
+                    ) : user.role === 'manager' ? (
+                      <Link to="/manager/dashboard" className="bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-lg transition-all shadow-lg shadow-blue-600/20">Portal</Link>
+                    ) : (
+                      <>
+                        <Link to="/customer/dashboard" className={`text-xs font-bold uppercase tracking-widest transition ${linkColor}`}>Dashboard</Link>
+                        <Link to="/my-bookings" className={`text-xs font-bold uppercase tracking-widest transition ${linkColor}`}>Bookings</Link>
+                      </>
+                    )}
+
+                    <button 
+                      onClick={handleLogout} 
+                      className="text-[10px] font-black uppercase tracking-widest px-4 py-2 bg-rose-500/10 text-rose-500 hover:bg-rose-500 hover:text-white rounded-lg transition-all border border-rose-500/20"
+                    >
+                      Exit
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-x-4 flex items-center pl-6 border-l border-gray-300/30">
+                  <Link to="/login" className={`text-sm font-medium tracking-wide transition ${linkColor}`}>Log In</Link>
+                  <Link to="/register" className="bg-[#EDF7BD] hover:bg-[#EDF7BD]/90 text-black text-sm font-bold px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all">Join Now</Link>
+                </div>
+              )}
             </div>
-            <span className="tracking-tight">Navan</span>
-          </Link>
-          
-          <div className="hidden md:flex space-x-8 items-center">
-            <Link to="/" className={`text-sm font-medium tracking-wide transition ${linkColor}`}>Home</Link>
-            <Link to="/hotels" className={`text-sm font-medium tracking-wide transition ${linkColor}`}>Destinations</Link>
+            
+            {/* Mobile menu button */}
+            <div className="md:hidden flex items-center">
+              {user && (
+                 <div className="mr-4 mt-1">
+                   <NotificationBell />
+                 </div>
+              )}
+              <button 
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className={`p-2 rounded-xl transition-colors ${linkColor} hover:bg-[#EDF7BD]/10`}
+              >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Menu Dropdown */}
+        <div 
+          className={`md:hidden absolute top-full left-0 w-full bg-[#003049] backdrop-blur-3xl border-b border-white/5 shadow-2xl transition-all duration-500 ease-in-out overflow-hidden ${
+            isMobileMenuOpen ? 'max-h-[600px] py-8 opacity-100' : 'max-h-0 py-0 opacity-0 pointer-events-none'
+          }`}
+        >
+          <div className="px-8 flex flex-col space-y-6">
+            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-[#EDF7BD] text-lg font-medium transition-colors">Home</Link>
+            <Link to="/hotels" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-[#EDF7BD] text-lg font-medium transition-colors">Destinations</Link>
             
             {user ? (
-              <div className="relative group flex items-center space-x-6 pl-6 border-l border-gray-300/30">
-                <div className="flex flex-col items-end">
-                  <span className={`text-[10px] uppercase font-black tracking-widest ${scrolled || !isHome ? 'text-gray-300' : 'text-black'}`}>{user.role}</span>
-                  <span className={`text-sm tracking-wide font-bold ${linkColor}`}>{user.name.split(' ')[0]}</span>
+              <div className="pt-4 flex flex-col space-y-6 border-t border-white/10">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-[#EDF7BD] flex items-center justify-center text-[#003049] font-black text-xl shadow-inner">
+                    {user.name.charAt(0)}
+                  </div>
+                  <div>
+                    <p className="text-white font-bold text-lg leading-tight">{user.name}</p>
+                    <p className="text-[10px] uppercase font-black tracking-[0.2em] text-[#EDF7BD]/60 mt-0.5">{user.role}</p>
+                  </div>
                 </div>
                 
-                <div className="flex items-center gap-4">
-                  <NotificationBell />
-                  {user.role === 'admin' ? (
-                    <Link to="/admin/dashboard" className="bg-[#EDF7BD]/10 hover:bg-[#EDF7BD]/20 text-black text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-lg transition-all border border-white/10">Console</Link>
-                  ) : user.role === 'manager' ? (
-                    <Link to="/manager/dashboard" className="bg-blue-600 hover:bg-blue-700 text-black text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-lg transition-all shadow-lg shadow-blue-600/20">Portal</Link>
-                  ) : (
-                    <>
-                      <Link to="/customer/dashboard" className={`text-xs font-bold uppercase tracking-widest transition ${linkColor}`}>Dashboard</Link>
-                      <Link to="/my-bookings" className={`text-xs font-bold uppercase tracking-widest transition ${linkColor}`}>Bookings</Link>
-                    </>
-                  )}
-
-                  <button 
-                    onClick={handleLogout} 
-                    className="text-[10px] font-black uppercase tracking-widest px-4 py-2 bg-rose-500/10 text-rose-500 hover:bg-rose-500 hover:text-black rounded-lg transition-all border border-rose-500/20"
-                  >
-                    Exit
-                  </button>
+                <div className="grid grid-cols-2 gap-4">
+                    {user.role === 'admin' ? (
+                      <Link to="/admin/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#EDF7BD] text-[#003049] text-[11px] font-black uppercase tracking-widest px-4 py-4 rounded-2xl transition-all shadow-lg active:scale-95">Console</Link>
+                    ) : user.role === 'manager' ? (
+                      <Link to="/manager/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-blue-600 text-white text-[11px] font-black uppercase tracking-widest px-4 py-4 rounded-2xl transition-all shadow-lg active:scale-95">Portal</Link>
+                    ) : (
+                      <>
+                        <Link to="/customer/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-white/10 text-white text-[11px] font-black uppercase tracking-widest px-4 py-4 rounded-2xl transition-all border border-white/10 active:scale-95">Dashboard</Link>
+                        <Link to="/my-bookings" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-white/10 text-white text-[11px] font-black uppercase tracking-widest px-4 py-4 rounded-2xl transition-all border border-white/10 active:scale-95">Bookings</Link>
+                      </>
+                    )}
+                    <button 
+                      onClick={() => { setIsMobileMenuOpen(false); handleLogout(); }} 
+                      className="col-span-2 mt-2 text-[11px] font-black uppercase tracking-widest px-4 py-4 bg-rose-500/10 text-rose-500 hover:bg-rose-500 hover:text-white rounded-2xl transition-all border border-rose-500/20 active:scale-95"
+                    >
+                      Sign Out
+                    </button>
                 </div>
               </div>
             ) : (
-              <div className="space-x-4 flex items-center pl-6 border-l border-gray-300/30">
-                <Link to="/login" className={`text-sm font-medium tracking-wide transition ${linkColor}`}>Log In</Link>
-                <Link to="/register" className="bg-[#EDF7BD] hover:bg-[#EDF7BD] text-black text-sm font-bold px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all">Join Now</Link>
+              <div className="pt-6 flex flex-col space-y-4 border-t border-white/10">
+                <Link to="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-white/10 hover:bg-white/20 text-white font-bold py-4 rounded-2xl transition border border-white/5 active:scale-95">Log In</Link>
+                <Link to="/register" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#EDF7BD] hover:bg-white text-[#003049] font-black py-4 rounded-2xl shadow-xl transition-all active:scale-95">Join Now</Link>
               </div>
             )}
           </div>
-          
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            {user && (
-               <div className="mr-4 mt-1">
-                 <NotificationBell />
-               </div>
-            )}
-            <button 
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 rounded-xl transition-colors ${linkColor} hover:bg-[#EDF7BD]/10`}
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
         </div>
-      </div>
+      </nav>
+    </>
 
-      {/* Mobile Menu Dropdown */}
-      <div 
-        className={`md:hidden absolute top-full left-0 w-full bg-[#003049] backdrop-blur-3xl border-b border-[#003049] shadow-2xl transition-all duration-300 overflow-hidden ${
-          isMobileMenuOpen ? 'max-h-[500px] py-4' : 'max-h-0 py-0 border-transparent'
-        }`}
-      >
-        <div className="px-6 flex flex-col space-y-4">
-          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-gray-200 font-medium py-2 border-b border-white/10">Home</Link>
-          <Link to="/hotels" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-gray-200 font-medium py-2 border-b border-white/10">Destinations</Link>
-          
-          {user ? (
-            <div className="pt-2 flex flex-col space-y-4">
-              <div className="flex items-center gap-3 py-2">
-                <div className="w-10 h-10 rounded-full bg-[#EDF7BD] flex items-center justify-center text-black font-black text-lg">
-                  {user.name.charAt(0)}
-                </div>
-                <div>
-                  <p className="text-white font-bold">{user.name}</p>
-                  <p className="text-[10px] uppercase font-black tracking-widest text-gray-300">{user.role}</p>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-3 pt-2">
-                  {user.role === 'admin' ? (
-                    <Link to="/admin/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#EDF7BD]/10 hover:bg-[#EDF7BD]/20 text-black text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all border border-white/10">Console</Link>
-                  ) : user.role === 'manager' ? (
-                    <Link to="/manager/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-blue-600 hover:bg-blue-700 text-black text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all shadow-lg shadow-blue-600/20">Portal</Link>
-                  ) : (
-                    <>
-                      <Link to="/customer/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#EDF7BD]/5 hover:bg-[#EDF7BD]/10 text-black text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all border border-white/5">Dashboard</Link>
-                      <Link to="/my-bookings" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#EDF7BD]/5 hover:bg-[#EDF7BD]/10 text-black text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-lg transition-all border border-white/5">Bookings</Link>
-                    </>
-                  )}
-                  <button 
-                    onClick={() => { setIsMobileMenuOpen(false); handleLogout(); }} 
-                    className="col-span-2 mt-2 text-[10px] font-black uppercase tracking-widest px-4 py-3 bg-rose-500/10 text-rose-500 hover:bg-rose-500 hover:text-black rounded-lg transition-all border border-rose-500/20"
-                  >
-                    Logout
-                  </button>
-              </div>
-            </div>
-          ) : (
-            <div className="pt-4 flex flex-col space-y-3">
-              <Link to="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-white/10 hover:bg-white/20 text-white font-medium py-3 rounded-xl transition border border-white/5">Log In</Link>
-              <Link to="/register" onClick={() => setIsMobileMenuOpen(false)} className="text-center bg-[#EDF7BD] hover:bg-white text-black font-bold py-3 rounded-xl shadow-lg transition-all">Join Now</Link>
-            </div>
-          )}
-        </div>
-      </div>
-    </nav>
   );
 };
 

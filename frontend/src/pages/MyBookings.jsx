@@ -199,20 +199,20 @@ const MyBookings = () => {
                                             </div>
                                         </div>
 
-                                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 p-10 bg-white/5 rounded-[2.5rem] border border-white/10">
-                                            <div className="space-y-2">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6 sm:p-10 bg-white/5 rounded-[2.5rem] border border-white/10">
+                                            <div className="space-y-1 sm:space-y-2">
                                                 <span className="text-[9px] font-black text-white uppercase tracking-[0.2em] block">Arrival</span>
                                                 <strong className="text-xs font-black text-white uppercase tracking-widest">{new Date(booking.checkIn).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</strong>
                                             </div>
-                                            <div className="space-y-2">
+                                            <div className="space-y-1 sm:space-y-2">
                                                 <span className="text-[9px] font-black text-white uppercase tracking-[0.2em] block">Departure</span>
                                                 <strong className="text-xs font-black text-white uppercase tracking-widest">{new Date(booking.checkOut).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</strong>
                                             </div>
-                                            <div className="space-y-2">
+                                            <div className="space-y-1 sm:space-y-2">
                                                 <span className="text-[9px] font-black text-white uppercase tracking-[0.2em] block">Room</span>
                                                 <strong className="text-xs font-black text-white uppercase tracking-widest">{booking.roomId?.type}</strong>
                                             </div>
-                                            <div className="space-y-2">
+                                            <div className="space-y-1 sm:space-y-2">
                                                 <span className="text-[9px] font-black text-white uppercase tracking-[0.2em] block">Guests</span>
                                                 <strong className="text-xs font-black text-white uppercase tracking-widest">{booking.guests} Guests</strong>
                                             </div>

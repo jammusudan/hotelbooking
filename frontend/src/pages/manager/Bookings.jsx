@@ -125,77 +125,77 @@ const Bookings = () => {
         </div>
       ) : (
         <div className="bg-transparent rounded-[2.5rem] border border-gray-800/50 shadow-2xl overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left font-sans">
-              <thead className="bg-[#1c1c20]">
+          <div className="overflow-x-auto custom-scrollbar border border-black/5 rounded-[2rem]">
+            <table className="w-full text-left font-sans min-w-[1000px]">
+              <thead className="bg-[#003049] text-[#EDF7BD]">
                 <tr>
-                  <th className="px-10 py-8 text-[10px] font-black text-black uppercase tracking-[0.3em]">Patron & Estate Entity</th>
-                  <th className="px-10 py-8 text-[10px] font-black text-black uppercase tracking-[0.3em]">Deployment Window</th>
-                  <th className="px-10 py-8 text-[10px] font-black text-black uppercase tracking-[0.3em]">Capital Value</th>
-                  <th className="px-10 py-8 text-[10px] font-black text-black uppercase tracking-[0.3em]">Auth Standing</th>
-                  <th className="px-10 py-8 text-center text-[10px] font-black text-black uppercase tracking-[0.3em]">Protocol</th>
+                  <th className="px-8 py-6 text-[10px] font-black uppercase tracking-[0.3em]">Patron & Estate Entity</th>
+                  <th className="px-8 py-6 text-[10px] font-black uppercase tracking-[0.3em]">Deployment Window</th>
+                  <th className="px-8 py-6 text-[10px] font-black uppercase tracking-[0.3em]">Capital Value</th>
+                  <th className="px-10 py-6 text-center text-[10px] font-black uppercase tracking-[0.3em]">Auth Standing</th>
+                  <th className="px-8 py-6 text-center text-[10px] font-black uppercase tracking-[0.3em]">Protocol</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-800/30">
+              <tbody className="divide-y divide-black/5">
                 {filteredBookings.map((booking) => (
-                  <tr key={booking._id} className="hover:bg-[#EDF7BD]/50 transition-all group">
-                    <td className="px-10 py-10">
-                      <div className="flex items-center gap-6">
-                        <div className="w-14 h-14 rounded-2xl bg-[#EDF7BD] border border-gray-800 flex items-center justify-center text-black group-hover:scale-110 transition-transform shadow-inner">
-                          <User className="w-6 h-6" />
+                  <tr key={booking._id} className="hover:bg-white/40 transition-all group">
+                    <td className="px-8 py-8">
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-[#003049] text-[#EDF7BD] flex items-center justify-center group-hover:scale-110 transition-transform shadow-xl">
+                          <User className="w-5 h-5" />
                         </div>
                         <div>
-                          <p className="font-serif font-black text-black text-lg italic tracking-tight uppercase group-hover:text-black transition-colors">{booking.userId?.name}</p>
-                          <p className="text-[10px] text-black font-black uppercase tracking-widest mt-1 italic">{booking.hotelId?.name} — {booking.roomId?.type} Vault</p>
+                          <p className="font-serif font-black text-[#003049] text-base italic tracking-tight uppercase">{booking.userId?.name}</p>
+                          <p className="text-[9px] text-[#003049]/40 font-black uppercase tracking-widest mt-1 italic">{booking.hotelId?.name} — {booking.roomId?.type} Vault</p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-10 py-10">
+                    <td className="px-8 py-8">
                       <div className="space-y-2">
-                        <div className="flex items-center gap-3 text-black font-black text-xs uppercase tracking-tighter">
-                          <Calendar className="w-4 h-4 text-black/70" />
+                        <div className="flex items-center gap-2 text-[#003049] font-black text-xs uppercase tracking-tighter">
+                          <Calendar className="w-3.5 h-3.5 text-[#003049]/40" />
                           <span>
                             {new Date(booking.checkIn).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
-                            <span className="mx-3 text-black opacity-50">/</span>
+                            <span className="mx-2 text-[#003049] opacity-30">/</span>
                             {new Date(booking.checkOut).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
                           </span>
                         </div>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#EDF7BD] border border-gray-800 rounded-lg text-[9px] font-black text-black uppercase tracking-widest">
-                          <Clock className="w-3 h-3" />
-                          {Math.ceil((new Date(booking.checkOut) - new Date(booking.checkIn)) / (1000 * 60 * 60 * 24))} CYCLE TOTAL
+                        <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-black/5 rounded-lg text-[8px] font-black text-[#003049]/60 uppercase tracking-widest">
+                          <Clock className="w-2.5 h-2.5" />
+                          {Math.ceil((new Date(booking.checkOut) - new Date(booking.checkIn)) / (1000 * 60 * 60 * 24))} CYCLE
                         </div>
                       </div>
                     </td>
-                    <td className="px-10 py-10">
-                      <div className="space-y-3">
-                        <div className="text-xl font-serif font-black text-black italic leading-none">₹{booking.totalAmount.toLocaleString()}</div>
-                        <div className={`flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded-xl border w-fit ${
+                    <td className="px-8 py-8">
+                      <div className="space-y-2">
+                        <div className="text-lg font-serif font-black text-[#003049] italic leading-none">₹{booking.totalAmount.toLocaleString()}</div>
+                        <div className={`flex items-center gap-1.5 text-[8px] font-black uppercase tracking-[0.2em] px-2.5 py-1 rounded-lg border w-fit ${
                             booking.paymentStatus === 'Paid' 
                             ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' 
                             : booking.paymentStatus === 'Refunded'
                             ? 'bg-amber-500/10 text-amber-500 border-amber-500/20'
-                            : 'bg-gray-800 text-black border-gray-700'
+                            : 'bg-black/5 text-[#003049]/60 border-transparent'
                         }`}>
-                          <CreditCard className="w-3 h-3" />
+                          <CreditCard className="w-2.5 h-2.5" />
                           {booking.paymentStatus}
                         </div>
                       </div>
                     </td>
-                    <td className="px-10 py-10 text-center">
-                      <span className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-2xl text-[9px] font-black uppercase tracking-[0.2em] border shadow-2xl transition-all hover:scale-105 italic ${
+                    <td className="px-10 py-8 text-center">
+                      <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-[8px] font-black uppercase tracking-[0.2em] border shadow-sm transition-all hover:scale-105 italic ${
                           booking.status === 'Confirmed' 
-                          ? 'bg-emerald-500/20 text-emerald-500 border-emerald-500/30' 
+                          ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' 
                           : booking.status === 'Cancelled' 
-                          ? 'bg-rose-500/20 text-rose-500 border-rose-500/30' 
+                          ? 'bg-rose-500/10 text-rose-500 border-rose-500/20' 
                           : booking.status === 'Completed'
-                          ? 'bg-transparent/10 text-black border-transparent/20'
+                          ? 'bg-black/5 text-[#003049]/40 border-transparent'
                           : 'bg-amber-500/10 text-amber-500 border-amber-500/20'
                       }`}>
                         {booking.status}
                       </span>
                     </td>
-                    <td className="px-10 py-10">
-                      <div className="flex items-center justify-center gap-3">
+                    <td className="px-8 py-8">
+                      <div className="flex items-center justify-center gap-2">
                         {updatingId === booking._id ? (
                           <Loader2 className="w-6 h-6 text-black animate-spin" />
                         ) : (

@@ -312,29 +312,30 @@ const AdminDashboard = () => {
                             </div>
                         ) : (
                             <div className="bg-transparent overflow-hidden">
-                                <table className="w-full text-left">
-                                    <thead className="bg-[#1a1a1e]">
+                            <div className="bg-transparent overflow-x-auto custom-scrollbar border border-black/5 rounded-[2rem]">
+                                <table className="w-full text-left min-w-[700px]">
+                                    <thead className="bg-[#003049] text-white">
                                         <tr>
-                                            <th className="p-8 text-[10px] font-black uppercase tracking-widest text-black">Sanctuary</th>
-                                            <th className="p-8 text-[10px] font-black uppercase tracking-widest text-black">Curator</th>
-                                            <th className="p-8 text-right text-[10px] font-black uppercase tracking-widest text-black">Protocol</th>
+                                            <th className="p-6 text-[10px] font-black uppercase tracking-widest">Sanctuary</th>
+                                            <th className="p-6 text-[10px] font-black uppercase tracking-widest">Curator</th>
+                                            <th className="p-6 text-right text-[10px] font-black uppercase tracking-widest">Protocol</th>
                                         </tr>
                                     </thead>
-                                    <tbody className="divide-y divide-gray-800/50">
+                                    <tbody className="divide-y divide-black/5">
                                         {unapprovedHotels.map(h => (
-                                            <tr key={h._id} className="hover:bg-gray-800/20 transition-colors">
-                                                <td className="p-8">
-                                                    <div className="text-lg font-serif font-black text-black italic">{h.name}</div>
-                                                    <div className="text-[10px] font-bold text-black uppercase tracking-widest mt-1">📍 {h.city}</div>
+                                            <tr key={h._id} className="hover:bg-white/40 transition-colors">
+                                                <td className="p-6">
+                                                    <div className="text-base font-serif font-black text-[#003049] italic">{h.name}</div>
+                                                    <div className="text-[9px] font-bold text-[#003049]/40 uppercase tracking-widest mt-1">📍 {h.city}</div>
                                                 </td>
-                                                <td className="p-8">
-                                                    <div className="text-sm font-bold text-black">{h.managerId?.name || 'External'}</div>
-                                                    <div className="text-[10px] text-black font-medium">{h.managerId?.email}</div>
+                                                <td className="p-6">
+                                                    <div className="text-xs font-bold text-[#003049]">{h.managerId?.name || 'External'}</div>
+                                                    <div className="text-[9px] text-[#003049]/60 font-medium">{h.managerId?.email}</div>
                                                 </td>
-                                                <td className="p-8 text-right">
-                                                    <div className="flex justify-end gap-4">
-                                                        <button onClick={() => handleApprove(h._id)} className="bg-emerald-500 text-black px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-emerald-500/20 active:scale-95 transition-all">Approve</button>
-                                                        <button onClick={() => handleDeleteHotel(h._id)} className="border border-red-500/50 text-red-500 px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-red-500 hover:text-black transition-all active:scale-95">Decline</button>
+                                                <td className="p-6 text-right">
+                                                    <div className="flex justify-end gap-3">
+                                                        <button onClick={() => handleApprove(h._id)} className="bg-[#003049] text-[#EDF7BD] px-5 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest shadow-xl active:scale-95 transition-all">Approve</button>
+                                                        <button onClick={() => handleDeleteHotel(h._id)} className="border border-rose-500/20 text-rose-500 px-5 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-rose-500 hover:text-white transition-all active:scale-95">Decline</button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -342,37 +343,38 @@ const AdminDashboard = () => {
                                     </tbody>
                                 </table>
                             </div>
+                            </div>
                         )}
                     </div>
                 )}
 
                 {activeTab === 'Manage Hotels' && (
                     <div className="animate-in fade-in slide-in-from-right-8 duration-700">
-                        <div className="bg-transparent rounded-[2.5rem] border border-gray-800/50 overflow-hidden">
-                            <table className="w-full text-left">
-                                <thead className="bg-[#1a1a1e]">
+                        <div className="bg-transparent overflow-x-auto custom-scrollbar border border-black/5 rounded-[2rem]">
+                            <table className="w-full text-left min-w-[700px]">
+                                <thead className="bg-[#003049] text-white">
                                     <tr>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-black">Verified Hotel</th>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-black">Performance</th>
-                                        <th className="p-8 text-right text-[10px] font-black uppercase tracking-widest text-black">Operation</th>
+                                        <th className="p-6 text-[10px] font-black uppercase tracking-widest">Verified Hotel</th>
+                                        <th className="p-6 text-[10px] font-black uppercase tracking-widest">Performance</th>
+                                        <th className="p-6 text-right text-[10px] font-black uppercase tracking-widest">Operation</th>
                                     </tr>
                                 </thead>
-                                <tbody className="divide-y divide-gray-800/50">
+                                <tbody className="divide-y divide-black/5">
                                     {approvedHotels.map(h => (
-                                        <tr key={h._id} className="hover:bg-gray-800/20 transition-colors">
-                                            <td className="p-8">
-                                                <div className="text-lg font-serif font-black text-black italic">{h.name}</div>
-                                                <div className="text-[10px] font-bold text-black uppercase tracking-widest mt-1">📍 {h.city}, {h.country}</div>
+                                        <tr key={h._id} className="hover:bg-white/40 transition-colors">
+                                            <td className="p-6">
+                                                <div className="text-base font-serif font-black text-[#003049] italic">{h.name}</div>
+                                                <div className="text-[9px] font-bold text-[#003049]/40 uppercase tracking-widest mt-1">📍 {h.city}, {h.country}</div>
                                             </td>
-                                            <td className="p-8">
-                                                <span className="px-5 py-2 bg-emerald-500/10 text-emerald-500 rounded-full text-[10px] font-black uppercase tracking-widest italic border border-emerald-500/20 shadow-inner">Authenticated</span>
+                                            <td className="p-6">
+                                                <span className="px-5 py-2 bg-emerald-500/10 text-emerald-500 rounded-full text-[9px] font-black uppercase tracking-widest italic border border-emerald-500/20 shadow-inner">Authenticated</span>
                                             </td>
-                                            <td className="p-8 text-right">
-                                                <button onClick={() => handleDeleteHotel(h._id)} className="text-red-500 hover:text-red-400 text-[10px] font-black uppercase tracking-widest transition-all italic border-b border-transparent hover:border-red-500">Revoke License</button>
+                                            <td className="p-6 text-right">
+                                                <button onClick={() => handleDeleteHotel(h._id)} className="text-rose-500 hover:text-rose-400 text-[9px] font-black uppercase tracking-widest transition-all italic border-b border-transparent hover:border-rose-500">Revoke License</button>
                                             </td>
                                         </tr>
                                     ))}
-                                    {approvedHotels.length === 0 && <tr><td colSpan="3" className="p-16 text-center text-black font-bold uppercase tracking-widest text-xs italic">Archive Empty</td></tr>}
+                                    {approvedHotels.length === 0 && <tr><td colSpan="3" className="p-16 text-center text-[#003049]/40 font-bold uppercase tracking-widest text-xs italic">Archive Empty</td></tr>}
                                 </tbody>
                             </table>
                         </div>
@@ -381,32 +383,32 @@ const AdminDashboard = () => {
 
                 {activeTab === 'Users' && (
                     <div className="animate-in fade-in slide-in-from-right-8 duration-700">
-                        <div className="bg-transparent rounded-[2.5rem] border border-gray-800/50 overflow-hidden">
-                            <table className="w-full text-left border-collapse">
-                                <thead className="bg-[#1a1a1e]">
+                        <div className="bg-transparent overflow-x-auto custom-scrollbar border border-black/5 rounded-[2rem]">
+                            <table className="w-full text-left border-collapse min-w-[700px]">
+                                <thead className="bg-[#003049] text-white">
                                     <tr>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-black">Patron Identity</th>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-black">Status Protocol</th>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-black">Induction Date</th>
+                                        <th className="p-6 text-[10px] font-black uppercase tracking-widest">Patron Identity</th>
+                                        <th className="p-6 text-[10px] font-black uppercase tracking-widest">Status Protocol</th>
+                                        <th className="p-6 text-[10px] font-black uppercase tracking-widest">Induction Date</th>
                                     </tr>
                                 </thead>
-                                <tbody className="divide-y divide-gray-800/50">
+                                <tbody className="divide-y divide-black/5">
                                     {usersList.map(u => (
-                                        <tr key={u._id} className="hover:bg-gray-800/20 transition-colors">
-                                            <td className="p-8 flex items-center gap-6">
-                                                <div className="w-12 h-12 rounded-2xl bg-[#EDF7BD] border border-gray-800 text-black flex items-center justify-center font-black text-xs shadow-inner uppercase">{u.name.charAt(0)}</div>
+                                        <tr key={u._id} className="hover:bg-white/40 transition-colors">
+                                            <td className="p-6 flex items-center gap-4">
+                                                <div className="w-10 h-10 rounded-xl bg-[#003049] text-[#EDF7BD] flex items-center justify-center font-black text-xs shadow-xl uppercase">{u.name.charAt(0)}</div>
                                                 <div>
-                                                    <div className="text-sm font-black text-black italic">{u.name}</div>
-                                                    <div className="text-[10px] font-medium text-black lowercase">{u.email}</div>
+                                                    <div className="text-sm font-black text-[#003049] italic">{u.name}</div>
+                                                    <div className="text-[9px] font-medium text-[#003049]/60 lowercase">{u.email}</div>
                                                 </div>
                                             </td>
-                                            <td className="p-8">
-                                                <span className={`px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest italic border ${u.role === 'admin' ? 'bg-indigo-500/10 text-indigo-500 border-indigo-500/20' : u.role === 'manager' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-gray-800 text-black border-gray-700'}`}>
+                                            <td className="p-6">
+                                                <span className={`px-4 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest italic border ${u.role === 'admin' ? 'bg-[#003049] text-[#EDF7BD] border-transparent' : u.role === 'manager' ? 'bg-indigo-500/10 text-indigo-500 border-indigo-500/20' : 'bg-black/5 text-[#003049]/60 border-black/5'}`}>
                                                     {u.role}
                                                 </span>
                                             </td>
-                                            <td className="p-8">
-                                                <div className="text-xs font-bold text-black">{new Date(u.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</div>
+                                            <td className="p-6">
+                                                <div className="text-[10px] font-black text-[#003049]/60 uppercase tracking-widest">{new Date(u.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</div>
                                             </td>
                                         </tr>
                                     ))}
@@ -418,38 +420,38 @@ const AdminDashboard = () => {
 
                 {activeTab === 'Bookings' && (
                     <div className="animate-in fade-in slide-in-from-right-8 duration-700">
-                        <div className="bg-transparent rounded-[2.5rem] border border-gray-800/50 overflow-hidden">
-                            <table className="w-full text-left">
-                                <thead className="bg-[#1a1a1e]">
+                        <div className="bg-transparent overflow-x-auto custom-scrollbar border border-black/5 rounded-[2rem]">
+                            <table className="w-full text-left min-w-[800px]">
+                                <thead className="bg-[#003049] text-white">
                                     <tr>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-black">Folio ID</th>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-black">Patron & Estate</th>
-                                        <th className="p-8 text-[10px] font-black uppercase tracking-widest text-black">Value</th>
-                                        <th className="p-8 text-right text-[10px] font-black uppercase tracking-widest text-black">Standing</th>
+                                        <th className="p-6 text-[10px] font-black uppercase tracking-widest">Folio ID</th>
+                                        <th className="p-6 text-[10px] font-black uppercase tracking-widest">Patron & Estate</th>
+                                        <th className="p-6 text-[10px] font-black uppercase tracking-widest">Value</th>
+                                        <th className="p-6 text-right text-[10px] font-black uppercase tracking-widest">Standing</th>
                                     </tr>
                                 </thead>
-                                <tbody className="divide-y divide-gray-800/50">
+                                <tbody className="divide-y divide-black/5">
                                     {bookingsList.map(res => (
-                                        <tr key={res._id} className="hover:bg-gray-800/20 transition-colors">
-                                            <td className="p-8">
-                                                <div className="text-xs font-mono font-black text-black/70">#{res._id.slice(-8).toUpperCase()}</div>
-                                                <div className="text-[9px] font-bold text-black uppercase tracking-tighter mt-1">{new Date(res.createdAt).toLocaleDateString()}</div>
+                                        <tr key={res._id} className="hover:bg-white/40 transition-colors">
+                                            <td className="p-6">
+                                                <div className="text-[10px] font-mono font-black text-[#003049]/40">#{res._id.slice(-8).toUpperCase()}</div>
+                                                <div className="text-[9px] font-bold text-[#003049]/60 uppercase tracking-tighter mt-1">{new Date(res.createdAt).toLocaleDateString()}</div>
                                             </td>
-                                            <td className="p-8">
-                                                <div className="text-sm font-black text-black">{res.userId?.name}</div>
-                                                <div className="text-[10px] font-black text-black italic uppercase mt-0.5">{res.hotelId?.name} — {res.roomId?.type}</div>
+                                            <td className="p-6">
+                                                <div className="text-sm font-black text-[#003049]">{res.userId?.name}</div>
+                                                <div className="text-[9px] font-black text-[#003049]/40 italic uppercase mt-0.5">{res.hotelId?.name} — {res.roomId?.type}</div>
                                             </td>
-                                            <td className="p-8">
-                                                <div className="text-sm font-black text-black italic leading-none">₹{res.totalAmount.toLocaleString()}</div>
+                                            <td className="p-6">
+                                                <div className="text-sm font-black text-[#003049] italic leading-none">₹{res.totalAmount.toLocaleString()}</div>
                                             </td>
-                                            <td className="p-8 text-right">
-                                                <span className={`px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest border italic ${res.status === 'Confirmed' ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20 shadow-emerald-500/5 shadow-inner' : res.status === 'Cancelled' ? 'bg-rose-500/10 text-rose-500 border-rose-500/20 shadow-rose-500/5 shadow-inner' : 'bg-amber-500/10 text-amber-500 border-amber-500/20 shadow-amber-500/5 shadow-inner'}`}>
+                                            <td className="p-6 text-right">
+                                                <span className={`px-4 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest border italic ${res.status === 'Confirmed' ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : res.status === 'Cancelled' ? 'bg-rose-500/10 text-rose-500 border-rose-500/20' : 'bg-amber-500/10 text-amber-500 border-amber-500/20'}`}>
                                                     {res.status}
                                                 </span>
                                             </td>
                                         </tr>
                                     ))}
-                                    {bookingsList.length === 0 && <tr><td colSpan="4" className="p-16 text-center text-black font-bold uppercase tracking-widest text-xs italic">Registry Empty</td></tr>}
+                                    {bookingsList.length === 0 && <tr><td colSpan="4" className="p-16 text-center text-[#003049]/40 font-bold uppercase tracking-widest text-xs italic">Registry Empty</td></tr>}
                                 </tbody>
                             </table>
                         </div>
@@ -458,8 +460,8 @@ const AdminDashboard = () => {
 
                 {activeTab === 'Payments' && (
                     <div className="animate-in fade-in slide-in-from-right-8 duration-700">
-                        <div className="bg-transparent rounded-[2.5rem] border border-gray-800/50 overflow-hidden">
-                            <table className="w-full text-left">
+                        <div className="bg-transparent overflow-x-auto custom-scrollbar border border-black/5 rounded-[2rem]">
+                            <table className="w-full text-left min-w-[800px]">
                                 <thead className="bg-[#1a1a1e]">
                                     <tr>
                                         <th className="p-8 text-[10px] font-black uppercase tracking-widest text-black">Transaction ID</th>
@@ -503,8 +505,8 @@ const AdminDashboard = () => {
                             <h3 className="text-lg font-serif font-black text-black uppercase italic">Active Offers</h3>
                             <button onClick={() => setShowPromoModal(true)} className="bg-transparent text-black px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-transparent/20 active:scale-95 transition-all">Authorize New Promo</button>
                         </div>
-                        <div className="bg-transparent rounded-[2.5rem] border border-gray-800/50 overflow-hidden">
-                            <table className="w-full text-left">
+                        <div className="bg-transparent overflow-x-auto custom-scrollbar border border-black/5 rounded-[2rem]">
+                            <table className="w-full text-left min-w-[800px]">
                                 <thead className="bg-[#1a1a1e]">
                                     <tr>
                                         <th className="p-8 text-[10px] font-black uppercase tracking-widest text-black">Property</th>
@@ -542,8 +544,8 @@ const AdminDashboard = () => {
 
                 {activeTab === 'Reviews' && (
                     <div className="animate-in fade-in slide-in-from-right-8 duration-700">
-                        <div className="bg-transparent rounded-[2.5rem] border border-gray-800/50 overflow-hidden">
-                            <table className="w-full text-left">
+                        <div className="bg-transparent overflow-x-auto custom-scrollbar border border-black/5 rounded-[2rem]">
+                            <table className="w-full text-left min-w-[800px]">
                                 <thead className="bg-[#1a1a1e]">
                                     <tr>
                                         <th className="p-10 text-[10px] font-black uppercase tracking-widest text-black">Patron & Hotel</th>
