@@ -113,70 +113,61 @@ const Invoice = () => {
                     </div>
                 </div>
 
-                {/* Table for Desktop, Cards for Mobile */}
+                {/* Service List / Grid */}
                 <div className="mb-16 md:mb-24 relative z-10">
-                    {/* Desktop Table */}
-                    <table className="hidden md:table w-full">
-                        <thead>
-                            <tr className="border-b border-white/10">
-                                <th className="text-left py-6 text-[9px] font-black uppercase tracking-[0.4em] text-white">Description of Service</th>
-                                <th className="text-right py-6 text-[9px] font-black uppercase tracking-[0.4em] text-white">Timeline</th>
-                                <th className="text-right py-6 text-[9px] font-black uppercase tracking-[0.4em] text-white">Settlement</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr className="border-b border-white/5">
-                                <td className="py-10">
-                                    <p className="font-serif font-black uppercase italic text-lg mb-1 tracking-tight">Luxury Chamber Rental</p>
-                                    <p className="text-[9px] font-black text-white/60 uppercase tracking-widest">Premium Allocation & Reservation Protocol</p>
-                                </td>
-                                <td className="text-right py-10 font-serif italic font-black text-white">
-                                    {new Date(invoice.checkIn).toLocaleDateString()} — {new Date(invoice.checkOut).toLocaleDateString()}
-                                </td>
-                                <td className="text-right py-10 font-serif font-black text-2xl text-white">
-                                    ₹{invoice.totalAmount.toLocaleString()}
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colSpan="2" className="text-right pt-16 pb-3 text-[9px] font-black text-white uppercase tracking-[0.5em]">Total Folio Settlement</td>
-                                <td className="text-right pt-16 pb-3 text-5xl font-serif font-black italic tracking-tighter">₹{invoice.totalAmount.toLocaleString()}</td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2" className="text-right text-[10px] font-black text-white/60 uppercase tracking-[0.5em] italic">Current Status</td>
-                                <td className="text-right text-[10px] font-black text-white uppercase tracking-[0.5em] italic">{invoice.status}</td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                    {/* Header - Desktop only */}
+                    <div className="hidden md:grid grid-cols-12 gap-8 border-b border-white/10 pb-6 mb-8 uppercase text-[9px] font-black tracking-[0.4em] text-white/60">
+                        <div className="col-span-6">Description of Service</div>
+                        <div className="col-span-3 text-right">Timeline</div>
+                        <div className="col-span-3 text-right">Settlement</div>
+                    </div>
 
-                    {/* Mobile View */}
-                    <div className="md:hidden space-y-10">
-                        <div className="pb-8 border-b border-white/10">
-                            <p className="text-[8px] font-black text-white/60 uppercase tracking-[0.4em] mb-4">Service Description</p>
-                            <p className="font-serif font-black uppercase italic text-lg mb-1 tracking-tight">Luxury Chamber Rental</p>
-                            <p className="text-[9px] font-black text-white/60 uppercase tracking-widest mb-6">Premium Allocation & Reservation Protocol</p>
-                            
-                            <div className="flex justify-between items-end gap-4">
-                                <div>
-                                    <p className="text-[8px] font-black text-white/60 uppercase tracking-[0.4em] mb-2">Timeline</p>
-                                    <p className="font-serif italic font-black text-white text-sm">
-                                        {new Date(invoice.checkIn).toLocaleDateString()} — {new Date(invoice.checkOut).toLocaleDateString()}
-                                    </p>
-                                </div>
-                                <div className="text-right">
-                                    <p className="text-[8px] font-black text-white/60 uppercase tracking-[0.4em] mb-2">Settlement</p>
-                                    <p className="font-serif font-black text-2xl text-white">₹{invoice.totalAmount.toLocaleString()}</p>
-                                </div>
+                    {/* Service Item(s) */}
+                    <div className="space-y-12 md:space-y-0">
+                        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start md:items-center py-6 md:py-10 border-b border-white/5 md:border-white/5">
+                            {/* Service Name & Label */}
+                            <div className="col-span-1 md:col-span-6">
+                                <p className="text-[8px] md:hidden font-black text-white/60 uppercase tracking-[0.4em] mb-2 leading-none">Service Description</p>
+                                <p className="font-serif font-black uppercase italic text-lg md:text-xl mb-1 tracking-tight leading-none">Luxury Chamber Rental</p>
+                                <p className="text-[9px] font-black text-white/40 uppercase tracking-widest leading-none mt-2">Premium Allocation & Reservation Protocol</p>
+                            </div>
+
+                            {/* Timeline */}
+                            <div className="col-span-1 md:col-span-3 md:text-right">
+                                <p className="text-[8px] md:hidden font-black text-white/60 uppercase tracking-[0.4em] mb-2 leading-none">Timeline</p>
+                                <p className="font-serif italic font-black text-white text-base md:text-lg tracking-tight">
+                                    {new Date(invoice.checkIn).toLocaleDateString()} — {new Date(invoice.checkOut).toLocaleDateString()}
+                                </p>
+                            </div>
+
+                            {/* settlement */}
+                            <div className="col-span-1 md:col-span-3 text-right">
+                                <p className="text-[8px] md:hidden font-black text-white/60 uppercase tracking-[0.4em] mb-2 leading-none">Settlement</p>
+                                <p className="font-serif font-black text-2xl md:text-3xl text-white tracking-widest leading-none">
+                                    ₹{invoice.totalAmount.toLocaleString()}
+                                </p>
                             </div>
                         </div>
+                    </div>
 
-                        <div className="pt-6 space-y-6">
-                            <div className="flex justify-between items-center text-right">
-                                <p className="text-[8px] font-black text-white/60 uppercase tracking-[0.5em]">Total Settlement</p>
-                                <p className="text-[10px] font-black text-white/60 uppercase tracking-[0.4em] italic leading-tight">Current Status: {invoice.status}</p>
+                    {/* Summary / Total Section */}
+                    <div className="mt-16 md:mt-24 space-y-8 md:space-y-4">
+                        <div className="flex flex-col md:flex-row justify-between items-end md:items-center gap-6">
+                            <div className="hidden md:block">
+                                <p className="text-[10px] font-black text-white/40 uppercase tracking-[0.5em] italic">Current Status: {invoice.status}</p>
                             </div>
-                            <p className="text-4xl text-right font-serif font-black italic tracking-tighter">₹{invoice.totalAmount.toLocaleString()}</p>
+                            <div className="w-full md:w-auto text-right">
+                                <p className="text-[10px] font-black text-white/40 uppercase tracking-[0.5em] mb-2">Total Folio Settlement</p>
+                                <div className="flex flex-col md:flex-row items-end md:items-center justify-end gap-2 md:gap-12">
+                                     <div className="md:hidden mb-4">
+                                        <p className="text-[9px] font-black text-white/40 uppercase tracking-[0.4em] italic mb-1 leading-none">Current Status</p>
+                                        <p className="text-[10px] font-black text-white uppercase tracking-[0.3em] leading-none">{invoice.status}</p>
+                                    </div>
+                                    <p className="text-4xl md:text-7xl font-serif font-black italic tracking-tighter text-white leading-none">
+                                        ₹{invoice.totalAmount.toLocaleString()}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
