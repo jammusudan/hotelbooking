@@ -84,7 +84,7 @@ const Dashboard = () => {
   return (
     <div className="space-y-12 animate-in fade-in slide-in-from-bottom-6 duration-700">
       <header className="mb-12">
-        <h1 className="text-3xl sm:text-4xl font-serif font-black text-black tracking-tighter uppercase italic">Overview</h1>
+        <h1 className="text-4xl font-serif font-black text-black tracking-tighter uppercase italic">Overview</h1>
         <div className="h-1.5 w-24 bg-transparent mt-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
         <p className="text-[10px] font-black text-black uppercase tracking-[0.3em] mt-6">Protocol established: Tracking property performance and customer telemetry.</p>
       </header>
@@ -92,13 +92,13 @@ const Dashboard = () => {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {statsCards.map((card, i) => (
-          <div key={card.title} className="bg-transparent p-6 sm:p-8 transition-all group relative overflow-hidden">
+          <div key={card.title} className="bg-transparent p-8 transition-all group relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-transparent/5 rounded-bl-[100%] transition-all group-hover:bg-transparent/10"></div>
-            <div className="text-2xl sm:text-3xl mb-4 grayscale group-hover:grayscale-0 transition-all shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-              <card.icon className={`w-6 h-6 sm:w-8 sm:h-8 ${card.color.replace('text-', 'text-black')}`} />
+            <div className="text-3xl mb-4 grayscale group-hover:grayscale-0 transition-all shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+              <card.icon className={`w-8 h-8 ${card.color.replace('text-', 'text-black')}`} />
             </div>
-            <div className="text-2xl sm:text-3xl font-serif font-black text-black mb-1">{card.value}</div>
-            <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-black">{card.title}</div>
+            <div className="text-3xl font-serif font-black text-black mb-1">{card.value}</div>
+            <div className="text-[10px] font-black uppercase tracking-widest text-black">{card.title}</div>
           </div>
         ))}
       </div>

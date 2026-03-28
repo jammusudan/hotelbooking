@@ -180,7 +180,7 @@ const AdminLayout = () => {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Topbar */}
-        <header className="h-20 bg-white/40 backdrop-blur-3xl border-b border-black/5 flex items-center justify-between px-6 md:px-8 sticky top-0 z-40 shadow-sm">
+        <header className="h-20 bg-white/40 backdrop-blur-3xl border-b border-black/5 flex items-center justify-between px-4 md:px-8 sticky top-0 z-40 shadow-sm">
           <button 
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             className="p-3 text-[#003049] hover:bg-[#003049]/5 rounded-xl transition-colors lg:hidden bg-white/50 border border-black/5"

@@ -68,7 +68,7 @@ const Login = ({ role = "customer" }) => {
       <div className="max-w-md w-full relative group">
         <div className="absolute -inset-1 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-[3rem] blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
         
-        <div className="relative space-y-8 bg-[#003049] border border-white/10 p-10 md:p-14 rounded-[3rem] shadow-2xl overflow-hidden">
+        <div className="relative space-y-8 bg-[#003049] border border-white/10 p-6 sm:p-10 md:p-14 rounded-[2.5rem] sm:rounded-[3rem] shadow-2xl overflow-hidden">
           <div className="absolute top-0 right-0 p-8 opacity-10">
              <Globe size={120} className="text-white" />
           </div>
@@ -77,7 +77,7 @@ const Login = ({ role = "customer" }) => {
             <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 rounded-3xl text-white mb-8 border border-white/5 shadow-inner">
               {config.icon}
             </div>
-            <h2 className="text-4xl font-serif font-black text-white uppercase tracking-tighter italic mb-4">{config.title}</h2>
+            <h2 className="text-3xl md:text-4xl font-serif font-black text-white uppercase tracking-tighter italic mb-4">{config.title}</h2>
             <p className="text-xs font-black text-white uppercase tracking-widest leading-relaxed">
               {config.desc}
             </p>
@@ -122,7 +122,7 @@ const Login = ({ role = "customer" }) => {
 
             <button
               type="submit"
-              className="w-full group relative flex items-center justify-center gap-3 py-5 bg-transparent text-white font-black uppercase tracking-[0.4em] text-[11px] rounded-2xl hover:bg-white/10 transition-all transform active:scale-95"
+              className="w-full group relative flex items-center justify-center gap-3 py-4 md:py-5 bg-transparent text-white font-black uppercase tracking-[0.4em] text-[11px] rounded-2xl hover:bg-white/10 transition-all transform active:scale-95"
             >
               Login <Sparkles size={14} />
             </button>
