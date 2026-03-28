@@ -60,7 +60,7 @@ const ManagerLayout = () => {
       <aside 
         className={`fixed inset-y-0 left-0 z-50 w-72 bg-[#003049] border-r border-white/5 shadow-2xl transform transition-transform duration-500 ease-in-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:relative lg:translate-x-0 h-screen sticky top-0`}
+        } lg:relative lg:translate-x-0 lg:h-screen lg:sticky lg:top-0`}
       >
         <div className="h-full flex flex-col">
           <div className="p-8 pb-10 flex items-center justify-between">
