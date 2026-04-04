@@ -152,12 +152,69 @@ const Payment = () => {
                 </div>
 
                 {status === 'success' ? (
-                    <div className="bg-[#003049] border border-white/10 rounded-[3rem] p-16 text-center shadow-2xl animate-in zoom-in duration-500">
-                        <div className="w-24 h-24 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-8 border border-green-500/20">
-                            <CheckCircle2 className="text-green-500" size={40} />
+                    <div className="space-y-8 animate-in zoom-in duration-500">
+                        {/* Header Section */}
+                        <div className="text-center mb-8">
+                            <h2 className="text-5xl font-black text-[#003049] uppercase tracking-tighter leading-none mb-4">Payment Successful</h2>
+                            <p className="text-[#003049]/60 text-sm font-bold max-w-[280px] mx-auto leading-relaxed">
+                                Your payment is complete! Your booking is currently pending final approval from the hotel manager.
+                            </p>
                         </div>
-                        <h3 className="text-2xl font-serif font-black text-white uppercase italic mb-2">Payment Successful</h3>
-                        <p className="text-xs font-black text-white/60 uppercase tracking-widest">Redirecting to your dashboard...</p>
+
+                        {/* Summary Card */}
+                        <div className="bg-white rounded-[2.5rem] p-10 shadow-2xl relative border border-[#003049]/5">
+                            <div className="space-y-10">
+                                <div>
+                                    <span className="text-[10px] font-black text-[#003049]/40 uppercase tracking-widest block mb-2">Booking ID</span>
+                                    <strong className="text-2xl font-black text-[#003049] tracking-tight italic">
+                                        #{booking._id.toString().slice(-6).toUpperCase()}
+                                    </strong>
+                                </div>
+
+                                <div>
+                                    <span className="text-[10px] font-black text-[#003049]/40 uppercase tracking-widest block mb-2">Hotel</span>
+                                    <strong className="text-2xl font-black text-[#003049] uppercase tracking-tight italic">
+                                        {booking.hotelId?.name}
+                                    </strong>
+                                </div>
+
+                                <div className="space-y-2">
+                                    <span className="text-[10px] font-black text-[#003049]/40 uppercase tracking-widest block">Check-in</span>
+                                    <div className="flex items-center gap-4 py-4 bg-[#EDF7BD]/30 rounded-2xl justify-center">
+                                        <div className="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center text-green-600">📅</div>
+                                        <span className="text-xl font-black text-[#003049]">
+                                            {new Date(booking.checkIn).toLocaleDateString(undefined, { day: 'numeric', month: 'long' })}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div className="space-y-2">
+                                    <span className="text-[10px] font-black text-[#003049]/40 uppercase tracking-widest block">Check-out</span>
+                                    <div className="flex items-center gap-4 py-4 bg-[#EDF7BD]/30 rounded-2xl justify-center">
+                                        <div className="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center text-green-600">📅</div>
+                                        <span className="text-xl font-black text-[#003049]">
+                                            {new Date(booking.checkOut).toLocaleDateString(undefined, { day: 'numeric', month: 'long' })}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Action Buttons */}
+                        <div className="flex flex-col gap-4">
+                            <button 
+                                onClick={() => navigate(`/invoice/${booking._id}`)}
+                                className="w-full bg-[#003049] text-white font-black uppercase tracking-[0.4em] py-6 rounded-[2rem] shadow-xl hover:bg-[#002538] transition-all"
+                            >
+                                View Digital Invoice
+                            </button>
+                            <button 
+                                onClick={() => navigate('/my-bookings')}
+                                className="w-full bg-white/5 border border-[#003049]/10 text-[#003049] font-black uppercase tracking-[0.4em] py-6 rounded-[2rem] hover:bg-[#003049]/5 transition-all text-[10px]"
+                            >
+                                Go to My Bookings
+                            </button>
+                        </div>
                     </div>
                 ) : (
                     <div className="space-y-8">
