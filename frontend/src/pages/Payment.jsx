@@ -1,23 +1,20 @@
 import { useState, useEffect, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { api, AuthContext } from '../context/AuthContext';
+import { CreditCard, Wallet, Lock, CheckCircle2, AlertCircle, ShieldCheck } from 'lucide-react';
+import { loadStripe } from '@stripe/stripe-js';
 
 const Payment = () => {
     const { id } = useParams(); // Booking ID
     const navigate = useNavigate();
+    const location = useLocation();
     const { user } = useContext(AuthContext);
 
     const [booking, setBooking] = useState(null);
     const [loading, setLoading] = useState(true);
     const [status, setStatus] = useState('idle'); // idle, processing, success, failed
     const [errorMessage, setErrorMessage] = useState('');
-    const [paymentStep, setPaymentStep] = useState('overview'); // overview, details
-    const [billingDetails, setBillingDetails] = useState({
-        name: user?.name || '',
-        email: user?.email || '',
-        phone: '',
-        address: ''
-    });
+    const [selectedGateway, setSelectedGateway] = useState('razorpay');
 
     useEffect(() => {
         const fetchBooking = async () => {
@@ -25,84 +22,110 @@ const Payment = () => {
                 const { data } = await api.get(`/bookings/${id}`);
                 setBooking(data);
                 
-                if (data.status !== 'Pending') {
+                if (data.status === 'Confirmed' || data.paymentStatus === 'Paid') {
                    setStatus('success'); 
                 }
             } catch (error) {
                 console.error(error);
                 navigate('/my-bookings');
             } finally {
-               setLoading(false);
+                setLoading(false);
             }
         };
 
         fetchBooking();
     }, [id, navigate]);
 
+    useEffect(() => {
+        const query = new URLSearchParams(location.search);
+        const success = query.get('success');
+        const sessionId = query.get('session_id');
+        const gateway = query.get('gateway');
+
+        if (success === 'true' && (sessionId || gateway === 'stripe')) {
+            const verifyStripe = async () => {
+                setStatus('processing');
+                try {
+                    await api.post('/payments/verify-stripe', {
+                        sessionId: sessionId || 'sess_mock_' + Date.now(),
+                        bookingId: id
+                    });
+                    setStatus('success');
+                    setTimeout(() => navigate('/my-bookings'), 3000);
+                } catch (error) {
+                    setStatus('failed');
+                    setErrorMessage('Stripe verification failed.');
+                }
+            };
+            verifyStripe();
+        }
+    }, [location, id, navigate]);
+
     const handlePayment = async () => {
         setStatus('processing');
         setErrorMessage('');
         
         try {
-            const { data: order } = await api.post('/payments/create-order', {
-                bookingId: booking._id
-            });
-
-            const options = {
-                key: import.meta.env.VITE_RAZORPAY_KEY_ID || 'test_key_id',
-                amount: order.amount,
-                currency: "INR",
-                name: "Navan",
-                description: "Booking Payment",
-                order_id: order.id,
-                handler: async function (response) {
-                    try {
-                        setStatus('processing');
-                        await api.post('/payments/verify', {
-                            razorpayPaymentId: response.razorpay_payment_id,
-                            razorpayOrderId: response.razorpay_order_id,
-                            razorpaySignature: response.razorpay_signature,
-                            bookingId: booking._id,
-                        });
-
-                        setStatus('success');
-                        setTimeout(() => navigate('/my-bookings'), 3000);
-                    } catch (error) {
-                        setStatus('failed');
-                        setErrorMessage('Payment verification failed. Please contact support.');
-                    }
-                },
-                prefill: {
-                    name: billingDetails.name,
-                    email: billingDetails.email,
-                    contact: billingDetails.phone
-                },
-                theme: {
-                    color: "#d4af37" 
-                },
-                modal: {
-                    ondismiss: function(){
-                        setStatus('idle');
-                    }
-                }
-            };
-
-            if (order.isMock) {
-                await options.handler({
-                    razorpay_payment_id: 'pay_mock_' + Date.now(),
-                    razorpay_order_id: order.id,
-                    razorpay_signature: 'mock_sig'
+            if (selectedGateway === 'razorpay') {
+                const { data: order } = await api.post('/payments/create-order', {
+                    bookingId: booking._id
                 });
-                return;
+
+                const options = {
+                    key: import.meta.env.VITE_RAZORPAY_KEY_ID || 'test_key_id',
+                    amount: order.amount,
+                    currency: "INR",
+                    name: "Navan",
+                    description: "Booking Payment",
+                    order_id: order.id,
+                    handler: async function (response) {
+                        try {
+                            setStatus('processing');
+                            await api.post('/payments/verify', {
+                                razorpayPaymentId: response.razorpay_payment_id,
+                                razorpayOrderId: response.razorpay_order_id,
+                                razorpaySignature: response.razorpay_signature,
+                                bookingId: booking._id,
+                            });
+                            setStatus('success');
+                            setTimeout(() => navigate('/my-bookings'), 3000);
+                        } catch (error) {
+                            setStatus('failed');
+                            setErrorMessage('Payment verification failed.');
+                        }
+                    },
+                    prefill: {
+                        name: user?.name,
+                        email: user?.email,
+                    },
+                    theme: { color: "#003049" },
+                    modal: { ondismiss: () => setStatus('idle') }
+                };
+
+                if (order.isMock) {
+                    await options.handler({
+                        razorpay_payment_id: 'pay_mock_' + Date.now(),
+                        razorpay_order_id: order.id,
+                        razorpay_signature: 'mock_sig'
+                    });
+                    return;
+                }
+
+                const rzp1 = new window.Razorpay(options);
+                rzp1.open();
+            } else if (selectedGateway === 'stripe') {
+                const { data } = await api.post('/payments/create-stripe-session', {
+                    bookingId: booking._id
+                });
+
+                if (data.isMock) {
+                    window.location.href = data.url;
+                    return;
+                }
+
+                const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY || 'pk_test_placeholder');
+                await stripe.redirectToCheckout({ sessionId: data.id });
             }
-
-            const rzp1 = new window.Razorpay(options);
-            rzp1.on('payment.failed', function (response){
-                setStatus('failed');
-                setErrorMessage(response.error.description);
-            });
-            rzp1.open();
-
         } catch (error) {
             setStatus('failed');
             setErrorMessage('Initialization of secure payment failed.');
@@ -111,169 +134,142 @@ const Payment = () => {
 
     if (loading) return (
         <div className="min-h-screen flex items-center justify-center bg-[#EDF7BD]">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-transparent"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#003049]"></div>
         </div>
     );
 
     return (
-        <div className="min-h-screen bg-[#EDF7BD] flex items-center justify-center p-6 pt-24 pb-12">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent/10 via-transparent to-transparent opacity-50 pointer-events-none"></div>
-            
-            <div className="max-w-2xl w-full relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-[3rem] blur opacity-25"></div>
-                
-                <div className="relative bg-[#003049] border border-white/10 rounded-[3rem] overflow-hidden shadow-2xl">
-                    <div className="h-2 w-full bg-gradient-to-r from-transparent via-transparent to-transparent"></div>
+        <div className="bg-[#EDF7BD] min-h-screen pt-32 pb-12 px-4 flex flex-col items-center">
+            <div className="max-w-2xl w-full">
+                {/* Header Section */}
+                <div className="text-center mb-12">
+                    <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#003049] mb-4 block">Secure Payment Gateway</span>
+                    <h1 className="text-4xl md:text-5xl font-serif font-black text-[#003049] italic uppercase tracking-tighter mb-4">Payment</h1>
+                    <div className="flex items-center justify-center gap-2 text-[#003049]">
+                        <Lock size={14} />
+                        <span className="text-[10px] uppercase font-black tracking-widest">Secure 256-bit Connection</span>
+                    </div>
+                </div>
 
-                    <div className="p-8 md:p-12">
-                        <div className="text-center mb-10">
-                            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white mb-4 block">Secure Payment Gateway</span>
-                            <h2 className="text-4xl md:text-5xl font-serif font-black text-white uppercase tracking-tighter leading-none italic mb-4">Payment</h2>
-                            <div className="flex items-center justify-center gap-2 text-white">
-                                <span className="text-lg">🔒</span>
-                                <span className="text-[10px] uppercase font-black tracking-widest">Secure Encrypted Connection</span>
+                {status === 'success' ? (
+                    <div className="bg-[#003049] border border-white/10 rounded-[3rem] p-16 text-center shadow-2xl animate-in zoom-in duration-500">
+                        <div className="w-24 h-24 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-8 border border-green-500/20">
+                            <CheckCircle2 className="text-green-500" size={40} />
+                        </div>
+                        <h3 className="text-2xl font-serif font-black text-white uppercase italic mb-2">Payment Successful</h3>
+                        <p className="text-xs font-black text-white/60 uppercase tracking-widest">Redirecting to your dashboard...</p>
+                    </div>
+                ) : (
+                    <div className="space-y-8">
+                        {/* Booking Summary Card */}
+                        <div className="bg-[#003049] border border-white/10 rounded-[3rem] p-10 shadow-2xl overflow-hidden relative">
+                            <div className="absolute top-0 left-0 w-full h-1.5 bg-transparent opacity-50"></div>
+                            <h3 className="text-xs font-black text-white/40 mb-10 uppercase tracking-[0.5em]">Booking Summary</h3>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                                <div className="space-y-8">
+                                    <div className="space-y-1">
+                                        <span className="text-[10px] font-black text-white/40 uppercase tracking-widest block">Hotel</span>
+                                        <strong className="text-2xl font-black text-white uppercase tracking-tight italic">{booking.hotelId?.name}</strong>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-8">
+                                        <div className="space-y-1">
+                                            <span className="text-[10px] font-black text-white/40 uppercase tracking-widest block">Arrival</span>
+                                            <strong className="text-sm font-black text-white">
+                                                {new Date(booking.checkIn).toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}
+                                            </strong>
+                                        </div>
+                                        <div className="space-y-1">
+                                            <span className="text-[10px] font-black text-white/40 uppercase tracking-widest block">Departure</span>
+                                            <strong className="text-sm font-black text-white">
+                                                {new Date(booking.checkOut).toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}
+                                            </strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div className="md:text-right flex flex-col justify-between">
+                                    <div className="space-y-2">
+                                        <span className="text-[10px] font-black text-white/40 uppercase tracking-widest block">Total Folio Settlement</span>
+                                        <div className="text-5xl font-serif font-black text-white italic leading-none">₹{booking.totalAmount}</div>
+                                        <p className="text-[9px] font-black text-white/40 uppercase tracking-widest">Inclusive of Taxes</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        {status === 'success' ? (
-                            <div className="py-12 text-center animate-in zoom-in duration-500">
-                                <div className="w-24 h-24 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-8 border border-green-500/20">
-                                    <span className="text-4xl">✓</span>
+                        {/* Payment Method Card */}
+                        <div className="bg-[#003049] border border-white/10 rounded-[3rem] p-10 shadow-2xl">
+                            <h3 className="text-xs font-black text-white/40 mb-10 uppercase tracking-[0.5em]">Payment Method Selection</h3>
+                            
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                {/* Razorpay Option */}
+                                <div 
+                                    onClick={() => setSelectedGateway('razorpay')}
+                                    className={`relative p-8 rounded-[2rem] border-2 transition-all cursor-pointer flex flex-col gap-4 ${selectedGateway === 'razorpay' ? 'border-white/40 bg-white/5' : 'border-white/5 hover:border-white/10'}`}
+                                >
+                                    <div className="flex justify-between items-start">
+                                        <Wallet className="text-white/40" size={24} />
+                                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedGateway === 'razorpay' ? 'border-white' : 'border-white/20'}`}>
+                                            {selectedGateway === 'razorpay' && <div className="w-2.5 h-2.5 bg-white rounded-full" />}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span className="text-xl font-serif font-black text-white uppercase italic tracking-tighter">Razorpay</span>
+                                        <p className="text-[9px] font-black text-white/40 uppercase tracking-widest mt-1">Wallet & UPI</p>
+                                    </div>
                                 </div>
-                                <h3 className="text-2xl font-serif font-black text-white uppercase tracking-tighter mb-2">Payment Successful</h3>
-                                <p className="text-xs font-black text-white uppercase tracking-widest">Redirecting to your bookings...</p>
+
+                                {/* Stripe Option */}
+                                <div 
+                                    onClick={() => setSelectedGateway('stripe')}
+                                    className={`relative p-8 rounded-[2rem] border-2 transition-all cursor-pointer flex flex-col gap-4 ${selectedGateway === 'stripe' ? 'border-white/40 bg-white/5' : 'border-white/5 hover:border-white/10'}`}
+                                >
+                                    <div className="flex justify-between items-start">
+                                        <CreditCard className="text-white/40" size={24} />
+                                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedGateway === 'stripe' ? 'border-white' : 'border-white/20'}`}>
+                                            {selectedGateway === 'stripe' && <div className="w-2.5 h-2.5 bg-white rounded-full" />}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span className="text-xl font-serif font-black text-white uppercase italic tracking-tighter">Stripe</span>
+                                        <p className="text-[9px] font-black text-white/40 uppercase tracking-widest mt-1">Cards & Global</p>
+                                    </div>
+                                </div>
                             </div>
-                        ) : (
-                            <div className="space-y-8">
-                                {paymentStep === 'overview' ? (
-                                    <div className="animate-in fade-in slide-in-from-right-8 duration-500">
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white/5 p-8 rounded-[2.5rem] border border-white/10 shadow-inner mb-8">
-                                            <div className="space-y-6">
-                                                <div className="space-y-1">
-                                                    <span className="text-[10px] font-black text-white uppercase tracking-widest block">Hotel</span>
-                                                    <strong className="text-lg font-black text-white uppercase tracking-[0.1em]">{booking.hotelId?.name}</strong>
-                                                </div>
-                                                <div className="space-y-1">
-                                                    <span className="text-[10px] font-black text-white uppercase tracking-widest block">Room Type</span>
-                                                    <strong className="text-sm font-black text-white uppercase">{booking.roomId?.type} SUITE</strong>
-                                                </div>
-                                            </div>
-                                            <div className="space-y-6 md:text-right">
-                                                <div className="space-y-1">
-                                                    <span className="text-[10px] font-black text-white uppercase tracking-widest block">Total Amount</span>
-                                                    <strong className="text-4xl font-serif font-black text-white leading-none">₹{booking.totalAmount}</strong>
-                                                </div>
-                                                <p className="text-[10px] font-black text-white uppercase tracking-widest">Inclusive of Taxes</p>
-                                            </div>
-                                        </div>
+                        </div>
 
-                                        <button 
-                                            onClick={() => setPaymentStep('details')}
-                                            className="w-full group relative flex items-center justify-center gap-4 py-6 bg-white/10 text-white font-black uppercase tracking-[0.4em] rounded-2xl hover:bg-transparent hover:text-white transition-all transform active:scale-[0.98]"
-                                        >
-                                            <span className="absolute left-8 text-xl group-hover:scale-125 transition-transform">⚔️</span>
-                                            Proceed to Payment
-                                        </button>
-                                    </div>
-                                ) : (
-                                    <div className="animate-in fade-in slide-in-from-left-8 duration-500 space-y-6">
-                                        <div className="bg-white/5 p-8 rounded-[2.5rem] border border-white/10 shadow-inner">
-                                            <h3 className="text-xs font-black text-white uppercase tracking-[0.3em] mb-6 flex items-center justify-between">
-                                                Billing & Security 
-                                                <button onClick={() => setPaymentStep('overview')} className="text-white hover:text-white transition-colors">Back</button>
-                                            </h3>
-                                            
-                                            <div className="space-y-4">
-                                                <div className="space-y-2">
-                                                    <label className="text-[9px] font-black text-white uppercase tracking-widest ml-1">Cardholder Name</label>
-                                                    <input 
-                                                        type="text"
-                                                        value={billingDetails.name}
-                                                        onChange={(e) => setBillingDetails({...billingDetails, name: e.target.value})}
-                                                        className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm text-white focus:border-transparent/50 outline-none transition-all font-black uppercase"
-                                                        placeholder="Full Name as on Card"
-                                                    />
-                                                </div>
-                                                <div className="grid grid-cols-2 gap-4">
-                                                    <div className="space-y-2">
-                                                        <label className="text-[9px] font-black text-white uppercase tracking-widest ml-1">Contact Phone</label>
-                                                        <input 
-                                                            type="tel"
-                                                            value={billingDetails.phone}
-                                                            onChange={(e) => setBillingDetails({...billingDetails, phone: e.target.value})}
-                                                            className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm text-white focus:border-transparent/50 outline-none transition-all font-black"
-                                                            placeholder="+91..."
-                                                        />
-                                                    </div>
-                                                    <div className="space-y-2">
-                                                        <label className="text-[9px] font-black text-white uppercase tracking-widest ml-1">Email</label>
-                                                        <input 
-                                                            type="email"
-                                                            value={billingDetails.email}
-                                                            onChange={(e) => setBillingDetails({...billingDetails, email: e.target.value})}
-                                                            className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm text-white focus:border-transparent/50 outline-none transition-all font-black"
-                                                            placeholder="your@email.com"
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {status === 'failed' && (
-                                            <div className="p-8 bg-red-950/20 border border-red-500/20 rounded-[2rem] text-center animate-in zoom-in-95">
-                                                <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-6 border border-red-500/20">
-                                                    <span className="text-2xl text-red-500">⚠</span>
-                                                </div>
-                                                <h3 className="text-sm font-black text-red-500 uppercase tracking-[0.2em] mb-2 font-serif italic">Transaction Failed</h3>
-                                                <p className="text-[10px] font-black text-red-400/80 uppercase tracking-widest mb-6 leading-relaxed">
-                                                    {errorMessage || 'Payment was unsuccessful. Please check your network or bank details.'}
-                                                </p>
-                                                <button 
-                                                    onClick={() => { setStatus('idle'); setErrorMessage(''); }}
-                                                    className="px-6 py-2 bg-white/10/5 border border-white/10 rounded-xl text-[10px] font-black uppercase tracking-widest text-white hover:bg-white/10 hover:text-white transition-all"
-                                                >
-                                                    Retry Payment
-                                                </button>
-                                            </div>
-                                        )}
-
-                                        <button 
-                                            onClick={handlePayment} 
-                                            disabled={status === 'processing' || !billingDetails.name || !billingDetails.phone}
-                                            className="w-full group relative flex items-center justify-center gap-4 py-6 bg-transparent text-white font-black uppercase tracking-[0.4em] rounded-2xl hover:bg-transparent transition-all transform active:scale-[0.98] disabled:opacity-50"
-                                        >
-                                            <span className="absolute left-8 text-xl group-hover:scale-125 transition-transform">{status === 'processing' ? '⏳' : '🛡️'}</span>
-                                            {status === 'processing' ? 'Authorizing...' : 'Execute Transaction'}
-                                        </button>
-                                    </div>
-                                )}
-                                
-                                <div className="text-center">
-                                    <p className="text-[9px] font-black text-white uppercase tracking-[0.3em] leading-relaxed">
-                                        By paying, you acknowledge the terms of service.<br/>
-                                        Payments processed via Razorpay secure networks.
-                                    </p>
-                                </div>
+                        {/* Error Message */}
+                        {status === 'failed' && (
+                            <div className="p-6 bg-rose-500/10 border border-rose-500/20 rounded-2xl flex items-center gap-4 text-rose-500 text-xs font-black uppercase tracking-widest">
+                                <AlertCircle size={18} />
+                                {errorMessage}
                             </div>
                         )}
+
+                        {/* Pay Now Button */}
+                        <button
+                            onClick={handlePayment}
+                            disabled={status === 'processing'}
+                            className="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 font-black uppercase tracking-[0.5em] py-8 rounded-[2.5rem] shadow-2xl transition-all transform active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-4 text-xs"
+                        >
+                            {status === 'processing' ? 'Authorizing Secure Corridor...' : (
+                                <>
+                                    <span className="text-lg">🛡️</span>
+                                    Proceed to Settlement - ₹ {booking.totalAmount}
+                                </>
+                            )}
+                        </button>
+
+                        {/* Visual Security Elements */}
+                        <div className="flex justify-center gap-12 opacity-30 grayscale pt-4">
+                            <div className="flex items-center gap-2">
+                                <ShieldCheck size={16} className="text-white" />
+                                <span className="text-[9px] font-black text-white uppercase tracking-widest">PCI DSS Compliant</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-                {/* Visual Security Elements */}
-                <div className="mt-8 flex justify-center gap-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-700">
-                    <div className="flex items-center gap-2">
-                        <span className="text-sm">🏢</span>
-                        <span className="text-[9px] font-black text-white uppercase tracking-widest">ISO 27001</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <span className="text-sm">💳</span>
-                        <span className="text-[9px] font-black text-white uppercase tracking-widest">PCI DSS</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <span className="text-sm">🛡️</span>
-                        <span className="text-[9px] font-black text-white uppercase tracking-widest">RSA 4096</span>
-                    </div>
-                </div>
+                )}
             </div>
         </div>
     );

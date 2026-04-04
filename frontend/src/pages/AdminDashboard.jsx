@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { api, AuthContext } from '../context/AuthContext';
 import { useNavigate, useLocation } from 'react-router-dom';
 import socketService from '../utils/socket';
+import RefundButton from '../components/RefundButton';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -486,9 +487,14 @@ const AdminDashboard = () => {
                                             </td>
                                             <td className="p-8 font-serif font-black text-black italic">₹{pay.totalAmount.toLocaleString()}</td>
                                             <td className="p-8 text-right">
-                                                <span className={`px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest border italic ${pay.paymentStatus === 'Paid' ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-rose-500/10 text-rose-500 border-rose-500/20'}`}>
-                                                    {pay.paymentStatus}
-                                                </span>
+                                                <div className="flex flex-col items-end gap-2">
+                                                    <span className={`px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest border italic ${pay.paymentStatus === 'Paid' ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-rose-500/10 text-rose-500 border-rose-500/20'}`}>
+                                                        {pay.paymentStatus}
+                                                    </span>
+                                                    {pay.paymentStatus === 'Paid' && (
+                                                        <RefundButton bookingId={pay._id} onRefundSuccess={fetchData} />
+                                                    )}
+                                                </div>
                                             </td>
                                         </tr>
                                     ))}

@@ -1,4 +1,5 @@
 import Razorpay from 'razorpay';
+import Stripe from 'stripe';
 import crypto from 'crypto';
 import Booking from '../models/Booking.js';
 import Hotel from '../models/Hotel.js';
@@ -100,7 +101,7 @@ const verifyPayment = async (req, res, next) => {
         roomType: b.roomId.type,
         checkIn: b.checkIn,
         checkOut: b.checkOut,
-        transactionId: b.razorpayPaymentId || 'N/A',
+        transactionId: b.stripePaymentId || b.razorpayPaymentId || 'N/A',
         totalAmount: b.totalAmount,
         guests: b.guests,
         nights: nights,
@@ -108,58 +109,55 @@ const verifyPayment = async (req, res, next) => {
       });
 
         await sendEmail({
-            email: req.user.email,
+            email: b.userId.email,
             subject: `[Navan] Settlement Confirmed: ${b.hotelId.name}`,
-            message: `Your booking at ${b.hotelId.name} (${b.roomId.type}) for ${new Date(b.checkIn).toLocaleDateString()} to ${new Date(b.checkOut).toLocaleDateString()} is confirmed. Transaction ID: ${b.razorpayPaymentId}`,
+            message: `Your booking at ${b.hotelId.name} is confirmed.`,
             html: emailHtml
         });
     };
 
-    // Mock Verification for demo
-    if (razorpayOrderId.startsWith('order_mock_')) {
-        booking.status = 'Confirmed';
-        booking.paymentStatus = 'Paid';
-        booking.razorpayPaymentId = 'pay_mock_' + Date.now();
-        booking.expiresAt = null;
-        await booking.save();
+    const handleSuccessfulPayment = async (b, paymentId, gateway = 'razorpay') => {
+        b.status = 'Confirmed';
+        b.paymentStatus = 'Paid';
+        if (gateway === 'razorpay') b.razorpayPaymentId = paymentId;
+        else b.stripePaymentId = paymentId;
+        b.expiresAt = null;
+        await b.save();
 
-        await sendConfirmationEmail(booking);
+        await sendConfirmationEmail(b);
 
         const io = req.app.get('socketio');
         if (io) {
-            // Public availability update
-            io.to(booking.hotelId._id.toString()).emit('booking_confirmed', { room: booking.roomId });
-            
-            // Manager notification
-            // hotel is already populated in booking.hotelId
-            if (booking.hotelId) {
-                io.to(`manager_${booking.hotelId.managerId.toString()}`).emit('new_reservation_alert', {
-                    hotelName: booking.hotelId.name,
-                    amount: booking.totalAmount,
-                    guest: req.user.name
+            io.to(b.hotelId._id.toString()).emit('booking_confirmed', { room: b.roomId });
+            if (b.hotelId) {
+                io.to(`manager_${b.hotelId.managerId.toString()}`).emit('new_reservation_alert', {
+                    hotelName: b.hotelId.name,
+                    amount: b.totalAmount,
+                    guest: b.userId.name
                 });
             }
-
-            // Admin global monitoring
             io.to('admin_room').emit('global_activity', {
                 type: 'booking',
-                amount: booking.totalAmount,
-                location: booking.hotelId?.city
+                amount: b.totalAmount,
+                location: b.hotelId?.city
             });
         }
 
-        // Trigger Notification
         await createNotification(
             req.app,
-            req.user._id,
+            b.userId._id,
             'payment',
-            `Payment of ₹${booking.totalAmount} confirmed for your stay at ${booking.hotelId.name}.`,
+            `Payment of ₹${b.totalAmount} confirmed for your stay at ${b.hotelId.name}.`,
             {
-                email: req.user.email,
+                email: b.userId.email,
                 subject: 'Navan: Payment Confirmed',
             }
         );
+    };
 
+    // Mock Verification for demo
+    if (razorpayOrderId.startsWith('order_mock_')) {
+        await handleSuccessfulPayment(booking, 'pay_mock_' + Date.now(), 'razorpay');
         return res.json({ success: true, message: 'Mock payment verified successfully' });
     }
 
@@ -169,50 +167,7 @@ const verifyPayment = async (req, res, next) => {
     let expectedSignature = hmac.digest('hex');
 
     if (expectedSignature === razorpaySignature) {
-        booking.status = 'Confirmed';
-        booking.paymentStatus = 'Paid';
-        booking.razorpayPaymentId = razorpayPaymentId;
-        booking.expiresAt = null; // Remove lock
-        await booking.save();
-
-        await sendConfirmationEmail(booking);
-
-        // Emit socket event to notify other users of availability change
-        const io = req.app.get('socketio');
-        if (io) {
-            // Public availability
-            io.to(booking.hotelId._id.toString()).emit('booking_confirmed', { room: booking.roomId });
-
-            // Manager notification
-            // hotel is already populated in booking.hotelId
-            if (booking.hotelId) {
-                io.to(`manager_${booking.hotelId.managerId.toString()}`).emit('new_reservation_alert', {
-                    hotelName: booking.hotelId.name,
-                    amount: booking.totalAmount,
-                    guest: req.user.name
-                });
-            }
-
-            // Admin global monitoring
-            io.to('admin_room').emit('global_activity', {
-                type: 'booking',
-                amount: booking.totalAmount,
-                location: booking.hotelId?.city
-            });
-        }
-
-        // Trigger Notification
-        await createNotification(
-            req.app,
-            req.user._id,
-            'payment',
-            `Payment of ₹${booking.totalAmount} confirmed for your stay at ${booking.hotelId.name}.`,
-            {
-                email: req.user.email,
-                subject: 'LuxStay: Payment Confirmed',
-            }
-        );
-
+        await handleSuccessfulPayment(booking, razorpayPaymentId, 'razorpay');
         res.json({ success: true, message: 'Payment verified successfully' });
     } else {
       res.status(400);
@@ -230,6 +185,19 @@ import { applyRefund } from '../services/paymentService.js';
 // @access  Private
 const processRefund = async (req, res, next) => {
     try {
+        const booking = await Booking.findById(req.params.id).populate('hotelId');
+        if (!booking) {
+            res.status(404);
+            throw new Error('Booking not found');
+        }
+
+        // Authorization: Admin or Manager of this hotel
+        if (req.user.role !== 'admin' && 
+            (req.user.role === 'manager' && booking.hotelId.managerId.toString() !== req.user._id.toString())) {
+            res.status(403);
+            throw new Error('Not authorized to process this refund');
+        }
+
         const result = await applyRefund(req.params.id);
         if (!result) {
             res.status(400);
@@ -300,4 +268,126 @@ const getAllPayments = async (req, res, next) => {
     }
 };
 
-export { createOrder, verifyPayment, processRefund, getInvoiceData, getAllPayments };
+// @desc    Create Stripe Session
+// @route   POST /api/payments/create-stripe-session
+// @access  Private
+const createStripeSession = async (req, res, next) => {
+  try {
+    const { bookingId } = req.body;
+    const booking = await Booking.findById(bookingId).populate('hotelId roomId');
+
+    if (!booking) {
+      res.status(404);
+      throw new Error('Booking not found');
+    }
+
+    if (booking.userId.toString() !== req.user._id.toString()) {
+      res.status(403);
+      throw new Error('Not authorized');
+    }
+
+    const isMock = !process.env.STRIPE_SECRET_KEY || process.env.STRIPE_SECRET_KEY.includes('test');
+
+    if (isMock) {
+        booking.stripeSessionId = `sess_mock_${Date.now()}`;
+        await booking.save();
+        return res.json({ id: booking.stripeSessionId, url: `${process.env.CLIENT_URL || 'http://localhost:5173'}/payment/${bookingId}?success=true&gateway=stripe`, isMock: true });
+    }
+
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price_data: {
+            currency: 'inr',
+            product_data: {
+              name: `${booking.hotelId.name} - ${booking.roomId.type}`,
+              description: `Booking from ${new Date(booking.checkIn).toLocaleDateString()} to ${new Date(booking.checkOut).toLocaleDateString()}`,
+            },
+            unit_amount: booking.totalAmount * 100,
+          },
+          quantity: 1,
+        },
+      ],
+      mode: 'payment',
+      success_url: `${process.env.CLIENT_URL || 'http://localhost:3000'}/payment/${bookingId}?success=true&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.CLIENT_URL || 'http://localhost:3000'}/payment/${bookingId}?cancelled=true`,
+      metadata: {
+        bookingId: booking._id.toString(),
+      },
+    });
+
+    booking.stripeSessionId = session.id;
+    await booking.save();
+
+    res.json({ id: session.id, url: session.url });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// @desc    Verify Stripe Payment
+// @route   POST /api/payments/verify-stripe
+// @access  Private
+const verifyStripePayment = async (req, res, next) => {
+  try {
+    const { sessionId, bookingId } = req.body;
+    const booking = await Booking.findById(bookingId).populate('hotelId userId roomId');
+
+    if (!booking) {
+      res.status(404);
+      throw new Error('Booking not found');
+    }
+
+    if (booking.paymentStatus === 'Paid') {
+        return res.json({ success: true, message: 'Already paid' });
+    }
+
+    const sendConfirmationEmail = async (b) => {
+        const nights = Math.ceil((new Date(b.checkOut) - new Date(b.checkIn)) / (1000 * 60 * 60 * 24));
+        const emailHtml = getPaymentConfirmedTemplate({
+            userName: b.userId.name,
+            hotelName: b.hotelId.name,
+            hotelAddress: b.hotelId.address,
+            hotelCity: b.hotelId.city,
+            roomType: b.roomId.type,
+            checkIn: b.checkIn,
+            checkOut: b.checkOut,
+            transactionId: b.stripePaymentId || b.razorpayPaymentId || 'N/A',
+            totalAmount: b.totalAmount,
+            guests: b.guests,
+            nights: nights,
+            pricePerNight: b.roomId.pricePerNight
+        });
+
+        await sendEmail({
+            email: b.userId.email,
+            subject: `[Navan] Settlement Confirmed: ${b.hotelId.name}`,
+            message: `Your booking at ${b.hotelId.name} is confirmed.`,
+            html: emailHtml
+        });
+    };
+
+    if (sessionId.startsWith('sess_mock_')) {
+        await handleSuccessfulPayment(booking, 'pay_stripe_mock_' + Date.now(), 'stripe');
+        return res.json({ success: true });
+    }
+
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
+
+    if (session.payment_status === 'paid') {
+        await handleSuccessfulPayment(booking, session.payment_intent, 'stripe');
+        res.json({ success: true });
+    } else {
+        res.status(400);
+        throw new Error('Payment not completed');
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+export { createOrder, verifyPayment, processRefund, getInvoiceData, getAllPayments, createStripeSession, verifyStripePayment };

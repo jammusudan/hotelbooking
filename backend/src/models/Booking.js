@@ -57,6 +57,12 @@ const bookingSchema = new mongoose.Schema(
     razorpayPaymentId: {
       type: String,
     },
+    stripeSessionId: {
+      type: String,
+    },
+    stripePaymentId: {
+      type: String,
+    },
     expiresAt: {
       type: Date,
       // For temporary locks, booking expires if not paid within 15 mins
