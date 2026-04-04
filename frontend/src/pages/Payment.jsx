@@ -251,7 +251,7 @@ const Payment = () => {
                         <button
                             onClick={handlePayment}
                             disabled={status === 'processing'}
-                            className="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 font-black uppercase tracking-[0.5em] py-8 rounded-[2.5rem] shadow-2xl transition-all transform active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-4 text-xs"
+                            className="w-full bg-[#003049] hover:bg-[#002538] text-white border border-white/10 font-black uppercase tracking-[0.5em] py-8 rounded-[2.5rem] shadow-2xl transition-all transform active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-4 text-xs"
                         >
                             {status === 'processing' ? 'Authorizing Secure Corridor...' : (
                                 <>
