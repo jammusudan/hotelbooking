@@ -18,10 +18,9 @@ const Payment = () => {
     const [upiId, setUpiId] = useState('');
     const [activeBrand, setActiveBrand] = useState(''); // gpay, phonepe
     const [stripe, setStripe] = useState(null);
-    const [elements, setElements] = useState(null);
-    const [cardNumber, setCardNumber] = useState(null);
-    const [cardExpiry, setCardExpiry] = useState(null);
-    const [cardCvc, setCardCvc] = useState(null);
+    const [cardNumberVal, setCardNumberVal] = useState('');
+    const [cardExpiryVal, setCardExpiryVal] = useState('');
+    const [cardCvcVal, setCardCvcVal] = useState('');
 
     useEffect(() => {
         const initStripe = async () => {
@@ -32,40 +31,8 @@ const Payment = () => {
     }, []);
 
     useEffect(() => {
-        if (stripe && !cardNumber && !loading && status !== 'success') {
-            const container = document.getElementById('stripe-card-number');
-            if (container) {
-                const el = stripe.elements();
-                setElements(el);
-
-                const style = {
-                    base: {
-                        color: '#003049',
-                        fontFamily: 'Inter, sans-serif',
-                        fontSmoothing: 'antialiased',
-                        fontSize: '16px',
-                        '::placeholder': { color: 'rgba(0,48,73,0.3)' },
-                    },
-                    invalid: { color: '#fa755a', iconColor: '#fa755a' },
-                };
-
-                const number = el.create('cardNumber', {
-                    style,
-                    placeholder: 'Card Number (12 digits)'
-                });
-                const expiry = el.create('cardExpiry', { style });
-                const cvc = el.create('cardCvc', { style });
-
-                number.mount('#stripe-card-number');
-                expiry.mount('#stripe-card-expiry');
-                cvc.mount('#stripe-card-cvc');
-
-                setCardNumber(number);
-                setCardExpiry(expiry);
-                setCardCvc(cvc);
-            }
-        }
-    }, [stripe, cardNumber, loading, status]);
+        // Stripe Elements are no longer used for card inputs to allow strict 12-digit limit and custom layout.
+    }, [stripe]);
 
 
     useEffect(() => {
@@ -171,9 +138,15 @@ const Payment = () => {
                 });
 
                 if (selectedGateway === 'stripe') {
+                    const [month, year] = cardExpiryVal.split('/').map(v => v.trim());
                     const result = await stripe.confirmCardPayment(data.clientSecret, {
                         payment_method: {
-                            card: cardNumber,
+                            card: {
+                                number: cardNumberVal,
+                                cvc: cardCvcVal,
+                                exp_month: parseInt(month),
+                                exp_year: parseInt(year),
+                            },
                             billing_details: {
                                 name: user?.name,
                                 email: user?.email,
@@ -381,14 +354,32 @@ const Payment = () => {
                                     <div className={`mt-6 space-y-4 pt-6 border-t border-white/10 ${selectedGateway === 'stripe' ? 'animate-in fade-in slide-in-from-top-4' : 'hidden'}`} onClick={(e) => e.stopPropagation()}>
                                         <div className="space-y-4">
                                             <div className="p-5 bg-white border border-gray-200 rounded-2xl shadow-inner">
-                                                <div id="stripe-card-number" className="w-full"></div>
+                                                <input 
+                                                    type="text" 
+                                                    placeholder="Card Number (12 digits only)" 
+                                                    value={cardNumberVal}
+                                                    onChange={(e) => setCardNumberVal(e.target.value.replace(/\D/g, '').slice(0, 12))}
+                                                    className="w-full bg-transparent border-none outline-none text-[#003049] placeholder:text-[#003049]/30 font-medium"
+                                                />
                                             </div>
                                             <div className="grid grid-cols-2 gap-4">
                                                 <div className="p-5 bg-white border border-gray-200 rounded-2xl shadow-inner">
-                                                    <div id="stripe-card-expiry" className="w-full"></div>
+                                                    <input 
+                                                        type="text" 
+                                                        placeholder="MM / YY" 
+                                                        value={cardExpiryVal}
+                                                        onChange={(e) => setCardExpiryVal(e.target.value.replace(/[^\d/]/g, '').slice(0, 5))}
+                                                        className="w-full bg-transparent border-none outline-none text-[#003049] placeholder:text-[#003049]/30 font-medium"
+                                                    />
                                                 </div>
                                                 <div className="p-5 bg-white border border-gray-200 rounded-2xl shadow-inner">
-                                                    <div id="stripe-card-cvc" className="w-full"></div>
+                                                    <input 
+                                                        type="text" 
+                                                        placeholder="CVC" 
+                                                        value={cardCvcVal}
+                                                        onChange={(e) => setCardCvcVal(e.target.value.replace(/\D/g, '').slice(0, 4))}
+                                                        className="w-full bg-transparent border-none outline-none text-[#003049] placeholder:text-[#003049]/30 font-medium"
+                                                    />
                                                 </div>
                                             </div>
                                         </div>
