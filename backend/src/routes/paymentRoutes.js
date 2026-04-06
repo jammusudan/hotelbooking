@@ -7,7 +7,9 @@ import {
   getInvoiceData,
   getAllPayments,
   createStripeSession,
-  verifyStripePayment
+  verifyStripePayment,
+  createPaymentIntent,
+  verifyPaymentIntent
 } from '../controllers/paymentController.js';
 import { authorize } from '../middlewares/authMiddleware.js';
 
@@ -17,6 +19,8 @@ router.post('/create-order', protect, createOrder);
 router.post('/verify', protect, verifyPayment);
 router.post('/create-stripe-session', protect, createStripeSession);
 router.post('/verify-stripe', protect, verifyStripePayment);
+router.post('/create-payment-intent', protect, createPaymentIntent);
+router.post('/verify-payment-intent', protect, verifyPaymentIntent);
 router.post('/refund/:id', protect, processRefund);
 router.get('/invoice/:id', protect, getInvoiceData);
 router.get('/all', protect, authorize('admin'), getAllPayments);
