@@ -15,6 +15,40 @@ const Payment = () => {
     const [status, setStatus] = useState('idle'); // idle, processing, success, failed
     const [errorMessage, setErrorMessage] = useState('');
     const [selectedGateway, setSelectedGateway] = useState('razorpay');
+    const [stripeMethod, setStripeMethod] = useState('card'); // card, upi
+    const [upiId, setUpiId] = useState('');
+    const [stripe, setStripe] = useState(null);
+    const [elements, setElements] = useState(null);
+    const [cardElement, setCardElement] = useState(null);
+
+    useEffect(() => {
+        const initStripe = async () => {
+            const stripeInstance = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY || 'pk_test_placeholder');
+            setStripe(stripeInstance);
+        };
+        initStripe();
+    }, []);
+
+    useEffect(() => {
+        if (selectedGateway === 'stripe' && stripeMethod === 'card' && stripe && !cardElement) {
+            const el = stripe.elements();
+            const card = el.create('card', {
+                style: {
+                    base: {
+                        color: '#ffffff',
+                        fontFamily: 'Inter, sans-serif',
+                        fontSmoothing: 'antialiased',
+                        fontSize: '16px',
+                        '::placeholder': { color: 'rgba(255,255,255,0.4)' },
+                    },
+                    invalid: { color: '#fa755a', iconColor: '#fa755a' },
+                },
+            });
+            card.mount('#stripe-card-element');
+            setCardElement(card);
+            setElements(el);
+        }
+    }, [selectedGateway, stripeMethod, stripe, cardElement]);
 
     useEffect(() => {
         const fetchBooking = async () => {
@@ -114,17 +148,60 @@ const Payment = () => {
                 const rzp1 = new window.Razorpay(options);
                 rzp1.open();
             } else if (selectedGateway === 'stripe') {
-                const { data } = await api.post('/payments/create-stripe-session', {
+                const { data } = await api.post('/payments/create-payment-intent', {
                     bookingId: booking._id
                 });
 
-                if (data.isMock) {
-                    window.location.href = data.url;
-                    return;
-                }
+                if (stripeMethod === 'card') {
+                    const result = await stripe.confirmCardPayment(data.clientSecret, {
+                        payment_method: {
+                            card: cardElement,
+                            billing_details: {
+                                name: user?.name,
+                                email: user?.email,
+                            },
+                        },
+                    });
 
-                const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY || 'pk_test_placeholder');
-                await stripe.redirectToCheckout({ sessionId: data.id });
+                    if (result.error) {
+                        setErrorMessage(result.error.message);
+                        setStatus('failed');
+                    } else if (result.paymentIntent.status === 'succeeded') {
+                        await api.post('/payments/verify-payment-intent', {
+                            paymentIntentId: result.paymentIntent.id,
+                            bookingId: booking._id
+                        });
+                        setStatus('success');
+                        setTimeout(() => navigate('/my-bookings'), 3000);
+                    }
+                } else if (stripeMethod === 'upi') {
+                    if (!upiId) {
+                        setErrorMessage('Please enter your UPI ID');
+                        setStatus('idle');
+                        return;
+                    }
+                    const result = await stripe.confirmUpiPayment(data.clientSecret, {
+                        payment_method: {
+                            upi: { vpa: upiId },
+                            billing_details: {
+                                name: user?.name,
+                                email: user?.email,
+                            },
+                        },
+                    });
+
+                    if (result.error) {
+                        setErrorMessage(result.error.message);
+                        setStatus('failed');
+                    } else if (result.paymentIntent.status === 'succeeded' || result.paymentIntent.status === 'processing') {
+                        await api.post('/payments/verify-payment-intent', {
+                            paymentIntentId: result.paymentIntent.id,
+                            bookingId: booking._id
+                        });
+                        setStatus('success');
+                        setTimeout(() => navigate('/my-bookings'), 3000);
+                    }
+                }
             }
         } catch (error) {
             setStatus('failed');
@@ -292,6 +369,49 @@ const Payment = () => {
                                         <span className="text-xl font-serif font-black text-white uppercase italic tracking-tighter">Stripe</span>
                                         <p className="text-[9px] font-black text-white/40 uppercase tracking-widest mt-1">Cards & UPI</p>
                                     </div>
+
+                                    {selectedGateway === 'stripe' && (
+                                        <div className="mt-6 space-y-6 pt-6 border-t border-white/10 animate-in fade-in slide-in-from-top-4" onClick={(e) => e.stopPropagation()}>
+                                            <div className="flex gap-4">
+                                                <button
+                                                    onClick={() => setStripeMethod('card')}
+                                                    className={`flex-1 py-3 px-4 rounded-xl border font-black uppercase tracking-widest text-[10px] transition-all ${stripeMethod === 'card' ? 'bg-white text-[#003049] border-white' : 'bg-transparent text-white/60 border-white/20 hover:border-white/40'}`}
+                                                >
+                                                    Credit/Debit Card
+                                                </button>
+                                                <button
+                                                    onClick={() => setStripeMethod('upi')}
+                                                    className={`flex-1 py-3 px-4 rounded-xl border font-black uppercase tracking-widest text-[10px] transition-all ${stripeMethod === 'upi' ? 'bg-white text-[#003049] border-white' : 'bg-transparent text-white/60 border-white/20 hover:border-white/40'}`}
+                                                >
+                                                    UPI Transfer
+                                                </button>
+                                            </div>
+
+                                            {stripeMethod === 'card' && (
+                                                <div className="space-y-4">
+                                                    <div className="p-4 bg-white/5 border border-white/10 rounded-2xl">
+                                                        <div id="stripe-card-element" className="w-full"></div>
+                                                    </div>
+                                                    <p className="text-[8px] text-white/30 uppercase tracking-[0.2em]">Secure 128-bit Card processing via Stripe</p>
+                                                </div>
+                                            )}
+
+                                            {stripeMethod === 'upi' && (
+                                                <div className="space-y-4">
+                                                    <div className="relative">
+                                                        <input
+                                                            type="text"
+                                                            placeholder="VPA / UPI ID (e.g. user@okhdfc)"
+                                                            value={upiId}
+                                                            onChange={(e) => setUpiId(e.target.value)}
+                                                            className="w-full bg-white/5 border border-white/10 rounded-xl py-4 px-6 text-white placeholder:text-white/20 text-sm focus:outline-none focus:border-white/40 transition-all font-mono"
+                                                        />
+                                                    </div>
+                                                    <p className="text-[8px] text-white/30 uppercase tracking-[0.2em]">Enter your Virtual Payment Address to continue</p>
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
