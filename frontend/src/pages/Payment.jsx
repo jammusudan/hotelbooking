@@ -29,24 +29,27 @@ const Payment = () => {
     }, []);
 
     useEffect(() => {
-        if (stripe && !cardElement) {
-            const el = stripe.elements();
-            const card = el.create('card', {
-                style: {
-                    base: {
-                        color: '#ffffff',
-                        fontFamily: 'Inter, sans-serif',
-                        fontSmoothing: 'antialiased',
-                        fontSize: '16px',
-                        '::placeholder': { color: 'rgba(255,255,255,0.4)' },
+        if (stripe && !cardElement && !loading && status !== 'success') {
+            const container = document.getElementById('stripe-card-element');
+            if (container) {
+                const el = stripe.elements();
+                const card = el.create('card', {
+                    style: {
+                        base: {
+                            color: '#003049',
+                            fontFamily: 'Inter, sans-serif',
+                            fontSmoothing: 'antialiased',
+                            fontSize: '16px',
+                            '::placeholder': { color: 'rgba(0,48,73,0.4)' },
+                        },
+                        invalid: { color: '#fa755a', iconColor: '#fa755a' },
                     },
-                    invalid: { color: '#fa755a', iconColor: '#fa755a' },
-                },
-            });
-            card.mount('#stripe-card-element');
-            setCardElement(card);
+                });
+                card.mount('#stripe-card-element');
+                setCardElement(card);
+            }
         }
-    }, [stripe, cardElement]);
+    }, [stripe, cardElement, loading, status]);
 
 
     useEffect(() => {
