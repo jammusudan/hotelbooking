@@ -351,34 +351,34 @@ const Payment = () => {
                         </div>
 
                         {/* Payment Method Card */}
-                        <div className="bg-white border border-gray-200 rounded-[3rem] p-8 md:p-12 shadow-xl">
-                            <h3 className="text-[10px] font-black text-gray-400 mb-10 uppercase tracking-[0.5em] text-center md:text-left">Select Payment Architecture</h3>
+                        <div className="bg-[#003049] border border-white/10 rounded-[3rem] p-8 md:p-12 shadow-2xl">
+                            <h3 className="text-[10px] font-black text-white/40 mb-10 uppercase tracking-[0.5em] text-center md:text-left">Select Payment Architecture</h3>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                                 {/* Debit or Credit Card */}
                                 <div
                                     onClick={() => setSelectedGateway('stripe')}
-                                    className={`relative p-8 rounded-3xl border-2 transition-all cursor-pointer flex flex-col gap-5 ${selectedGateway === 'stripe' ? 'border-[#003049] bg-[#E8F1F5]' : 'border-gray-100 bg-white hover:border-gray-200'}`}
+                                    className={`relative p-8 rounded-3xl border-2 transition-all cursor-pointer flex flex-col gap-5 ${selectedGateway === 'stripe' ? 'border-white bg-white/10' : 'border-white/5 bg-white/5 hover:border-white/10'}`}
                                 >
                                     <div className="flex justify-between items-start">
-                                        <div className="w-14 h-14 rounded-2xl bg-white border border-gray-100 flex items-center justify-center text-[#003049] shadow-sm">
+                                        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white shadow-sm">
                                             <CreditCard size={28} strokeWidth={1.5} />
                                         </div>
                                         {selectedGateway === 'stripe' && (
-                                            <div className="w-6 h-6 rounded-full bg-[#003049] flex items-center justify-center">
-                                                <div className="w-2.5 h-1.5 border-l-2 border-b-2 border-white -rotate-45 -mt-0.5" />
+                                            <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center">
+                                                <div className="w-2.5 h-1.5 border-l-2 border-b-2 border-[#003049] -rotate-45 -mt-0.5" />
                                             </div>
                                         )}
                                     </div>
                                     <div>
-                                        <h4 className="text-xl font-bold text-[#003049] tracking-tight">Debit or Credit Card</h4>
-                                        <div className="flex gap-2 mt-2 opacity-60">
-                                            <div className="w-8 h-5 bg-[#1A1F71] rounded-sm flex items-center justify-center text-[6px] font-black text-white italic">VISA</div>
-                                            <div className="w-8 h-5 bg-[#EB001B] rounded-sm flex items-center justify-center text-[6px] font-black text-white italic">MC</div>
+                                        <h4 className="text-xl font-bold text-white tracking-tight leading-none">Debit or Credit Card</h4>
+                                        <div className="flex gap-2 mt-3 opacity-40">
+                                            <div className="w-8 h-5 bg-white/10 rounded-sm flex items-center justify-center text-[6px] font-black text-white italic border border-white/10">VISA</div>
+                                            <div className="w-8 h-5 bg-white/10 rounded-sm flex items-center justify-center text-[6px] font-black text-white italic border border-white/10">MC</div>
                                         </div>
                                     </div>
 
-                                    <div className={`mt-6 space-y-4 pt-6 border-t border-gray-200/60 ${selectedGateway === 'stripe' ? 'animate-in fade-in slide-in-from-top-4' : 'hidden'}`} onClick={(e) => e.stopPropagation()}>
+                                    <div className={`mt-6 space-y-4 pt-6 border-t border-white/10 ${selectedGateway === 'stripe' ? 'animate-in fade-in slide-in-from-top-4' : 'hidden'}`} onClick={(e) => e.stopPropagation()}>
                                         <div className="space-y-4">
                                             <div className="p-5 bg-white border border-gray-200 rounded-2xl shadow-inner">
                                                 <div id="stripe-card-number" className="w-full"></div>
@@ -392,29 +392,29 @@ const Payment = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <p className="text-[9px] text-gray-400 uppercase tracking-widest text-center">Encrypted PCI-DSS Node</p>
+                                        <p className="text-[9px] text-white/30 uppercase tracking-widest text-center">Encrypted PCI-DSS Node</p>
                                     </div>
                                 </div>
 
                                 {/* Razorpay */}
                                 <div
                                     onClick={() => setSelectedGateway('razorpay')}
-                                    className={`relative p-8 rounded-3xl border-2 transition-all cursor-pointer flex flex-col gap-5 ${selectedGateway === 'razorpay' ? 'border-[#003049] bg-[#E8F1F5]' : 'border-gray-100 bg-white hover:border-gray-200'}`}
+                                    className={`relative p-8 rounded-3xl border-2 transition-all cursor-pointer flex flex-col gap-5 ${selectedGateway === 'razorpay' ? 'border-white bg-white/10' : 'border-white/5 bg-white/5 hover:border-white/10'}`}
                                 >
                                     <div className="flex justify-between items-start">
-                                        <div className="w-14 h-14 rounded-2xl bg-white border border-gray-100 flex items-center justify-center text-[#003049] shadow-sm">
+                                        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white shadow-sm">
                                             <svg viewBox="0 0 24 24" className="w-7 h-7 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M18.8 1l-6.8 11h6.8l-7.8 11 2-11h-6.2l7.2-11h-4l1-1h9z" /></svg>
                                         </div>
                                         {selectedGateway === 'razorpay' && (
-                                            <div className="w-6 h-6 rounded-full bg-[#003049] flex items-center justify-center">
-                                                <div className="w-2.5 h-1.5 border-l-2 border-b-2 border-white -rotate-45 -mt-0.5" />
+                                            <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center">
+                                                <div className="w-2.5 h-1.5 border-l-2 border-b-2 border-[#003049] -rotate-45 -mt-0.5" />
                                             </div>
                                         )}
                                     </div>
                                     <div>
-                                        <h4 className="text-xl font-bold text-[#003049] tracking-tight">Razorpay</h4>
-                                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-2 flex items-center gap-2">
-                                            <span className="w-4 h-4 bg-[#3395FF] rounded-sm flex items-center justify-center text-white text-[8px] font-black">R</span>
+                                        <h4 className="text-xl font-bold text-white tracking-tight leading-none uppercase">Razorpay</h4>
+                                        <p className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] mt-3 flex items-center gap-2">
+                                            <span className="w-4 h-4 bg-white/10 border border-white/20 rounded-sm flex items-center justify-center text-white text-[8px] font-black">R</span>
                                             SECURE UI CHECKOUT
                                         </p>
                                     </div>
@@ -423,44 +423,44 @@ const Payment = () => {
                                 {/* UPI */}
                                 <div
                                     onClick={() => setSelectedGateway('upi')}
-                                    className={`relative p-8 rounded-3xl border-2 transition-all cursor-pointer flex flex-col gap-5 ${selectedGateway === 'upi' ? 'border-[#003049] bg-[#E8F1F5]' : 'border-gray-100 bg-white hover:border-gray-200'}`}
+                                    className={`relative p-8 rounded-3xl border-2 transition-all cursor-pointer flex flex-col gap-5 ${selectedGateway === 'upi' ? 'border-white bg-white/10' : 'border-white/5 bg-white/5 hover:border-white/10'}`}
                                 >
                                     <div className="flex justify-between items-start">
                                         <div className="w-14 h-14 rounded-2xl bg-[#008CBA] flex items-center justify-center text-white shadow-lg overflow-hidden">
                                             <svg viewBox="0 0 24 24" className="w-7 h-7 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M17 2H7C5.89 2 5 2.89 5 4V20C5 21.11 5.89 22 7 22H17C18.11 22 19 21.11 19 20V4C19 2.89 18.11 2 17 2M17 18H7V6H17V18M12 19C11.45 19 11 18.55 11 18C11 17.45 11.45 17 12 17C12.55 17 13 17.45 13 18C13 18.55 12.55 19 12 19Z" /></svg>
                                         </div>
                                         {selectedGateway === 'upi' && (
-                                            <div className="w-6 h-6 rounded-full bg-[#003049] flex items-center justify-center">
-                                                <div className="w-2.5 h-1.5 border-l-2 border-b-2 border-white -rotate-45 -mt-0.5" />
+                                            <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center">
+                                                <div className="w-2.5 h-1.5 border-l-2 border-b-2 border-[#003049] -rotate-45 -mt-0.5" />
                                             </div>
                                         )}
                                     </div>
                                     <div>
-                                        <h4 className="text-xl font-bold text-[#003049] tracking-tight">UPI</h4>
-                                        <div className="flex items-center gap-3 mt-2">
-                                            <div className="flex -space-x-1">
-                                                <div className="w-5 h-5 rounded-full bg-[#EA4335] border border-white flex items-center justify-center text-[7px] font-black text-white">G</div>
-                                                <div className="w-5 h-5 rounded-full bg-[#5F259F] border border-white flex items-center justify-center text-[7px] font-black text-white">P</div>
+                                        <h4 className="text-xl font-bold text-white tracking-tight leading-none uppercase">UPI</h4>
+                                        <div className="flex items-center gap-3 mt-3">
+                                            <div className="flex -space-x-1 opacity-60">
+                                                <div className="w-5 h-5 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-[7px] font-black text-white">G</div>
+                                                <div className="w-5 h-5 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-[7px] font-black text-white">P</div>
                                             </div>
-                                            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">INSTANT PAY</p>
+                                            <p className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em]">INSTANT PAY</p>
                                         </div>
                                     </div>
 
-                                    <div className={`mt-6 space-y-6 pt-6 border-t border-gray-200/60 ${selectedGateway === 'upi' ? 'animate-in fade-in slide-in-from-top-4' : 'hidden'}`} onClick={(e) => e.stopPropagation()}>
+                                    <div className={`mt-6 space-y-6 pt-6 border-t border-white/10 ${selectedGateway === 'upi' ? 'animate-in fade-in slide-in-from-top-4' : 'hidden'}`} onClick={(e) => e.stopPropagation()}>
                                         <div className="grid grid-cols-2 gap-4">
                                             <button
                                                 onClick={() => setActiveBrand('gpay')}
-                                                className={`p-4 rounded-2xl border-2 flex flex-col items-center gap-2 transition-all ${activeBrand === 'gpay' ? 'border-[#003049] bg-white shadow-md' : 'border-gray-100 bg-gray-50 hover:border-gray-200'}`}
+                                                className={`p-4 rounded-2xl border-2 flex flex-col items-center gap-2 transition-all ${activeBrand === 'gpay' ? 'border-white bg-white/10' : 'border-white/5 bg-white/5 hover:border-white/10'}`}
                                             >
-                                                <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-[#003049] font-black text-lg">G</div>
-                                                <span className="text-[9px] font-bold uppercase tracking-widest text-gray-500">Google Pay</span>
+                                                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#003049] font-black text-lg">G</div>
+                                                <span className="text-[9px] font-bold uppercase tracking-widest text-white/60">Google Pay</span>
                                             </button>
                                             <button
                                                 onClick={() => setActiveBrand('phonepe')}
-                                                className={`p-4 rounded-2xl border-2 flex flex-col items-center gap-2 transition-all ${activeBrand === 'phonepe' ? 'border-[#003049] bg-white shadow-md' : 'border-gray-100 bg-gray-50 hover:border-gray-200'}`}
+                                                className={`p-4 rounded-2xl border-2 flex flex-col items-center gap-2 transition-all ${activeBrand === 'phonepe' ? 'border-white bg-white/10' : 'border-white/5 bg-white/5 hover:border-white/10'}`}
                                             >
-                                                <div className="w-10 h-10 rounded-full bg-[#5F259F]/10 flex items-center justify-center text-[#5F259F] font-black text-lg">P</div>
-                                                <span className="text-[9px] font-bold uppercase tracking-widest text-gray-500">PhonePe</span>
+                                                <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-black text-lg">P</div>
+                                                <span className="text-[9px] font-bold uppercase tracking-widest text-white/60">PhonePe</span>
                                             </button>
                                         </div>
 
@@ -470,7 +470,7 @@ const Payment = () => {
                                                 placeholder="Enter UPI ID (e.g. user@bank)"
                                                 value={upiId}
                                                 onChange={(e) => setUpiId(e.target.value)}
-                                                className="w-full bg-gray-50 border border-gray-200 rounded-2xl py-5 px-6 text-[#003049] placeholder:text-gray-400 text-sm focus:outline-none focus:border-[#003049] transition-all font-mono shadow-inner"
+                                                className="w-full bg-white/5 border border-white/10 rounded-2xl py-5 px-6 text-white placeholder:text-white/20 text-sm focus:outline-none focus:border-white/40 transition-all font-mono shadow-inner"
                                             />
                                         </div>
                                     </div>
@@ -479,21 +479,21 @@ const Payment = () => {
                                 {/* Net Banking */}
                                 <div
                                     onClick={() => setSelectedGateway('netbanking')}
-                                    className={`relative p-8 rounded-3xl border-2 transition-all cursor-pointer flex flex-col gap-5 ${selectedGateway === 'netbanking' ? 'border-[#003049] bg-[#E8F1F5]' : 'border-gray-100 bg-white hover:border-gray-200'}`}
+                                    className={`relative p-8 rounded-3xl border-2 transition-all cursor-pointer flex flex-col gap-5 ${selectedGateway === 'netbanking' ? 'border-white bg-white/10' : 'border-white/5 bg-white/5 hover:border-white/10'}`}
                                 >
                                     <div className="flex justify-between items-start">
-                                        <div className="w-14 h-14 rounded-2xl bg-white border border-gray-100 flex items-center justify-center text-[#003049] shadow-sm">
+                                        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white shadow-sm">
                                             <svg viewBox="0 0 24 24" className="w-7 h-7 fill-none stroke-current" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18" /><path d="M3 10h18" /><path d="M5 6l7-3 7 3" /><path d="M4 10v11" /><path d="M20 10v11" /><path d="M8 14v3" /><path d="M12 14v3" /><path d="M16 14v3" /></svg>
                                         </div>
                                         {selectedGateway === 'netbanking' && (
-                                            <div className="w-6 h-6 rounded-full bg-[#003049] flex items-center justify-center">
-                                                <div className="w-2.5 h-1.5 border-l-2 border-b-2 border-white -rotate-45 -mt-0.5" />
+                                            <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center">
+                                                <div className="w-2.5 h-1.5 border-l-2 border-b-2 border-[#003049] -rotate-45 -mt-0.5" />
                                             </div>
                                         )}
                                     </div>
                                     <div>
-                                        <h4 className="text-xl font-bold text-[#003049] tracking-tight">Net Banking</h4>
-                                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-2">ALL MAJOR BANKS</p>
+                                        <h4 className="text-xl font-bold text-white tracking-tight leading-none uppercase">Net Banking</h4>
+                                        <p className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] mt-3">ALL MAJOR BANKS</p>
                                     </div>
                                 </div>
                             </div>
@@ -512,7 +512,7 @@ const Payment = () => {
                             <button
                                 onClick={handlePayment}
                                 disabled={status === 'processing'}
-                                className="w-full bg-[#003049] hover:bg-[#002538] text-white border border-white/10 font-black uppercase tracking-[0.5em] py-8 rounded-[2.5rem] shadow-2xl transition-all transform active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-4 text-xs"
+                                className="w-full bg-white hover:bg-white/90 text-[#003049] font-black uppercase tracking-[0.5em] py-8 rounded-[2.5rem] shadow-2xl transition-all transform active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-4 text-xs"
                             >
                                 {status === 'processing' ? 'Authorizing Secure Corridor...' : (
                                     <>
