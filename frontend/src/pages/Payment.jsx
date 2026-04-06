@@ -21,9 +21,9 @@ const Payment = () => {
             try {
                 const { data } = await api.get(`/bookings/${id}`);
                 setBooking(data);
-                
+
                 if (data.status === 'Confirmed' || data.paymentStatus === 'Paid') {
-                   setStatus('success'); 
+                    setStatus('success');
                 }
             } catch (error) {
                 console.error(error);
@@ -64,7 +64,7 @@ const Payment = () => {
     const handlePayment = async () => {
         setStatus('processing');
         setErrorMessage('');
-        
+
         try {
             if (selectedGateway === 'razorpay') {
                 const { data: order } = await api.post('/payments/create-order', {
@@ -202,13 +202,13 @@ const Payment = () => {
 
                         {/* Action Buttons */}
                         <div className="flex flex-col gap-4">
-                            <button 
+                            <button
                                 onClick={() => navigate(`/invoice/${booking._id}`)}
                                 className="w-full bg-[#003049] text-white font-black uppercase tracking-[0.4em] py-6 rounded-[2rem] shadow-xl hover:bg-[#002538] transition-all"
                             >
                                 View Digital Invoice
                             </button>
-                            <button 
+                            <button
                                 onClick={() => navigate('/my-bookings')}
                                 className="w-full bg-white/5 border border-[#003049]/10 text-[#003049] font-black uppercase tracking-[0.4em] py-6 rounded-[2rem] hover:bg-[#003049]/5 transition-all text-[10px]"
                             >
@@ -222,7 +222,7 @@ const Payment = () => {
                         <div className="bg-[#003049] border border-white/10 rounded-[3rem] p-10 shadow-2xl overflow-hidden relative">
                             <div className="absolute top-0 left-0 w-full h-1.5 bg-transparent opacity-50"></div>
                             <h3 className="text-xs font-black text-white/40 mb-10 uppercase tracking-[0.5em]">Booking Summary</h3>
-                            
+
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                                 <div className="space-y-8">
                                     <div className="space-y-1">
@@ -244,7 +244,7 @@ const Payment = () => {
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div className="md:text-right flex flex-col justify-between">
                                     <div className="space-y-2">
                                         <span className="text-[10px] font-black text-white/40 uppercase tracking-widest block">Total Folio Settlement</span>
@@ -258,10 +258,10 @@ const Payment = () => {
                         {/* Payment Method Card */}
                         <div className="bg-[#003049] border border-white/10 rounded-[3rem] p-10 shadow-2xl">
                             <h3 className="text-xs font-black text-white/40 mb-10 uppercase tracking-[0.5em]">Payment Method Selection</h3>
-                            
+
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 {/* Razorpay Option */}
-                                <div 
+                                <div
                                     onClick={() => setSelectedGateway('razorpay')}
                                     className={`relative p-8 rounded-[2rem] border-2 transition-all cursor-pointer flex flex-col gap-4 ${selectedGateway === 'razorpay' ? 'border-white/40 bg-white/5' : 'border-white/5 hover:border-white/10'}`}
                                 >
@@ -278,7 +278,7 @@ const Payment = () => {
                                 </div>
 
                                 {/* Stripe Option */}
-                                <div 
+                                <div
                                     onClick={() => setSelectedGateway('stripe')}
                                     className={`relative p-8 rounded-[2rem] border-2 transition-all cursor-pointer flex flex-col gap-4 ${selectedGateway === 'stripe' ? 'border-white/40 bg-white/5' : 'border-white/5 hover:border-white/10'}`}
                                 >
@@ -290,7 +290,7 @@ const Payment = () => {
                                     </div>
                                     <div>
                                         <span className="text-xl font-serif font-black text-white uppercase italic tracking-tighter">Stripe</span>
-                                        <p className="text-[9px] font-black text-white/40 uppercase tracking-widest mt-1">Cards & Global</p>
+                                        <p className="text-[9px] font-black text-white/40 uppercase tracking-widest mt-1">Cards & UPI</p>
                                     </div>
                                 </div>
                             </div>

@@ -27,9 +27,9 @@ const createOrder = async (req, res, next) => {
     }
 
     // For demo/development: Check if keys are placeholders
-    const isMock = !process.env.RAZORPAY_KEY_ID || 
-                   process.env.RAZORPAY_KEY_ID === 'test_key_id' || 
-                   process.env.RAZORPAY_KEY_ID.includes('test');
+    const isMock = !process.env.RAZORPAY_KEY_ID ||
+      process.env.RAZORPAY_KEY_ID === 'test_key_id' ||
+      process.env.RAZORPAY_KEY_ID.includes('test');
 
     if (isMock) {
       const mockOrder = {
@@ -91,7 +91,7 @@ const verifyPayment = async (req, res, next) => {
     }
 
     const sendConfirmationEmail = async (b) => {
-        const nights = Math.ceil((new Date(b.checkOut) - new Date(b.checkIn)) / (1000 * 60 * 60 * 24));
+      const nights = Math.ceil((new Date(b.checkOut) - new Date(b.checkIn)) / (1000 * 60 * 60 * 24));
 
       const emailHtml = getPaymentConfirmedTemplate({
         userName: b.userId.name,
@@ -108,57 +108,57 @@ const verifyPayment = async (req, res, next) => {
         pricePerNight: b.roomId.pricePerNight
       });
 
-        await sendEmail({
-            email: b.userId.email,
-            subject: `[Navan] Settlement Confirmed: ${b.hotelId.name}`,
-            message: `Your booking at ${b.hotelId.name} is confirmed.`,
-            html: emailHtml
-        });
+      await sendEmail({
+        email: b.userId.email,
+        subject: `[Navan] Settlement Confirmed: ${b.hotelId.name}`,
+        message: `Your booking at ${b.hotelId.name} is confirmed.`,
+        html: emailHtml
+      });
     };
 
     const handleSuccessfulPayment = async (b, paymentId, gateway = 'razorpay') => {
-        b.status = 'Confirmed';
-        b.paymentStatus = 'Paid';
-        if (gateway === 'razorpay') b.razorpayPaymentId = paymentId;
-        else b.stripePaymentId = paymentId;
-        b.expiresAt = null;
-        await b.save();
+      b.status = 'Confirmed';
+      b.paymentStatus = 'Paid';
+      if (gateway === 'razorpay') b.razorpayPaymentId = paymentId;
+      else b.stripePaymentId = paymentId;
+      b.expiresAt = null;
+      await b.save();
 
-        await sendConfirmationEmail(b);
+      await sendConfirmationEmail(b);
 
-        const io = req.app.get('socketio');
-        if (io) {
-            io.to(b.hotelId._id.toString()).emit('booking_confirmed', { room: b.roomId });
-            if (b.hotelId) {
-                io.to(`manager_${b.hotelId.managerId.toString()}`).emit('new_reservation_alert', {
-                    hotelName: b.hotelId.name,
-                    amount: b.totalAmount,
-                    guest: b.userId.name
-                });
-            }
-            io.to('admin_room').emit('global_activity', {
-                type: 'booking',
-                amount: b.totalAmount,
-                location: b.hotelId?.city
-            });
+      const io = req.app.get('socketio');
+      if (io) {
+        io.to(b.hotelId._id.toString()).emit('booking_confirmed', { room: b.roomId });
+        if (b.hotelId) {
+          io.to(`manager_${b.hotelId.managerId.toString()}`).emit('new_reservation_alert', {
+            hotelName: b.hotelId.name,
+            amount: b.totalAmount,
+            guest: b.userId.name
+          });
         }
+        io.to('admin_room').emit('global_activity', {
+          type: 'booking',
+          amount: b.totalAmount,
+          location: b.hotelId?.city
+        });
+      }
 
-        await createNotification(
-            req.app,
-            b.userId._id,
-            'payment',
-            `Payment of ₹${b.totalAmount} confirmed for your stay at ${b.hotelId.name}.`,
-            {
-                email: b.userId.email,
-                subject: 'Navan: Payment Confirmed',
-            }
-        );
+      await createNotification(
+        req.app,
+        b.userId._id,
+        'payment',
+        `Payment of ₹${b.totalAmount} confirmed for your stay at ${b.hotelId.name}.`,
+        {
+          email: b.userId.email,
+          subject: 'Navan: Payment Confirmed',
+        }
+      );
     };
 
     // Mock Verification for demo
     if (razorpayOrderId.startsWith('order_mock_')) {
-        await handleSuccessfulPayment(booking, 'pay_mock_' + Date.now(), 'razorpay');
-        return res.json({ success: true, message: 'Mock payment verified successfully' });
+      await handleSuccessfulPayment(booking, 'pay_mock_' + Date.now(), 'razorpay');
+      return res.json({ success: true, message: 'Mock payment verified successfully' });
     }
 
     // Verify signature
@@ -167,8 +167,8 @@ const verifyPayment = async (req, res, next) => {
     let expectedSignature = hmac.digest('hex');
 
     if (expectedSignature === razorpaySignature) {
-        await handleSuccessfulPayment(booking, razorpayPaymentId, 'razorpay');
-        res.json({ success: true, message: 'Payment verified successfully' });
+      await handleSuccessfulPayment(booking, razorpayPaymentId, 'razorpay');
+      res.json({ success: true, message: 'Payment verified successfully' });
     } else {
       res.status(400);
       throw new Error('Invalid signature sent!');
@@ -184,88 +184,88 @@ import { applyRefund } from '../services/paymentService.js';
 // @route   POST /api/payments/refund/:id
 // @access  Private
 const processRefund = async (req, res, next) => {
-    try {
-        const booking = await Booking.findById(req.params.id).populate('hotelId');
-        if (!booking) {
-            res.status(404);
-            throw new Error('Booking not found');
-        }
-
-        // Authorization: Admin or Manager of this hotel
-        if (req.user.role !== 'admin' && 
-            (req.user.role === 'manager' && booking.hotelId.managerId.toString() !== req.user._id.toString())) {
-            res.status(403);
-            throw new Error('Not authorized to process this refund');
-        }
-
-        const result = await applyRefund(req.params.id);
-        if (!result) {
-            res.status(400);
-            throw new Error('Refund not possible');
-        }
-        res.json(result);
-    } catch (error) {
-        next(error);
+  try {
+    const booking = await Booking.findById(req.params.id).populate('hotelId');
+    if (!booking) {
+      res.status(404);
+      throw new Error('Booking not found');
     }
+
+    // Authorization: Admin or Manager of this hotel
+    if (req.user.role !== 'admin' &&
+      (req.user.role === 'manager' && booking.hotelId.managerId.toString() !== req.user._id.toString())) {
+      res.status(403);
+      throw new Error('Not authorized to process this refund');
+    }
+
+    const result = await applyRefund(req.params.id);
+    if (!result) {
+      res.status(400);
+      throw new Error('Refund not possible');
+    }
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
 };
 
 // @desc    Get Invoice Data
 // @route   GET /api/payments/invoice/:id
 // @access  Private
 const getInvoiceData = async (req, res, next) => {
-    try {
-        const booking = await Booking.findById(req.params.id)
-            .populate('hotelId', 'name address city country')
-            .populate('roomId', 'type')
-            .populate('userId', 'name email');
+  try {
+    const booking = await Booking.findById(req.params.id)
+      .populate('hotelId', 'name address city country')
+      .populate('roomId', 'type')
+      .populate('userId', 'name email');
 
-        if (!booking) {
-            res.status(404);
-            throw new Error('Booking not found');
-        }
-
-        // Authorization check
-        if (booking.userId._id.toString() !== req.user._id.toString() && 
-            req.user.role !== 'admin' && 
-            req.user.role !== 'manager') {
-            res.status(403);
-            throw new Error('Not authorized to access this invoice');
-        }
-
-        const invoice = {
-            invoiceNumber: `INV-${booking._id.toString().slice(-6).toUpperCase()}`,
-            date: new Date().toLocaleDateString(),
-            hotel: booking.hotelId,
-            guest: booking.userId,
-            roomType: booking.roomId.type,
-            checkIn: booking.checkIn,
-            checkOut: booking.checkOut,
-            nights: Math.ceil((new Date(booking.checkOut) - new Date(booking.checkIn)) / (1000 * 60 * 60 * 24)),
-            totalAmount: booking.totalAmount,
-            status: booking.paymentStatus,
-            transactionId: booking.razorpayPaymentId
-        };
-
-        res.json(invoice);
-    } catch (error) {
-        next(error);
+    if (!booking) {
+      res.status(404);
+      throw new Error('Booking not found');
     }
+
+    // Authorization check
+    if (booking.userId._id.toString() !== req.user._id.toString() &&
+      req.user.role !== 'admin' &&
+      req.user.role !== 'manager') {
+      res.status(403);
+      throw new Error('Not authorized to access this invoice');
+    }
+
+    const invoice = {
+      invoiceNumber: `INV-${booking._id.toString().slice(-6).toUpperCase()}`,
+      date: new Date().toLocaleDateString(),
+      hotel: booking.hotelId,
+      guest: booking.userId,
+      roomType: booking.roomId.type,
+      checkIn: booking.checkIn,
+      checkOut: booking.checkOut,
+      nights: Math.ceil((new Date(booking.checkOut) - new Date(booking.checkIn)) / (1000 * 60 * 60 * 24)),
+      totalAmount: booking.totalAmount,
+      status: booking.paymentStatus,
+      transactionId: booking.razorpayPaymentId
+    };
+
+    res.json(invoice);
+  } catch (error) {
+    next(error);
+  }
 };
 
 // @desc    Get all payments (Admin)
 // @route   GET /api/payments/all
 // @access  Private/Admin
 const getAllPayments = async (req, res, next) => {
-    try {
-        const payments = await Booking.find({ paymentStatus: { $in: ['Paid', 'Refunded'] } })
-            .populate('userId', 'name email')
-            .populate('hotelId', 'name city')
-            .populate('roomId', 'type')
-            .sort('-updatedAt');
-        res.json(payments);
-    } catch (error) {
-        next(error);
-    }
+  try {
+    const payments = await Booking.find({ paymentStatus: { $in: ['Paid', 'Refunded'] } })
+      .populate('userId', 'name email')
+      .populate('hotelId', 'name city')
+      .populate('roomId', 'type')
+      .sort('-updatedAt');
+    res.json(payments);
+  } catch (error) {
+    next(error);
+  }
 };
 
 // @desc    Create Stripe Session
@@ -289,15 +289,16 @@ const createStripeSession = async (req, res, next) => {
     const isMock = !process.env.STRIPE_SECRET_KEY || process.env.STRIPE_SECRET_KEY.includes('test');
 
     if (isMock) {
-        booking.stripeSessionId = `sess_mock_${Date.now()}`;
-        await booking.save();
-        return res.json({ id: booking.stripeSessionId, url: `${process.env.CLIENT_URL || 'http://localhost:5173'}/payment/${bookingId}?success=true&gateway=stripe`, isMock: true });
+      booking.stripeSessionId = `sess_mock_${Date.now()}`;
+      await booking.save();
+      return res.json({ id: booking.stripeSessionId, url: `${process.env.CLIENT_URL || 'http://localhost:5173'}/payment/${bookingId}?success=true&gateway=stripe`, isMock: true });
     }
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
+      payment_method_types: ['card', 'upi'],
+      customer_email: req.user.email,
       line_items: [
         {
           price_data: {
@@ -342,48 +343,48 @@ const verifyStripePayment = async (req, res, next) => {
     }
 
     if (booking.paymentStatus === 'Paid') {
-        return res.json({ success: true, message: 'Already paid' });
+      return res.json({ success: true, message: 'Already paid' });
     }
 
     const sendConfirmationEmail = async (b) => {
-        const nights = Math.ceil((new Date(b.checkOut) - new Date(b.checkIn)) / (1000 * 60 * 60 * 24));
-        const emailHtml = getPaymentConfirmedTemplate({
-            userName: b.userId.name,
-            hotelName: b.hotelId.name,
-            hotelAddress: b.hotelId.address,
-            hotelCity: b.hotelId.city,
-            roomType: b.roomId.type,
-            checkIn: b.checkIn,
-            checkOut: b.checkOut,
-            transactionId: b.stripePaymentId || b.razorpayPaymentId || 'N/A',
-            totalAmount: b.totalAmount,
-            guests: b.guests,
-            nights: nights,
-            pricePerNight: b.roomId.pricePerNight
-        });
+      const nights = Math.ceil((new Date(b.checkOut) - new Date(b.checkIn)) / (1000 * 60 * 60 * 24));
+      const emailHtml = getPaymentConfirmedTemplate({
+        userName: b.userId.name,
+        hotelName: b.hotelId.name,
+        hotelAddress: b.hotelId.address,
+        hotelCity: b.hotelId.city,
+        roomType: b.roomId.type,
+        checkIn: b.checkIn,
+        checkOut: b.checkOut,
+        transactionId: b.stripePaymentId || b.razorpayPaymentId || 'N/A',
+        totalAmount: b.totalAmount,
+        guests: b.guests,
+        nights: nights,
+        pricePerNight: b.roomId.pricePerNight
+      });
 
-        await sendEmail({
-            email: b.userId.email,
-            subject: `[Navan] Settlement Confirmed: ${b.hotelId.name}`,
-            message: `Your booking at ${b.hotelId.name} is confirmed.`,
-            html: emailHtml
-        });
+      await sendEmail({
+        email: b.userId.email,
+        subject: `[Navan] Settlement Confirmed: ${b.hotelId.name}`,
+        message: `Your booking at ${b.hotelId.name} is confirmed.`,
+        html: emailHtml
+      });
     };
 
     if (sessionId.startsWith('sess_mock_')) {
-        await handleSuccessfulPayment(booking, 'pay_stripe_mock_' + Date.now(), 'stripe');
-        return res.json({ success: true });
+      await handleSuccessfulPayment(booking, 'pay_stripe_mock_' + Date.now(), 'stripe');
+      return res.json({ success: true });
     }
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
     const session = await stripe.checkout.sessions.retrieve(sessionId);
 
     if (session.payment_status === 'paid') {
-        await handleSuccessfulPayment(booking, session.payment_intent, 'stripe');
-        res.json({ success: true });
+      await handleSuccessfulPayment(booking, session.payment_intent, 'stripe');
+      res.json({ success: true });
     } else {
-        res.status(400);
-        throw new Error('Payment not completed');
+      res.status(400);
+      throw new Error('Payment not completed');
     }
   } catch (error) {
     next(error);
