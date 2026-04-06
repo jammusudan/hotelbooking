@@ -15,7 +15,6 @@ const Payment = () => {
     const [status, setStatus] = useState('idle'); // idle, processing, success, failed
     const [errorMessage, setErrorMessage] = useState('');
     const [selectedGateway, setSelectedGateway] = useState('razorpay');
-    const [stripeMethod, setStripeMethod] = useState('card'); // card, upi
     const [upiId, setUpiId] = useState('');
     const [activeBrand, setActiveBrand] = useState(''); // gpay, phonepe
     const [stripe, setStripe] = useState(null);
@@ -30,7 +29,7 @@ const Payment = () => {
     }, []);
 
     useEffect(() => {
-        if (selectedGateway === 'stripe' && stripeMethod === 'card' && stripe && !cardElement) {
+        if (selectedGateway === 'stripe' && stripe && !cardElement) {
             const el = stripe.elements();
             const card = el.create('card', {
                 style: {
@@ -47,7 +46,7 @@ const Payment = () => {
             card.mount('#stripe-card-element');
             setCardElement(card);
         }
-    }, [selectedGateway, stripeMethod, stripe, cardElement]);
+    }, [selectedGateway, stripe, cardElement]);
 
 
     useEffect(() => {
@@ -147,12 +146,12 @@ const Payment = () => {
 
                 const rzp1 = new window.Razorpay(options);
                 rzp1.open();
-            } else if (selectedGateway === 'stripe') {
+            } else if (selectedGateway === 'stripe' || selectedGateway === 'upi') {
                 const { data } = await api.post('/payments/create-payment-intent', {
                     bookingId: booking._id
                 });
 
-                if (stripeMethod === 'card') {
+                if (selectedGateway === 'stripe') {
                     const result = await stripe.confirmCardPayment(data.clientSecret, {
                         payment_method: {
                             card: cardElement,
@@ -174,7 +173,7 @@ const Payment = () => {
                         setStatus('success');
                         setTimeout(() => navigate('/my-bookings'), 3000);
                     }
-                } else if (stripeMethod === 'upi') {
+                } else if (selectedGateway === 'upi') {
                     if (!upiId) {
                         setErrorMessage('Please enter your UPI ID');
                         setStatus('idle');
@@ -336,7 +335,7 @@ const Payment = () => {
                         <div className="bg-[#003049] border border-white/10 rounded-[3rem] p-10 shadow-2xl">
                             <h3 className="text-xs font-black text-white/40 mb-10 uppercase tracking-[0.5em]">Payment Method Selection</h3>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {/* Razorpay Option */}
                                 <div
                                     onClick={() => setSelectedGateway('razorpay')}
@@ -354,7 +353,7 @@ const Payment = () => {
                                     </div>
                                 </div>
 
-                                {/* Stripe Option */}
+                                {/* Stripe (Card) Option */}
                                 <div
                                     onClick={() => setSelectedGateway('stripe')}
                                     className={`relative p-8 rounded-[2rem] border-2 transition-all cursor-pointer flex flex-col gap-4 ${selectedGateway === 'stripe' ? 'border-white/40 bg-white/5' : 'border-white/5 hover:border-white/10'}`}
@@ -366,72 +365,71 @@ const Payment = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <span className="text-xl font-serif font-black text-white uppercase italic tracking-tighter">Stripe</span>
-                                        <p className="text-[9px] font-black text-white/40 uppercase tracking-widest mt-1">Cards & UPI</p>
+                                        <span className="text-xl font-serif font-black text-white uppercase italic tracking-tighter">Card</span>
+                                        <p className="text-[9px] font-black text-white/40 uppercase tracking-widest mt-1">Debit & Credit</p>
                                     </div>
 
                                     {selectedGateway === 'stripe' && (
                                         <div className="mt-6 space-y-6 pt-6 border-t border-white/10 animate-in fade-in slide-in-from-top-4" onClick={(e) => e.stopPropagation()}>
-                                            <div className="flex gap-4 p-1 bg-white/5 rounded-2xl">
+                                            <div className="space-y-4">
+                                                <div className="p-5 bg-white/5 border border-white/10 rounded-2xl">
+                                                    <div id="stripe-card-element" className="w-full"></div>
+                                                </div>
+                                                <div className="flex items-center gap-2 opacity-40">
+                                                    <div className="h-px flex-1 bg-white/20"></div>
+                                                    <span className="text-[8px] font-black uppercase tracking-[0.3em]">Secure Corridor</span>
+                                                    <div className="h-px flex-1 bg-white/20"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+
+                                {/* UPI Option */}
+                                <div
+                                    onClick={() => setSelectedGateway('upi')}
+                                    className={`relative p-8 rounded-[2rem] border-2 transition-all cursor-pointer flex flex-col gap-4 ${selectedGateway === 'upi' ? 'border-white/40 bg-white/5' : 'border-white/5 hover:border-white/10'}`}
+                                >
+                                    <div className="flex justify-between items-start">
+                                        <div className="w-6 h-6 rounded-lg bg-white/10 flex items-center justify-center text-white/40 text-[10px] font-black">UPI</div>
+                                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedGateway === 'upi' ? 'border-white' : 'border-white/20'}`}>
+                                            {selectedGateway === 'upi' && <div className="w-2.5 h-2.5 bg-white rounded-full" />}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span className="text-xl font-serif font-black text-white uppercase italic tracking-tighter">UPI</span>
+                                        <p className="text-[9px] font-black text-white/40 uppercase tracking-widest mt-1">GPay & PhonePe</p>
+                                    </div>
+
+                                    {selectedGateway === 'upi' && (
+                                        <div className="mt-6 space-y-6 pt-6 border-t border-white/10 animate-in fade-in slide-in-from-top-4" onClick={(e) => e.stopPropagation()}>
+                                            <div className="grid grid-cols-2 gap-4">
                                                 <button
-                                                    onClick={() => setStripeMethod('card')}
-                                                    className={`flex-1 py-3 px-4 rounded-xl font-black uppercase tracking-widest text-[9px] transition-all ${stripeMethod === 'card' ? 'bg-white text-[#003049]' : 'text-white/40 hover:text-white/60'}`}
+                                                    onClick={() => setActiveBrand('gpay')}
+                                                    className={`p-4 rounded-2xl border-2 flex flex-col items-center gap-3 transition-all ${activeBrand === 'gpay' ? 'border-white bg-white/10' : 'border-white/5 bg-white/5 hover:border-white/20'}`}
                                                 >
-                                                    Card Payment
+                                                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#003049] font-black text-xl italic leading-none">G</div>
+                                                    <span className="text-[9px] font-black uppercase tracking-widest text-white/60">Google Pay</span>
                                                 </button>
                                                 <button
-                                                    onClick={() => setStripeMethod('upi')}
-                                                    className={`flex-1 py-3 px-4 rounded-xl font-black uppercase tracking-widest text-[9px] transition-all ${stripeMethod === 'upi' ? 'bg-white text-[#003049]' : 'text-white/40 hover:text-white/60'}`}
+                                                    onClick={() => setActiveBrand('phonepe')}
+                                                    className={`p-4 rounded-2xl border-2 flex flex-col items-center gap-3 transition-all ${activeBrand === 'phonepe' ? 'border-white bg-white/10' : 'border-white/5 bg-white/5 hover:border-white/20'}`}
                                                 >
-                                                    UPI Transfer
+                                                    <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-black text-xl italic leading-none">P</div>
+                                                    <span className="text-[9px] font-black uppercase tracking-widest text-white/60">PhonePe</span>
                                                 </button>
                                             </div>
 
-                                            {stripeMethod === 'card' && (
-                                                <div className="space-y-4">
-                                                    <div className="p-5 bg-white/5 border border-white/10 rounded-2xl">
-                                                        <div id="stripe-card-element" className="w-full"></div>
-                                                    </div>
-                                                    <div className="flex items-center gap-2 opacity-40">
-                                                        <div className="h-px flex-1 bg-white/20"></div>
-                                                        <span className="text-[8px] font-black uppercase tracking-[0.3em]">Encrypted Junction</span>
-                                                        <div className="h-px flex-1 bg-white/20"></div>
-                                                    </div>
-                                                </div>
-                                            )}
-
-                                            {stripeMethod === 'upi' && (
-                                                <div className="space-y-6">
-                                                    <div className="grid grid-cols-2 gap-4">
-                                                        <button
-                                                            onClick={() => setActiveBrand('gpay')}
-                                                            className={`p-4 rounded-2xl border-2 flex flex-col items-center gap-3 transition-all ${activeBrand === 'gpay' ? 'border-white bg-white/10' : 'border-white/5 bg-white/5 hover:border-white/20'}`}
-                                                        >
-                                                            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#003049] font-black text-xl italic leading-none">G</div>
-                                                            <span className="text-[9px] font-black uppercase tracking-widest text-white/60">Google Pay</span>
-                                                        </button>
-                                                        <button
-                                                            onClick={() => setActiveBrand('phonepe')}
-                                                            className={`p-4 rounded-2xl border-2 flex flex-col items-center gap-3 transition-all ${activeBrand === 'phonepe' ? 'border-white bg-white/10' : 'border-white/5 bg-white/5 hover:border-white/20'}`}
-                                                        >
-                                                            <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-black text-xl italic leading-none">P</div>
-                                                            <span className="text-[9px] font-black uppercase tracking-widest text-white/60">PhonePe</span>
-                                                        </button>
-                                                    </div>
-
-                                                    <div className="relative">
-                                                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 text-xs font-black uppercase tracking-widest pointer-events-none">UPI ID</div>
-                                                        <input
-                                                            type="text"
-                                                            placeholder="example@okhdfc"
-                                                            value={upiId}
-                                                            onChange={(e) => setUpiId(e.target.value)}
-                                                            className="w-full bg-white/5 border border-white/10 rounded-2xl py-5 pl-16 pr-6 text-white placeholder:text-white/20 text-sm focus:outline-none focus:border-white/40 transition-all font-mono"
-                                                        />
-                                                    </div>
-                                                    <p className="text-[8px] text-white/30 uppercase tracking-[0.2em] text-center">Enter your Virtual Payment Address to confirm</p>
-                                                </div>
-                                            )}
+                                            <div className="relative">
+                                                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 text-xs font-black uppercase tracking-widest pointer-events-none">UPI ID</div>
+                                                <input
+                                                    type="text"
+                                                    placeholder="example@okhdfc"
+                                                    value={upiId}
+                                                    onChange={(e) => setUpiId(e.target.value)}
+                                                    className="w-full bg-white/5 border border-white/10 rounded-2xl py-5 pl-16 pr-6 text-white placeholder:text-white/20 text-sm focus:outline-none focus:border-white/40 transition-all font-mono"
+                                                />
+                                            </div>
                                         </div>
                                     )}
                                 </div>
