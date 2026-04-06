@@ -18,7 +18,10 @@ const Payment = () => {
     const [upiId, setUpiId] = useState('');
     const [activeBrand, setActiveBrand] = useState(''); // gpay, phonepe
     const [stripe, setStripe] = useState(null);
-    const [cardElement, setCardElement] = useState(null);
+    const [elements, setElements] = useState(null);
+    const [cardNumber, setCardNumber] = useState(null);
+    const [cardExpiry, setCardExpiry] = useState(null);
+    const [cardCvc, setCardCvc] = useState(null);
 
     useEffect(() => {
         const initStripe = async () => {
@@ -29,27 +32,40 @@ const Payment = () => {
     }, []);
 
     useEffect(() => {
-        if (stripe && !cardElement && !loading && status !== 'success') {
-            const container = document.getElementById('stripe-card-element');
+        if (stripe && !cardNumber && !loading && status !== 'success') {
+            const container = document.getElementById('stripe-card-number');
             if (container) {
                 const el = stripe.elements();
-                const card = el.create('card', {
-                    style: {
-                        base: {
-                            color: '#003049',
-                            fontFamily: 'Inter, sans-serif',
-                            fontSmoothing: 'antialiased',
-                            fontSize: '16px',
-                            '::placeholder': { color: 'rgba(0,48,73,0.4)' },
-                        },
-                        invalid: { color: '#fa755a', iconColor: '#fa755a' },
+                setElements(el);
+
+                const style = {
+                    base: {
+                        color: '#003049',
+                        fontFamily: 'Inter, sans-serif',
+                        fontSmoothing: 'antialiased',
+                        fontSize: '16px',
+                        '::placeholder': { color: 'rgba(0,48,73,0.3)' },
                     },
+                    invalid: { color: '#fa755a', iconColor: '#fa755a' },
+                };
+
+                const number = el.create('cardNumber', {
+                    style,
+                    placeholder: 'Card Number (12 digits)'
                 });
-                card.mount('#stripe-card-element');
-                setCardElement(card);
+                const expiry = el.create('cardExpiry', { style });
+                const cvc = el.create('cardCvc', { style });
+
+                number.mount('#stripe-card-number');
+                expiry.mount('#stripe-card-expiry');
+                cvc.mount('#stripe-card-cvc');
+
+                setCardNumber(number);
+                setCardExpiry(expiry);
+                setCardCvc(cvc);
             }
         }
-    }, [stripe, cardElement, loading, status]);
+    }, [stripe, cardNumber, loading, status]);
 
 
     useEffect(() => {
@@ -157,7 +173,7 @@ const Payment = () => {
                 if (selectedGateway === 'stripe') {
                     const result = await stripe.confirmCardPayment(data.clientSecret, {
                         payment_method: {
-                            card: cardElement,
+                            card: cardNumber,
                             billing_details: {
                                 name: user?.name,
                                 email: user?.email,
@@ -363,8 +379,18 @@ const Payment = () => {
                                     </div>
 
                                     <div className={`mt-6 space-y-4 pt-6 border-t border-gray-200/60 ${selectedGateway === 'stripe' ? 'animate-in fade-in slide-in-from-top-4' : 'hidden'}`} onClick={(e) => e.stopPropagation()}>
-                                        <div className="p-5 bg-white border border-gray-200 rounded-2xl shadow-inner">
-                                            <div id="stripe-card-element" className="w-full"></div>
+                                        <div className="space-y-4">
+                                            <div className="p-5 bg-white border border-gray-200 rounded-2xl shadow-inner">
+                                                <div id="stripe-card-number" className="w-full"></div>
+                                            </div>
+                                            <div className="grid grid-cols-2 gap-4">
+                                                <div className="p-5 bg-white border border-gray-200 rounded-2xl shadow-inner">
+                                                    <div id="stripe-card-expiry" className="w-full"></div>
+                                                </div>
+                                                <div className="p-5 bg-white border border-gray-200 rounded-2xl shadow-inner">
+                                                    <div id="stripe-card-cvc" className="w-full"></div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <p className="text-[9px] text-gray-400 uppercase tracking-widest text-center">Encrypted PCI-DSS Node</p>
                                     </div>
