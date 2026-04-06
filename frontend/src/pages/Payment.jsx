@@ -99,7 +99,7 @@ const Payment = () => {
         setErrorMessage('');
 
         try {
-            if (selectedGateway === 'razorpay') {
+            if (selectedGateway === 'razorpay' || selectedGateway === 'netbanking') {
                 const { data: order } = await api.post('/payments/create-order', {
                     bookingId: booking._id
                 });
@@ -332,133 +332,173 @@ const Payment = () => {
                         </div>
 
                         {/* Payment Method Card */}
-                        <div className="bg-[#003049] border border-white/10 rounded-[3rem] p-10 shadow-2xl">
-                            <h3 className="text-xs font-black text-white/40 mb-10 uppercase tracking-[0.5em]">Payment Method Selection</h3>
+                        <div className="bg-white border border-gray-200 rounded-[3rem] p-8 md:p-12 shadow-xl">
+                            <h3 className="text-[10px] font-black text-gray-400 mb-10 uppercase tracking-[0.5em] text-center md:text-left">Select Payment Architecture</h3>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {/* Razorpay Option */}
-                                <div
-                                    onClick={() => setSelectedGateway('razorpay')}
-                                    className={`relative p-8 rounded-[2rem] border-2 transition-all cursor-pointer flex flex-col gap-4 ${selectedGateway === 'razorpay' ? 'border-white/40 bg-white/5' : 'border-white/5 hover:border-white/10'}`}
-                                >
-                                    <div className="flex justify-between items-start">
-                                        <Wallet className="text-white/40" size={24} />
-                                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedGateway === 'razorpay' ? 'border-white' : 'border-white/20'}`}>
-                                            {selectedGateway === 'razorpay' && <div className="w-2.5 h-2.5 bg-white rounded-full" />}
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <span className="text-xl font-serif font-black text-white uppercase italic tracking-tighter">Razorpay</span>
-                                        <p className="text-[9px] font-black text-white/40 uppercase tracking-widest mt-1">Wallet & UPI</p>
-                                    </div>
-                                </div>
-
-                                {/* Stripe (Card) Option */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                                {/* Debit or Credit Card */}
                                 <div
                                     onClick={() => setSelectedGateway('stripe')}
-                                    className={`relative p-8 rounded-[2rem] border-2 transition-all cursor-pointer flex flex-col gap-4 ${selectedGateway === 'stripe' ? 'border-white/40 bg-white/5' : 'border-white/5 hover:border-white/10'}`}
+                                    className={`relative p-8 rounded-3xl border-2 transition-all cursor-pointer flex flex-col gap-5 ${selectedGateway === 'stripe' ? 'border-[#003049] bg-[#E8F1F5]' : 'border-gray-100 bg-white hover:border-gray-200'}`}
                                 >
                                     <div className="flex justify-between items-start">
-                                        <CreditCard className="text-white/40" size={24} />
-                                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedGateway === 'stripe' ? 'border-white' : 'border-white/20'}`}>
-                                            {selectedGateway === 'stripe' && <div className="w-2.5 h-2.5 bg-white rounded-full" />}
+                                        <div className="w-14 h-14 rounded-2xl bg-white border border-gray-100 flex items-center justify-center text-[#003049] shadow-sm">
+                                            <CreditCard size={28} strokeWidth={1.5} />
                                         </div>
+                                        {selectedGateway === 'stripe' && (
+                                            <div className="w-6 h-6 rounded-full bg-[#003049] flex items-center justify-center">
+                                                <div className="w-2.5 h-1.5 border-l-2 border-b-2 border-white -rotate-45 -mt-0.5" />
+                                            </div>
+                                        )}
                                     </div>
                                     <div>
-                                        <span className="text-xl font-serif font-black text-white uppercase italic tracking-tighter">Card</span>
-                                        <p className="text-[9px] font-black text-white/40 uppercase tracking-widest mt-1">Debit & Credit</p>
+                                        <h4 className="text-xl font-bold text-[#003049] tracking-tight">Debit or Credit Card</h4>
+                                        <div className="flex gap-2 mt-2 opacity-60">
+                                            <div className="w-8 h-5 bg-[#1A1F71] rounded-sm flex items-center justify-center text-[6px] font-black text-white italic">VISA</div>
+                                            <div className="w-8 h-5 bg-[#EB001B] rounded-sm flex items-center justify-center text-[6px] font-black text-white italic">MC</div>
+                                        </div>
                                     </div>
 
-                                    <div className={`mt-6 space-y-6 pt-6 border-t border-white/10 animate-in fade-in slide-in-from-top-4 ${selectedGateway === 'stripe' ? '' : 'hidden'}`} onClick={(e) => e.stopPropagation()}>
-                                        <div className="space-y-4">
-                                            <div className="p-5 bg-white/5 border border-white/10 rounded-2xl">
-                                                <div id="stripe-card-element" className="w-full"></div>
-                                            </div>
-                                            <div className="flex items-center gap-2 opacity-40">
-                                                <div className="h-px flex-1 bg-white/20"></div>
-                                                <span className="text-[8px] font-black uppercase tracking-[0.3em]">Secure Corridor</span>
-                                                <div className="h-px flex-1 bg-white/20"></div>
-                                            </div>
+                                    <div className={`mt-6 space-y-4 pt-6 border-t border-gray-200/60 ${selectedGateway === 'stripe' ? 'animate-in fade-in slide-in-from-top-4' : 'hidden'}`} onClick={(e) => e.stopPropagation()}>
+                                        <div className="p-5 bg-white border border-gray-200 rounded-2xl shadow-inner">
+                                            <div id="stripe-card-element" className="w-full"></div>
                                         </div>
+                                        <p className="text-[9px] text-gray-400 uppercase tracking-widest text-center">Encrypted PCI-DSS Node</p>
                                     </div>
                                 </div>
 
-                                {/* UPI Option */}
+                                {/* Razorpay */}
                                 <div
-                                    onClick={() => setSelectedGateway('upi')}
-                                    className={`relative p-8 rounded-[2rem] border-2 transition-all cursor-pointer flex flex-col gap-4 ${selectedGateway === 'upi' ? 'border-white/40 bg-white/5' : 'border-white/5 hover:border-white/10'}`}
+                                    onClick={() => setSelectedGateway('razorpay')}
+                                    className={`relative p-8 rounded-3xl border-2 transition-all cursor-pointer flex flex-col gap-5 ${selectedGateway === 'razorpay' ? 'border-[#003049] bg-[#E8F1F5]' : 'border-gray-100 bg-white hover:border-gray-200'}`}
                                 >
                                     <div className="flex justify-between items-start">
-                                        <div className="w-6 h-6 rounded-lg bg-white/10 flex items-center justify-center text-white/40 text-[10px] font-black">UPI</div>
-                                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedGateway === 'upi' ? 'border-white' : 'border-white/20'}`}>
-                                            {selectedGateway === 'upi' && <div className="w-2.5 h-2.5 bg-white rounded-full" />}
+                                        <div className="w-14 h-14 rounded-2xl bg-white border border-gray-100 flex items-center justify-center text-[#003049] shadow-sm">
+                                            <svg viewBox="0 0 24 24" className="w-7 h-7 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M18.8 1l-6.8 11h6.8l-7.8 11 2-11h-6.2l7.2-11h-4l1-1h9z" /></svg>
                                         </div>
+                                        {selectedGateway === 'razorpay' && (
+                                            <div className="w-6 h-6 rounded-full bg-[#003049] flex items-center justify-center">
+                                                <div className="w-2.5 h-1.5 border-l-2 border-b-2 border-white -rotate-45 -mt-0.5" />
+                                            </div>
+                                        )}
                                     </div>
                                     <div>
-                                        <span className="text-xl font-serif font-black text-white uppercase italic tracking-tighter">UPI</span>
-                                        <p className="text-[9px] font-black text-white/40 uppercase tracking-widest mt-1">GPay & PhonePe</p>
+                                        <h4 className="text-xl font-bold text-[#003049] tracking-tight">Razorpay</h4>
+                                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-2 flex items-center gap-2">
+                                            <span className="w-4 h-4 bg-[#3395FF] rounded-sm flex items-center justify-center text-white text-[8px] font-black">R</span>
+                                            SECURE UI CHECKOUT
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* UPI */}
+                                <div
+                                    onClick={() => setSelectedGateway('upi')}
+                                    className={`relative p-8 rounded-3xl border-2 transition-all cursor-pointer flex flex-col gap-5 ${selectedGateway === 'upi' ? 'border-[#003049] bg-[#E8F1F5]' : 'border-gray-100 bg-white hover:border-gray-200'}`}
+                                >
+                                    <div className="flex justify-between items-start">
+                                        <div className="w-14 h-14 rounded-2xl bg-[#008CBA] flex items-center justify-center text-white shadow-lg overflow-hidden">
+                                            <svg viewBox="0 0 24 24" className="w-7 h-7 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M17 2H7C5.89 2 5 2.89 5 4V20C5 21.11 5.89 22 7 22H17C18.11 22 19 21.11 19 20V4C19 2.89 18.11 2 17 2M17 18H7V6H17V18M12 19C11.45 19 11 18.55 11 18C11 17.45 11.45 17 12 17C12.55 17 13 17.45 13 18C13 18.55 12.55 19 12 19Z" /></svg>
+                                        </div>
+                                        {selectedGateway === 'upi' && (
+                                            <div className="w-6 h-6 rounded-full bg-[#003049] flex items-center justify-center">
+                                                <div className="w-2.5 h-1.5 border-l-2 border-b-2 border-white -rotate-45 -mt-0.5" />
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div>
+                                        <h4 className="text-xl font-bold text-[#003049] tracking-tight">UPI</h4>
+                                        <div className="flex items-center gap-3 mt-2">
+                                            <div className="flex -space-x-1">
+                                                <div className="w-5 h-5 rounded-full bg-[#EA4335] border border-white flex items-center justify-center text-[7px] font-black text-white">G</div>
+                                                <div className="w-5 h-5 rounded-full bg-[#5F259F] border border-white flex items-center justify-center text-[7px] font-black text-white">P</div>
+                                            </div>
+                                            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">INSTANT PAY</p>
+                                        </div>
                                     </div>
 
-                                    <div className={`mt-6 space-y-6 pt-6 border-t border-white/10 animate-in fade-in slide-in-from-top-4 ${selectedGateway === 'upi' ? '' : 'hidden'}`} onClick={(e) => e.stopPropagation()}>
+                                    <div className={`mt-6 space-y-6 pt-6 border-t border-gray-200/60 ${selectedGateway === 'upi' ? 'animate-in fade-in slide-in-from-top-4' : 'hidden'}`} onClick={(e) => e.stopPropagation()}>
                                         <div className="grid grid-cols-2 gap-4">
                                             <button
                                                 onClick={() => setActiveBrand('gpay')}
-                                                className={`p-4 rounded-2xl border-2 flex flex-col items-center gap-3 transition-all ${activeBrand === 'gpay' ? 'border-white bg-white/10' : 'border-white/5 bg-white/5 hover:border-white/20'}`}
+                                                className={`p-4 rounded-2xl border-2 flex flex-col items-center gap-2 transition-all ${activeBrand === 'gpay' ? 'border-[#003049] bg-white shadow-md' : 'border-gray-100 bg-gray-50 hover:border-gray-200'}`}
                                             >
-                                                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#003049] font-black text-xl italic leading-none">G</div>
-                                                <span className="text-[9px] font-black uppercase tracking-widest text-white/60">Google Pay</span>
+                                                <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-[#003049] font-black text-lg">G</div>
+                                                <span className="text-[9px] font-bold uppercase tracking-widest text-gray-500">Google Pay</span>
                                             </button>
                                             <button
                                                 onClick={() => setActiveBrand('phonepe')}
-                                                className={`p-4 rounded-2xl border-2 flex flex-col items-center gap-3 transition-all ${activeBrand === 'phonepe' ? 'border-white bg-white/10' : 'border-white/5 bg-white/5 hover:border-white/20'}`}
+                                                className={`p-4 rounded-2xl border-2 flex flex-col items-center gap-2 transition-all ${activeBrand === 'phonepe' ? 'border-[#003049] bg-white shadow-md' : 'border-gray-100 bg-gray-50 hover:border-gray-200'}`}
                                             >
-                                                <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-black text-xl italic leading-none">P</div>
-                                                <span className="text-[9px] font-black uppercase tracking-widest text-white/60">PhonePe</span>
+                                                <div className="w-10 h-10 rounded-full bg-[#5F259F]/10 flex items-center justify-center text-[#5F259F] font-black text-lg">P</div>
+                                                <span className="text-[9px] font-bold uppercase tracking-widest text-gray-500">PhonePe</span>
                                             </button>
                                         </div>
 
                                         <div className="relative">
-                                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 text-xs font-black uppercase tracking-widest pointer-events-none">UPI ID</div>
                                             <input
                                                 type="text"
-                                                placeholder="example@okhdfc"
+                                                placeholder="Enter UPI ID (e.g. user@bank)"
                                                 value={upiId}
                                                 onChange={(e) => setUpiId(e.target.value)}
-                                                className="w-full bg-white/5 border border-white/10 rounded-2xl py-5 pl-16 pr-6 text-white placeholder:text-white/20 text-sm focus:outline-none focus:border-white/40 transition-all font-mono"
+                                                className="w-full bg-gray-50 border border-gray-200 rounded-2xl py-5 px-6 text-[#003049] placeholder:text-gray-400 text-sm focus:outline-none focus:border-[#003049] transition-all font-mono shadow-inner"
                                             />
                                         </div>
+                                    </div>
+                                </div>
+
+                                {/* Net Banking */}
+                                <div
+                                    onClick={() => setSelectedGateway('netbanking')}
+                                    className={`relative p-8 rounded-3xl border-2 transition-all cursor-pointer flex flex-col gap-5 ${selectedGateway === 'netbanking' ? 'border-[#003049] bg-[#E8F1F5]' : 'border-gray-100 bg-white hover:border-gray-200'}`}
+                                >
+                                    <div className="flex justify-between items-start">
+                                        <div className="w-14 h-14 rounded-2xl bg-white border border-gray-100 flex items-center justify-center text-[#003049] shadow-sm">
+                                            <svg viewBox="0 0 24 24" className="w-7 h-7 fill-none stroke-current" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18" /><path d="M3 10h18" /><path d="M5 6l7-3 7 3" /><path d="M4 10v11" /><path d="M20 10v11" /><path d="M8 14v3" /><path d="M12 14v3" /><path d="M16 14v3" /></svg>
+                                        </div>
+                                        {selectedGateway === 'netbanking' && (
+                                            <div className="w-6 h-6 rounded-full bg-[#003049] flex items-center justify-center">
+                                                <div className="w-2.5 h-1.5 border-l-2 border-b-2 border-white -rotate-45 -mt-0.5" />
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div>
+                                        <h4 className="text-xl font-bold text-[#003049] tracking-tight">Net Banking</h4>
+                                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-2">ALL MAJOR BANKS</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Error Message */}
-                        {status === 'failed' && (
-                            <div className="p-6 bg-rose-500/10 border border-rose-500/20 rounded-2xl flex items-center gap-4 text-rose-500 text-xs font-black uppercase tracking-widest">
-                                <AlertCircle size={18} />
-                                {errorMessage}
-                            </div>
-                        )}
-
-                        {/* Pay Now Button */}
-                        <button
-                            onClick={handlePayment}
-                            disabled={status === 'processing'}
-                            className="w-full bg-[#003049] hover:bg-[#002538] text-white border border-white/10 font-black uppercase tracking-[0.5em] py-8 rounded-[2.5rem] shadow-2xl transition-all transform active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-4 text-xs"
-                        >
-                            {status === 'processing' ? 'Authorizing Secure Corridor...' : (
-                                <>
-                                    <span className="text-lg">🛡️</span>
-                                    Proceed to Settlement - ₹ {booking.totalAmount}
-                                </>
+                        {/* Status Messaging */}
+                        <div className="mt-8">
+                            {status === 'failed' && (
+                                <div className="p-6 bg-rose-500/10 border border-rose-500/20 rounded-2xl flex items-center gap-4 text-rose-500 text-xs font-black uppercase tracking-widest">
+                                    <AlertCircle size={18} />
+                                    {errorMessage}
+                                </div>
                             )}
-                        </button>
 
-                        {/* Visual Security Elements */}
-                        <div className="flex justify-center gap-12 opacity-30 grayscale pt-4">
-                            <div className="flex items-center gap-2">
-                                <ShieldCheck size={16} className="text-white" />
-                                <span className="text-[9px] font-black text-white uppercase tracking-widest">PCI DSS Compliant</span>
+                            {/* Pay Now Button */}
+                            <button
+                                onClick={handlePayment}
+                                disabled={status === 'processing'}
+                                className="w-full bg-[#003049] hover:bg-[#002538] text-white border border-white/10 font-black uppercase tracking-[0.5em] py-8 rounded-[2.5rem] shadow-2xl transition-all transform active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-4 text-xs"
+                            >
+                                {status === 'processing' ? 'Authorizing Secure Corridor...' : (
+                                    <>
+                                        <span className="text-lg">🛡️</span>
+                                        Proceed to Settlement - ₹ {booking.totalAmount}
+                                    </>
+                                )}
+                            </button>
+
+                            {/* Visual Security Elements */}
+                            <div className="flex justify-center gap-12 opacity-30 grayscale pt-4">
+                                <div className="flex items-center gap-2">
+                                    <ShieldCheck size={16} className="text-white" />
+                                    <span className="text-[9px] font-black text-white uppercase tracking-widest">PCI DSS Compliant</span>
+                                </div>
                             </div>
                         </div>
                     </div>
