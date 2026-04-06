@@ -291,7 +291,7 @@ const createStripeSession = async (req, res, next) => {
     if (isMock) {
       booking.stripeSessionId = `sess_mock_${Date.now()}`;
       await booking.save();
-      return res.json({ id: booking.stripeSessionId, url: `${process.env.CLIENT_URL || 'http://localhost:5173'}/payment/${bookingId}?success=true&gateway=stripe`, isMock: true });
+      return res.json({ id: booking.stripeSessionId, url: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/payment/${bookingId}?success=true&gateway=stripe`, isMock: true });
     }
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -313,8 +313,8 @@ const createStripeSession = async (req, res, next) => {
         },
       ],
       mode: 'payment',
-      success_url: `${process.env.CLIENT_URL || 'http://localhost:3000'}/payment/${bookingId}?success=true&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.CLIENT_URL || 'http://localhost:3000'}/payment/${bookingId}?cancelled=true`,
+      success_url: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/payment/${bookingId}?success=true&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/payment/${bookingId}?cancelled=true`,
       metadata: {
         bookingId: booking._id.toString(),
       },
