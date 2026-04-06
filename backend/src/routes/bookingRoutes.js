@@ -13,7 +13,7 @@ import {
 const router = express.Router();
 
 router.route('/check-availability')
-  .post(protect, checkAvailability);
+  .post(checkAvailability);
 
 router.route('/')
   .post(protect, createBooking);
