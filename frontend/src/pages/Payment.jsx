@@ -488,7 +488,6 @@ const Payment = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
                         {/* Status Messaging */}
                         <div className="mt-8">
