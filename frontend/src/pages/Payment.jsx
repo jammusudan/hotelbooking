@@ -519,6 +519,7 @@ const Payment = () => {
                                     <span className="text-[9px] font-black text-white uppercase tracking-widest">PCI DSS Compliant</span>
                                 </div>
                             </div>
+                            </div>
                         </div>
                     </div>
                 )}
